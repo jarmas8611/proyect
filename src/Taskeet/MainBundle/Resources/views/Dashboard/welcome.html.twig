@@ -1,27 +1,33 @@
 {% extends('TaskeetMainBundle::base_admin.html.twig') %}
+{% from 'TaskeetMainBundle:TicketList:macro.html' import list %}
+{% from 'TaskeetMainBundle:ProjectList:macro.html' import list %}
+{#{% from 'TaskeetMainBundle:EventList:macro.html' import list %}#}
 
 {% block body %}
     <div class="row-fluid">
         <div class="span4">
-            {{ render(controller('TaskeetMainBundle:Ticket/List:miniList', {'Tickets':User.tasks}))}}
+            {#{{ render(controller('TaskeetMainBundle:Ticket/List:miniList', {'Tickets':User.tasks}))}}#}
+            {{ list(User.tasks) }}
         </div><!--/span-->
         <div id="dashboard-content" class="span4">
             {{ render(controller('TaskeetMainBundle:Event/List:miniList'))}}
+            {#{{ list(User.tasks) }}#}
         </div><!--/span-->
         <div class="span4">
-            {{ render(controller('TaskeetMainBundle:Project/List:miniList', {'Projects':User.projects}))}}
-            <div id="linechart" style="min-width: 400px; height: 400px; margin: 0 auto"></div>
+            {#{{ render(controller('TaskeetMainBundle:Project/List:miniList', {'Projects':User.projects}))}}#}
+            {{ list(User.projects) }}
+            {#<div id="linechart" style="min-width: 400px; height: 400px; margin: 0 auto"></div>#}
 
         </div><!--/span-->
     </div><!--/row-->
 {% endblock %}
 
-{% block javascripts %}
-    {{ parent() }}
-    <script src="{{ asset('bundles/obhighcharts/js/highcharts/highcharts.js') }}"></script>
-    <script src="{{ asset('bundles/obhighcharts/js/highcharts/modules/exporting.js') }}"></script>
-    <script type="text/javascript">
-        {{ chart(chart) }}
-    </script>
+{#{% block javascripts %}#}
+    {#{{ parent() }}#}
+    {#<script src="{{ asset('bundles/obhighcharts/js/highcharts/highcharts.js') }}"></script>#}
+    {#<script src="{{ asset('bundles/obhighcharts/js/highcharts/modules/exporting.js') }}"></script>#}
+    {#<script type="text/javascript">#}
+        {#{{ chart(chart) }}#}
+    {#</script>#}
 
-{% endblock javascripts %}
+{#{% endblock javascripts %}#}

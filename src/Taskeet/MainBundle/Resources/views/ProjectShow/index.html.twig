@@ -1,4 +1,5 @@
 {% extends_admingenerated "TaskeetMainBundle:ProjectShow:index.html.twig" %}
+{% from 'TaskeetMainBundle:TicketList:macro.html' import list %}
 
 {% block page_title %}{% endblock %}
 
@@ -27,7 +28,8 @@
             </div>
         </div>
         <div class="span3">
-            {{ render(controller('TaskeetMainBundle:Ticket/List:miniList', {'Tickets':Project.tickets}))}}
+            {{ list(Project.tickets) }}
+            {#{{ render(controller('TaskeetMainBundle:Ticket/List:miniList', {'Tickets':Project.tickets})) }}#}
         </div>
         <div class="span3">
             <div class="show-name">

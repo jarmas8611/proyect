@@ -1,0 +1,52 @@
+{% macro list(Tickets) %}
+<div class="show-name">
+    <h1>{{ 'Tickets'|trans({}, 'TaskeetMainBundle') }}</h1>
+</div>
+<div class="tickets">
+    <table>
+        {% for object in Tickets if not  object.done  %}
+            <tr>
+                <td class="image-list">
+                    <ul class="image-list">
+                        {% if object.status %}
+                            <li>
+                                {% if object.status.imageName %}
+                                    <img src="/images/status/{{ object.status.imageName }}" />
+                                {% else %}
+                                    {{ object.status.name }}
+                                {% endif %}
+                            </li>
+                        {% endif %}
+
+                        {% if object.priority %}
+                            <li>
+                                {% if object.priority.imageName %}
+                                    <img src="/images/priorities/{{ object.priority.imageName }}" />
+                                {% else %}
+                                    {{ object.priority }}
+                                {% endif %}
+                            </li>
+                        {% endif %}
+                    </ul>
+                </td>
+                <td>
+                    <a href="{{ path("Taskeet_MainBundle_Ticket_show", { 'pk': object.id }) }}"><h3>{{ object.title }}</h3></a>
+                    <h4>{{ object.description | truncate(100, true) }}</h4>
+                    <div class="assigned-to">
+                        <h5 class="italic">{{ 'Assignedto'|trans({}, 'TaskeetMainBundle') }}</h5>
+                        <h5 class="italic color">{{ object.assignedTo }}</h5>
+                    </div>
+                    <div class="start-date">
+                        <h5 class="italic">{{ 'Startdate'|trans({}, 'TaskeetMainBundle') }}</h5>
+                        <h5 class="color">{{ object.startDate | localizeddate("medium", "medium") }}</h5>
+                    </div>
+                </td>
+            </tr>
+        {% endfor %}
+    </table>
+
+</div>
+<a class="btn btn-primary" href="{{ path("Taskeet_MainBundle_Ticket_new") }}">
+    <i class="icon-white icon-plus"></i> Tarea
+</a>
+{% endmacro %}
