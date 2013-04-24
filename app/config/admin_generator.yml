@@ -1,0 +1,27 @@
+admingenerator_generator:
+    ## Global
+    use_doctrine_orm: true
+    use_doctrine_odm: false
+    use_propel: false
+    overwrite_if_exists: false
+    base_admin_template: AdmingeneratorGeneratorBundle::base_admin.html.twig
+    knp_menu_class: Admingenerator\GeneratorBundle\Menu\DefaultMenuBuilder
+    thumbnail_generator: ~
+    dashboard_welcome_path: ~
+    login_path: ~
+    logout_path: ~
+    twig:
+        use_form_resources: true
+        use_localized_date: false
+        date_format: Y-m-d
+        datetime_format: Y-m-d H:i:s
+        localized_date_format: medium
+        localized_datetime_format: medium
+        number_format:
+            decimal: 0
+            decimal_point: .
+            thousand_separator: ,
+    templates_dirs: []
+
+admingenerator_user:
+    login_template: AdmingeneratorUserBundle:Security:login.html.twig
