@@ -7,7 +7,7 @@ admingenerator_generator:
     base_admin_template: AdmingeneratorGeneratorBundle::base_admin.html.twig
     knp_menu_class: Admingenerator\GeneratorBundle\Menu\DefaultMenuBuilder
     thumbnail_generator: ~
-    dashboard_welcome_path: ~
+    dashboard_welcome_path: dashboard_welcome
     login_path: ~
     logout_path: ~
     twig:

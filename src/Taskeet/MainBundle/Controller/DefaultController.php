@@ -6,8 +6,8 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
 class DefaultController extends Controller
 {
-    public function indexAction($name)
+    public function welcomeAction()
     {
-        return $this->render('TaskeetMainBundle:Default:index.html.twig', array('name' => $name));
+        return $this->render('TaskeetMainBundle:Dashboard:welcome.html.twig', array());
     }
 }

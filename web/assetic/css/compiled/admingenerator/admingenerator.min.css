@@ -1,0 +1,327 @@
+/* General styles
+-------------------------------------------------- */
+
+/* Block scrolling */
+html, body {
+    overflow-x: hidden;
+}
+
+/* Padding for top static navbar */
+body {
+    padding-top: 60px;
+    padding-bottom: 40px;
+}
+/* Prepend expander icon to expandable nodes
+ * ------------------------------------------------------------------------- */
+
+/* NonExpandable nodes have no icon */
+.treeTable tbody tr .icon-expander {
+    visibility: hidden;
+    -moz-user-select: none; 
+    -khtml-user-select: none; 
+    -webkit-user-select: none; 
+    -o-user-select: none; 
+}
+
+/* Collapsed branch: icon-chevron-right */
+.treeTable tbody tr.parent.collapsed .icon-expander {
+    background-position: -456px -72px;
+    visibility: visible;
+}
+
+/* Expanded branch: icon-chevron-down */
+.treeTable tbody tr.parent.expanded .icon-expander {
+    background-position: -313px -119px;
+    visibility: visible;
+}
+
+/* Non-transparent  helper row backgrounds
+ * ------------------------------------------------------------------------- */
+.nested-helper tr {
+    background-color: #FFFFFF;
+}
+
+/* Fade out dragged helper rows
+ * ============================
+ * Requires: CSS3 support
+ * Else: no fade out applied, all rows will be visible
+ * ------------------------------------------------------------------------- */
+
+/* Style 1'st displayed row */
+.nested-helper tr:nth-child(1)
+{ opacity: 0.80 !important; }
+.nested-helper tr:nth-child(1) th,
+.nested-helper tr:nth-child(1) td
+{ border-top: 1px solid rgba(221, 221, 221, 0.80) !important; }
+
+/* Style 2'nd displayed row */
+.nested-helper tr:not(.ui-helper-hidden)~tr
+{ opacity: 0.65 !important; }
+.nested-helper tr:not(.ui-helper-hidden)~tr th,
+.nested-helper tr:not(.ui-helper-hidden)~tr td
+{ border-top: 1px solid rgba(221, 221, 221, 0.65) !important; }
+
+/* Style 3'rd displayed row */
+.nested-helper tr:not(.ui-helper-hidden)~tr:not(.ui-helper-hidden)~tr
+{ opacity: 0.50 !important; }
+.nested-helper tr:not(.ui-helper-hidden)~tr:not(.ui-helper-hidden)~tr th,
+.nested-helper tr:not(.ui-helper-hidden)~tr:not(.ui-helper-hidden)~tr td
+{ border-top: 1px solid rgba(221, 221, 221, 0.50) !important; }
+
+/* Style 4'th displayed row */
+.nested-helper tr:not(.ui-helper-hidden)~tr:not(.ui-helper-hidden)~tr:not(.ui-helper-hidden)~tr
+{ opacity: 0.35 !important; }
+.nested-helper tr:not(.ui-helper-hidden)~tr:not(.ui-helper-hidden)~tr:not(.ui-helper-hidden)~tr th,
+.nested-helper tr:not(.ui-helper-hidden)~tr:not(.ui-helper-hidden)~tr:not(.ui-helper-hidden)~tr td
+{ border-top: 1px solid rgba(221, 221, 221, 0.35) !important; }
+
+/* Style 5'th displayed row */
+.nested-helper tr:not(.ui-helper-hidden)~tr:not(.ui-helper-hidden)~tr:not(.ui-helper-hidden)~tr:not(.ui-helper-hidden)~tr
+{ opacity: 0.20 !important; }
+.nested-helper tr:not(.ui-helper-hidden)~tr:not(.ui-helper-hidden)~tr:not(.ui-helper-hidden)~tr:not(.ui-helper-hidden)~tr th,
+.nested-helper tr:not(.ui-helper-hidden)~tr:not(.ui-helper-hidden)~tr:not(.ui-helper-hidden)~tr:not(.ui-helper-hidden)~tr td
+{ border-top: 1px solid rgba(221, 221, 221, 0.20) !important; }
+
+/* Style 6'th displayed row */
+.nested-helper tr:not(.ui-helper-hidden)~tr:not(.ui-helper-hidden)~tr:not(.ui-helper-hidden)~tr:not(.ui-helper-hidden)~tr:not(.ui-helper-hidden)~tr
+{ opacity: 0.05 !important; }
+.nested-helper tr:not(.ui-helper-hidden)~tr:not(.ui-helper-hidden)~tr:not(.ui-helper-hidden)~tr:not(.ui-helper-hidden)~tr:not(.ui-helper-hidden)~tr th,
+.nested-helper tr:not(.ui-helper-hidden)~tr:not(.ui-helper-hidden)~tr:not(.ui-helper-hidden)~tr:not(.ui-helper-hidden)~tr:not(.ui-helper-hidden)~tr td
+{ border-top: 1px solid rgba(221, 221, 221, 0.05) !important; }
+
+/* Style all displayed rows below 6'th */
+.nested-helper tr:not(.ui-helper-hidden)~tr:not(.ui-helper-hidden)~tr:not(.ui-helper-hidden)~tr:not(.ui-helper-hidden)~tr:not(.ui-helper-hidden)~tr:not(.ui-helper-hidden)~tr
+{ opacity: 0 !important; }
+.nested-helper tr:not(.ui-helper-hidden)~tr:not(.ui-helper-hidden)~tr:not(.ui-helper-hidden)~tr:not(.ui-helper-hidden)~tr:not(.ui-helper-hidden)~tr:not(.ui-helper-hidden)~tr th,
+.nested-helper tr:not(.ui-helper-hidden)~tr:not(.ui-helper-hidden)~tr:not(.ui-helper-hidden)~tr:not(.ui-helper-hidden)~tr:not(.ui-helper-hidden)~tr:not(.ui-helper-hidden)~tr td
+{ border-top: 1px solid rgba(221, 221, 221, 0) !important; }
+
+/* Droppable action highlight, Selected row highlight
+ * ==================================================
+ * Requires: CSS2 support
+ * Else: expander and droppable action icons won't be visible
+ * ------------------------------------------------------------------------- */
+
+.treeTable tbody tr.droppable-before,
+.treeTable tbody tr.droppable-after{
+    box-shadow: 0 0 10px 5px rgba(73, 175, 205, 0.25);
+}
+
+.treeTable tbody tr.droppable-before > td:first-child:before,
+.treeTable tbody tr.droppable-after > td:first-child:before {
+    position: relative;
+    display: inline-block;
+    width: 14px;
+    height: 14px;
+    content: '';
+    margin-top: 1px;
+    margin-right: -14px;
+    left: 5px;
+    line-height: 14px;
+    vertical-align: text-top;
+    background-image: url("../../../../../bundles/admingeneratorgenerator/css/img/glyphicons-halflings.png");
+    background-position: 14px 14px;
+    background-repeat: no-repeat;
+    cursor: pointer;
+}
+
+/* Insert before: icon-share-alt */
+.treeTable tbody tr.droppable-before > td:first-child:before {
+    background-position: -336px -96px;
+    top: -14px;
+}
+
+/* Insert after: flipped icon-share-alt */
+.treeTable tbody tr.droppable-after > td:first-child:before {
+    background-position: -336px -96px;
+    bottom: -14px;
+    
+    -webkit-transform:scaleY(-1);
+    -moz-transform:scaleY(-1);
+    -ms-transform:scaleY(-1);
+    -o-transform:scaleY(-1);
+    transform:scaleY(-1);
+}
+
+/* Highlight selected row */
+.treeTable tbody tr.selected,
+.treeTable tbody tr.droppable-in {
+    background-color: #0088CC;
+    color: #fff;
+}
+
+/* Use white icon set in selected rows */
+.treeTable tbody tr.selected [class^="icon-"],
+.treeTable tbody tr.droppable-in [class^="icon-"],
+.treeTable tbody tr.selected [class*=" icon-"],
+.treeTable tbody tr.droppable-in [class*=" icon-"],
+.treeTable tbody tr.parent.selected td:first-child:before,
+.treeTable tbody tr.parent.droppable-in td:first-child:before {
+    background-image: url("../../../../../bundles/admingeneratorgenerator/css/img/glyphicons-halflings-white.png") !important;
+}
+
+/* Remove cell backgrounds to make row background visible */
+.treeTable tbody tr.selected td, .treeTable tbody tr.droppable-in td, 
+.treeTable tbody tr.selected th, .treeTable tbody tr.droppable-in th {
+    background-color: transparent !important;
+}
+
+/* jQuery UI layout helpers
+ * ========================
+ * This way I don't have to require the full jQuery UI CSS to be loaded.
+ * ------------------------------------------------------------------------- */
+.ui-helper-hidden { display: none; }
+/* Collection form styles
+ * ------------------------------------------------------------------------- */
+
+/* Set fallback background for collection-item */
+tbody.collection > tr,
+div.collection > fieldset {
+    background-color: #fff;
+}
+/* Upload form styles
+ * ------------------------------------------------------------------------- */
+
+/* Set fallback background for files_list item */
+tbody.files > tr {
+    background-color: #fff;
+}
+
+/* Add grab cursor when hovering over sortable element */
+tbody.files.sortable > tr.template-download:hover {
+    cursor: url('../../../../../bundles/admingeneratorgenerator/css/cur/openhand.cur'), move;
+    cursor: url('../../../../../bundles/admingeneratorgenerator/css/cur/openhand.cur') 4 4, move;
+    cursor: -webkit-grab; 
+    cursor: -moz-grab;
+    cursor: move\9; /* fallback cursor for IE */
+}
+
+/* Add grabbing cursor when sorting */
+tbody.files.sortable > tr.template-download.ui-sortable-helper:hover {
+    cursor: url('../../../../../bundles/admingeneratorgenerator/css/cur/closedhand.cur'), move;
+    cursor: url('../../../../../bundles/admingeneratorgenerator/css/cur/closedhand.cur') 4 4, move;
+    cursor: -webkit-grabbing; 
+    cursor: -moz-grabbing;
+    cursor: move\9; /* fallback cursor for IE */
+}
+/* Filetype icon styles
+ * ------------------------------------------------------------------------- */
+
+.fileicon {
+    /* Block styles */
+    display:  inline-block;
+    overflow: hidden;
+    width:    128px;
+    height:   128px;
+    /* Box model */
+	-webkit-box-sizing:   border-box; /* Safari/Chrome, other WebKit */
+	-moz-box-sizing:      border-box; /* Firefox, other Gecko */
+	box-sizing:           border-box; /* Opera/IE 8+ */
+    /* Font positioning */
+    text-align:   center;
+    padding-top:  86px;
+    line-height:  13px;    
+    /* Font styles */
+    font-size:    13px;
+    color:        #aaa;
+    font-weight:  bold;
+    font-family:  Arial, sans-serif;
+    text-shadow:  1px 1px 0px #fff;
+}
+
+.fileicon.audio           { background: url('../../../../../bundles/admingeneratorgenerator/img/filetypeicons/audio.png') no-repeat top center; }
+.fileicon.archive         { background: url('../../../../../bundles/admingeneratorgenerator/img/filetypeicons/archive.png') no-repeat top center; }
+.fileicon.html            { background: url('../../../../../bundles/admingeneratorgenerator/img/filetypeicons/html.png') no-repeat top center; }
+.fileicon.image           { background: url('../../../../../bundles/admingeneratorgenerator/img/filetypeicons/image.png') no-repeat top center; }
+.fileicon.pdf-document    { background: url('../../../../../bundles/admingeneratorgenerator/img/filetypeicons/pdf-document.png') no-repeat top center; }
+.fileicon.plain-text      { background: url('../../../../../bundles/admingeneratorgenerator/img/filetypeicons/plain-text.png') no-repeat top center; }
+.fileicon.presentation    { background: url('../../../../../bundles/admingeneratorgenerator/img/filetypeicons/presentation.png') no-repeat top center; }
+.fileicon.spreadsheet     { background: url('../../../../../bundles/admingeneratorgenerator/img/filetypeicons/spreadsheet.png') no-repeat top center; }
+.fileicon.text-document   { background: url('../../../../../bundles/admingeneratorgenerator/img/filetypeicons/text-document.png') no-repeat top center; }
+.fileicon.unknown         { background: url('../../../../../bundles/admingeneratorgenerator/img/filetypeicons/unknown.png') no-repeat top center; }
+.fileicon.video           { background: url('../../../../../bundles/admingeneratorgenerator/img/filetypeicons/video.png') no-repeat top center; }
+/* Datepicker styles
+ * ------------------------------------------------------------------------- */
+
+.datepicker-widget {
+    display: table;
+}
+/* Single upload form styles
+ * Requires: upload.css
+ * ------------------------------------------------------------------------- */
+
+/* Preview images style */
+.single-upload-preview {
+    border: 3px dashed #EEEEEE; 
+    border-top: 1px solid #DDDDDD; 
+    border-radius: 0px 0px 8px 8px; 
+    padding: 15px;
+}
+
+.single-upload-preview [class*="_preview_image"] {
+    text-align: center;
+}
+
+/* Shift filename under preview */
+.single-upload-preview img {
+    margin-bottom: 8px;
+}
+
+/* Single upload buttonbar styles */
+.singleupload-buttonbar {
+    padding: 5px 10px;
+}
+
+.singleupload-buttonbar > span,
+.singleupload-buttonbar > div,
+.singleupload-buttonbar > button,
+.singleupload-buttonbar > input {
+    display: inline-block;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    vertical-align: top;
+}
+
+.singleupload-controls-wrapper {
+    margin-left: 5px;
+    white-space: nowrap;
+}
+
+/* Fixing ui-effects-wrapper styles */
+.singleupload-buttonbar .btn-wrapper {
+    position: relative;
+    display: inline-block !important;
+    vertical-align: top;    /* Firefox overflow:hidden + display:inline-block combo misallignement fix */
+    *display: inline !important;
+    /* IE7 inline-block hack */
+
+    *zoom: 1 !important;
+    font-size: 0 !important;
+}
+
+.singleupload-buttonbar .btn-wrapper > .btn,
+.singleupload-buttonbar .btn-wrapper > .ui-effects-wrapper {
+    margin-right: 5px !important;
+}
+
+.singleupload-buttonbar .btn-wrapper > .ui-effects-wrapper .btn {
+    height: auto !important;
+    width: auto !important;
+}
+
+/* Negative indent if preceded by another wrapped button */
+.singleupload-buttonbar .btn-wrapper + .btn-wrapper:not(.removed) > .ui-effects-wrapper {
+    position: relative;
+    left: -2px;
+    z-index: 999;
+    margin-left: -100% !important;
+}
+
+/* Fix margin for removed wrapper */
+.singleupload-buttonbar .btn-wrapper.removed {
+    margin-left: 5px;
+}
+
+.single-upload + .help-block {
+    margin-top: 20px;
+}

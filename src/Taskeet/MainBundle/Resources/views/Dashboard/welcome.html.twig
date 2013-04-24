@@ -1,0 +1,15 @@
+{% extends('AdmingeneratorGeneratorBundle::base_admin_assetic_less.html.twig') %}
+
+{% block body %}
+    <div class="row-fluid">
+        <div class="span3">
+            <div class="well sidebar-nav">
+                {#{{ knp_menu_render('dashboard') }}#}
+            </div><!--/.well -->
+        </div><!--/span-->
+        <div id="dashboard-content" class="span9">
+            {% block content %}
+            {% endblock %}
+        </div><!--/span-->
+    </div><!--/row-->
+{% endblock %}

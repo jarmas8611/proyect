@@ -1,42 +1,42 @@
 TaskeetMainBundle_admin_taskeet_main_bundle_ticket:
     resource: "@TaskeetMainBundle/Controller/Ticket/"
     type:     admingenerator
-    prefix:   /admin/taskeet_main_bundle/ticket
+    prefix:   /taskeet_main_bundle/ticket
 
 TaskeetMainBundle_admin_taskeet_main_bundle_project:
     resource: "@TaskeetMainBundle/Controller/Project/"
     type:     admingenerator
-    prefix:   /admin/taskeet_main_bundle/project
+    prefix:   /taskeet_main_bundle/project
 
 TaskeetMainBundle_admin_taskeet_main_bundle_priority:
     resource: "@TaskeetMainBundle/Controller/Priority/"
     type:     admingenerator
-    prefix:   /admin/taskeet_main_bundle/priority
+    prefix:   /taskeet_main_bundle/priority
 
 TaskeetMainBundle_admin_taskeet_main_bundle_group:
     resource: "@TaskeetMainBundle/Controller/Group/"
     type:     admingenerator
-    prefix:   /admin/taskeet_main_bundle/group
+    prefix:   /taskeet_main_bundle/group
 
 TaskeetMainBundle_admin_taskeet_main_bundle_event:
     resource: "@TaskeetMainBundle/Controller/Event/"
     type:     admingenerator
-    prefix:   /admin/taskeet_main_bundle/event
+    prefix:   /taskeet_main_bundle/event
 
 TaskeetMainBundle_admin_taskeet_main_bundle_category:
     resource: "@TaskeetMainBundle/Controller/Category/"
     type:     admingenerator
-    prefix:   /admin/taskeet_main_bundle/category
+    prefix:   /taskeet_main_bundle/category
 
 TaskeetMainBundle_admin_taskeet_main_bundle_department:
     resource: "@TaskeetMainBundle/Controller/Department/"
     type:     admingenerator
-    prefix:   /admin/taskeet_main_bundle/department
+    prefix:   /taskeet_main_bundle/department
 
 TaskeetMainBundle_admin_taskeet_main_bundle_user:
     resource: "@TaskeetMainBundle/Controller/User/"
     type:     admingenerator
-    prefix:   /admin/taskeet_main_bundle/user
+    prefix:   /taskeet_main_bundle/user
 
 taskeet_main:
     resource: "@TaskeetMainBundle/Resources/config/routing.yml"
