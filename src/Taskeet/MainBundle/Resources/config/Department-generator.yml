@@ -3,8 +3,25 @@ params:
     model: Taskeet\MainBundle\Entity\Department
     namespace_prefix: Taskeet
     bundle_name: MainBundle
-    fields: ~
-
+    fields:
+        users:
+            formType: collection
+            dbType: collection
+            addFormOptions:
+                widget:         fieldset
+                sortable:       position
+                type:           entitypicker
+                allow_add:      true
+                allow_delete:   true
+                by_reference:   false
+                options:
+                    label:          Nuevo usuario
+#                   data_class:     Taskeet\MainBundle\Entity\User
+                    class:          TaskeetMainBundle:User
+                    primaryKey:     id
+                    exclude:        collection
+                    builder:      { username: username }
+                    matcher:      user.username
 builders:
     list:
         params:
@@ -28,14 +45,14 @@ builders:
                 list: ~
     edit:
         params:
-            title: "You're editing the object \"%object%\"|{ %object%: Department.name }|"
-            display: [name, slug]
+            title: "Editando el departamento \"%object%\"|{ %object%: Department.name }|"
+            display: [name, slug, users]
             actions:
                 save: ~
                 list: ~
     show:
         params:
-            title: "You're viewing the object \"%object%\"|{ %object%: Department.name }|"
+            title: "Departamento: \"%object%\"|{ %object%: Department.name }|"
             display: ~
             actions:
                 edit: ~

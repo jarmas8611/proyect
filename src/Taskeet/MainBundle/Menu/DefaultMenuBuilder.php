@@ -21,12 +21,19 @@ class DefaultMenuBuilder extends AdmingeneratorMenuBuilder
          */
         $menu->setExtra('translation_domain', 'Admingenerator');
 
+        $menu->addChild('Departamentos', array('route' => 'Taskeet_MainBundle_Department_list'));
 
 
-        $help = $this->addDropdownMenu($menu, 'Overwrite this menu');
+        $help = $this->addDropdownMenu($menu, 'Proyectos');
 
-        $this->addNavLinkURI($help, 'Configure menu class', 'https://github.com/knplabs/KnpMenuBundle/blob/master/Resources/doc/index.md');
-        $this->addNavLinkURI($help, 'Configure php class to use', 'https://github.com/symfony2admingenerator/AdmingeneratorGeneratorBundle/blob/master/Resources/doc/change-the-menu-class.markdown');
+        $this->addNavLinkRoute($help, 'Proyectos', 'Taskeet_MainBundle_Project_list');
+        $this->addNavLinkRoute($help, 'Categorias', 'Taskeet_MainBundle_Category_list');
+        $this->addNavLinkRoute($help, 'Prioridades', 'Taskeet_MainBundle_Priority_list');
+        $this->addNavLinkRoute($help, 'Tareas', 'Taskeet_MainBundle_Ticket_list');
+//        $this->addNavLinkRoute($help, 'Configure php class to use', 'https://github.com/symfony2admingenerator/AdmingeneratorGeneratorBundle/blob/master/Resources/doc/change-the-menu-class.markdown');
+
+        $menu->addChild('Agenda', array('route' => 'Taskeet_MainBundle_Event_list'));
+        $menu->addChild('Usuarios', array('route' => 'Taskeet_MainBundle_User_list'));
 
         return $menu;
     }

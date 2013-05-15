@@ -4,17 +4,21 @@ params:
     namespace_prefix: Taskeet
     bundle_name: MainBundle
     fields:
-        lastLogin:
-            formType: \Admingenerator\GeneratorBundle\Form\Type\DatePickerType
-        expiresAt:
-            formType: \Admingenerator\GeneratorBundle\Form\Type\DatePickerType
-        passwordRequestedAt:
-            formType: \Admingenerator\GeneratorBundle\Form\Type\DatePickerType
-        credentialsExpireAt:
-            formType: \Admingenerator\GeneratorBundle\Form\Type\DatePickerType
+#        lastLogin:
+#            formType: \Admingenerator\GeneratorBundle\Form\Type\DatePickerType
+#        expiresAt:
+#            formType: \Admingenerator\GeneratorBundle\Form\Type\DatePickerType
+#        passwordRequestedAt:
+#            formType: \Admingenerator\GeneratorBundle\Form\Type\DatePickerType
+#        credentialsExpireAt:
+#            formType: \Admingenerator\GeneratorBundle\Form\Type\DatePickerType
         roles:
             formType: collection
             dbType: collection
+            addFormOptions:
+                widget:         table
+                allow_add:      true
+                allow_delete:   true
 
 
 builders:
@@ -34,20 +38,20 @@ builders:
     new:
         params:
             title: Nuevo usuario
-            display: [username, password, email, department, enabled, expired, expiresAt, roles]
+            display: [username, password, email, department, enabled, expiresAt, roles]
             actions:
                 save: ~
                 list: ~
     edit:
         params:
-            title: "You're editing the object \"%object%\"|{ %object%: User.username }|"
+            title: "Editando el usuario \"%object%\"|{ %object%: User.username }|"
             display: [username, password, email, department, enabled, expired, expiresAt, roles]
             actions:
                 save: ~
                 list: ~
     show:
         params:
-            title: "You're viewing the object \"%object%\"|{ %object%: User.username }|"
+            title: "Usuario \"%object%\"|{ %object%: User.username }|"
             display: ~
             actions:
                 edit: ~

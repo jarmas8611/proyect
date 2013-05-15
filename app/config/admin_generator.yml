@@ -10,8 +10,8 @@ admingenerator_generator:
     knp_menu_class: Taskeet\MainBundle\Menu\DefaultMenuBuilder
     thumbnail_generator: ~
     dashboard_welcome_path: dashboard_welcome
-    login_path: ~
-    logout_path: ~
+    login_path: fos_user_security_login
+    logout_path: fos_user_security_logout
     twig:
         use_form_resources: true
         use_localized_date: false
