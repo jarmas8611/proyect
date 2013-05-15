@@ -30,7 +30,7 @@ twig:
 assetic:
     debug:          %kernel.debug%
     use_controller: false
-    bundles:        [ AdmingeneratorGeneratorBundle ]
+    bundles:        [ TaskeetMainBundle, AdmingeneratorGeneratorBundle ]
     #java: /usr/bin/java
     filters:
         cssrewrite: ~
@@ -101,9 +101,16 @@ fos_user:
     group:
         group_class: Taskeet\MainBundle\Entity\Group
 
+    profile:  # Authentication Form
+        form:
+            type:               fos_user_profile
+            handler:            fos_user.profile.form.handler.default
+            name:               fos_user_profile_form
+            validation_groups:  [Authentication] # Please note : this is not the default value
+
 knp_menu:
     twig:
-        template: AdmingeneratorGeneratorBundle:KnpMenu:knp_menu_trans.html.twig
+        template: TaskeetMainBundle:KnpMenu:knp_menu_trans.html.twig
 
 stof_doctrine_extensions:
     default_locale: es_MX

@@ -58,15 +58,15 @@ class User extends BaseUser
      */
     protected $groups;
 
-    /**
-     * @ORM\ManyToMany(targetEntity="Project", mappedBy="members")
-     */
-    protected $projects;
+     /**
+      * @ORM\ManyToMany(targetEntity="Project", mappedBy="members")
+      */
+     protected $projects;
 
-    /**
-     * @ORM\OneToMany(targetEntity="Ticket", mappedBy="assignedTo")
-     */
-    protected $tasks;
+     /**
+      * @ORM\OneToMany(targetEntity="Ticket", mappedBy="assignedTo")
+      */
+     protected $tasks;
 
 
     public function __construct()
@@ -82,7 +82,7 @@ class User extends BaseUser
     /**
      * Get id
      *
-     * @return integer 
+     * @return integer
      */
     public function getId()
     {
@@ -98,7 +98,7 @@ class User extends BaseUser
     public function setDepartment(Department $department = null)
     {
         $this->department = $department;
-    
+
         return $this;
     }
 
@@ -121,14 +121,14 @@ class User extends BaseUser
     public function setCreated($created)
     {
         $this->created = $created;
-    
+
         return $this;
     }
 
     /**
      * Get created
      *
-     * @return \DateTime 
+     * @return \DateTime
      */
     public function getCreated()
     {
@@ -144,84 +144,94 @@ class User extends BaseUser
     public function setUpdated($updated)
     {
         $this->updated = $updated;
-    
+
         return $this;
     }
 
     /**
      * Get updated
      *
-     * @return \DateTime 
+     * @return \DateTime
      */
     public function getUpdated()
     {
         return $this->updated;
     }
 
-    /**
-     * Add projects
-     *
-     * @param \Taskeet\MainBundle\Entity\Project $projects
-     * @return User
-     */
-    public function addProject(\Taskeet\MainBundle\Entity\Project $projects)
+     /**
+      * Add projects
+      *
+      * @param \Taskeet\MainBundle\Entity\Project $projects
+      * @return User
+      */
+     public function addProject(\Taskeet\MainBundle\Entity\Project $projects)
+     {
+         $this->projects[] = $projects;
+
+         return $this;
+     }
+
+     /**
+      * Remove projects
+      *
+      * @param \Taskeet\MainBundle\Entity\Project $projects
+      */
+     public function removeProject(\Taskeet\MainBundle\Entity\Project $projects)
+     {
+         $this->projects->removeElement($projects);
+     }
+
+     /**
+      * Get projects
+      *
+      * @return \Doctrine\Common\Collections\Collection
+      */
+     public function getProjects()
+     {
+         return $this->projects;
+     }
+
+     /**
+      * Add tasks
+      *
+      * @param \Taskeet\MainBundle\Entity\Ticket $tasks
+      * @return User
+      */
+     public function addTask(\Taskeet\MainBundle\Entity\Ticket $tasks)
+     {
+         $this->tasks[] = $tasks;
+
+         return $this;
+     }
+
+     /**
+      * Remove tasks
+      *
+      * @param \Taskeet\MainBundle\Entity\Ticket $tasks
+      */
+     public function removeTask(\Taskeet\MainBundle\Entity\Ticket $tasks)
+     {
+         $this->tasks->removeElement($tasks);
+     }
+
+     /**
+      * Get tasks
+      *
+      * @return \Doctrine\Common\Collections\Collection
+      */
+     public function getTasks()
+     {
+         return $this->tasks;
+     }
+
+    public function getExpiresAt()
     {
-        $this->projects[] = $projects;
-    
-        return $this;
+        return $this->expiresAt;
     }
 
-    /**
-     * Remove projects
-     *
-     * @param \Taskeet\MainBundle\Entity\Project $projects
-     */
-    public function removeProject(\Taskeet\MainBundle\Entity\Project $projects)
+    public function getCredentialsExpireAt()
     {
-        $this->projects->removeElement($projects);
-    }
-
-    /**
-     * Get projects
-     *
-     * @return \Doctrine\Common\Collections\Collection 
-     */
-    public function getProjects()
-    {
-        return $this->projects;
-    }
-
-    /**
-     * Add tasks
-     *
-     * @param \Taskeet\MainBundle\Entity\Ticket $tasks
-     * @return User
-     */
-    public function addTask(\Taskeet\MainBundle\Entity\Ticket $tasks)
-    {
-        $this->tasks[] = $tasks;
-    
-        return $this;
-    }
-
-    /**
-     * Remove tasks
-     *
-     * @param \Taskeet\MainBundle\Entity\Ticket $tasks
-     */
-    public function removeTask(\Taskeet\MainBundle\Entity\Ticket $tasks)
-    {
-        $this->tasks->removeElement($tasks);
-    }
-
-    /**
-     * Get tasks
-     *
-     * @return \Doctrine\Common\Collections\Collection 
-     */
-    public function getTasks()
-    {
-        return $this->tasks;
+        return $this->credentialsExpireAt;
     }
 
 }

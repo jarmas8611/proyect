@@ -94,8 +94,7 @@ class Ticket
      * @var string $updatedBy
      *
      * @Gedmo\Blameable(on="update")
-     * @ORM\ManyToOne(targetEntity="User")
-     * @ORM\JoinColumn(name="updated_by", referencedColumnName="id")
+     * @ORM\Column(type="string")
      */
     private $updatedBy;
 
@@ -119,7 +118,7 @@ class Ticket
     /**
      * Get id
      *
-     * @return integer 
+     * @return integer
      */
     public function getId()
     {
@@ -135,14 +134,14 @@ class Ticket
     public function setTitle($title)
     {
         $this->title = $title;
-    
+
         return $this;
     }
 
     /**
      * Get title
      *
-     * @return string 
+     * @return string
      */
     public function getTitle()
     {
@@ -158,14 +157,14 @@ class Ticket
     public function setDescription($description)
     {
         $this->description = $description;
-    
+
         return $this;
     }
 
     /**
      * Get description
      *
-     * @return string 
+     * @return string
      */
     public function getDescription()
     {
@@ -181,14 +180,14 @@ class Ticket
     public function setFiles($files)
     {
         $this->files = $files;
-    
+
         return $this;
     }
 
     /**
      * Get files
      *
-     * @return string 
+     * @return string
      */
     public function getFiles()
     {
@@ -205,14 +204,14 @@ class Ticket
     public function setStartDate($startDate)
     {
         $this->startDate = $startDate;
-    
+
         return $this;
     }
 
     /**
      * Get startDate
      *
-     * @return \DateTime 
+     * @return \DateTime
      */
     public function getStartDate()
     {
@@ -228,14 +227,14 @@ class Ticket
     public function setDueDate($dueDate)
     {
         $this->dueDate = $dueDate;
-    
+
         return $this;
     }
 
     /**
      * Get dueDate
      *
-     * @return \DateTime 
+     * @return \DateTime
      */
     public function getDueDate()
     {
@@ -252,14 +251,14 @@ class Ticket
     public function setSlug($slug)
     {
         $this->slug = $slug;
-    
+
         return $this;
     }
 
     /**
      * Get slug
      *
-     * @return string 
+     * @return string
      */
     public function getSlug()
     {
@@ -275,14 +274,14 @@ class Ticket
     public function setCreatedBy($createdBy)
     {
         $this->createdBy = $createdBy;
-    
+
         return $this;
     }
 
     /**
      * Get createdBy
      *
-     * @return string 
+     * @return string
      */
     public function getCreatedBy()
     {
@@ -298,14 +297,14 @@ class Ticket
     public function setCreated($created)
     {
         $this->created = $created;
-    
+
         return $this;
     }
 
     /**
      * Get created
      *
-     * @return \DateTime 
+     * @return \DateTime
      */
     public function getCreated()
     {
@@ -321,14 +320,14 @@ class Ticket
     public function setUpdated($updated)
     {
         $this->updated = $updated;
-    
+
         return $this;
     }
 
     /**
      * Get updated
      *
-     * @return \DateTime 
+     * @return \DateTime
      */
     public function getUpdated()
     {
@@ -344,14 +343,14 @@ class Ticket
     public function setPriority(\Taskeet\MainBundle\Entity\Priority $priority = null)
     {
         $this->priority = $priority;
-    
+
         return $this;
     }
 
     /**
      * Get priority
      *
-     * @return \Taskeet\MainBundle\Entity\Priority 
+     * @return \Taskeet\MainBundle\Entity\Priority
      */
     public function getPriority()
     {
@@ -367,14 +366,14 @@ class Ticket
     public function setAssignedTo(\Taskeet\MainBundle\Entity\User $assignedTo = null)
     {
         $this->assignedTo = $assignedTo;
-    
+
         return $this;
     }
 
     /**
      * Get assignedTo
      *
-     * @return \Taskeet\MainBundle\Entity\User 
+     * @return \Taskeet\MainBundle\Entity\User
      */
     public function getAssignedTo()
     {
@@ -390,14 +389,14 @@ class Ticket
     public function setProject(\Taskeet\MainBundle\Entity\Project $project = null)
     {
         $this->project = $project;
-    
+
         return $this;
     }
 
     /**
      * Get project
      *
-     * @return \Taskeet\MainBundle\Entity\Project 
+     * @return \Taskeet\MainBundle\Entity\Project
      */
     public function getProject()
     {
@@ -407,20 +406,20 @@ class Ticket
     /**
      * Set updatedBy
      *
-     * @param \Taskeet\MainBundle\Entity\User $updatedBy
+     * @param string $updatedBy
      * @return Ticket
      */
-    public function setUpdatedBy(\Taskeet\MainBundle\Entity\User $updatedBy = null)
+    public function setUpdatedBy($updatedBy)
     {
         $this->updatedBy = $updatedBy;
-    
+
         return $this;
     }
 
     /**
      * Get updatedBy
      *
-     * @return \Taskeet\MainBundle\Entity\User 
+     * @return string
      */
     public function getUpdatedBy()
     {

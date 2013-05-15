@@ -3,40 +3,54 @@ params:
     model: Taskeet\MainBundle\Entity\User
     namespace_prefix: Taskeet
     bundle_name: MainBundle
-    fields: ~
+    fields:
+        lastLogin:
+            formType: \Admingenerator\GeneratorBundle\Form\Type\DatePickerType
+        expiresAt:
+            formType: \Admingenerator\GeneratorBundle\Form\Type\DatePickerType
+        passwordRequestedAt:
+            formType: \Admingenerator\GeneratorBundle\Form\Type\DatePickerType
+        credentialsExpireAt:
+            formType: \Admingenerator\GeneratorBundle\Form\Type\DatePickerType
+        roles:
+            formType: collection
+            dbType: collection
+
 
 builders:
     list:
         params:
-            title: List for MainBundle
-            display: ~
+            title: Lista de usuarios
+            display: [enabled, username, email, department, created]
             actions:
                 new: ~
             object_actions:
+                show: ~
                 edit: ~
                 delete: ~
     filters:
         params:
-            display: ~
+            display: [enabled, username, department, lastLogin, created, updated]
     new:
         params:
-            title: New object for MainBundle
-            display: ~
+            title: Nuevo usuario
+            display: [username, password, email, department, enabled, expired, expiresAt, roles]
             actions:
                 save: ~
                 list: ~
     edit:
         params:
-            title: "You're editing the object \"%object%\"|{ %object%: YourModel.title }|"
-            display: ~
+            title: "You're editing the object \"%object%\"|{ %object%: User.username }|"
+            display: [username, password, email, department, enabled, expired, expiresAt, roles]
             actions:
                 save: ~
                 list: ~
     show:
         params:
-            title: "You're viewing the object \"%object%\"|{ %object%: YourModel.title }|"
+            title: "You're viewing the object \"%object%\"|{ %object%: User.username }|"
             display: ~
             actions:
+                edit: ~
                 list: ~
                 new: ~
     delete: ~

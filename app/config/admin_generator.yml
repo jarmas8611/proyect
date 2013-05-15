@@ -3,9 +3,11 @@ admingenerator_generator:
     use_doctrine_orm: true
     use_doctrine_odm: false
     use_propel: false
+    stylesheets:
+         - { path: bundles/taskeetmain/css/bootstrap.css }
     overwrite_if_exists: false
-    base_admin_template: AdmingeneratorGeneratorBundle::base_admin.html.twig
-    knp_menu_class: Admingenerator\GeneratorBundle\Menu\DefaultMenuBuilder
+    base_admin_template: TaskeetMainBundle::base_admin.html.twig
+    knp_menu_class: Taskeet\MainBundle\Menu\DefaultMenuBuilder
     thumbnail_generator: ~
     dashboard_welcome_path: dashboard_welcome
     login_path: ~
@@ -23,5 +25,5 @@ admingenerator_generator:
             thousand_separator: ,
     templates_dirs: []
 
-admingenerator_user:
-    login_template: AdmingeneratorUserBundle:Security:login.html.twig
+#admingenerator_user:
+#    login_template: AdmingeneratorUserBundle:Security:login.html.twig
