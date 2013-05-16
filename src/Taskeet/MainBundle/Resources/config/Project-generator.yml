@@ -22,21 +22,21 @@ builders:
     new:
         params:
             title: Nuevo proyecto
-            display: ~
+            display: [name, category, client, startDate, dueDate]
             actions:
                 save: ~
                 list: ~
     edit:
         params:
             title: "Editando el proyecto \"%object%\"|{ %object%: Project.name }|"
-            display: ~
+            display: [name, category, client, startDate, dueDate]
             actions:
                 save: ~
                 list: ~
     show:
         params:
             title: "Proyecto \"%object%\"|{ %object%: Project.name }|"
-            display: ~
+            display: [name, category, client, startDate, dueDate]
             actions:
                 list: ~
                 new: ~

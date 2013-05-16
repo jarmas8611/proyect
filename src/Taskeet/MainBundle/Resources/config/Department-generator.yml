@@ -3,25 +3,25 @@ params:
     model: Taskeet\MainBundle\Entity\Department
     namespace_prefix: Taskeet
     bundle_name: MainBundle
-    fields:
-        users:
-            formType: collection
-            dbType: collection
-            addFormOptions:
-                widget:         table
-                sortable:       position
-                type:           entitypicker
-                allow_add:      true
-                allow_delete:   true
-                by_reference:   false
-                options:
-                    label:          Nuevo usuario
-#                   data_class:     Taskeet\MainBundle\Entity\User
-                    class:          TaskeetMainBundle:User
-                    primaryKey:     id
-                    exclude:        collection
-                    builder:      { username: username }
-                    matcher:      user.username
+    fields: ~
+#        users:
+#            formType: collection
+#            dbType: collection
+#            addFormOptions:
+#                widget:         table
+#                sortable:       position
+#                type:           doctrine_double_list
+#                allow_add:      true
+#                allow_delete:   true
+#                by_reference:   false
+#                options:
+#                    label:          Nuevo usuario
+##                   data_class:     Taskeet\MainBundle\Entity\User
+#                    class:          TaskeetMainBundle:User
+#                    primaryKey:     id
+#                    exclude:        collection
+#                    builder:      { username: username }
+#                    matcher:      user.username
 builders:
     list:
         params:
