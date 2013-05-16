@@ -425,4 +425,9 @@ class Ticket
     {
         return $this->updatedBy;
     }
+
+    public function __toString()
+    {
+        return $this->title;
+    }
 }

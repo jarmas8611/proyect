@@ -8,7 +8,7 @@ params:
             formType: collection
             dbType: collection
             addFormOptions:
-                widget:         fieldset
+                widget:         table
                 sortable:       position
                 type:           entitypicker
                 allow_add:      true
