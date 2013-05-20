@@ -3,7 +3,12 @@ params:
     model: Taskeet\MainBundle\Entity\Project
     namespace_prefix: Taskeet
     bundle_name: MainBundle
-    fields: ~
+    i18n_catalog: TaskeetMainBundle
+    fields:
+        startDate:
+            formType: \Admingenerator\GeneratorBundle\Form\Type\DatePickerType
+        dueDate:
+            formType: \Admingenerator\GeneratorBundle\Form\Type\DatePickerType
 
 builders:
     list:
@@ -18,25 +23,30 @@ builders:
                 delete: ~
     filters:
         params:
-            display: [name, category, client, startDate, dueDate]
+            display: [name, category, client, startDate, dueDate, departments]
     new:
         params:
             title: Nuevo proyecto
-            display: [name, category, client, startDate, dueDate]
+            display: [name, category, client, startDate, dueDate, description, departments, members, tickets]
             actions:
                 save: ~
+                save-and-add: ~
+                save-and-list: ~
                 list: ~
     edit:
         params:
             title: "Editando el proyecto \"%object%\"|{ %object%: Project.name }|"
-            display: [name, category, client, startDate, dueDate]
+            display: [name, category, client, startDate, dueDate, description, departments, members, tickets]
             actions:
                 save: ~
+                save-and-add: ~
+                save-and-list: ~
                 list: ~
+                show: ~
     show:
         params:
             title: "Proyecto \"%object%\"|{ %object%: Project.name }|"
-            display: [name, category, client, startDate, dueDate]
+            display: [name, category, client, startDate, dueDate, description, departments, members, tickets]
             actions:
                 list: ~
                 new: ~

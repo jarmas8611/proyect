@@ -34,7 +34,7 @@ class Department
     private $name;
 
     /**
-     * @ORM\OneToMany(targetEntity="User", mappedBy="department")
+     * @ORM\OneToMany(targetEntity="User", mappedBy="department", cascade={"persist", "remove", "merge"}, orphanRemoval=true)
      */
     private $users;
 
@@ -144,6 +144,17 @@ class Department
     public function getUsers()
     {
         return $this->users;
+    }
+
+    /**
+     * set users
+     *
+     * @param \Taskeet\MainBundle\Entity\User $users
+     * @return Department
+     */
+    public function setUsers($users)
+    {
+        $this->addUser($users);
     }
 
     /**

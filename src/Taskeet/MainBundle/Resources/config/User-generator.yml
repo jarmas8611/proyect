@@ -4,10 +4,18 @@ params:
     namespace_prefix: Taskeet
     bundle_name: MainBundle
     fields:
+        password:
+            formType:       repeated
+            addFormOptions:
+                first_options:
+                  label:      repeated.label.plainPassword.first
+                second_options:
+                  label:      repeated.label.plainPassword.second
+                type:         password
 #        lastLogin:
 #            formType: \Admingenerator\GeneratorBundle\Form\Type\DatePickerType
-#        expiresAt:
-#            formType: \Admingenerator\GeneratorBundle\Form\Type\DatePickerType
+        expiresAt:
+            formType: \Admingenerator\GeneratorBundle\Form\Type\DatePickerType
 #        passwordRequestedAt:
 #            formType: \Admingenerator\GeneratorBundle\Form\Type\DatePickerType
 #        credentialsExpireAt:
@@ -38,21 +46,21 @@ builders:
     new:
         params:
             title: Nuevo usuario
-            display: [username, password, email, department, enabled, expiresAt, roles]
+            display: [username, password, email, department, enabled, expiresAt, roles, projects, tasks]
             actions:
                 save: ~
                 list: ~
     edit:
         params:
             title: "Editando el usuario \"%object%\"|{ %object%: User.username }|"
-            display: [username, password, email, department, enabled, expired, expiresAt, roles]
+            display: [username, password, email, department, enabled, expired, expiresAt, roles, projects, tasks]
             actions:
                 save: ~
                 list: ~
     show:
         params:
             title: "Usuario \"%object%\"|{ %object%: User.username }|"
-            display: ~
+            display: [username, password, email, department, enabled, expired, expiresAt, roles, projects, tasks]
             actions:
                 edit: ~
                 list: ~

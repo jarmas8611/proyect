@@ -5,18 +5,18 @@
     <title>{% block title %}Admin{% endblock %}</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    {% block scripts_head %}
-        {% javascripts filter='?yui_js' output='assetic/js/compiled/admingenerator/jquery.min.js'
-            'bundles/admingeneratorgenerator/js/jquery-1.8.3.min.js'
-        %}
-            <script type="text/javascript" src="{{ asset_url }}"></script>
-        {% endjavascripts %}
+      {% block scripts_head %}
+          {% javascripts filter='?yui_js' output='assetic/js/compiled/admingenerator/jquery.min.js'
+          'bundles/admingeneratorgenerator/js/jquery-1.9.1.min.js'
+          %}
+          <script type="text/javascript" src="{{ asset_url }}"></script>
+          {% endjavascripts %}
 
-        <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
-        <!--[if lt IE 9]>
-            <script src="{{ asset('bundles/admingeneratorgenerator/js/html5shiv/html5.js') }}"></script>
-        <![endif]-->
-    {% endblock %}
+          <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
+          <!--[if lt IE 9]>
+          <script src="{{ asset('bundles/admingeneratorgenerator/js/html5shiv/html5.js') }}"></script>
+          <![endif]-->
+      {% endblock %}
 
     {% block stylesheets %}
         {% stylesheets filter='cssrewrite,?yui_css' output='assetic/css/compiled/admingenerator/bootstrap.min.css'

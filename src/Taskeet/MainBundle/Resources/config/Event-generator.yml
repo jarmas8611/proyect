@@ -3,40 +3,52 @@ params:
     model: Taskeet\MainBundle\Entity\Event
     namespace_prefix: Taskeet
     bundle_name: MainBundle
-    fields: ~
+    i18n_catalog: TaskeetMainBundle
+    fields: 
+        startDate:
+            formType: \Admingenerator\GeneratorBundle\Form\Type\DatePickerType
+        dueDate:
+            formType: \Admingenerator\GeneratorBundle\Form\Type\DatePickerType
 
 builders:
     list:
         params:
-            title: List for MainBundle
-            display: ~
+            title: Lista de eventos
+            display: [title, type, startDate, dueDate]
             actions:
                 new: ~
             object_actions:
+                show: ~
                 edit: ~
                 delete: ~
     filters:
         params:
-            display: ~
+            display: [title, type, startDate, dueDate]
     new:
         params:
-            title: New object for MainBundle
-            display: ~
+            title: Nuevo evento
+            display: [title, type, startDate, dueDate, description]
             actions:
                 save: ~
+                save-and-add: ~
+                save-and-list: ~
                 list: ~
     edit:
         params:
-            title: "You're editing the object \"%object%\"|{ %object%: YourModel.title }|"
-            display: ~
+            title: "Editando el evento \"%object%\"|{ %object%: YourModel.title }|"
+            display: [title, type, startDate, dueDate, description]
             actions:
                 save: ~
+                save-and-add: ~
+                save-and-list: ~
                 list: ~
+                show: ~
     show:
         params:
-            title: "You're viewing the object \"%object%\"|{ %object%: YourModel.title }|"
-            display: ~
+            title: "Evento \"%object%\"|{ %object%: YourModel.title }|"
+            display: [title, type, startDate, dueDate, description]
             actions:
                 list: ~
+                edit: ~
                 new: ~
     delete: ~

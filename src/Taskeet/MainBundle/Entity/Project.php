@@ -295,10 +295,10 @@ class Project
      */
     public function __construct()
     {
-        parent::__construct();
-        // $this->members = new \Doctrine\Common\Collections\ArrayCollection();
+//        parent::__construct();
+         $this->members = new \Doctrine\Common\Collections\ArrayCollection();
         $this->departments = new \Doctrine\Common\Collections\ArrayCollection();
-        // $this->tickets = new \Doctrine\Common\Collections\ArrayCollection();
+         $this->tickets = new \Doctrine\Common\Collections\ArrayCollection();
     }
 
     /**

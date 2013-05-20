@@ -3,40 +3,58 @@ params:
     model: Taskeet\MainBundle\Entity\Ticket
     namespace_prefix: Taskeet
     bundle_name: MainBundle
-    fields: ~
+    i18n_catalog: TaskeetMainBundle
+    fields: 
+        startDate:
+            formType: \Admingenerator\GeneratorBundle\Form\Type\DatePickerType
+        dueDate:
+            formType: \Admingenerator\GeneratorBundle\Form\Type\DatePickerType
+        # files:
+        #     label:            Archivo
+        #     formType:         single_upload
+        #     dbType:           string
+        #     addFormOptions:
+        #       data_class:     Symfony\Component\HttpFoundation\File\File
 
 builders:
     list:
         params:
-            title: List for MainBundle
-            display: ~
+            title: Lista de tareas
+            display: [title, priority, assignedTo, startDate, dueDate, project]
             actions:
                 new: ~
             object_actions:
                 edit: ~
+                show: ~
                 delete: ~
     filters:
         params:
-            display: ~
+            display: [title, priority, assignedTo, startDate, dueDate, project]
     new:
         params:
-            title: New object for MainBundle
-            display: ~
+            title: Nueva tarea
+            display: [title, priority, assignedTo, startDate, dueDate, project, description, files]
             actions:
                 save: ~
+                save-and-add: ~
+                save-and-list: ~
                 list: ~
     edit:
         params:
-            title: "You're editing the object \"%object%\"|{ %object%: YourModel.title }|"
-            display: ~
+            title: "Editando la tarea \"%object%\"|{ %object%: YourModel.title }|"
+            display: [title, priority, assignedTo, startDate, dueDate, project, description, files]
             actions:
                 save: ~
+                save-and-add: ~
+                save-and-list: ~
                 list: ~
+                show: ~
     show:
         params:
-            title: "You're viewing the object \"%object%\"|{ %object%: YourModel.title }|"
+            title: "Tarea \"%object%\"|{ %object%: YourModel.title }|"
             display: ~
             actions:
                 list: ~
+                edit: ~
                 new: ~
     delete: ~

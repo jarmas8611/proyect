@@ -3,6 +3,7 @@ params:
     model: Taskeet\MainBundle\Entity\Priority
     namespace_prefix: Taskeet
     bundle_name: MainBundle
+    i18n_catalog: TaskeetMainBundle
     fields: ~
 
 builders:
@@ -25,19 +26,25 @@ builders:
             display: [name]
             actions:
                 save: ~
+                save-and-add: ~
+                save-and-list: ~
                 list: ~
     edit:
         params:
-            title: "You're editing the object \"%object%\"|{ %object%: Priority.name }|"
+            title: "Editando la prioridad \"%object%\"|{ %object%: Priority.name }|"
             display: [name]
             actions:
                 save: ~
+                save-and-add: ~
+                save-and-list: ~
                 list: ~
+                show: ~
     show:
         params:
             title: "You're viewing the object \"%object%\"|{ %object%: Priority.name }|"
             display: [name]
             actions:
                 list: ~
+                edit: ~
                 new: ~
     delete: ~

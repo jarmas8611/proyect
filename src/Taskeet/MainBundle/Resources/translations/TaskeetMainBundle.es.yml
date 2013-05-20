@@ -1,0 +1,25 @@
+Name: Nombre
+Users: Usuarios
+User: Usuario
+Type: Tipo
+Startdate: "Fecha de inicio"
+Duedate: "Fecha de expiración"
+Category: Categoría
+Client: Cliente
+Departments: Departamentos
+Department: Departamento
+Ticket: Tarea
+Tickets: Tareas
+Members: Miembros
+Priority: Prioridad
+Assignedto: "Asignado a"
+Project: Proyecto
+Projects: Proyectos
+Files: Archivos
+Enabled: Habilitado
+Email: Correo
+Username: "Nombre de usuario"
+Password: Contraseña
+Expired: Expirado
+ExpiresAt: "Expira el"
+Title: Título

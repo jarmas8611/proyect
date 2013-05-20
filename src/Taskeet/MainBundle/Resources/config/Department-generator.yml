@@ -3,25 +3,9 @@ params:
     model: Taskeet\MainBundle\Entity\Department
     namespace_prefix: Taskeet
     bundle_name: MainBundle
+    i18n_catalog: TaskeetMainBundle
     fields: ~
-#        users:
-#            formType: collection
-#            dbType: collection
-#            addFormOptions:
-#                widget:         table
-#                sortable:       position
-#                type:           doctrine_double_list
-#                allow_add:      true
-#                allow_delete:   true
-#                by_reference:   false
-#                options:
-#                    label:          Nuevo usuario
-##                   data_class:     Taskeet\MainBundle\Entity\User
-#                    class:          TaskeetMainBundle:User
-#                    primaryKey:     id
-#                    exclude:        collection
-#                    builder:      { username: username }
-#                    matcher:      user.username
+
 builders:
     list:
         params:
@@ -39,9 +23,11 @@ builders:
     new:
         params:
             title: Nuevo departamento
-            display: [name]
+            display: [name, users]
             actions:
                 save: ~
+                save-and-add: ~
+                save-and-list: ~
                 list: ~
     edit:
         params:
@@ -49,11 +35,14 @@ builders:
             display: [name, slug, users]
             actions:
                 save: ~
+                save-and-add: ~
+                save-and-list: ~
                 list: ~
+                show: ~
     show:
         params:
-            title: "Departamento: \"%object%\"|{ %object%: Department.name }|"
-            display: ~
+            title: "Departamento \"%object%\"|{ %object%: Department.name }|"
+            display: [name, slug, users]
             actions:
                 edit: ~
                 list: ~

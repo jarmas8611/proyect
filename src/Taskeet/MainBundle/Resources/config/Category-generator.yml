@@ -3,6 +3,7 @@ params:
     model: Taskeet\MainBundle\Entity\Category
     namespace_prefix: Taskeet
     bundle_name: MainBundle
+    i18n_catalog: TaskeetMainBundle
     fields: ~
 
 builders:
@@ -25,17 +26,22 @@ builders:
             display: [name]
             actions:
                 save: ~
+                save-and-add: ~
+                save-and-list: ~
                 list: ~
     edit:
         params:
-            title: "You're editing the object \"%object%\"|{ %object%: Category.name }|"
+            title: "Editando la categoría \"%object%\"|{ %object%: Category.name }|"
             display: [name]
             actions:
                 save: ~
+                save-and-add: ~
+                save-and-list: ~
                 list: ~
+                show: ~
     show:
         params:
-            title: "You're viewing the object \"%object%\"|{ %object%: Category.name }|"
+            title: "Categoría \"%object%\"|{ %object%: Category.name }|"
             display: [name]
             actions:
                 list: ~
