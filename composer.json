@@ -22,8 +22,8 @@
         "friendsofsymfony/user-bundle": "v1.3.1 as dev-master",
         "friendsofsymfony/jsrouting-bundle": "1.1.*@dev",
         "adesigns/calendar-bundle": "dev-master",
-	"cedriclombardot/admingenerator-generator-bundle": "2.2.*@dev",
-	"cedriclombardot/admingenerator-user-bundle": "dev-master",
+	    "cedriclombardot/admingenerator-generator-bundle": "2.2.*@dev",
+	    "cedriclombardot/admingenerator-user-bundle": "dev-master",
         "stof/doctrine-extensions-bundle": "1.1.x-dev",
         "raulfraile/ladybug-bundle": "dev-master",
         "knplabs/knp-paginator-bundle": "dev-master",
@@ -33,7 +33,11 @@
         "symfony-cmf/create-bundle": "1.0.*@dev",
         "liip/imagine-bundle": "dev-master",
         "shtumi/useful-bundle": "dev-master",
-        "nelmio/api-doc-bundle": "2.0.*@dev"
+        "nelmio/api-doc-bundle": "2.0.*@dev",
+        "vich/uploader-bundle": "dev-master",
+        "knplabs/gaufrette": "dev-master",
+        "knplabs/knp-gaufrette-bundle": "dev-master",
+        "avalanche123/imagine-bundle": "dev-develop"
     },
     "scripts": {
         "post-install-cmd": [
