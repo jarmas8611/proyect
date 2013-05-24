@@ -5,10 +5,10 @@ params:
     bundle_name: MainBundle
     i18n_catalog: TaskeetMainBundle
     fields:
-        startDate:
-            formType: \Admingenerator\GeneratorBundle\Form\Type\DatePickerType
-        dueDate:
-            formType: \Admingenerator\GeneratorBundle\Form\Type\DatePickerType
+#        startDate:
+#            formType: \Admingenerator\GeneratorBundle\Form\Type\DatePickerType
+#        dueDate:
+#            formType: \Admingenerator\GeneratorBundle\Form\Type\DatePickerType
 
 builders:
     list:

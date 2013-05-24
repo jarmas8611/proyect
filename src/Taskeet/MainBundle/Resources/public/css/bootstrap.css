@@ -209,7 +209,7 @@ body {
   font-size: 16px;
   line-height: 20px;
   color: #333333;
-  background: url("../img/bg.png") repeat #ffffff;
+  background: #ffffff;
 }
 a {
   color: #ea262a;
@@ -3459,11 +3459,12 @@ input[type="submit"].btn.btn-mini {
   padding-left: 20px;
   padding-right: 20px;
   background-color: #fafafa;
-  background-image: -moz-linear-gradient(top, #ffffff, #f2f2f2);
-  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#ffffff), to(#f2f2f2));
-  background-image: -webkit-linear-gradient(top, #ffffff, #f2f2f2);
-  background-image: -o-linear-gradient(top, #ffffff, #f2f2f2);
-  background-image: linear-gradient(to bottom, #ffffff, #f2f2f2);
+  /*background-image: -moz-linear-gradient(top, #ffffff, #f2f2f2);*/
+  /*background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#ffffff), to(#f2f2f2));*/
+  /*background-image: -webkit-linear-gradient(top, #ffffff, #f2f2f2);*/
+  /*background-image: -o-linear-gradient(top, #ffffff, #f2f2f2);*/
+  /*background-image: linear-gradient(to bottom, #ffffff, #f2f2f2);*/
+  background: url("../img/bg.png");
   background-repeat: repeat-x;
   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffffffff', endColorstr='#fff2f2f2', GradientType=0);
   border: 1px solid #d4d4d4;
@@ -6313,4 +6314,46 @@ button.close {
     height: auto !important;
     overflow: visible !important;
   }
+}
+
+div.connection {
+    position: absolute;
+    left: 50%;
+    top: 35%;
+    width: 460px;
+    margin: -130px 0 0 -250px;
+    box-shadow: 2px 2px 10px #ccc;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+}
+
+div.connection .control-group {
+    padding: 0 20px 0 20px;
+}
+
+div.connection .alert {
+    margin: 0 20px 20px 20px;
+}
+
+div.connection form {
+    padding-top: 15px;
+    margin-bottom: 0px;
+}
+
+div.connection form .form-actions {
+    margin-bottom: 0px;
+}
+
+div.connection .form-actions {
+    padding-left: 20px;
+}
+
+div.connection div input.big {
+    height: 35px;
+    font-size: 25px;
+}
+
+.big-logo {
+    text-align: center;
+    padding: 20px 20px;
 }

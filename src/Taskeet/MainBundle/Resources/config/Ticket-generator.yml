@@ -5,10 +5,10 @@ params:
     bundle_name: MainBundle
     i18n_catalog: TaskeetMainBundle
     fields: 
-        startDate:
-            formType: \Admingenerator\GeneratorBundle\Form\Type\DatePickerType
-        dueDate:
-            formType: \Admingenerator\GeneratorBundle\Form\Type\DatePickerType
+#        startDate:
+#            formType: \Admingenerator\GeneratorBundle\Form\Type\DatePickerType
+#        dueDate:
+#            formType: \Admingenerator\GeneratorBundle\Form\Type\DatePickerType
         # files:
         #     label:            Archivo
         #     formType:         single_upload
@@ -41,7 +41,7 @@ builders:
                 list: ~
     edit:
         params:
-            title: "Editando la tarea \"%object%\"|{ %object%: YourModel.title }|"
+            title: "Editando la tarea \"%object%\"|{ %object%: Ticket.title }|"
             display: [title, priority, assignedTo, startDate, dueDate, project, description, files]
             actions:
                 save: ~
@@ -51,7 +51,7 @@ builders:
                 show: ~
     show:
         params:
-            title: "Tarea \"%object%\"|{ %object%: YourModel.title }|"
+            title: "Tarea \"%object%\"|{ %object%: Ticket.title }|"
             display: ~
             actions:
                 list: ~

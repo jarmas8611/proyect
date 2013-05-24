@@ -3,11 +3,14 @@
 namespace Taskeet\MainBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+//use Symfony\Component\HttpFoundation\File\File;
+//use Symfony\Component\Validator\Constraints as Assert;
+//use Vich\UploaderBundle\Mapping\Annotation as Vich;
 
 /**
  * Category
  *
- * @ORM\Table()
+ * @ORM\Table(name="category")
  * @ORM\Entity
  */
 class Category
@@ -28,6 +31,16 @@ class Category
      */
     private $name;
 
+//    /**
+//     * @Assert\File(
+//     *     maxSize="1M",
+//     *     mimeTypes={"image/png", "image/jpeg", "image/pjpeg"}
+//     * )
+//     * @Vich\UploadableField(mapping="category_image", fileNameProperty="name")
+//     *
+//     * @var File $image
+//     */
+//    protected $image;
 
     /**
      * Get id

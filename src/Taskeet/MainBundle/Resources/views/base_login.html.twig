@@ -20,7 +20,7 @@
 
     {% block stylesheets %}
         {% stylesheets filter='cssrewrite,?yui_css' output='assetic/css/compiled/admingenerator/bootstrap.min.css'
-            'bundles/admingeneratorgenerator/css/bootstrap/bootstrap.css'
+            'bundles/taskeetmain/css/bootstrap.css'
             'bundles/admingeneratorgenerator/css/bootstrap/bootstrap-extended.css'
             'bundles/admingeneratorgenerator/css/bootstrap/bootstrap-datepicker.css'
             'bundles/admingeneratorgenerator/css/google/prettify.css'
@@ -54,46 +54,22 @@
 
   <body>
 
-    {% block navbar %}
-      {{ include('TaskeetMainBundle::base_admin_navbar.html.twig') }}
-    {% endblock navbar %}
+    {#{% block navbar %}#}
+      {#{{ include('TaskeetMainBundle::base_admin_navbar.html.twig') }}#}
+    {#{% endblock navbar %}#}
 
     <div class="container-fluid">
       {% block body %}
-        <div class="row-fluid">
-          <form class="form-horizontal">
-            <legend>Login form</legend>
+              {% block fos_user_content %} {% endblock %}
 
-            <div class="control-group">
-              <label class="control-label" for="username">Username</label>
-              <div class="controls">
-                <input type="text" id="username" placeholder="Username">
-              </div>
-            </div>
-
-            <div class="control-group">
-              <label class="control-label" for="password">Password</label>
-              <div class="controls">
-                <input type="password" id="password" placeholder="Password">
-              </div>
-            </div>
-
-            <div class="form-actions">
-              <label class="control-label"><input type="checkbox"> Remember me</label>
-              <div class="controls">
-                <button type="submit" class="btn btn-primary">Sign in</button>
-              </div>
-            </div>
-          </form>
-        </div><!--/.row-fluid -->
       {% endblock %}
 
-      {% block footer %}
-      <footer>
-        <hr>
-        <p>{% block footer_text %}&copy; taskeet {{ ("now"|date('Y') > 2012) ? '2013 - ' ~ "now"|date('Y') : '2013' }}{% endblock %}</p>
-      </footer>
-      {% endblock %}
+      {#{% block footer %}#}
+      {#<footer>#}
+        {#<hr>#}
+        {#<p>{% block footer_text %}&copy; taskeet {{ ("now"|date('Y') > 2012) ? '2013 - ' ~ "now"|date('Y') : '2013' }}{% endblock %}</p>#}
+      {#</footer>#}
+      {#{% endblock %}#}
     </div> <!--/.container-fluid -->
 
     {% block javascripts %}

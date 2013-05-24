@@ -120,3 +120,30 @@ stof_doctrine_extensions:
             timestampable: true
             blameable: true
             sluggable: true
+
+vich_uploader:
+    db_driver: orm # or mongodb
+    twig: true
+    mappings:
+        ticket_file:
+            uri_prefix: /files/tickets
+            upload_destination: %kernel.root_dir%/../web/files/tickets
+            delete_on_remove: true
+        category_image:
+            uri_prefix: /images/categories
+            upload_destination: %kernel.root_dir%/../web/images/categories
+            delete_on_remove: true
+        event_image:
+            uri_prefix: /images/events
+            upload_destination: %kernel.root_dir%/../web/images/events
+            delete_on_remove: true
+
+avalanche_imagine:
+    source_root:  %kernel.root_dir%/../web
+    web_root:     %kernel.root_dir%/../web
+    cache_prefix: media/cache
+    driver:       gd
+    filters:
+        mini_thumb:
+            type:    thumbnail
+            options: { size: [32, 32], mode: outbound, quality: 100, format: png }

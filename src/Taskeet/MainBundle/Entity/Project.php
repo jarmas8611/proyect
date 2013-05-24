@@ -9,7 +9,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * Project
  *
- * @ORM\Table()
+ * @ORM\Table(name="project")
  * @ORM\Entity(repositoryClass="Taskeet\MainBundle\Entity\ProjectRepository")
  */
 class Project
@@ -503,5 +503,10 @@ class Project
     public function getUpdatedBy()
     {
         return $this->updatedBy;
+    }
+
+    public function __toString()
+    {
+        return $this->name;
     }
 }

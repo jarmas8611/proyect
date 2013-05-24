@@ -3,19 +3,22 @@ params:
     model: Taskeet\MainBundle\Entity\User
     namespace_prefix: Taskeet
     bundle_name: MainBundle
+    i18n_catalog: TaskeetMainBundle
     fields:
         password:
             formType:       repeated
             addFormOptions:
                 first_options:
                   label:      repeated.label.plainPassword.first
+                  required: false
                 second_options:
                   label:      repeated.label.plainPassword.second
+                  required: false
                 type:         password
 #        lastLogin:
 #            formType: \Admingenerator\GeneratorBundle\Form\Type\DatePickerType
-        expiresAt:
-            formType: \Admingenerator\GeneratorBundle\Form\Type\DatePickerType
+#        expiresAt:
+#            formType: \Admingenerator\GeneratorBundle\Form\Type\DatePickerType
 #        passwordRequestedAt:
 #            formType: \Admingenerator\GeneratorBundle\Form\Type\DatePickerType
 #        credentialsExpireAt:

@@ -7,7 +7,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * Priority
  *
- * @ORM\Table()
+ * @ORM\Table(name="priority")
  * @ORM\Entity
  */
 class Priority

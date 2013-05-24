@@ -4,7 +4,14 @@ params:
     namespace_prefix: Taskeet
     bundle_name: MainBundle
     i18n_catalog: TaskeetMainBundle
-    fields: ~
+    fields:
+#        image:
+#            label:            Imagen
+#            formType:         single_upload
+#            dbType:           string
+#            addFormOptions:
+#                nameable:       imageLabel
+#                data_class:     Symfony\Component\HttpFoundation\File\File
 
 builders:
     list:

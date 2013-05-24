@@ -3,12 +3,16 @@
 namespace Taskeet\MainBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+//use Symfony\Component\HttpFoundation\File\File;
+//use Symfony\Component\Validator\Constraints as Assert;
+//use Vich\UploaderBundle\Mapping\Annotation as Vich;
 
 /**
  * Event
  *
- * @ORM\Table()
+ * @ORM\Table(name="event")
  * @ORM\Entity
+ *
  */
 class Event
 {
@@ -55,6 +59,18 @@ class Event
      * @ORM\Column(name="due_date", type="datetime")
      */
     private $dueDate;
+
+//    /**
+//     * @Assert\File(
+//     *     maxSize="1M",
+//     *     mimeTypes={"image/png", "image/jpeg", "image/pjpeg"}
+//     * )
+//     * @Vich\UploadableField(mapping="event_image", fileNameProperty="type")
+//     *
+//     * @var File $image
+//     */
+//    protected $image;
+
 
 
     /**
