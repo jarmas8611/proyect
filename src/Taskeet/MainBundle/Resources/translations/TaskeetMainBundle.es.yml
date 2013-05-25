@@ -10,6 +10,7 @@ Departments: Departamentos
 Department: Departamento
 Ticket: Tarea
 Tickets: Tareas
+Tasks: Tareas
 Members: Miembros
 Priority: Prioridad
 Assignedto: "Asignado a"
@@ -23,3 +24,8 @@ Password: Contraseña
 Expired: Expirado
 ExpiresAt: "Expira el"
 Title: Título
+Owner: Encargado
+"repeated.label.plainPassword.first": Contraseña
+"repeated.label.plainPassword.second": Repita la contraseña
+Firstname: Nombre
+Lastname: Apellido

@@ -10,7 +10,7 @@ builders:
     list:
         params:
             title: Lista de departamentos
-            display: [name, slug]
+            display: [name, slug, owner]
             actions:
                 new: ~
             object_actions:
@@ -19,11 +19,11 @@ builders:
                 delete: ~
     filters:
         params:
-            display: [name]
+            display: [name, owner]
     new:
         params:
             title: Nuevo departamento
-            display: [name, users]
+            display: [name, owner, users]
             actions:
                 save: ~
                 save-and-add: ~
@@ -32,7 +32,7 @@ builders:
     edit:
         params:
             title: "Editando el departamento \"%object%\"|{ %object%: Department.name }|"
-            display: [name, slug, users]
+            display: [name, slug, owner, users]
             actions:
                 save: ~
                 save-and-add: ~
@@ -42,7 +42,7 @@ builders:
     show:
         params:
             title: "Departamento \"%object%\"|{ %object%: Department.name }|"
-            display: [name, slug, users]
+            display: [name, slug, owner, users]
             actions:
                 edit: ~
                 list: ~

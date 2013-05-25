@@ -12,10 +12,10 @@ params:
 #            addFormOptions:
 #                nameable:       imageLabel
 #                data_class:     Symfony\Component\HttpFoundation\File\File
-        startDate:
-            formType: \Admingenerator\GeneratorBundle\Form\Type\DatePickerType
-        dueDate:
-            formType: \Admingenerator\GeneratorBundle\Form\Type\DatePickerType
+        # startDate:
+        #     formType: \Admingenerator\GeneratorBundle\Form\Type\DatePickerType
+        # dueDate:
+        #     formType: \Admingenerator\GeneratorBundle\Form\Type\DatePickerType
 
 builders:
     list:

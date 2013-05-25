@@ -27,7 +27,12 @@ builders:
     new:
         params:
             title: Nuevo proyecto
-            display: [name, category, client, startDate, dueDate, description, departments, members, tickets]
+            tabs:
+                "General":
+                    "NONE": [name, category, client, startDate, dueDate, description]
+                "Extras":
+                    "Tareas": [tickets]
+                    "Otros": [departments, members]
             actions:
                 save: ~
                 save-and-add: ~
@@ -36,7 +41,12 @@ builders:
     edit:
         params:
             title: "Editando el proyecto \"%object%\"|{ %object%: Project.name }|"
-            display: [name, category, client, startDate, dueDate, description, departments, members, tickets]
+            tabs:
+                "General":
+                    "NONE": [name, category, client, startDate, dueDate, description]
+                "Extras":
+                    "Tareas": [tickets]
+                    "Otros": [departments, members]
             actions:
                 save: ~
                 save-and-add: ~

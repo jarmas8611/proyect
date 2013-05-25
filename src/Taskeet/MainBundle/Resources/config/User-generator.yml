@@ -10,10 +10,8 @@ params:
             addFormOptions:
                 first_options:
                   label:      repeated.label.plainPassword.first
-                  required: false
                 second_options:
                   label:      repeated.label.plainPassword.second
-                  required: false
                 type:         password
 #        lastLogin:
 #            formType: \Admingenerator\GeneratorBundle\Form\Type\DatePickerType
@@ -49,21 +47,36 @@ builders:
     new:
         params:
             title: Nuevo usuario
-            display: [username, password, email, department, enabled, expiresAt, roles, projects, tasks]
+            tabs:
+                "General":
+                    "Datos personales": [firstName, lastName, username, password, email, department, enabled, expiresAt]
+                "Permisos":
+                    "Roles": [roles]
+                "Proyectos":
+                    "Proyectos": [projects, tasks]
             actions:
                 save: ~
                 list: ~
     edit:
         params:
             title: "Editando el usuario \"%object%\"|{ %object%: User.username }|"
-            display: [username, password, email, department, enabled, expired, expiresAt, roles, projects, tasks]
+            tabs:
+                "General":
+                    "Datos personales": [firstName, lastName, username, password, email, department, enabled, expired, expiresAt]
+                "Permisos":
+                    "Roles": [roles]
+                "Proyectos":
+                    "Proyectos": [projects, tasks]
             actions:
                 save: ~
+                save-and-add: ~
+                save-and-list: ~
                 list: ~
+                show: ~
     show:
         params:
             title: "Usuario \"%object%\"|{ %object%: User.username }|"
-            display: [username, password, email, department, enabled, expired, expiresAt, roles, projects, tasks]
+            display: [firstName, lastName, username, password, email, department, enabled, expired, expiresAt, roles, projects, tasks]
             actions:
                 edit: ~
                 list: ~
