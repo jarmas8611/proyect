@@ -6353,7 +6353,7 @@ div.connection div input.big {
     font-size: 25px;
 }
 
-.big-logo {
+div.connection .big-logo {
     text-align: center;
     padding: 20px 20px;
 }

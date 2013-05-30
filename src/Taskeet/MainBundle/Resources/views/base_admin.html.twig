@@ -24,6 +24,8 @@
             'bundles/admingeneratorgenerator/css/bootstrap/bootstrap-extended.css'
             'bundles/admingeneratorgenerator/css/bootstrap/bootstrap-datepicker.css'
             'bundles/admingeneratorgenerator/css/google/prettify.css'
+            'bundles/adesignscalendar/css/fullcalendar/calendar.css'
+            'bundles/adesignscalendar/css/fullcalendar/fullcalendar.css'
         %}
             <link rel="stylesheet" href="{{ asset_url }}" type="text/css" media="all" />
         {% endstylesheets %}
@@ -144,6 +146,16 @@
         %}
             <script type="text/javascript" src="{{ asset_url }}"></script>
         {% endjavascripts %}
+
+        {% javascripts filter='?yui_js' output='assetic/js/compiled/adesignscalendar/fullcalendar.min.js'
+
+            'bundles/adesignscalendar/js/fullcalendar/jquery.fullcalendar.min.js'
+        %}
+            <script type="text/javascript" src="{{ asset_url }}"></script>
+        {% endjavascripts %}
+
+        <script src="{{ asset('bundles/fosjsrouting/js/router.js') }}"></script>
+        <script src="{{ path('fos_js_routing_js', {"callback": "fos.Router.setData"}) }}"></script>
     {% endblock %}
 
   </body>

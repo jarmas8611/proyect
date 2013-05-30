@@ -6,4 +6,8 @@ use Admingenerated\TaskeetMainBundle\BaseEventController\ListController as BaseL
 
 class ListController extends BaseListController
 {
+    public function calendarAction()
+    {
+        return $this->render('TaskeetMainBundle:EventList:calendar.html.twig');
+    }
 }

@@ -4,11 +4,25 @@ params:
     namespace_prefix: Taskeet
     bundle_name: MainBundle
     i18n_catalog: TaskeetMainBundle
-    fields: ~
+    fields:
+        users:
+            label:            Usuarios
+            dbType:           collection
+            formType:         collection
+            addFormOptions:
+              widget:         fieldset
+              # type:           \Taskeet\MainBundle\Form\Type\Department\EditType
+              allow_add:      true
+              allow_delete:   true
+              by_reference:   false
+              options:
+                label:          Nuevo usuario
+                data_class:     Taskeet\MainBundle\Entity\Department
 
 builders:
     list:
         params:
+            # credentials: 'hasRole("ROLE_ADMIN") or hasRole("ROLE_JEFE_DPTO")'
             title: Lista de departamentos
             display: [name, slug, owner]
             actions:
@@ -22,6 +36,7 @@ builders:
             display: [name, owner]
     new:
         params:
+            # credentials: 'hasRole("ROLE_ADMIN") or hasRole("ROLE_JEFE_DPTO")'
             title: Nuevo departamento
             display: [name, owner, users]
             actions:
@@ -31,6 +46,7 @@ builders:
                 list: ~
     edit:
         params:
+            # credentials: 'hasRole("ROLE_ADMIN") or hasRole("ROLE_JEFE_DPTO")'
             title: "Editando el departamento \"%object%\"|{ %object%: Department.name }|"
             display: [name, slug, owner, users]
             actions:
@@ -41,6 +57,7 @@ builders:
                 show: ~
     show:
         params:
+            # credentials: 'hasRole("ROLE_ADMIN") or hasRole("ROLE_JEFE_DPTO")'
             title: "Departamento \"%object%\"|{ %object%: Department.name }|"
             display: [name, slug, owner, users]
             actions:

@@ -1,0 +1,29 @@
+{% extends "TaskeetMainBundle::base_admin.html.twig" %}
+
+{% block stylesheets %}    {{ parent() }}
+    {% endblock %}
+
+{% block javascripts %}    {{ parent() }}
+    <script src="{{ asset("bundles/admingeneratorgenerator/js/admingenerator/general.js") }}"></script>
+{% endblock %}    {% block title %}
+        {{ parent() }} - {% trans from "TaskeetMainBundle" %}Lista de eventos{% endtrans %}
+    {% endblock %}
+{% block body %}    {% block page_title %}
+        <header>
+            <h1>{% trans from "TaskeetMainBundle" %}Lista de eventos{% endtrans %}</h1>
+        </header>
+    {% endblock %}
+<div class="row-fluid">
+        <div class=" span9 ">
+        {% include 'ADesignsCalendarBundle::calendar.html.twig' %}
+
+
+        </div>
+        {% block filters %}
+                        <div class="span3">{% block list_filters %}
+
+{% endblock %}
+</div>
+                    {% endblock %}
+    </div>
+{% endblock %}

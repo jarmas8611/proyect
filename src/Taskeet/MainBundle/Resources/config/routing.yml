@@ -1,3 +1,7 @@
 dashboard_welcome:
     pattern:  /
     defaults: { _controller: TaskeetMainBundle:Default:welcome }
+
+taskeet_event_calendar:
+    pattern:    /event/calendar
+    defaults:   { _controller: TaskeetMainBundle:Event/List:calendar }
