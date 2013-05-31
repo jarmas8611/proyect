@@ -7,21 +7,27 @@ security:
              id: fos_user.user_provider.username_email
 
     firewalls:
+        login_firewall:
+            pattern:    ^/login$
+            anonymous:  ~
+        assets:
+            pattern:  ^/(_(profiler|wdt)|css|images|js)/
+            security: false
         main:
             pattern: ^/
             form_login:
                 provider: fos_userbundle
             logout:       true
             anonymous:    true
-        dev:
-            pattern:  ^/(_(profiler|wdt)|css|images|js)/
-            security: false
+
 
     access_control:
+        - { path: ^/assetic/*, role: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/_wdt/*, role: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/login$, role: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/register, role: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/resetting, role: IS_AUTHENTICATED_ANONYMOUSLY }
-        - { path: ^/admin, role: [ROLE_ADMIN, ROLE_JEFE_DPTO] }
+        - { path: ^/, role: [ROLE_ADMIN, ROLE_JEFE_DPTO] }
 
 
     role_hierarchy:

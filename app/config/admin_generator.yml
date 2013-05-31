@@ -3,8 +3,8 @@ admingenerator_generator:
     use_doctrine_orm: true
     use_doctrine_odm: false
     use_propel: false
-#    stylesheets:
-#         - { path: bundles/taskeetmain/css/bootstrap.css }
+    stylesheets:
+         - { path: bundles/taskeetmain/css/bootstrap.css }
     overwrite_if_exists: false
     base_admin_template: TaskeetMainBundle::base_admin.html.twig
     knp_menu_class: Taskeet\MainBundle\Menu\DefaultMenuBuilder

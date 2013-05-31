@@ -2,7 +2,7 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <title>{% block title %}Admin{% endblock %}</title>
+    <title>{% block title %}Taskeet{% endblock %}</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
       {% block scripts_head %}
@@ -150,6 +150,7 @@
         {% javascripts filter='?yui_js' output='assetic/js/compiled/adesignscalendar/fullcalendar.min.js'
 
             'bundles/adesignscalendar/js/fullcalendar/jquery.fullcalendar.min.js'
+            'bundles/adesignscalendar/js/calendar-settings.js'
         %}
             <script type="text/javascript" src="{{ asset_url }}"></script>
         {% endjavascripts %}
