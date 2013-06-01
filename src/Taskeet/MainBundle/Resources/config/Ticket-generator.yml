@@ -19,6 +19,7 @@ params:
 builders:
     list:
         params:
+            sort: [created, DESC]
             title: Lista de tareas
             display: [title, priority, assignedTo, startDate, dueDate, project]
             actions:

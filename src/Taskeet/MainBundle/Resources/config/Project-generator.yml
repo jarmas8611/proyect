@@ -4,7 +4,20 @@ params:
     namespace_prefix: Taskeet
     bundle_name: MainBundle
     i18n_catalog: TaskeetMainBundle
-    fields: ~
+    fields:
+        tickets:
+            label: Tareas
+            dbType:           collection
+            formType:         collection
+            addFormOptions:
+                widget:       table
+                type:         \Taskeet\MainBundle\Form\Type\Ticket\EditType
+                allow_add:    true
+                allow_delete: true
+                by_reference: false
+                options:
+                    label:          Nuevo ticket
+                    data_class:     Taskeet\MainBundle\Entity\Ticket
 
 builders:
     list:
@@ -30,9 +43,8 @@ builders:
                     formType: datepicker
             tabs:
                 "General":
-                    "NONE": [name, category, client, startDate, dueDate, description]
+                    "NONE": [[name, category, client, startDate, dueDate, description], [tickets]]
                 "Extras":
-                    "Tareas": [tickets]
                     "Otros": [departments, members]
             actions:
                 save: ~
@@ -42,6 +54,7 @@ builders:
     edit:
         params:
             title: "Editando el proyecto \"%object%\"|{ %object%: Project.name }|"
+            credentials: 'hasRole("ROLE_SUPER_ADMIN") or hasPermission(object, "OPERATOR")'
             fields:
                 startDate:
                     formType: datepicker
@@ -49,9 +62,8 @@ builders:
                     formType: datepicker
             tabs:
                 "General":
-                    "NONE": [name, category, client, startDate, dueDate, description]
+                    "NONE": [name, category, client, startDate, dueDate, description, [tickets]]
                 "Extras":
-                    "Tareas": [tickets]
                     "Otros": [departments, members]
             actions:
                 save: ~
@@ -67,4 +79,6 @@ builders:
                 list: ~
                 new: ~
                 edit: ~
-    delete: ~
+    delete:
+        params:
+            credentials: 'hasRole("ROLE_SUPER_ADMIN") or hasPermission(object, "OWNER")'
