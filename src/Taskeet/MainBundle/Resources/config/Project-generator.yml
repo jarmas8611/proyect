@@ -4,11 +4,7 @@ params:
     namespace_prefix: Taskeet
     bundle_name: MainBundle
     i18n_catalog: TaskeetMainBundle
-    fields:
-#        startDate:
-#            formType: \Admingenerator\GeneratorBundle\Form\Type\DatePickerType
-#        dueDate:
-#            formType: \Admingenerator\GeneratorBundle\Form\Type\DatePickerType
+    fields: ~
 
 builders:
     list:
@@ -27,6 +23,11 @@ builders:
     new:
         params:
             title: Nuevo proyecto
+            fields:
+                startDate:
+                    formType: datepicker
+                dueDate:
+                    formType: datepicker
             tabs:
                 "General":
                     "NONE": [name, category, client, startDate, dueDate, description]
@@ -41,6 +42,11 @@ builders:
     edit:
         params:
             title: "Editando el proyecto \"%object%\"|{ %object%: Project.name }|"
+            fields:
+                startDate:
+                    formType: datepicker
+                dueDate:
+                    formType: datepicker
             tabs:
                 "General":
                     "NONE": [name, category, client, startDate, dueDate, description]

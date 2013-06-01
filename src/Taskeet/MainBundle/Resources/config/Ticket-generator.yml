@@ -33,6 +33,11 @@ builders:
     new:
         params:
             title: Nueva tarea
+            fields:
+                startDate:
+                     formType: datepicker
+                dueDate:
+                     formType: datepicker
             display: [title, priority, assignedTo, startDate, dueDate, project, description, files]
             actions:
                 save: ~
@@ -42,6 +47,11 @@ builders:
     edit:
         params:
             title: "Editando la tarea \"%object%\"|{ %object%: Ticket.title }|"
+            fields:
+                startDate:
+                     formType: datepicker
+                dueDate:
+                     formType: datepicker
             display: [title, priority, assignedTo, startDate, dueDate, project, description, files]
             actions:
                 save: ~
