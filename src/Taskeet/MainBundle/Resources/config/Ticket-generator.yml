@@ -67,4 +67,6 @@ builders:
                 list: ~
                 edit: ~
                 new: ~
-    delete: ~
+    delete:
+        params:
+            credentials: 'hasRole("ROLE_SUPER_ADMIN") or hasPermission(object, "OWNER")'

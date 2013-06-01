@@ -65,7 +65,7 @@ builders:
                 list: ~
     edit:
         params:
-            credentials: 'hasRole("ROLE_ADMIN") or hasRole("ROLE_JEFE_DPTO")'
+            credentials: 'hasRole("ROLE_SUPER_ADMIN") or hasPermission(object, "OWNER")'
             title: "Editando el usuario \"%object%\"|{ %object%: User.username }|"
             fields:
                 expiresAt:
@@ -94,4 +94,4 @@ builders:
                 new: ~
     delete:
         params:
-            credentials: 'hasRole("ROLE_SUPER_ADMIN")'
+            credentials: 'hasRole("ROLE_SUPER_ADMIN") or hasPermission(object, "OWNER")'
