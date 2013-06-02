@@ -115,6 +115,15 @@ class Ticket
      */
     private $updated;
 
+    /**
+     * @ORM\ManyToOne(targetEntity="Status")
+     */
+    private $status;
+
+    /**
+     * @ORM\Column(type="boolean")
+     */
+    private $done;
 
     /**
      * Get id
@@ -425,6 +434,53 @@ class Ticket
     public function getUpdatedBy()
     {
         return $this->updatedBy;
+    }
+
+    /**
+     * Set status
+     *
+     * @param \Taskeet\MainBundle\Entity\Status $status
+     * @return Ticket
+     */
+    public function setStatus(\Taskeet\MainBundle\Entity\Status $status = null)
+    {
+        $this->status = $status;
+
+        return $this;
+    }
+
+    /**
+     * Get status
+     *
+     * @return \Taskeet\MainBundle\Entity\Status
+     */
+    public function geStatus()
+    {
+        return $this->status;
+    }
+
+    /**
+     * Set done
+     *
+     * @param bool $done
+     *
+     * @return Ticket
+     */
+    public function setDone($done = false)
+    {
+        $this->done = $done;
+
+        return $this;
+    }
+
+    /**
+     * Get done
+     *
+     * @return bool
+     */
+    public function getDone()
+    {
+        return $this->done;
     }
 
     public function __toString()

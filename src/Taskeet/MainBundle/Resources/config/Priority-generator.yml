@@ -23,6 +23,7 @@ builders:
     new:
         params:
             title: Nueva prioridad
+            credentials: 'hasRole("ROLE_ADMIN") or hasRole("ROLE_JEFE_DPTO")'
             display: [name]
             actions:
                 save: ~
@@ -32,6 +33,7 @@ builders:
     edit:
         params:
             title: "Editando la prioridad \"%object%\"|{ %object%: Priority.name }|"
+            credentials: 'hasRole("ROLE_SUPER_ADMIN") or hasPermission(object, "OPERATOR")'
             display: [name]
             actions:
                 save: ~
@@ -42,9 +44,12 @@ builders:
     show:
         params:
             title: "You're viewing the object \"%object%\"|{ %object%: Priority.name }|"
+            credentials: 'hasRole("ROLE_ADMIN") or hasRole("ROLE_JEFE_DPTO")'
             display: [name]
             actions:
                 list: ~
                 edit: ~
                 new: ~
-    delete: ~
+    delete:
+        params:
+            credentials: 'hasRole("ROLE_SUPER_ADMIN") or hasPermission(object, "OWNER")'

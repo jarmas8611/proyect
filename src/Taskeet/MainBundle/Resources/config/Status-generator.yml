@@ -1,27 +1,19 @@
 generator: admingenerator.generator.doctrine
 params:
-    model: Taskeet\MainBundle\Entity\Category
+    model: Taskeet\MainBundle\Entity\Status
     namespace_prefix: Taskeet
     bundle_name: MainBundle
     i18n_catalog: TaskeetMainBundle
-    fields:
-#        image:
-#            label:            Imagen
-#            formType:         single_upload
-#            dbType:           string
-#            addFormOptions:
-#                nameable:       imageLabel
-#                data_class:     Symfony\Component\HttpFoundation\File\File
+    fields: ~
 
 builders:
     list:
         params:
-            title: Categorías
+            title: Lista de estados
             display: [name]
             actions:
                 new: ~
             object_actions:
-                show: ~
                 edit: ~
                 delete: ~
     filters:
@@ -29,33 +21,27 @@ builders:
             display: [name]
     new:
         params:
-            title: Nueva categoría
+            title: Nuevo estado
             credentials: 'hasRole("ROLE_ADMIN") or hasRole("ROLE_JEFE_DPTO")'
             display: [name]
             actions:
                 save: ~
-                save-and-add: ~
-                save-and-list: ~
                 list: ~
     edit:
         params:
-            title: "Editando la categoría \"%object%\"|{ %object%: Category.name }|"
+            title: "Editando el estado \"%object%\"|{ %object%: Status.name }|"
             credentials: 'hasRole("ROLE_SUPER_ADMIN") or hasPermission(object, "OPERATOR")'
             display: [name]
             actions:
                 save: ~
-                save-and-add: ~
-                save-and-list: ~
                 list: ~
-                show: ~
     show:
         params:
-            title: "Categoría \"%object%\"|{ %object%: Category.name }|"
+            title: "Estado \"%object%\"|{ %object%: Status.name }|"
             credentials: 'hasRole("ROLE_ADMIN") or hasRole("ROLE_JEFE_DPTO")'
             display: [name]
             actions:
                 list: ~
-                edit: ~
                 new: ~
     delete:
         params:
