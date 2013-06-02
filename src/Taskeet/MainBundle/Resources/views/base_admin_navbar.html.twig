@@ -32,7 +32,7 @@
                     <a href=""><img src="{{ asset('bundles/taskeetmain/img/logout.png') }}"></a>
                 </li>
                 <ul class="dropdown-menu usuario-menu" role="menu" aria-labelledby="dLabel">
-                    <li><a tabindex="-1" href="{{path ('fos_user_profile_show')  }}">Perfil</a></li>
+                    <li><a tabindex="-1" href="{{path ('fos_user_profile_edit')  }}">Perfil</a></li>
                     <li class="divider"></li>
                     {% if admingenerator_config('logout_path') is not none %}
                         <li><a onclick="document.location='{{ path(admingenerator_config('logout_path')) }}'" title="{{ 'profile.logout'|trans({}, 'Admingenerator') }}"><i class="icon-off"></i> {{ 'profile.logout'|trans({}, 'Admingenerator') }}</a></li>

@@ -67,7 +67,7 @@
       {% include('TaskeetMainBundle::base_admin_navbar.html.twig') %}
     {% endblock navbar %}
 
-    <div class="container">
+    <div class="container page-content-principal">
       {% block flashes %}
         <div id="flashes" class="row-fluid">
           {% for type, flashMessages in app.session.flashbag.all() %}

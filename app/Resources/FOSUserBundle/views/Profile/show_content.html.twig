@@ -1,4 +1,13 @@
 <div class="fos_user_user_show">
-    <p>{{ 'profile.show.username'|trans({}, 'FOSUserBundle') }}: {{ user.username }}</p>
-    <p>{{ 'profile.show.email'|trans({}, 'FOSUserBundle') }}: {{ user.email }}</p>
+    <div><h2>{{ 'Firstname'|trans({}, 'TaskeetMainBundle') }}</h2> <h2 class="color">{{ user.firstname }}</h2></div>
+    <div><h2>{{ 'Lastname'|trans({}, 'TaskeetMainBundle') }}</h2> <h2 class="color">{{ user.lastname }}</h2></div>
+    <div><h2>{{ 'profile.show.username'|trans({}, 'FOSUserBundle') }}:</h2> <h2 class="color">{{ user.username }}</h2></div>
+    <div><h2>{{ 'profile.show.email'|trans({}, 'FOSUserBundle') }}: </h2> <h2 class="color">{{ user.email }}</h2></div>
+
+    <div class="form-actions">
+        <a href="{{ path('fos_user_profile_edit') }}" class="btn btn-primary">{{ 'profile.edit.submit'|trans({}, 'FOSUserBundle') }}</a>
+        <a href="{{ path('fos_user_change_password') }}" class="btn">{{ 'change_password.submit'|trans({}, 'FOSUserBundle') }}</a>
+    </div>
 </div>
+
+

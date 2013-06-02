@@ -1,3 +1,102 @@
-.navbar-text{
-    padding: 10px 30px;
+/*Generales*/
+.page-content-principal{
+    margin-bottom: 20px;
+    margin-top: 40px;
+}
+
+.italic{
+    color: #6D6D6D;
+    font-style: italic;
+}
+
+.color{
+    color: #EA262A;
+}
+
+/*Footer*/
+footer{
+    background-color: #EA262A;
+    color: #ffffff;
+}
+
+footer p{
+    margin-top: 10px;
+}
+
+/*Tablas*/
+
+.table{
+    margin-top: 20px;
+}
+
+.table th {
+    border-top: 1px solid #DDDDDD;
+    border-bottom: 1px solid #dddddd;
+}
+
+.table td{
+    border: none;
+}
+
+.table th,
+.table th a {
+    color: #9D9D9D;
+}
+
+.table .td_username,
+.table .td_name{
+    color: #EA262A;
+}
+
+/*Navbar*/
+.navbar .nav > .username > a{
+    padding: 10px 5px;
+}
+
+.dropdown .navbar-text {
+    padding: 10px 5px 10px 30px;
+    font-style: italic;
+}
+
+/*Proyecto*/
+.show h1 {
+    color: #00A9E2;
+    font-size: 36px;
+    line-height: 36px;
+    margin: 0;
+}
+
+.show h2{
+    margin: 0;
+}
+
+.show .show-name,
+.tickets,
+.members{
+    border-bottom: 1px solid #969696;
+}
+
+.tickets h5{
+    margin: 0;
+
+}
+
+.tickets h4{
+    margin-bottom: 0;
+
+}
+.assigned-to h6,
+.start-date h6{
+    display: inline;
+}
+
+.tickets,
+.members{
+    padding-bottom: 20px;
+    margin-bottom: 20px;
+}
+
+/*FosUser*/
+.fos_user_user_show h2 {
+    display: inline;
 }
