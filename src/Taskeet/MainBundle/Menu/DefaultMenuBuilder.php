@@ -35,6 +35,7 @@ class DefaultMenuBuilder extends AdmingeneratorMenuBuilder
             $this->addNavLinkRoute($projects, 'Proyectos', 'Taskeet_MainBundle_Project_list');
             $this->addNavLinkRoute($projects, 'Categorias', 'Taskeet_MainBundle_Category_list');
             $this->addNavLinkRoute($projects, 'Prioridades', 'Taskeet_MainBundle_Priority_list');
+            $this->addNavLinkRoute($projects, 'Estados', 'Taskeet_MainBundle_Status_list');
             $this->addNavLinkRoute($projects, 'Tareas', 'Taskeet_MainBundle_Ticket_list');
 
             $menu->addChild('Agenda', array('route' => 'Taskeet_MainBundle_Event_list'));
