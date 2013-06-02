@@ -44,7 +44,8 @@ builders:
             title: "You're viewing the object \"%object%\"|{ %object%: Priority.name }|"
             display: [name]
             actions:
-                list: ~
-                edit: ~
                 new: ~
+                list: ~
+#                edit: ~
+
     delete: ~

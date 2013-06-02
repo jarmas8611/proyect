@@ -76,9 +76,9 @@ builders:
             title: "Proyecto \"%object%\"|{ %object%: Project.name }|"
             display: [name, category, client, startDate, dueDate, description, departments, members, tickets]
             actions:
-                list: ~
                 new: ~
-                edit: ~
+                list: ~
+#                edit: ~
     delete:
         params:
             credentials: 'hasRole("ROLE_SUPER_ADMIN") or hasPermission(object, "OWNER")'

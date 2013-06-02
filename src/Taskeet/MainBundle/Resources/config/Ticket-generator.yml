@@ -65,9 +65,10 @@ builders:
             title: "Tarea \"%object%\"|{ %object%: Ticket.title }|"
             display: ~
             actions:
-                list: ~
-                edit: ~
                 new: ~
+                list: ~
+#                edit: ~
+
     delete:
         params:
             credentials: 'hasRole("ROLE_SUPER_ADMIN") or hasPermission(object, "OWNER")'
