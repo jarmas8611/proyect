@@ -49,7 +49,7 @@ builders:
     edit:
         params:
             credentials: 'hasRole("ROLE_ADMIN") or hasPermission(object, "OPERATOR")'
-            title: "Editando el departamento \"%object%\"|{ %object%: Department.name }|"
+            title: "Editando el departamento \"%dep%\"|{ %dep%: Department.name }|"
             display: [name, slug, owner, users]
             actions:
                 save: ~
@@ -59,13 +59,13 @@ builders:
                 show: ~
     show:
         params:
-            credentials: 'hasRole("ROLE_ADMIN") or hasRole("ROLE_JEFE_DPTO")'
-            title: "Departamento \"%object%\"|{ %object%: Department.name }|"
+            credentials: '(hasRole("ROLE_ADMIN") or hasRole("ROLE_JEFE_DPTO")) or hasPermission(object, "VIEW")'
+            title: "Departamento \"%dep%\"|{ %dep%: Department.name }|"
             display: [name, slug, owner, users]
             actions:
-                edit: ~
-                list: ~
+#                edit: ~
                 new: ~
+                list: ~
     delete:
         params:
             credentials: 'hasRole("ROLE_SUPER_ADMIN") or hasPermission(object, "OWNER")'
