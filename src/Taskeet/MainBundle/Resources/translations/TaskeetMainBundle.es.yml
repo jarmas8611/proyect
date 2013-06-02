@@ -2,8 +2,8 @@ Name: Nombre
 Users: Usuarios
 User: Usuario
 Type: Tipo
-Startdate: "Fecha de inicio"
-Duedate: "Fecha de expiración"
+Startdate: Inicio
+Duedate: Fin
 Category: Categoría
 Client: Cliente
 Departments: Departamentos
@@ -29,3 +29,5 @@ Owner: Encargado
 "repeated.label.plainPassword.second": Repita la contraseña
 Firstname: Nombre
 Lastname: Apellidos
+Fullname: Nombre Completo
+Created: Creado

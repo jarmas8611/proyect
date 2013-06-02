@@ -13,7 +13,7 @@ params:
 builders:
     list:
         params:
-            title: Lista de proyectos
+            title: Proyectos
             display: [name, category, client, startDate, dueDate]
             actions:
                 new: ~

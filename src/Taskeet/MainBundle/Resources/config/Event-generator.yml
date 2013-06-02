@@ -20,7 +20,7 @@ params:
 builders:
     list:
         params:
-            title: Lista de eventos
+            title: Eventos
             display: [title, type, startDate, dueDate]
             actions:
                 new: ~

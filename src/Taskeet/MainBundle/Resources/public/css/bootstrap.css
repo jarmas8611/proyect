@@ -209,7 +209,8 @@ body {
   font-size: 16px;
   line-height: 20px;
   color: #333333;
-  background: #ffffff;
+  /*background: #ffffff;*/
+  background: url("../img/bg3.png") repeat-x scroll 0 0 transparent;
 }
 a {
   color: #ea262a;
@@ -661,6 +662,7 @@ h4 {
 }
 h5 {
   font-size: 16px;
+  color: #676767;
 }
 h6 {
   font-size: 13.6px;
@@ -981,7 +983,7 @@ table {
 .table colgroup + thead tr:first-child td,
 .table thead:first-child tr:first-child th,
 .table thead:first-child tr:first-child td {
-  border-top: 0;
+    border-top: 1px solid #dddddd;
 }
 .table tbody + tbody {
   border-top: 2px solid #dddddd;
@@ -991,7 +993,7 @@ table {
 }
 .table-condensed th,
 .table-condensed td {
-  padding: 4px 5px;
+    padding: 10px 5px;
 }
 .table-bordered {
   border: 1px solid #dddddd;
@@ -2211,6 +2213,7 @@ input[type="button"].btn-block {
 .btn-primary[disabled] {
   color: #ffffff;
   background-color: #cc1e21;
+  background-image: linear-gradient(to bottom, #CC1E21, #CC1E21);
   *background-color: #cc1e21;
 }
 .btn-primary:active,
@@ -3464,7 +3467,7 @@ input[type="submit"].btn.btn-mini {
   /*background-image: -webkit-linear-gradient(top, #ffffff, #f2f2f2);*/
   /*background-image: -o-linear-gradient(top, #ffffff, #f2f2f2);*/
   /*background-image: linear-gradient(to bottom, #ffffff, #f2f2f2);*/
-  background: url("../img/bg.png");
+  background: url("../img/bg3.png");
   background-repeat: repeat-x;
   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffffffff', endColorstr='#fff2f2f2', GradientType=0);
   border: 1px solid #d4d4d4;
@@ -3508,8 +3511,9 @@ input[type="submit"].btn.btn-mini {
 }
 .navbar-text {
   margin-bottom: 0;
-  line-height: 40px;
-  color: #777777;
+  line-height: 20px;
+  color: #3C3C3C;
+  padding: 10px 5px 10px 30px;
 }
 .navbar-link {
   color: #ea262a;
@@ -3661,7 +3665,7 @@ input[type="submit"].btn.btn-mini {
 }
 .navbar .nav > li > a {
   float: none;
-  padding: 10px 15px 10px;
+  padding: 10px 30px;
   color: #ea262a;
   text-decoration: none;
   text-shadow: 0 1px 0 #ffffff;
@@ -4898,7 +4902,7 @@ a.thumbnail:focus {
 .dropdown-submenu:hover > a,
 .dropdown-submenu:focus > a {
   text-decoration: none;
-  color: #bf282c;
+  color:#ffffff;
   background-color: #e62024;
   background-image: -moz-linear-gradient(top, #ea262a, #e1161a);
   background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#ea262a), to(#e1161a));
@@ -6357,3 +6361,99 @@ div.connection .big-logo {
     text-align: center;
     padding: 20px 20px;
 }
+
+/*Lo nuevo*/
+footer{
+    background-color: #EA262A;
+    color: #ffffff;
+}
+
+footer p{
+    margin-top: 10px;
+}
+
+.table{
+    margin-top: 20px;
+}
+
+.table th {
+    border-top: 1px solid #DDDDDD;
+    border-bottom: 1px solid #dddddd;
+}
+
+.table td{
+    border: none;
+}
+
+.table th,
+.table th a {
+    color: #9D9D9D;
+}
+
+.table .td_username,
+.table .td_name{
+    color: #EA262A;
+}
+
+.navbar .nav > .username > a{
+    padding: 10px 5px;
+}
+
+.dropdown .navbar-text {
+    padding: 10px 5px 10px 30px;
+    font-style: italic;
+}
+
+.show h1 {
+    color: #00A9E2;
+    font-size: 36px;
+    line-height: 36px;
+    margin: 0;
+}
+
+.show h2{
+    margin: 0;
+}
+
+.show .italic{
+    color: #6D6D6D;
+    font-style: italic;
+}
+
+.show .color{
+    color: #EA262A;
+}
+
+.show .show-name,
+.tickets,
+.members{
+    border-bottom: 1px solid #969696;
+}
+
+.show .project-general{
+    margin-top: 40px;
+}
+
+.tickets h5{
+    margin: 0;
+
+}
+
+.tickets h4{
+    margin-bottom: 0;
+
+}
+.assigned-to h6,
+.start-date h6{
+    display: inline;
+}
+
+.tickets,
+.members{
+    padding-bottom: 20px;
+    margin-bottom: 20px;
+}
+
+
+
+

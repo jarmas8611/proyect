@@ -5,6 +5,7 @@ admingenerator_generator:
     use_propel: false
     stylesheets:
          - { path: bundles/taskeetmain/css/bootstrap.css }
+         - { path: bundles/taskeetmain/css/taskeet.css }
     overwrite_if_exists: false
     base_admin_template: TaskeetMainBundle::base_admin.html.twig
     knp_menu_class: Taskeet\MainBundle\Menu\DefaultMenuBuilder

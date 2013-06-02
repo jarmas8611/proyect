@@ -33,8 +33,8 @@ params:
 builders:
     list:
         params:
-            title: Lista de usuarios
-            display: [enabled, username, email, department, created]
+            title: Usuarios
+            display: [enabled, username, fullName, department, created]
             actions:
                 new: ~
             object_actions:
@@ -43,7 +43,7 @@ builders:
                 delete: ~
     filters:
         params:
-            display: [enabled, username, department, lastLogin, created, updated]
+            display: [enabled, username, department, created]
     new:
         params:
             # credentials: 'hasRole("ROLE_ADMIN") or hasRole("ROLE_JEFE_DPTO")'

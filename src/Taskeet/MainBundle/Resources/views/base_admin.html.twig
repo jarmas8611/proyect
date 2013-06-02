@@ -21,6 +21,7 @@
     {% block stylesheets %}
         {% stylesheets filter='cssrewrite,?yui_css' output='assetic/css/compiled/admingenerator/bootstrap.min.css'
             'bundles/taskeetmain/css/bootstrap.css'
+            'bundles/taskeetmain/css/taskeet.css'
             'bundles/admingeneratorgenerator/css/bootstrap/bootstrap-extended.css'
             'bundles/admingeneratorgenerator/css/bootstrap/bootstrap-datepicker.css'
             'bundles/admingeneratorgenerator/css/google/prettify.css'
@@ -66,7 +67,7 @@
       {% include('TaskeetMainBundle::base_admin_navbar.html.twig') %}
     {% endblock navbar %}
 
-    <div class="container-fluid">
+    <div class="container">
       {% block flashes %}
         <div id="flashes" class="row-fluid">
           {% for type, flashMessages in app.session.flashbag.all() %}
@@ -84,14 +85,16 @@
         <div class="row-fluid">
         </div><!--/.row-fluid -->
       {% endblock %}
-
+    </div> <!--/.container-fluid -->
       {% block footer %}
       <footer>
-        <hr>
-        <p>{% block footer_text %}&copy; taskeet {{ ("now"|date('Y') > 2013) ? '2013 - ' ~ "now"|date('Y') : '2013' }}{% endblock %}</p>
+          <div class="container">
+            {#<hr>#}
+            <p>{% block footer_text %}&copy; taskeet {{ ("now"|date('Y') > 2013) ? '2013 - ' ~ "now"|date('Y') : '2013' }}{% endblock %}</p>
+          </div>
       </footer>
       {% endblock %}
-    </div> <!--/.container-fluid -->
+
 
     {% block javascripts %}
         {% javascripts filter='?yui_js' output='assetic/js/compiled/admingenerator/bootstrap.min.js'

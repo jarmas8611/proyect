@@ -12,18 +12,33 @@
       {% endblock %}
       <div class="nav-collapse collapse">
         {% block profile %}
-          <ul class="nav pull-right">
-            <li><p class="navbar-text" style="padding-right: 10px;">{{ 'profile.welcome'|trans({'%username%': app.user ? app.user : 'anonymous'}, 'Admingenerator')|raw }}</li>
-            {% if app.user %}
-              {% if admingenerator_config('logout_path') is not none %}
-                <li><button onclick="document.location='{{ path(admingenerator_config('logout_path')) }}'" class="btn " title="{{ 'profile.logout'|trans({}, 'Admingenerator') }}"><i class="icon-off"></i> {{ 'profile.logout'|trans({}, 'Admingenerator') }}</button></li>
-              {% endif %}
-            {% else %}
-              {% if admingenerator_config('login_path') is not none %}
-                <li><button onclick="document.location='{{ path(admingenerator_config('login_path')) }}'" class="btn " title="{{ 'profile.login'|trans({}, 'Admingenerator') }}">{{ 'profile.login'|trans({}, 'Admingenerator') }}</button></li>
-              {% endif %}
-            {% endif %}
-          </ul>
+          {#<ul class="nav pull-right">#}
+            {#&#123;&#35;<li><p class="navbar-text" style="padding-right: 10px;">{{ 'profile.welcome'|trans({'%username%': app.user ? app.user : 'anonymous'}, 'Admingenerator')|raw }}</li>&#35;&#125;#}
+              {#<li><p class="navbar-text">{{ app.user.username}}</li>#}
+            {#{% if app.user %}#}
+              {#{% if admingenerator_config('logout_path') is not none %}#}
+                {#&#123;&#35;<li><button onclick="document.location='{{ path(admingenerator_config('logout_path')) }}'" class="btn " title="{{ 'profile.logout'|trans({}, 'Admingenerator') }}"><i class="icon-off"></i> {{ 'profile.logout'|trans({}, 'Admingenerator') }}</button></li>&#35;&#125;#}
+                  {#<li><a onclick="document.location='{{ path(admingenerator_config('logout_path')) }}'" class="btn " title="{{ 'profile.logout'|trans({}, 'Admingenerator') }}"><i class="icon-off"></i></a></li>#}
+              {#{% endif %}#}
+            {#{% else %}#}
+              {#{% if admingenerator_config('login_path') is not none %}#}
+                {#<li><button onclick="document.location='{{ path(admingenerator_config('login_path')) }}'" class="btn " title="{{ 'profile.login'|trans({}, 'Admingenerator') }}">{{ 'profile.login'|trans({}, 'Admingenerator') }}</button></li>#}
+              {#{% endif %}#}
+            {#{% endif %}#}
+          {#</ul>#}
+          <ul class= "nav pull-right dropdown">
+                <li><p class="navbar-text">{{ app.user.username}}</p></li>
+                <li class="dropdown-toggle username" data-toggle="dropdown" href="#">
+                    <a href=""><img src="{{ asset('bundles/taskeetmain/img/logout.png') }}"></a>
+                </li>
+                <ul class="dropdown-menu usuario-menu" role="menu" aria-labelledby="dLabel">
+                    <li><a tabindex="-1" href="{{path ('fos_user_profile_show')  }}">Perfil</a></li>
+                    <li class="divider"></li>
+                    {% if admingenerator_config('logout_path') is not none %}
+                        <li><a onclick="document.location='{{ path(admingenerator_config('logout_path')) }}'" title="{{ 'profile.logout'|trans({}, 'Admingenerator') }}"><i class="icon-off"></i> {{ 'profile.logout'|trans({}, 'Admingenerator') }}</a></li>
+                    {% endif %}
+                </ul>
+            </div>
         {% endblock %}
         {% block menu %}
           {{ knp_menu_render('admin') }}

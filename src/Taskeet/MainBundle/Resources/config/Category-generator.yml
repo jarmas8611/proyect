@@ -16,7 +16,7 @@ params:
 builders:
     list:
         params:
-            title: Lista de categorías
+            title: Categorías
             display: [name]
             actions:
                 new: ~

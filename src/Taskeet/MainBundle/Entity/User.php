@@ -69,12 +69,12 @@ class User extends BaseUser
      protected $tasks;
 
      /**
-      * @ORM\Column(type="string", length=32)
+      * @ORM\Column(type="string", length=32, nullable=true)
       */
      protected $firstName;
 
      /**
-      * @ORM\Column(type="string", length=32)
+      * @ORM\Column(type="string", length=32, nullable=true)
       */
      protected $lastName;
 

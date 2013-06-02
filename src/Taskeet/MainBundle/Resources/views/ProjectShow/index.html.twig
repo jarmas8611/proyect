@@ -1,1 +1,80 @@
 {% extends_admingenerated "TaskeetMainBundle:ProjectShow:index.html.twig" %}
+
+{% block page_title %}{% endblock %}
+
+{% block object %}
+    {#<div class="container">#}
+        <div class="show">
+            <div class="span4">
+                <div class="span4"><img src="{{ asset('bundles/taskeetmain/img/percent.png') }}"></div>
+                <div class="span8">
+                    <div class="show-name project-general">
+                        <h1>60%</h1>
+                        <h2>{{ Project.name }}</h2>
+                    </div>
+                    <h5>{{ 'Startdate'|trans({}, 'TaskeetMainBundle') }}: {% if Project.startDate %}{{ Project.startDate|localizeddate("medium", "medium") }}{% endif %}</h5>
+                    <h5>{{ 'Duedate'|trans({}, 'TaskeetMainBundle') }}: {% if Project.dueDate %}{{ Project.dueDate|localizeddate("medium", "medium") }}{% endif %}</h5>
+                    <h5 class="italic">{{ 'Client'|trans({}, 'TaskeetMainBundle') }}:{{ Project.client }}</h5>
+                    <h5 class="color">{{ Project.members | length }} {{ 'Members'|trans({}, 'TaskeetMainBundle') }}</h5>
+                    <h5 class="color">{{ Project.departments | length }} {{ 'Departments'|trans({}, 'TaskeetMainBundle') }}</h5>
+
+                    <h3>{{ 'Created'|trans({}, 'TaskeetMainBundle') }}:{% if Project.created %}{{ Project.created | localizeddate("medium", "medium") }}{% endif %}</h3>
+                </div>
+            </div>
+            <div class="span4">
+                <div class="show-name">
+                    <h2>{{ 'Tickets'|trans({}, 'TaskeetMainBundle') }}</h2>
+                </div>
+                <div class="tickets">
+                    {% for object in Project.tickets %}
+                        <h4>{{ object.title }}</h4>
+                        <h5>{{ object.description | raw }}</h5>
+                        <div class="assigned-to">
+                            <h6 class="italic">{{ 'Assignedto'|trans({}, 'TaskeetMainBundle') }}</h6>
+                            <h6 class="color">{{ object.assignedTo }}</h6>
+                        </div>
+                        <div class="start-date">
+                            <h6 class="italic">{{ 'Startdate'|trans({}, 'TaskeetMainBundle') }}</h6>
+                            <h6 class="color">{{ object.startDate | localizeddate("medium", "medium") }}</h6>
+                        </div>
+                    {% endfor %}
+                </div>
+                <a class="btn btn-primary" data-action="{{ path("Taskeet_MainBundle_Ticket_new") }}">
+                    <i class="icon-white icon-plus"></i> Tarea
+                </a>
+            </div>
+            <div class="span4">
+                <div class="show-name">
+                    <h2>{{ 'Members'|trans({}, 'TaskeetMainBundle') }}</h2>
+                </div>
+                <div class="members">
+                    {% for object in Project.members %}
+                        <h6 class="color">{{ object }}</h6>
+                    {% endfor %}
+                </div>
+                <a class="btn btn-primary" data-action="{{ path("Taskeet_MainBundle_User_new") }}">
+                    <i class="icon-white icon-plus"></i> Miembro
+                </a>
+
+            </div>
+        </div>
+    {#</div>#}
+{% endblock %}
+
+{% block form_buttons %}
+    <div class="form-actions span12">
+        {% block form_actions %}
+
+            <a class="btn " href="{{ path("Taskeet_MainBundle_Project_list") }}"
+                    ><i class="icon-list-alt"></i> {% trans from "Admingenerator" %}action.generic.list{% endtrans %}</a>
+
+            <a class="btn " href="{{ path("Taskeet_MainBundle_Project_edit", { pk: Project.id }) }}"
+                    ><i class="icon-edit"></i> {% trans from "Admingenerator" %}action.object.edit.label{% endtrans %}</a>
+
+            <a class="btn btn-primary" href="{{ path("Taskeet_MainBundle_Project_new") }}"
+                    ><i class="icon-white icon-plus"></i> {% trans from "Admingenerator" %}action.generic.new{% endtrans %}</a>
+
+        {% endblock %}
+
+    </div>
+{% endblock %}

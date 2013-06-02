@@ -23,7 +23,7 @@ builders:
     list:
         params:
             # credentials: 'hasRole("ROLE_ADMIN") or hasRole("ROLE_JEFE_DPTO")'
-            title: Lista de departamentos
+            title: Departamentos
             display: [name, slug, owner]
             actions:
                 new: ~

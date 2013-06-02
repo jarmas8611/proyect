@@ -41,7 +41,7 @@ class DefaultMenuBuilder extends AdmingeneratorMenuBuilder
 
         }
 
-
+        $menu->setChildrenAttribute('class', 'nav pull-right');
 
         return $menu;
     }

@@ -9,7 +9,7 @@ params:
 builders:
     list:
         params:
-            title: Lista de prioridades
+            title: Prioridades
             display: [name]
             actions:
                 new: ~
