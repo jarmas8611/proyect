@@ -20,6 +20,7 @@ builders:
     list:
         params:
             title: Tareas
+            sort: [created, DESC]
             display: [title, priority, assignedTo, startDate, dueDate, project]
             actions:
                 new: ~
@@ -33,6 +34,11 @@ builders:
     new:
         params:
             title: Nueva tarea
+            fields:
+                startDate:
+                     formType: datepicker
+                dueDate:
+                     formType: datepicker
             display: [title, priority, assignedTo, startDate, dueDate, project, description, files]
             actions:
                 save: ~
@@ -42,6 +48,11 @@ builders:
     edit:
         params:
             title: "Editando la tarea \"%object%\"|{ %object%: Ticket.title }|"
+            fields:
+                startDate:
+                     formType: datepicker
+                dueDate:
+                     formType: datepicker
             display: [title, priority, assignedTo, startDate, dueDate, project, description, files]
             actions:
                 save: ~
@@ -57,4 +68,6 @@ builders:
                 list: ~
                 edit: ~
                 new: ~
-    delete: ~
+    delete:
+        params:
+            credentials: 'hasRole("ROLE_SUPER_ADMIN") or hasPermission(object, "OWNER")'

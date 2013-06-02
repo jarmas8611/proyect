@@ -12,10 +12,6 @@ params:
 #            addFormOptions:
 #                nameable:       imageLabel
 #                data_class:     Symfony\Component\HttpFoundation\File\File
-        # startDate:
-        #     formType: \Admingenerator\GeneratorBundle\Form\Type\DatePickerType
-        # dueDate:
-        #     formType: \Admingenerator\GeneratorBundle\Form\Type\DatePickerType
 
 builders:
     list:
@@ -34,6 +30,11 @@ builders:
     new:
         params:
             title: Nuevo evento
+            fields:
+                startDate:
+                     formType: datepicker
+                dueDate:
+                     formType: datepicker
             display: [title, type, startDate, dueDate, description]
             actions:
                 save: ~
@@ -43,6 +44,11 @@ builders:
     edit:
         params:
             title: "Editando el evento \"%object%\"|{ %object%: YourModel.title }|"
+            fields:
+                startDate:
+                     formType: datepicker
+                dueDate:
+                     formType: datepicker
             display: [title, type, startDate, dueDate, description]
             actions:
                 save: ~

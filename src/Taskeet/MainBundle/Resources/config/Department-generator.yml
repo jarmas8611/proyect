@@ -6,24 +6,26 @@ params:
     i18n_catalog: TaskeetMainBundle
     fields:
         users:
-            label:            Usuarios
-            dbType:           collection
-            formType:         collection
-            addFormOptions:
-              widget:         fieldset
-              # type:           \Taskeet\MainBundle\Form\Type\Department\EditType
-              allow_add:      true
-              allow_delete:   true
-              by_reference:   false
-              options:
-                label:          Nuevo usuario
-                data_class:     Taskeet\MainBundle\Entity\Department
+            formType: double_list
+#        users:
+#            label:            Usuarios
+#            dbType:           collection
+#            formType:         collection
+#            addFormOptions:
+#              widget:         fieldset
+#              # type:           \Taskeet\MainBundle\Form\Type\Department\EditType
+#              allow_add:      true
+#              allow_delete:   true
+#              by_reference:   false
+#              options:
+#                label:          Nuevo usuario
+#                data_class:     Taskeet\MainBundle\Entity\Department
 
 builders:
     list:
         params:
-            # credentials: 'hasRole("ROLE_ADMIN") or hasRole("ROLE_JEFE_DPTO")'
             title: Departamentos
+            credentials: 'hasRole("ROLE_ADMIN") or hasRole("ROLE_JEFE_DPTO")'
             display: [name, slug, owner]
             actions:
                 new: ~
@@ -36,7 +38,7 @@ builders:
             display: [name, owner]
     new:
         params:
-            # credentials: 'hasRole("ROLE_ADMIN") or hasRole("ROLE_JEFE_DPTO")'
+            credentials: 'hasRole("ROLE_ADMIN") or hasRole("ROLE_JEFE_DPTO")'
             title: Nuevo departamento
             display: [name, owner, users]
             actions:
@@ -46,7 +48,7 @@ builders:
                 list: ~
     edit:
         params:
-            # credentials: 'hasRole("ROLE_ADMIN") or hasRole("ROLE_JEFE_DPTO")'
+            credentials: 'hasRole("ROLE_ADMIN") or hasPermission(object, "OPERATOR")'
             title: "Editando el departamento \"%object%\"|{ %object%: Department.name }|"
             display: [name, slug, owner, users]
             actions:
@@ -57,11 +59,13 @@ builders:
                 show: ~
     show:
         params:
-            # credentials: 'hasRole("ROLE_ADMIN") or hasRole("ROLE_JEFE_DPTO")'
+            credentials: 'hasRole("ROLE_ADMIN") or hasRole("ROLE_JEFE_DPTO")'
             title: "Departamento \"%object%\"|{ %object%: Department.name }|"
             display: [name, slug, owner, users]
             actions:
                 edit: ~
                 list: ~
                 new: ~
-    delete: ~
+    delete:
+        params:
+            credentials: 'hasRole("ROLE_SUPER_ADMIN") or hasPermission(object, "OWNER")'
