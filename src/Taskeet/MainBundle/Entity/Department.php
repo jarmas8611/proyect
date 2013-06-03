@@ -15,7 +15,7 @@ use Taskeet\MainBundle\Entity\User;
 
 /**
  *
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="Taskeet\MainBundle\Entity\DepartmentRepository")
  * @ORM\Table(name="department")
  *
  */
