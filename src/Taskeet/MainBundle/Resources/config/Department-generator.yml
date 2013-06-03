@@ -55,7 +55,7 @@ builders:
                 list: ~
     edit:
         params:
-            credentials: 'hasPermission(object, "OPERATOR")'
+            credentials: 'hasRole("ROLE_SUPER_ADMIN") or hasPermission(object, "OPERATOR")'
             title: "Editando el departamento \"%object%\"|{ %object%: Department.name }|"
             display: [name, slug, owner, users]
             actions:
@@ -65,7 +65,7 @@ builders:
                 list: ~
     show:
         params:
-            credentials: 'hasPermission(object, "VIEW")'
+            credentials: 'hasRole("ROLE_SUPER_ADMIN") or hasPermission(object, "VIEW")'
             title: "Departamento \"%object%\"|{ %object%: Department.name }|"
             display: [name, slug, owner, users]
             actions:

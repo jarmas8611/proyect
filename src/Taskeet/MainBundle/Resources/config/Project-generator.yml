@@ -23,7 +23,15 @@ builders:
     list:
         params:
             title: Proyectos
+#            credentials: 'hasRole("ROLE_ADMIN") or hasRole("ROLE_JEFE_DPTO")'
             display: [name, category, client, startDate, dueDate]
+            scopes:
+                group_1:
+                    "Todos": ~
+                    "Mis proyectos":
+                        default: true
+                        filters:
+                            members: user
             actions:
                 new: ~
             object_actions:
@@ -35,6 +43,7 @@ builders:
             display: [name, category, client, startDate, dueDate, departments]
     new:
         params:
+            credentials: 'hasRole("ROLE_ADMIN") or hasRole("ROLE_JEFE_DPTO")'
             title: Nuevo proyecto
             fields:
                 startDate:
@@ -70,9 +79,10 @@ builders:
                 save-and-add: ~
                 save-and-list: ~
                 list: ~
-                show: ~
+#                show: ~
     show:
         params:
+            credentials: 'hasRole("ROLE_SUPER_ADMIN") or hasPermission(object, "VIEW")'
             title: "Proyecto \"%object%\"|{ %object%: Project.name }|"
             display: [name, category, client, startDate, dueDate, description, departments, members, tickets]
             actions:

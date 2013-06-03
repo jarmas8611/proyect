@@ -115,7 +115,8 @@ class Project
      * @var string $updatedBy
      *
      * @Gedmo\Blameable(on="update")
-     * @ORM\Column(type="string")
+     * @ORM\ManyToOne(targetEntity="Taskeet\MainBundle\Entity\User")
+     * @ORM\JoinColumn(name="created_by", referencedColumnName="id")
      */
     private $updatedBy;
 
@@ -485,10 +486,10 @@ class Project
     /**
      * Set updatedBy
      *
-     * @param string $updatedBy
+     * @param \Taskeet\MainBundle\Entity\User $updatedBy
      * @return Project
      */
-    public function setUpdatedBy($updatedBy)
+    public function setUpdatedBy(\Taskeet\MainBundle\Entity\User $updatedBy)
     {
         $this->updatedBy = $updatedBy;
 
@@ -498,7 +499,7 @@ class Project
     /**
      * Get updatedBy
      *
-     * @return string
+     * @return \Taskeet\MainBundle\Entity\User
      */
     public function getUpdatedBy()
     {
