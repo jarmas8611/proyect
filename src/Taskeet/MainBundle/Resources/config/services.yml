@@ -2,6 +2,11 @@ parameters:
 #    taskeet_main.example.class: Taskeet\MainBundle\Example
 
 services:
+    taskeet_main.profile.type:
+        class: Taskeet\MainBundle\Form\Type\User\ProfileType
+        arguments: [%fos_user.model.user.class%]
+        tags:
+            - { name: form.type, alias: taskeet_main_profile }
 #    taskeet_main.example:
 #        class: %taskeet_main.example.class%
 #        arguments: [@service_id, "plain_value", %parameter%]

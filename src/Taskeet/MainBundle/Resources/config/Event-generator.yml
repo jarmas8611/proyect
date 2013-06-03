@@ -61,7 +61,8 @@ builders:
             title: "Evento \"%object%\"|{ %object%: YourModel.title }|"
             display: [title, type, startDate, dueDate, description]
             actions:
-                list: ~
-                edit: ~
                 new: ~
+                list: ~
+#                edit: ~
+
     delete: ~

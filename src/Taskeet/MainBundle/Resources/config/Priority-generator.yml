@@ -47,9 +47,10 @@ builders:
             credentials: 'hasRole("ROLE_ADMIN") or hasRole("ROLE_JEFE_DPTO")'
             display: [name]
             actions:
-                list: ~
-                edit: ~
                 new: ~
+                list: ~
+#                edit: ~
+
     delete:
         params:
             credentials: 'hasRole("ROLE_SUPER_ADMIN") or hasPermission(object, "OWNER")'

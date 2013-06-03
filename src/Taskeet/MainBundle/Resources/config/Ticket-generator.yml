@@ -22,6 +22,13 @@ builders:
             title: Tareas
             sort: [created, DESC]
             display: [title, priority, assignedTo, startDate, dueDate, project]
+            scopes:
+                group_1:
+                    "Todas": ~
+                    "Mis tareas":
+                        default: true
+                        filters:
+                            assignedTo: user
             actions:
                 new: ~
             object_actions:
@@ -48,6 +55,7 @@ builders:
     edit:
         params:
             title: "Editando la tarea \"%object%\"|{ %object%: Ticket.title }|"
+            credentials: 'hasRole("ROLE_SUPER_ADMIN") or hasPermission(object, "OPERATOR")'
             fields:
                 startDate:
                      formType: datepicker
@@ -59,15 +67,17 @@ builders:
                 save-and-add: ~
                 save-and-list: ~
                 list: ~
-                show: ~
+#                show: ~
     show:
         params:
             title: "Tarea \"%object%\"|{ %object%: Ticket.title }|"
+            credentials: 'hasRole("ROLE_SUPER_ADMIN") or hasPermission(object, "VIEW")'
             display: ~
             actions:
-                list: ~
-                edit: ~
                 new: ~
+                list: ~
+#                edit: ~
+
     delete:
         params:
-            credentials: 'hasRole("ROLE_SUPER_ADMIN") or hasPermission(object, "OWNER")'
+            credentials: 'hasRole("ROLE_SUPER_ADMIN") or hasPermission(object, "OPERATOR")'
