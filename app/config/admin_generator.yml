@@ -9,7 +9,7 @@ admingenerator_generator:
     overwrite_if_exists: false
     base_admin_template: TaskeetMainBundle::base_admin.html.twig
     knp_menu_class: Taskeet\MainBundle\Menu\DefaultMenuBuilder
-    thumbnail_generator: ~
+    thumbnail_generator: avalanche
     dashboard_welcome_path: dashboard_welcome
     login_path: fos_user_security_login
     logout_path: fos_user_security_logout

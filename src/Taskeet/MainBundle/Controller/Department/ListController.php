@@ -15,7 +15,7 @@ class ListController extends BaseListController
 
 
 
-        if (isset($scopes['group_1']) && $scopes['group_1'] == 'All') {
+        if (isset($scopes['group_1']) && $scopes['group_1'] == 'Todos') {
 
         }
 

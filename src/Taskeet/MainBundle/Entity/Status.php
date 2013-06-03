@@ -3,12 +3,16 @@
 namespace Taskeet\MainBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\HttpFoundation\File\File;
+use Symfony\Component\Validator\Constraints as Assert;
+use Vich\UploaderBundle\Mapping\Annotation as Vich;
 
 /**
  * Status
  *
  * @ORM\Table(name="status")
  * @ORM\Entity
+ * @Vich\Uploadable
  */
 class Status
 {
@@ -29,12 +33,22 @@ class Status
     private $name;
 
     /**
-     * @var string
+     * @Assert\File(
+     *     maxSize="1M",
+     *     mimeTypes={"image/png", "image/jpeg", "image/pjpeg"}
+     * )
+     * @Vich\UploadableField(mapping="status_image", fileNameProperty="imageName")
      *
-     * @ORM\Column(name="image", type="string", length=255)
+     * @var File $image
      */
     private $image;
 
+    /**
+     * @ORM\Column(type="string", length=255, name="image_name")
+     *
+     * @var string $imageName
+     */
+    protected $imageName;
 
     /**
      * Get id
