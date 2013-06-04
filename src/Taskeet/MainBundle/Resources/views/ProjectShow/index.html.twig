@@ -9,33 +9,33 @@
                 <div class="span4"><img src="{{ asset('bundles/taskeetmain/img/percent.png') }}"></div>
                 <div class="span8">
                     <div class="show-name project-general">
-                        <h1>60%</h1>
-                        <h2>{{ Project.name }}</h2>
+                        <h1 class="percent">60%</h1>
+                        <h1>{{ Project.name }}</h1>
                     </div>
-                    <h5>{{ 'Startdate'|trans({}, 'TaskeetMainBundle') }}: {% if Project.startDate %}{{ Project.startDate|localizeddate("medium", "medium") }}{% endif %}</h5>
-                    <h5>{{ 'Duedate'|trans({}, 'TaskeetMainBundle') }}: {% if Project.dueDate %}{{ Project.dueDate|localizeddate("medium", "medium") }}{% endif %}</h5>
-                    <h5 class="italic">{{ 'Client'|trans({}, 'TaskeetMainBundle') }}:{{ Project.client }}</h5>
-                    <h5 class="color">{{ Project.members | length }} {{ 'Members'|trans({}, 'TaskeetMainBundle') }}</h5>
-                    <h5 class="color">{{ Project.departments | length }} {{ 'Departments'|trans({}, 'TaskeetMainBundle') }}</h5>
+                    <h4>{{ 'Startdate'|trans({}, 'TaskeetMainBundle') }}: {% if Project.startDate %}{{ Project.startDate|localizeddate("medium") }}{% endif %}</h4>
+                    <h4>{{ 'Duedate'|trans({}, 'TaskeetMainBundle') }}: {% if Project.dueDate %}{{ Project.dueDate|localizeddate("medium", "medium") }}{% endif %}</h4>
+                    <h4 class="italic">{{ 'Client'|trans({}, 'TaskeetMainBundle') }}:{{ Project.client }}</h4>
+                    <h4 class="color">{{ Project.members | length }} {{ 'Members'|trans({}, 'TaskeetMainBundle') }}</h4>
+                    <h4 class="color">{{ Project.departments | length }} {{ 'Departments'|trans({}, 'TaskeetMainBundle') }}</h4>
 
-                    <h3>{{ 'Created'|trans({}, 'TaskeetMainBundle') }}:{% if Project.created %}{{ Project.created | localizeddate("medium", "medium") }}{% endif %}</h3>
+                    <h5>{{ 'Created'|trans({}, 'TaskeetMainBundle') }}:{% if Project.created %}{{ Project.created | localizeddate("medium", "medium") }}{% endif %}</h5>
                 </div>
             </div>
             <div class="span4">
                 <div class="show-name">
-                    <h2>{{ 'Tickets'|trans({}, 'TaskeetMainBundle') }}</h2>
+                    <h1>{{ 'Tickets'|trans({}, 'TaskeetMainBundle') }}</h1>
                 </div>
                 <div class="tickets">
                     {% for object in Project.tickets %}
-                        <h4>{{ object.title }}</h4>
-                        <h5>{{ object.description | raw }}</h5>
+                        <h3>{{ object.title }}</h3>
+                        <h4>{{ object.description | raw }}</h4>
                         <div class="assigned-to">
-                            <h6 class="italic">{{ 'Assignedto'|trans({}, 'TaskeetMainBundle') }}</h6>
-                            <h6 class="color">{{ object.assignedTo }}</h6>
+                            <h5 class="italic">{{ 'Assignedto'|trans({}, 'TaskeetMainBundle') }}</h5>
+                            <h5 class="italic color">{{ object.assignedTo }}</h5>
                         </div>
                         <div class="start-date">
-                            <h6 class="italic">{{ 'Startdate'|trans({}, 'TaskeetMainBundle') }}</h6>
-                            <h6 class="color">{{ object.startDate | localizeddate("medium", "medium") }}</h6>
+                            <h5 class="italic">{{ 'Startdate'|trans({}, 'TaskeetMainBundle') }}</h5>
+                            <h5 class="color">{{ object.startDate | localizeddate("medium", "medium") }}</h5>
                         </div>
                     {% endfor %}
                 </div>
@@ -45,7 +45,7 @@
             </div>
             <div class="span4">
                 <div class="show-name">
-                    <h2>{{ 'Members'|trans({}, 'TaskeetMainBundle') }}</h2>
+                    <h1>{{ 'Members'|trans({}, 'TaskeetMainBundle') }}</h1>
                 </div>
                 <div class="members">
                     {% for object in Project.members %}

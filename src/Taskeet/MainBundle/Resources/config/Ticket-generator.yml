@@ -46,7 +46,7 @@ builders:
                      formType: datepicker
                 dueDate:
                      formType: datepicker
-            display: [title, priority, assignedTo, startDate, dueDate, project, description, files]
+            display: [title, priority, status, assignedTo, startDate, dueDate, project, description, files]
             actions:
                 save: ~
                 save-and-add: ~
@@ -70,7 +70,7 @@ builders:
 #                show: ~
     show:
         params:
-            title: "Tarea \"%object%\"|{ %object%: Ticket.title }|"
+            title: "%object%|{ %object%: Ticket.title }|"
             credentials: 'hasRole("ROLE_SUPER_ADMIN") or hasPermission(object, "VIEW")'
             display: ~
             actions:

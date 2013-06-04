@@ -454,7 +454,7 @@ class Ticket
      *
      * @return \Taskeet\MainBundle\Entity\Status
      */
-    public function geStatus()
+    public function getStatus()
     {
         return $this->status;
     }

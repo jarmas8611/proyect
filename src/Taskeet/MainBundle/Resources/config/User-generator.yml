@@ -78,7 +78,7 @@ builders:
     show:
         params:
             credentials: 'hasRole("ROLE_ADMIN") or hasRole("ROLE_JEFE_DPTO")'
-            title: "Usuario \"%object%\"|{ %object%: User.username }|"
+            title: "%object%|{ %object%: User.username }|"
             display: [firstName, lastName, username, email, department, enabled, expired, expiresAt, roles, projects, tasks]
             actions:
                  new: ~
