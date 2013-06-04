@@ -34,7 +34,7 @@ class Department
     private $name;
 
     /**
-     * @ORM\OneToMany(targetEntity="User", mappedBy="department", cascade={"persist", "remove", "merge"}, orphanRemoval=true)
+     * @ORM\ManyToMany(targetEntity="User", cascade={"persist", "remove", "merge"}, orphanRemoval=true)
      */
     private $users;
 

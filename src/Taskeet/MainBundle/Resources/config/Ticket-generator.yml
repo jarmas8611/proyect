@@ -21,7 +21,10 @@ builders:
         params:
             title: Tareas
             sort: [created, DESC]
-            display: [title, priority, assignedTo, startDate, dueDate, project]
+            display: [status, title, priority, assignedTo, startDate, dueDate, project]
+            fields:
+                status:
+                    getter: ImageName
             scopes:
                 group_1:
                     "Todas": ~
@@ -29,6 +32,9 @@ builders:
                         default: true
                         filters:
                             assignedTo: user
+                    "Finalizadas":
+                        filters:
+                            done: true
             actions:
                 new: ~
             object_actions:
@@ -37,7 +43,7 @@ builders:
                 delete: ~
     filters:
         params:
-            display: [title, priority, assignedTo, startDate, dueDate, project]
+            display: [title, status, priority, assignedTo, startDate, dueDate, project]
     new:
         params:
             title: Nueva tarea
@@ -46,7 +52,7 @@ builders:
                      formType: datepicker
                 dueDate:
                      formType: datepicker
-            display: [title, priority, assignedTo, startDate, dueDate, project, description, files]
+            display: [title, priority, assignedTo, startDate, dueDate, status, project, description, files]
             actions:
                 save: ~
                 save-and-add: ~
@@ -61,7 +67,7 @@ builders:
                      formType: datepicker
                 dueDate:
                      formType: datepicker
-            display: [title, priority, assignedTo, startDate, dueDate, project, description, files]
+            display: [title, priority, assignedTo, startDate, dueDate, status, project, description, files]
             actions:
                 save: ~
                 save-and-add: ~

@@ -120,6 +120,7 @@ class Ticket
      */
     private $status;
 
+
     /**
      * @ORM\Column(type="boolean", nullable=true)
      */
@@ -437,29 +438,6 @@ class Ticket
     }
 
     /**
-     * Set status
-     *
-     * @param \Taskeet\MainBundle\Entity\Status $status
-     * @return Ticket
-     */
-    public function setStatus(\Taskeet\MainBundle\Entity\Status $status = null)
-    {
-        $this->status = $status;
-
-        return $this;
-    }
-
-    /**
-     * Get status
-     *
-     * @return \Taskeet\MainBundle\Entity\Status
-     */
-    public function geStatus()
-    {
-        return $this->status;
-    }
-
-    /**
      * Set done
      *
      * @param bool $done
@@ -481,6 +459,16 @@ class Ticket
     public function getDone()
     {
         return $this->done;
+    }
+
+    public function setStatus($status)
+    {
+        $this->status = $status;
+    }
+
+    public function getStatus()
+    {
+        return $this->status;
     }
 
     public function __toString()
