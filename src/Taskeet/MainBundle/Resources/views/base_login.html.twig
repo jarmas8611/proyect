@@ -41,6 +41,13 @@
         %}
             <link rel="stylesheet" href="{{ asset_url }}" type="text/css" media="all" />
         {% endstylesheets %}
+
+        {% stylesheets filter='cssrewrite,?yui_css' output='assetic/css/compiled/admingenerator/taskeet.min.css'
+            'bundles/taskeetmain/css/bootstrap.css'
+            'bundles/taskeetmain/css/taskeet.css'
+        %}
+            <link rel="stylesheet" href="{{ asset_url }}" type="text/css" media="all" />
+        {% endstylesheets %}
     {% endblock %}
 
     {% block icons %}
