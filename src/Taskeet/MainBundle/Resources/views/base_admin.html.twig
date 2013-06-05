@@ -20,8 +20,6 @@
 
     {% block stylesheets %}
         {% stylesheets filter='cssrewrite,?yui_css' output='assetic/css/compiled/admingenerator/bootstrap.min.css'
-            'bundles/taskeetmain/css/bootstrap.css'
-            'bundles/taskeetmain/css/taskeet.css'
             'bundles/admingeneratorgenerator/css/bootstrap/bootstrap-extended.css'
             'bundles/admingeneratorgenerator/css/bootstrap/bootstrap-datepicker.css'
             'bundles/admingeneratorgenerator/css/google/prettify.css'
@@ -46,6 +44,12 @@
             'bundles/admingeneratorgenerator/css/admingenerator/filetypeicons.css'
             'bundles/admingeneratorgenerator/css/admingenerator/form/datepicker.css'
             'bundles/admingeneratorgenerator/css/admingenerator/form/single-upload.css'
+        %}
+            <link rel="stylesheet" href="{{ asset_url }}" type="text/css" media="all" />
+        {% endstylesheets %}
+        {% stylesheets filter='cssrewrite,?yui_css' output='assetic/css/compiled/admingenerator/taskeet.min.css'
+            'bundles/taskeetmain/css/bootstrap.css'
+            'bundles/taskeetmain/css/taskeet.css'
         %}
             <link rel="stylesheet" href="{{ asset_url }}" type="text/css" media="all" />
         {% endstylesheets %}
