@@ -38,9 +38,7 @@ class Ticket
     private $description;
 
     /**
-     * @var string
-     *
-     * @ORM\Column(name="files", type="string", length=255)
+     * @ORM\OneToMany(targetEntity="Media", mappedBy="ticket", cascade={"persist", "remove", "merge"}, orphanRemoval=true)
      */
     private $files;
 
@@ -180,29 +178,6 @@ class Ticket
     public function getDescription()
     {
         return $this->description;
-    }
-
-    /**
-     * Set files
-     *
-     * @param string $files
-     * @return Ticket
-     */
-    public function setFiles($files)
-    {
-        $this->files = $files;
-
-        return $this;
-    }
-
-    /**
-     * Get files
-     *
-     * @return string
-     */
-    public function getFiles()
-    {
-        return $this->files;
     }
 
 
@@ -474,5 +449,45 @@ class Ticket
     public function __toString()
     {
         return $this->title;
+    }
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->files = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    /**
+     * Add files
+     *
+     * @param \Taskeet\MainBundle\Entity\Media $files
+     * @return Ticket
+     */
+    public function addFile(\Taskeet\MainBundle\Entity\Media $files)
+    {
+        $this->files[] = $files;
+
+        return $this;
+    }
+
+    /**
+     * Remove files
+     *
+     * @param \Taskeet\MainBundle\Entity\Media $files
+     */
+    public function removeFile(\Taskeet\MainBundle\Entity\Media $files)
+    {
+        $this->files->removeElement($files);
+    }
+
+    /**
+     * Get files
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getFiles()
+    {
+        return $this->files;
     }
 }
