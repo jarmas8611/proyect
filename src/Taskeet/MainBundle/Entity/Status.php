@@ -44,6 +44,22 @@ class Status
     private $image;
 
     /**
+     * @param \Symfony\Component\HttpFoundation\File\File $image
+     */
+    public function setImage($image)
+    {
+        $this->image = $image;
+    }
+
+    /**
+     * @return \Symfony\Component\HttpFoundation\File\File
+     */
+    public function getImage()
+    {
+        return $this->image;
+    }
+
+    /**
      * @ORM\Column(type="string", length=255, name="image_name")
      *
      * @var string $imageName
@@ -84,25 +100,30 @@ class Status
     }
 
     /**
-     * Set image
+     * Set imageName
      *
-     * @param string $image
+     * @param string $imageName
      * @return Status
      */
-    public function setImage($image)
+    public function setImageName($imageName)
     {
-        $this->image = $image;
+        $this->imageName = $imageName;
 
         return $this;
     }
 
     /**
-     * Get image
+     * Get imageName
      *
      * @return string 
      */
-    public function getImage()
+    public function getImageName()
     {
-        return $this->image;
+        return $this->imageName;
+    }
+
+    public function __toString()
+    {
+        return $this->getName();
     }
 }

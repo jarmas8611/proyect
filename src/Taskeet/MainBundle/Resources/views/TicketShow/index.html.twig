@@ -1,1 +1,21 @@
 {% extends_admingenerated "TaskeetMainBundle:TicketShow:index.html.twig" %}
+{% block object %}
+    <div class="show">
+        <div class="priority"><h4 class="italic">Prioridad {{ Ticket.priority }}</h4></div>
+        <div class="status"><h4 class="italic">Estado {{ Ticket.status }}</h4></div>
+        <h4 class="italic">Duración estimada
+            {% if Ticket.startDate %}desde {{ Ticket.startDate|localizeddate("medium", "medium") }}{% endif %}
+            {% if Ticket.dueDate %}hasta {{ Ticket.dueDate|localizeddate("medium", "medium") }}{% endif %}
+        </h4>
+        <div class="created-by">
+            <h4 class="italic">Creada por </h4>
+            <h4 class="italic color">{{ Ticket.createdBy }}</h4>
+        </div>
+
+        <p>{{ Ticket.description }}</p>
+
+        <div>
+            <h5>Ultima actualizacion realizada por {{ Ticket.updatedBy }} {% if Ticket.updated %} el {{ Ticket.updated|localizeddate("medium", "medium") }}{% endif %}</h5>
+        </div>
+    </div>
+{% endblock %}
