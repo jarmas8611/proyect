@@ -130,7 +130,6 @@ vich_uploader:
             upload_destination: %kernel.root_dir%/../web/files/tickets
             delete_on_remove: true
             delete_on_update: true
-            inject_on_load: true
         status_image:
             uri_prefix: /images/status
             upload_destination: %kernel.root_dir%/../web/images/status

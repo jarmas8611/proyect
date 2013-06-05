@@ -5,16 +5,30 @@ params:
     bundle_name: MainBundle
     i18n_catalog: TaskeetMainBundle
     fields: 
-#        startDate:
-#            formType: \Admingenerator\GeneratorBundle\Form\Type\DatePickerType
-#        dueDate:
-#            formType: \Admingenerator\GeneratorBundle\Form\Type\DatePickerType
-        # files:
-        #     label:            Archivo
-        #     formType:         single_upload
-        #     dbType:           string
-        #     addFormOptions:
-        #       data_class:     Symfony\Component\HttpFoundation\File\File
+        files:
+            label:            Archivos
+            formType:         upload
+            dbType:           collection
+            addFormOptions:
+                nameable:         name
+#                sortable:         position
+                editable:         [ name, description ]
+                type:             \Taskeet\MainBundle\Form\Type\Media\EditType
+                maxNumberOfFiles:           5
+                maxFileSize:                5000000
+                minFileSize:                10
+                acceptFileTypes:            /(\.|\/)(gif|jpe?g|png|doc|docx|pdf|xls|ppt|pptx)$/i
+                previewSourceFileTypes:     /^image\/(gif|jpeg|png)$/
+                previewSourceMaxFileSize:   250000
+                previewMaxWidth:            100
+                previewMaxHeight:           100
+                previewAsCanvas:            true
+                prependFiles:               false
+                allow_add:        true
+                allow_delete:     true
+                error_bubbling:   true
+                options:
+                    data_class:     Taskeet\MainBundle\Entity\Media
 
 builders:
     list:
