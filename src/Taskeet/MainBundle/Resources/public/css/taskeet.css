@@ -128,3 +128,12 @@ header{
     margin-bottom: 20px;
 
 }
+
+.image-list{
+    text-align: right;
+}
+
+.image-list > li:first-child{
+    margin-bottom: 5px;
+    margin-top: 10px;
+}

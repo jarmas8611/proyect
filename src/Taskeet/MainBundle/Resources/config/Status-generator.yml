@@ -34,6 +34,8 @@ builders:
             display: [name, image]
             actions:
                 save: ~
+                save-and-add: ~
+                save-and-list: ~
                 list: ~
     edit:
         params:
@@ -43,14 +45,14 @@ builders:
             actions:
                 save: ~
                 list: ~
-    show:
-        params:
-            title: "Estado \"%object%\"|{ %object%: Status.name }|"
-            credentials: 'hasRole("ROLE_ADMIN") or hasRole("ROLE_JEFE_DPTO")'
-            display: [name]
-            actions:
-                list: ~
-                new: ~
+#    show:
+#        params:
+#            title: "Estado \"%object%\"|{ %object%: Status.name }|"
+#            credentials: 'hasRole("ROLE_ADMIN") or hasRole("ROLE_JEFE_DPTO")'
+#            display: [name]
+#            actions:
+#                list: ~
+#                new: ~
     delete:
         params:
             credentials: 'hasRole("ROLE_SUPER_ADMIN") or hasPermission(object, "OWNER")'

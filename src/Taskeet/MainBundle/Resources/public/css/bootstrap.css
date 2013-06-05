@@ -697,7 +697,10 @@ ol ul {
   margin-bottom: 0;
 }
 li {
-  line-height: 20px;
+    line-height: 20px;
+    list-style-image: none;
+    list-style-position: outside;
+    list-style-type: none;
 }
 ul.unstyled,
 ol.unstyled {

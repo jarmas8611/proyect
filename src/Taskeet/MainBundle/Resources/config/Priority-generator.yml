@@ -18,11 +18,11 @@ builders:
     list:
         params:
             title: Prioridades
-            display: [name]
+            display: [image, name]
             actions:
                 new: ~
             object_actions:
-                show: ~
+#                show: ~
                 edit: ~
                 delete: ~
     filters:
@@ -48,15 +48,15 @@ builders:
                 save-and-add: ~
                 save-and-list: ~
                 list: ~
-                show: ~
-    show:
-        params:
-            title: "You're viewing the object \"%object%\"|{ %object%: Priority.name }|"
-            credentials: 'hasRole("ROLE_ADMIN") or hasRole("ROLE_JEFE_DPTO")'
-            display: [name, image]
-            actions:
-                new: ~
-                list: ~
+#                show: ~
+#    show:
+#        params:
+#            title: "You're viewing the object \"%object%\"|{ %object%: Priority.name }|"
+#            credentials: 'hasRole("ROLE_ADMIN") or hasRole("ROLE_JEFE_DPTO")'
+#            display: [name, image]
+#            actions:
+#                new: ~
+#                list: ~
 #                edit: ~
 
     delete:
