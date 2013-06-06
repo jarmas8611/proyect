@@ -126,9 +126,4 @@ class Status
     {
         return $this->getName();
     }
-
-    public function __toString()
-    {
-        return $this->getName();
-    }
 }

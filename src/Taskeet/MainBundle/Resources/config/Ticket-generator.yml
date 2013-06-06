@@ -35,7 +35,7 @@ builders:
         params:
             title: Tareas
             sort: [created, DESC]
-            display: [status, title, priority, assignedTo, startDate, dueDate, project]
+            display: [status, priority, title, assignedTo, startDate, dueDate, project]
             fields:
                 status:
                     getter: ImageName
