@@ -13,6 +13,8 @@ web/css/*
 web/js/*
 web/uploads/*
 web/media/*
+web/files/*
+web/images/*
 
 # -- Composer -----------------------------------------
 composer.phar

@@ -38,9 +38,7 @@ class Ticket
     private $description;
 
     /**
-     * @var string
-     *
-     * @ORM\Column(name="files", type="string", length=255)
+     * @ORM\OneToMany(targetEntity="Media", mappedBy="ticket", cascade={"persist", "remove", "merge"}, orphanRemoval=true)
      */
     private $files;
 
@@ -120,6 +118,7 @@ class Ticket
      */
     private $status;
 
+
     /**
      * @ORM\Column(type="boolean", nullable=true)
      */
@@ -179,29 +178,6 @@ class Ticket
     public function getDescription()
     {
         return $this->description;
-    }
-
-    /**
-     * Set files
-     *
-     * @param string $files
-     * @return Ticket
-     */
-    public function setFiles($files)
-    {
-        $this->files = $files;
-
-        return $this;
-    }
-
-    /**
-     * Get files
-     *
-     * @return string
-     */
-    public function getFiles()
-    {
-        return $this->files;
     }
 
 
@@ -437,29 +413,6 @@ class Ticket
     }
 
     /**
-     * Set status
-     *
-     * @param \Taskeet\MainBundle\Entity\Status $status
-     * @return Ticket
-     */
-    public function setStatus(\Taskeet\MainBundle\Entity\Status $status = null)
-    {
-        $this->status = $status;
-
-        return $this;
-    }
-
-    /**
-     * Get status
-     *
-     * @return \Taskeet\MainBundle\Entity\Status
-     */
-    public function getStatus()
-    {
-        return $this->status;
-    }
-
-    /**
      * Set done
      *
      * @param bool $done
@@ -483,8 +436,58 @@ class Ticket
         return $this->done;
     }
 
+    public function setStatus($status)
+    {
+        $this->status = $status;
+    }
+
+    public function getStatus()
+    {
+        return $this->status;
+    }
+
     public function __toString()
     {
         return $this->title;
+    }
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->files = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    /**
+     * Add files
+     *
+     * @param \Taskeet\MainBundle\Entity\Media $files
+     * @return Ticket
+     */
+    public function addFile(\Taskeet\MainBundle\Entity\Media $files)
+    {
+        $this->files[] = $files;
+
+        return $this;
+    }
+
+    /**
+     * Remove files
+     *
+     * @param \Taskeet\MainBundle\Entity\Media $files
+     */
+    public function removeFile(\Taskeet\MainBundle\Entity\Media $files)
+    {
+        $this->files->removeElement($files);
+    }
+
+    /**
+     * Get files
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getFiles()
+    {
+        return $this->files;
     }
 }

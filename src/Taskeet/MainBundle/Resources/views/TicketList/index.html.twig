@@ -1,1 +1,4 @@
 {% extends_admingenerated "TaskeetMainBundle:TicketList:index.html.twig" %}
+
+{% block list_td_column_status %}<img src="/images/status/{{ Ticket.status.imageName }}" /> {% endblock %}
+{% block list_td_column_priority %}<img src="/images/priorities/{{ Ticket.priority.imageName }}" /> {% endblock %}

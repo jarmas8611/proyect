@@ -83,7 +83,7 @@ footer p{
 .show .show-name,
 .tickets,
 .members{
-    border-bottom: 1px solid #969696;
+    border-bottom: 1px solid #E5E5E5;
 }
 
 .tickets h3{
@@ -126,5 +126,24 @@ footer p{
 header{
     border-bottom: 1px solid #E5E5E5;
     margin-bottom: 20px;
+
+}
+
+.image-list{
+    text-align: right;
+    vertical-align: top;
+}
+
+.image-list > li:first-child{
+    margin-bottom: 5px;
+    margin-top: 10px;
+}
+
+.image-list ul{
+    margin-left: 0;
+    margin-right: 10px;
+    padding-right: 10px;
+    border-right: 1px solid #E5E5E5;
+
 
 }

@@ -4,17 +4,25 @@ params:
     namespace_prefix: Taskeet
     bundle_name: MainBundle
     i18n_catalog: TaskeetMainBundle
-    fields: ~
+    fields:
+            image:
+                label:            Imagen
+                formType:         single_upload
+                dbType:           string
+                addFormOptions:
+    #                nameable:       imageName
+                    data_class:     Symfony\Component\HttpFoundation\File\File
+                    thumbnailFilter: mini_thumb
 
 builders:
     list:
         params:
             title: Prioridades
-            display: [name]
+            display: [image, name]
             actions:
                 new: ~
             object_actions:
-                show: ~
+#                show: ~
                 edit: ~
                 delete: ~
     filters:
@@ -24,7 +32,7 @@ builders:
         params:
             title: Nueva prioridad
             credentials: 'hasRole("ROLE_ADMIN") or hasRole("ROLE_JEFE_DPTO")'
-            display: [name]
+            display: [name, image]
             actions:
                 save: ~
                 save-and-add: ~
@@ -34,21 +42,21 @@ builders:
         params:
             title: "Editando la prioridad \"%object%\"|{ %object%: Priority.name }|"
             credentials: 'hasRole("ROLE_SUPER_ADMIN") or hasPermission(object, "OPERATOR")'
-            display: [name]
+            display: [name, image]
             actions:
                 save: ~
                 save-and-add: ~
                 save-and-list: ~
                 list: ~
-                show: ~
-    show:
-        params:
-            title: "You're viewing the object \"%object%\"|{ %object%: Priority.name }|"
-            credentials: 'hasRole("ROLE_ADMIN") or hasRole("ROLE_JEFE_DPTO")'
-            display: [name]
-            actions:
-                new: ~
-                list: ~
+#                show: ~
+#    show:
+#        params:
+#            title: "You're viewing the object \"%object%\"|{ %object%: Priority.name }|"
+#            credentials: 'hasRole("ROLE_ADMIN") or hasRole("ROLE_JEFE_DPTO")'
+#            display: [name, image]
+#            actions:
+#                new: ~
+#                list: ~
 #                edit: ~
 
     delete:

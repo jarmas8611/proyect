@@ -697,7 +697,10 @@ ol ul {
   margin-bottom: 0;
 }
 li {
-  line-height: 20px;
+    line-height: 20px;
+    list-style-image: none;
+    list-style-position: outside;
+    list-style-type: none;
 }
 ul.unstyled,
 ol.unstyled {
@@ -2213,9 +2216,9 @@ input[type="button"].btn-block {
 .btn-primary.disabled,
 .btn-primary[disabled] {
   color: #ffffff;
-  background-color: #cc1e21;
-  background-image: linear-gradient(to bottom, #CC1E21, #CC1E21);
-  *background-color: #cc1e21;
+  background-color: #ea262a;
+  background-image: linear-gradient(to bottom, #ea262a, #ea262a);
+  *background-color:#ea262a;
 }
 .btn-primary:active,
 .btn-primary.active {

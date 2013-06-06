@@ -1,6 +1,25 @@
 {% extends_admingenerated "TaskeetMainBundle:TicketShow:index.html.twig" %}
+{% block page_title %}
+    <div class="row-fluid">
+        <div class="span1">
+            <ul class="image-list">
+                <li><img src="/images/priorities/{{ Ticket.priority.imageName }}" /></li>
+                <li><img src="/images/status/{{ Ticket.status.imageName }}" /></li>
+            </ul>
+
+        </div>
+        <div class="span11">
+            <header>
+            <h1>{% trans with {'%object%': Ticket.title,} from "TaskeetMainBundle" %}"%object%"{% endtrans %}</h1>
+            </header>
+        </div>
+    </div>
+
+
+{% endblock %}
+
 {% block object %}
-    <div class="show">
+    <div class="offset1 span11 show">
         <div class="priority"><h4 class="italic">Prioridad {{ Ticket.priority }}</h4></div>
         <div class="status"><h4 class="italic">Estado {{ Ticket.status }}</h4></div>
         <h4 class="italic">Duración estimada
@@ -17,5 +36,14 @@
         <div>
             <h5>Ultima actualizacion realizada por {{ Ticket.updatedBy }} {% if Ticket.updated %} el {{ Ticket.updated|localizeddate("medium", "medium") }}{% endif %}</h5>
         </div>
+    </div>
+{% endblock %}
+
+{% block form_buttons %}
+    <div class=" span12 form-actions">
+        {% block form_actions %}
+            {{ parent() }}
+        {% endblock %}
+
     </div>
 {% endblock %}

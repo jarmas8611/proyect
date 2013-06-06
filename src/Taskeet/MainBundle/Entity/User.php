@@ -28,10 +28,13 @@ class User extends BaseUser
     protected $id;
 
     /**
-     * @ORM\ManyToOne(targetEntity="Department", inversedBy="users")
-     * @ORM\JoinColumn(name="department_id", referencedColumnName="id")
+     * @ORM\ManyToMany(targetEntity="Department")
+     * @ORM\JoinTable(name="users_departments",
+     *      joinColumns={@ORM\JoinColumn(name="user_id", referencedColumnName="id")},
+     *      inverseJoinColumns={@ORM\JoinColumn(name="department_id", referencedColumnName="id")}
+     * )
      */
-    protected $department;
+    protected $departments;
 
     /**
      * @var datetime $created
@@ -86,6 +89,7 @@ class User extends BaseUser
         $this->groups = new \Doctrine\Common\Collections\ArrayCollection();
         $this->projects = new \Doctrine\Common\Collections\ArrayCollection();
         $this->tasks = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->departments = new \Doctrine\Common\Collections\ArrayCollection();
     }
 
     /**
@@ -99,26 +103,36 @@ class User extends BaseUser
     }
 
     /**
-     * Set department
+     * Add departments
      *
-     * @param \Taskeet\MainBundle\Entity\Department $department
+     * @param \Taskeet\MainBundle\Entity\Department $departments
      * @return User
      */
-    public function setDepartment(Department $department = null)
+    public function addDepartment(\Taskeet\MainBundle\Entity\Department $departments)
     {
-        $this->department = $department;
+        $this->departments[] = $departments;
 
         return $this;
     }
 
     /**
-     * Get department
+     * Remove departments
      *
-     * @return \Taskeet\MainBundle\Entity\Department
+     * @param \Taskeet\MainBundle\Entity\Department $departments
      */
-    public function getDepartment()
+    public function removeDepartment(\Taskeet\MainBundle\Entity\Department $departments)
     {
-        return $this->department;
+        $this->departments->removeElement($departments);
+    }
+
+    /**
+     * Get departments
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getDepartments()
+    {
+        return $this->departments;
     }
 
     /**

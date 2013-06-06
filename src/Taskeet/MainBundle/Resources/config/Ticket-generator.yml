@@ -5,23 +5,40 @@ params:
     bundle_name: MainBundle
     i18n_catalog: TaskeetMainBundle
     fields: 
-#        startDate:
-#            formType: \Admingenerator\GeneratorBundle\Form\Type\DatePickerType
-#        dueDate:
-#            formType: \Admingenerator\GeneratorBundle\Form\Type\DatePickerType
-        # files:
-        #     label:            Archivo
-        #     formType:         single_upload
-        #     dbType:           string
-        #     addFormOptions:
-        #       data_class:     Symfony\Component\HttpFoundation\File\File
+        files:
+            label:            Archivos
+            formType:         upload
+            dbType:           collection
+            addFormOptions:
+                nameable:         name
+#                sortable:         position
+                editable:         [ name, description ]
+                type:             \Taskeet\MainBundle\Form\Type\Media\EditType
+                maxNumberOfFiles:           5
+                maxFileSize:                5000000
+                minFileSize:                10
+                acceptFileTypes:            /(\.|\/)(gif|jpe?g|png|doc|docx|pdf|xls|ppt|pptx)$/i
+                previewSourceFileTypes:     /^image\/(gif|jpeg|png)$/
+                previewSourceMaxFileSize:   250000
+                previewMaxWidth:            100
+                previewMaxHeight:           100
+                previewAsCanvas:            true
+                prependFiles:               false
+                allow_add:        true
+                allow_delete:     true
+                error_bubbling:   true
+                options:
+                    data_class:     Taskeet\MainBundle\Entity\Media
 
 builders:
     list:
         params:
             title: Tareas
             sort: [created, DESC]
-            display: [title, priority, assignedTo, startDate, dueDate, project]
+            display: [status, title, priority, assignedTo, startDate, dueDate, project]
+            fields:
+                status:
+                    getter: ImageName
             scopes:
                 group_1:
                     "Todas": ~
@@ -29,6 +46,9 @@ builders:
                         default: true
                         filters:
                             assignedTo: user
+                    "Finalizadas":
+                        filters:
+                            done: true
             actions:
                 new: ~
             object_actions:
@@ -37,7 +57,7 @@ builders:
                 delete: ~
     filters:
         params:
-            display: [title, priority, assignedTo, startDate, dueDate, project]
+            display: [title, status, priority, assignedTo, startDate, dueDate, project]
     new:
         params:
             title: Nueva tarea
@@ -61,7 +81,7 @@ builders:
                      formType: datepicker
                 dueDate:
                      formType: datepicker
-            display: [title, priority, assignedTo, startDate, dueDate, project, description, files]
+            display: [title, priority, assignedTo, startDate, dueDate, status, done, project, description, files]
             actions:
                 save: ~
                 save-and-add: ~

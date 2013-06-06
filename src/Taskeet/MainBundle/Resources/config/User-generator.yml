@@ -26,7 +26,7 @@ builders:
     list:
         params:
             title: Usuarios
-            display: [enabled, username, fullName, department, created]
+            display: [enabled, username, fullName, departments, created]
             actions:
                 new: ~
             object_actions:
@@ -35,7 +35,7 @@ builders:
                 delete: ~
     filters:
         params:
-            display: [enabled, username, department, created]
+            display: [enabled, username, departments, created]
     new:
         params:
             credentials: 'hasRole("ROLE_ADMIN") or hasRole("ROLE_JEFE_DPTO")'
@@ -45,7 +45,7 @@ builders:
                     formType: datepicker
             tabs:
                 "General":
-                    "Datos personales": [firstName, lastName, username, password, email, department, enabled, expiresAt]
+                    "Datos personales": [firstName, lastName, username, password, email, departments, enabled, expiresAt]
                 "Permisos":
                     "Roles": [roles]
                 "Proyectos":
@@ -64,7 +64,7 @@ builders:
                     formType: datepicker
             tabs:
                 "General":
-                    "Datos personales": [firstName, lastName, username, password, email, department, enabled, expired, expiresAt]
+                    "Datos personales": [firstName, lastName, username, password, email, departments, enabled, expired, expiresAt]
                 "Permisos":
                     "Roles": [roles]
                 "Proyectos":
@@ -79,7 +79,7 @@ builders:
         params:
             credentials: 'hasRole("ROLE_ADMIN") or hasRole("ROLE_JEFE_DPTO")'
             title: "%object%|{ %object%: User.username }|"
-            display: [firstName, lastName, username, email, department, enabled, expired, expiresAt, roles, projects, tasks]
+            display: [firstName, lastName, username, email, departments, enabled, expired, expiresAt, roles, projects, tasks]
             actions:
                  new: ~
 #                 edit: ~

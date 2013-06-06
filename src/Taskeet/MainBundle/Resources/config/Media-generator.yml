@@ -1,0 +1,42 @@
+generator: admingenerator.generator.doctrine
+params:
+    model: Taskeet\MainBundle\Entity\Media
+    namespace_prefix: Taskeet
+    bundle_name: MainBundle
+    fields: ~
+
+builders:
+    list:
+        params:
+            title: Archivos
+            display: ~
+            actions:
+                new: ~
+            object_actions:
+                edit: ~
+                delete: ~
+    filters:
+        params:
+            display: ~
+    new:
+        params:
+            title: Nuevo documento
+            display: ~
+            actions:
+                save: ~
+                list: ~
+    edit:
+        params:
+            title: "Editando el archivo \"%object%\"|{ %object%: Media.name }|"
+            display: ~
+            actions:
+                save: ~
+                list: ~
+    show:
+        params:
+            title: "Archivo \"%object%\"|{ %object%: Media.name }|"
+            display: ~
+            actions:
+                list: ~
+                new: ~
+    delete: ~

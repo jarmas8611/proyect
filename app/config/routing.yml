@@ -1,3 +1,8 @@
+TaskeetMainBundle_admin_taskeet_main_bundle_Document:
+    resource: "@TaskeetMainBundle/Controller/Media/"
+    type:     admingenerator
+    prefix:   /media
+
 TaskeetMainBundle_admin_taskeet_main_bundle_status:
     resource: "@TaskeetMainBundle/Controller/Status/"
     type:     admingenerator
