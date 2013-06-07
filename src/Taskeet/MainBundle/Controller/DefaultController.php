@@ -8,6 +8,7 @@ class DefaultController extends Controller
 {
     public function welcomeAction()
     {
-        return $this->render('TaskeetMainBundle:Dashboard:welcome.html.twig', array());
+        return $this->render('TaskeetMainBundle:Dashboard:welcome.html.twig',
+                                array('User' => $this->getUser()));
     }
 }

@@ -23,4 +23,24 @@ class ListController extends BaseListController
             $queryFilter->addCollectionFilter("members", $this->getUser());
         }
     }
+
+    public function miniListAction()
+    {
+        if ($this->get('request')->query->get('page'))
+        {
+            $this->setPage($this->get('request')->query->get('page'));
+        }
+
+        if ($this->get('request')->query->get('sort'))
+        {
+            $this->setSort($this->get('request')->query->get('sort'), $this->get('request')->query->get('order_by','ASC'));
+        }
+
+//        $form = $this->getFilterForm();
+
+        return $this->render('TaskeetMainBundle:ProjectList:miniList.html.twig', $this->getAdditionalRenderParameters() + array(
+            'Projects' => $this->getPager(),
+        ));
+
+    }
 }

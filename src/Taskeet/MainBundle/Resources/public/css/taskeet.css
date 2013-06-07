@@ -69,18 +69,18 @@ footer p{
 }
 
 /*Proyecto*/
-.show .percent {
+.percent {
     color: #00A9E2;
     font-size: 36px;
     line-height: 36px;
     margin: 0;
 }
 
-.show h1{
+h1{
     margin: 0;
 }
 
-.show .show-name,
+.show-name,
 .tickets,
 .members{
     border-bottom: 1px solid #E5E5E5;

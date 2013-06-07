@@ -2,14 +2,21 @@
 
 {% block body %}
     <div class="row-fluid">
-        <div class="span3">
-            <div class="well sidebar-nav">
-                {#{{ knp_menu_render('dashboard') }}#}
-            </div><!--/.well -->
+        <div class="span4">
+            {#<div class="well sidebar-nav">#}
+                {#&#123;&#35;{{ knp_menu_render('dashboard') }}&#35;&#125;#}
+            {#</div><!--/.well -->#}
+            {{ render(controller('TaskeetMainBundle:Ticket/List:miniList', {'Tickets':User.tasks}))}}
+            {#{% for Ticket in User.tasks %}#}
+                {#{{ Ticket.title }}#}
+            {#{% endfor %}#}
         </div><!--/span-->
-        <div id="dashboard-content" class="span9">
-            {% block content %}
-            {% endblock %}
+        <div id="dashboard-content" class="span4">
+            {#{% block content %}#}
+            {#{% endblock %}#}
+        </div><!--/span-->
+        <div class="span4">
+            {{ render(controller('TaskeetMainBundle:Project/List:miniList', {'Projects':User.projects}))}}
         </div><!--/span-->
     </div><!--/row-->
 {% endblock %}

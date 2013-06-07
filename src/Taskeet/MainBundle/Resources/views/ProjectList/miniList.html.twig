@@ -1,0 +1,31 @@
+<div >
+    <h1>En proceso</h1>
+</div>
+<div class="projects">
+    <table>
+        {% for object in Projects %}
+            <tr>
+                <td class="image-list">
+                    <img src="{{ asset('bundles/taskeetmain/img/percent.png') }}">
+                </td>
+                <td>
+                    <div class="show-name project-general">
+                        <h1 class="percent">60%</h1>
+                        <h1>{{ object.name }}</h1>
+                    </div>
+                    {#<h4>{{ 'Startdate'|trans({}, 'TaskeetMainBundle') }}: {% if object.startDate %}{{ object.startDate|localizeddate("medium") }}{% endif %}</h4>#}
+                    <h4>{{ 'Duedate'|trans({}, 'TaskeetMainBundle') }}: {% if object.dueDate %}{{ object.dueDate|localizeddate("medium", "medium") }}{% endif %}</h4>
+                    {#<h4 class="italic">{{ 'Client'|trans({}, 'TaskeetMainBundle') }}:{{ object.client }}</h4>#}
+                    {#<h4 class="color">{{ object.members | length }} {{ 'Members'|trans({}, 'TaskeetMainBundle') }}</h4>#}
+                    {#<h4 class="color">{{ object.departments | length }} {{ 'Departments'|trans({}, 'TaskeetMainBundle') }}</h4>#}
+
+                    {#<h5>{{ 'Created'|trans({}, 'TaskeetMainBundle') }}:{% if object.created %}{{ object.created | localizeddate("medium", "medium") }}{% endif %}</h5>#}
+                </td>
+            </tr>
+
+
+        {% endfor %}
+    </table>
+
+</div>
+

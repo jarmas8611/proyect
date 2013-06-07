@@ -1,0 +1,37 @@
+<div class="show-name">
+    <h1>{{ 'Tickets'|trans({}, 'TaskeetMainBundle') }}</h1>
+</div>
+<div class="tickets">
+    <table>
+        {% for object in Tickets if not  object.done  %}
+            <tr>
+                <td class="image-list">
+                    <ul class="image-list">
+                        <li>
+                            <img src="/images/priorities/{{ object.priority.imageName }}" />
+                        </li>
+                        <li>
+                            <img src="/images/status/{{ object.status.imageName }}" />
+                        </li>
+                    </ul>
+                </td>
+                <td>
+                    <a href="{{ path("Taskeet_MainBundle_Ticket_show", { 'pk': object.id }) }}"><h3>{{ object.title }}</h3></a>
+                    <h4>{{ object.description | truncate(100, true) }}</h4>
+                    <div class="assigned-to">
+                        <h5 class="italic">{{ 'Assignedto'|trans({}, 'TaskeetMainBundle') }}</h5>
+                        <h5 class="italic color">{{ object.assignedTo }}</h5>
+                    </div>
+                    <div class="start-date">
+                        <h5 class="italic">{{ 'Startdate'|trans({}, 'TaskeetMainBundle') }}</h5>
+                        <h5 class="color">{{ object.startDate | localizeddate("medium", "medium") }}</h5>
+                    </div>
+                </td>
+            </tr>
+        {% endfor %}
+    </table>
+
+</div>
+<a class="btn btn-primary" data-action="{{ path("Taskeet_MainBundle_Ticket_new") }}">
+    <i class="icon-white icon-plus"></i> Tarea
+</a>
