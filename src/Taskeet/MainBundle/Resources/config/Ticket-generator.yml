@@ -18,15 +18,15 @@ params:
                 maxFileSize:                5000000
                 minFileSize:                10
                 acceptFileTypes:            /(\.|\/)(gif|jpe?g|png|doc|docx|pdf|xls|ppt|pptx)$/i
-                previewSourceFileTypes:     /^image\/(gif|jpeg|png)$/
-                previewSourceMaxFileSize:   250000
-                previewMaxWidth:            100
-                previewMaxHeight:           100
-                previewAsCanvas:            true
+#                previewSourceFileTypes:     /^image\/(gif|jpeg|png)$/
+#                previewSourceMaxFileSize:   250000
+#                previewMaxWidth:            100
+#                previewMaxHeight:           100
+#                previewAsCanvas:            true
                 prependFiles:               false
                 allow_add:        true
                 allow_delete:     true
-                error_bubbling:   true
+                error_bubbling:   false
                 options:
                     data_class:     Taskeet\MainBundle\Entity\Media
 
@@ -81,7 +81,7 @@ builders:
                      formType: datepicker
                 dueDate:
                      formType: datepicker
-            display: [title, priority, assignedTo, startDate, dueDate, status, done, project, description, files]
+            display: [title, priority, assignedTo, startDate, dueDate, status, done, project, description]
             actions:
                 save: ~
                 save-and-add: ~

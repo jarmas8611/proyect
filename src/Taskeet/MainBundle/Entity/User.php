@@ -313,4 +313,13 @@ class User extends BaseUser
         return sprintf("%s %s", $this->firstName, $this->lastName);
     }
 
+    public function __toString()
+    {
+        $fullName = $this->getFullName();
+        if($fullName === ' ')
+            return $this->username;
+        else
+            return $this->getFullName();
+    }
+
 }

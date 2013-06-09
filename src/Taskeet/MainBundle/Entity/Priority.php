@@ -60,7 +60,7 @@ class Priority
     }
 
     /**
-     * @ORM\Column(type="string", length=255, name="image_name")
+     * @ORM\Column(type="string", length=255, name="image_name", nullable=true)
      *
      * @var string $imageName
      */
