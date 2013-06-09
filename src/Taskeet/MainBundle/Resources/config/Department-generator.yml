@@ -67,7 +67,7 @@ builders:
         params:
             credentials: 'hasRole("ROLE_SUPER_ADMIN") or hasPermission(object, "VIEW")'
             title: "%object%|{ %object%: Department.name }|"
-            display: [name, slug, owner, users]
+            display: [name, owner, users]
             actions:
                 new: ~
                 list: ~
