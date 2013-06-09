@@ -27,19 +27,25 @@ class Group extends BaseGroup
 
     public function __construct()
     {
-        parent::__construct();
+        // parent::__construct();
         // your own logic
+        $this->roles = array();
 
     }
 
     /**
      * Get id
      *
-     * @return integer 
+     * @return integer
      */
     public function getId()
     {
         return $this->id;
+    }
+
+    public function __toString()
+    {
+        return $this->name;
     }
 
 }

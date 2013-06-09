@@ -35,7 +35,7 @@ builders:
                 delete: ~
     filters:
         params:
-            display: [enabled, username, departments, created]
+            display: [enabled, username, departments, groups, created]
     new:
         params:
             credentials: 'hasRole("ROLE_ADMIN") or hasRole("ROLE_JEFE_DPTO")'
@@ -44,7 +44,7 @@ builders:
                 "General":
                     "Datos personales": [firstName, lastName, username, password, email, departments, enabled]
                 "Permisos":
-                    "Roles": [roles]
+                    "Roles": [groups]
                 "Proyectos":
                     "Proyectos": [projects, tasks]
             actions:
@@ -63,7 +63,7 @@ builders:
                 "General":
                     "Datos personales": [firstName, lastName, username, password, email, departments, enabled]
                 "Permisos":
-                    "Roles": [roles]
+                    "Roles": [groups]
                 "Proyectos":
                     "Proyectos": [projects, tasks]
             actions:
@@ -71,7 +71,7 @@ builders:
                 save-and-add: ~
                 save-and-list: ~
                 list: ~
-                show: ~
+                # show: ~
     show:
         params:
             credentials: 'hasRole("ROLE_ADMIN") or hasRole("ROLE_JEFE_DPTO")'

@@ -3,41 +3,60 @@ params:
     model: Taskeet\MainBundle\Entity\Group
     namespace_prefix: Taskeet
     bundle_name: MainBundle
-    fields: ~
+    i18n_catalog: TaskeetMainBundle
+    fields:
+        roles:
+            formType: collection
+            dbType: collection
+            addFormOptions:
+                widget:         table
+                allow_add:      true
+                allow_delete:   true
 
 builders:
     list:
         params:
-            title: List for MainBundle
-            display: ~
+            title: Grupos
+            display: [name]
             actions:
                 new: ~
             object_actions:
+                show: ~
                 edit: ~
                 delete: ~
     filters:
         params:
-            display: ~
+            display: [name]
     new:
         params:
-            title: New object for MainBundle
-            display: ~
+            credentials: 'hasRole("ROLE_ADMIN")'
+            title: Nuevo grupo
+            display: [name, roles]
             actions:
                 save: ~
+                save-and-add: ~
+                save-and-list: ~
                 list: ~
     edit:
         params:
-            title: "You're editing the object \"%object%\"|{ %object%: YourModel.title }|"
-            display: ~
+            credentials: 'hasRole("ROLE_SUPER_ADMIN") or hasPermission(object, "OWNER")'
+            title: "You're editing the object \"%object%\"|{ %object%: Group.name }|"
+            display: [name, roles]
             actions:
                 save: ~
+                save-and-add: ~
+                save-and-list: ~
                 list: ~
+
     show:
         params:
-            title: "You're viewing the object \"%object%\"|{ %object%: YourModel.title }|"
-            display: ~
+            credentials: 'hasRole("ROLE_ADMIN") or hasRole("ROLE_JEFE_DPTO")'
+            title: "%object%|{ %object%: Group.name }|"
+            display: [name, roles]
             actions:
                 new: ~
                 list: ~
 
-    delete: ~
+    delete:
+        params:
+            credentials: 'hasRole("ROLE_SUPER_ADMIN") or hasPermission(object, "OWNER")'

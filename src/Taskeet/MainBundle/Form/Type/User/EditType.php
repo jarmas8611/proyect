@@ -52,6 +52,9 @@ class EditType extends BaseEditType
 
 
 
+           $builder->add('groups', 'double_list', array(  'em' => 'default',  'class' => 'Taskeet\\MainBundle\\Entity\\Group',  'label' => 'Groups',  'help' => NULL,  'translation_domain' => 'TaskeetMainBundle',));
+
+
            $builder->add('projects', 'double_list', array(  'em' => 'default',  'class' => 'Taskeet\\MainBundle\\Entity\\Project',  'label' => 'Projects',  'help' => NULL,  'translation_domain' => 'TaskeetMainBundle',));
 
 

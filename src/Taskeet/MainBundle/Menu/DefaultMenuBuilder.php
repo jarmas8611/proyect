@@ -26,7 +26,11 @@ class DefaultMenuBuilder extends AdmingeneratorMenuBuilder
         {
             if($this->container->get('security.context')->isGranted('ROLE_JEFE_DPTO'))
             {
-                $menu->addChild('Usuarios', array('route' => 'Taskeet_MainBundle_User_list'));
+                $users = $this->addDropdownMenu($menu, 'Usuarios');
+
+                $this->addNavLinkRoute($users, 'Grupos', 'Taskeet_MainBundle_Group_list');
+                $this->addNavLinkRoute($users, 'Usuarios', 'Taskeet_MainBundle_User_list');
+
                 $menu->addChild('Departamentos', array('route' => 'Taskeet_MainBundle_Department_list'));
             }
 
