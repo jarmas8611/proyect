@@ -36,9 +36,6 @@ builders:
             title: Tareas
             sort: [created, DESC]
             display: [status, priority, title, assignedTo, startDate, dueDate, project]
-            fields:
-                status:
-                    getter: ImageName
             scopes:
                 group_1:
                     "Todas": ~
@@ -66,7 +63,7 @@ builders:
                      formType: datepicker
                 dueDate:
                      formType: datepicker
-            display: [title, priority, status, assignedTo, startDate, dueDate, project, description, files]
+            display: [title, priority, status, project, assignedTo, startDate, dueDate, description, files]
             actions:
                 save: ~
                 save-and-add: ~
@@ -81,7 +78,7 @@ builders:
                      formType: datepicker
                 dueDate:
                      formType: datepicker
-            display: [title, priority, assignedTo, startDate, dueDate, status, done, project, description]
+            display: [title, priority, status, done, project, assignedTo, startDate, dueDate, description, files]
             actions:
                 save: ~
                 save-and-add: ~

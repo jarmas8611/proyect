@@ -6,7 +6,6 @@ params:
     i18n_catalog: TaskeetMainBundle
     fields:
         tickets:
-            label: Tareas
             dbType:           collection
             formType:         collection
             addFormOptions:
@@ -16,7 +15,6 @@ params:
                 allow_delete: true
                 by_reference: false
                 options:
-                    label:          Nuevo ticket
                     data_class:     Taskeet\MainBundle\Entity\Ticket
 
 builders:
@@ -52,9 +50,11 @@ builders:
                     formType: datepicker
             tabs:
                 "General":
-                    "NONE": [[name, category, client, startDate, dueDate, description], [tickets]]
+                    "NONE": [name, category, client, startDate, dueDate, description]
                 "Extras":
                     "Otros": [departments, members]
+                "Tareas":
+                    "Tareas": [tickets]
             actions:
                 save: ~
                 save-and-add: ~
@@ -71,9 +71,11 @@ builders:
                     formType: datepicker
             tabs:
                 "General":
-                    "NONE": [name, category, client, startDate, dueDate, description, [tickets]]
+                    "NONE": [name, category, client, startDate, dueDate, description]
                 "Extras":
                     "Otros": [departments, members]
+                "Tareas":
+                    "Tareas": [tickets]
             actions:
                 save: ~
                 save-and-add: ~

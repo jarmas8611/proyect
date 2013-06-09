@@ -1,16 +1,20 @@
 {% extends_admingenerated "TaskeetMainBundle:TicketList:index.html.twig" %}
 
 {% block list_td_column_status %}
-    {% if Ticket.status.imageName %}
-        <img src="/images/status/{{ Ticket.status.imageName }}" />
-    {% else %}
-        {{ Ticket.status.name }}
+    {% if Ticket.status %}
+        {% if Ticket.status.imageName %}
+            <img src="/images/status/{{ Ticket.status.imageName }}" />
+        {% else %}
+            {{ Ticket.status.name }}
+        {% endif %}
     {% endif %}
 {% endblock %}
 {% block list_td_column_priority %}
-    {% if Ticket.priority.imageName %}
-        <img src="/images/priorities/{{ Ticket.priority.imageName }}" />
-    {% else %}
-        {{ Ticket.priority }}
+    {% if Ticket.priority %}
+        {% if Ticket.priority.imageName %}
+            <img src="/images/priorities/{{ Ticket.priority.imageName }}" />
+        {% else %}
+            {{ Ticket.priority }}
+        {% endif %}
     {% endif %}
 {% endblock %}

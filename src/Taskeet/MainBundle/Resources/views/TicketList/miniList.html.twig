@@ -8,10 +8,22 @@
                 <td class="image-list">
                     <ul class="image-list">
                         <li>
-                            <img src="/images/priorities/{{ object.priority.imageName }}" />
+                            {% if object.status %}
+                                {% if object.status.imageName %}
+                                    <img src="/images/status/{{ object.status.imageName }}" />
+                                {% else %}
+                                    {{ object.status.name }}
+                                {% endif %}
+                            {% endif %}
                         </li>
                         <li>
-                            <img src="/images/status/{{ object.status.imageName }}" />
+                            {% if object.priority %}
+                                {% if object.priority.imageName %}
+                                    <img src="/images/priorities/{{ object.priority.imageName }}" />
+                                {% else %}
+                                    {{ object.priority }}
+                                {% endif %}
+                            {% endif %}
                         </li>
                     </ul>
                 </td>
@@ -32,6 +44,6 @@
     </table>
 
 </div>
-<a class="btn btn-primary" data-action="{{ path("Taskeet_MainBundle_Ticket_new") }}">
+<a class="btn btn-primary" href="{{ path("Taskeet_MainBundle_Ticket_new") }}">
     <i class="icon-white icon-plus"></i> Tarea
 </a>

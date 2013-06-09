@@ -77,7 +77,7 @@ class Project
     private $departments;
 
     /**
-     * @ORM\OneToMany(targetEntity="Ticket", mappedBy="project")
+     * @ORM\OneToMany(targetEntity="Ticket", mappedBy="project", cascade = "persist")
      */
     private $tickets;
 
