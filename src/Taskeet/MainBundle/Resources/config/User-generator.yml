@@ -45,7 +45,7 @@ builders:
                     formType: datepicker
             tabs:
                 "General":
-                    "Datos personales": [firstName, lastName, username, password, email, departments, enabled, expiresAt]
+                    "Datos personales": [firstName, lastName, username, password, email, departments, enabled]
                 "Permisos":
                     "Roles": [roles]
                 "Proyectos":
