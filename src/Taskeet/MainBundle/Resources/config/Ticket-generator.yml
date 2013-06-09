@@ -4,7 +4,7 @@ params:
     namespace_prefix: Taskeet
     bundle_name: MainBundle
     i18n_catalog: TaskeetMainBundle
-    fields: 
+    fields:
         files:
             label:            Archivos
             formType:         upload
@@ -54,7 +54,7 @@ builders:
                 delete: ~
     filters:
         params:
-            display: [title, status, priority, assignedTo, startDate, dueDate, project]
+            display: [title, project, status, priority, assignedTo, startDate, dueDate]
     new:
         params:
             title: Nueva tarea
