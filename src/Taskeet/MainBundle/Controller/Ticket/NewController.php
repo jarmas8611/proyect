@@ -27,7 +27,7 @@ class NewController extends BaseNewController
         //si la tarea tiene asignado un empleado se le asigna el perm operator
         if($assignedTo = $Ticket->getAssignedTo())
         {
-            $this->setPermissions($proveedor, $idObjeto, $assignedTo, MaskBuilder::MASK_OPERATOR);
+            $this->setPermissions($proveedor, $idObjeto, $assignedTo, MaskBuilder::MASK_EDIT);
         }
 
 
