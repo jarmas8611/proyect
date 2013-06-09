@@ -48,7 +48,7 @@ class EditType extends BaseEditType
 
 
 
-           $builder->add('roles', 'collection', array(  'allow_add' => true,  'allow_delete' => true,  'by_reference' => true,  'widget' => 'table',  'label' => 'Roles',  'help' => NULL,  'translation_domain' => 'TaskeetMainBundle',));
+           // $builder->add('roles', 'collection', array(  'allow_add' => true,  'allow_delete' => true,  'by_reference' => true,  'widget' => 'table',  'label' => 'Roles',  'help' => NULL,  'translation_domain' => 'TaskeetMainBundle',));
 
 
 
