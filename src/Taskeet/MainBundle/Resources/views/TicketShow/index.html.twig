@@ -3,8 +3,20 @@
     <div class="row-fluid">
         <div class="span1">
             <ul class="image-list">
-                <li><img src="/images/priorities/{{ Ticket.priority.imageName }}" /></li>
-                <li><img src="/images/status/{{ Ticket.status.imageName }}" /></li>
+                <li>
+                    {% if Ticket.status %}
+                        {% if Ticket.status.imageName %}
+                            <img src="/images/status/{{ Ticket.status.imageName }}" />
+                        {% endif %}
+                    {% endif %}
+                </li>
+                <li>
+                    {% if Ticket.priority %}
+                        {% if Ticket.priority.imageName %}
+                            <img src="/images/priorities/{{ Ticket.priority.imageName }}" />
+                        {% endif %}
+                    {% endif %}
+                </li>
             </ul>
 
         </div>
@@ -20,8 +32,22 @@
 
 {% block object %}
     <div class="offset1 span11 show">
-        <div class="priority"><h4 class="italic">Prioridad {{ Ticket.priority }}</h4></div>
-        <div class="status"><h4 class="italic">Estado {{ Ticket.status }}</h4></div>
+        <div class="status">
+            <h4 class="italic">
+                Estado
+                {% if Ticket.status %}
+                   {{ Ticket.status.name }}
+                {% endif %}
+            </h4>
+        </div>
+        <div class="priority">
+            <h4 class="italic">
+                Prioridad
+                {% if Ticket.priority %}
+                    {{ Ticket.priority }}
+                {% endif %}
+            </h4>
+        </div>
         <h4 class="italic">Duración estimada
             {% if Ticket.startDate %}desde {{ Ticket.startDate|localizeddate("medium", "medium") }}{% endif %}
             {% if Ticket.dueDate %}hasta {{ Ticket.dueDate|localizeddate("medium", "medium") }}{% endif %}
@@ -32,6 +58,18 @@
         </div>
 
         <p>{{ Ticket.description }}</p>
+
+        <div class="attach">
+            <img src="{{ asset('bundles/taskeetmain/img/attach.png') }}">
+            {% if Ticket.files %}
+                <ul>
+                    {% for Media in Ticket.files %}
+                       <li><a href="/files/tickets/{{ Media.path}}">{{ Media.name }}</a></li>
+                    {% endfor %}
+                </ul>
+            {% endif %}
+
+        </div>
 
         <div>
             <h5>Ultima actualizacion realizada por {{ Ticket.updatedBy }} {% if Ticket.updated %} el {{ Ticket.updated|localizeddate("medium", "medium") }}{% endif %}</h5>

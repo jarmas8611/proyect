@@ -89,7 +89,7 @@ builders:
         params:
             title: "%object%|{ %object%: Ticket.title }|"
             credentials: 'hasRole("ROLE_SUPER_ADMIN") or hasPermission(object, "VIEW")'
-            display: ~
+            display: [title, priority, status, project, assignedTo, startDate, dueDate, description, files]
             actions:
                 new: ~
                 list: ~

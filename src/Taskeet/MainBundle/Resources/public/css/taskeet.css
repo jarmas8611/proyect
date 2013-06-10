@@ -115,7 +115,7 @@ h1{
 }
 
 /*Ticket*/
-.status{
+.priority{
     margin-left: 40px;
 }
 
@@ -144,6 +144,10 @@ header{
     margin-right: 10px;
     padding-right: 10px;
     border-right: 1px solid #E5E5E5;
+}
 
-
+.attach{
+    border-top: 1px solid #E5E5E5;
+    margin-top: 20px;
+    padding-top: 10px;
 }
