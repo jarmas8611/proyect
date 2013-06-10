@@ -28,7 +28,7 @@ builders:
     edit:
         params:
             title: "Editando el archivo \"%object%\"|{ %object%: Media.name }|"
-            display: ~
+            display: [name, description]
             actions:
                 save: ~
                 list: ~
