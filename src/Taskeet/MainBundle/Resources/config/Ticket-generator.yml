@@ -17,7 +17,7 @@ params:
                 maxNumberOfFiles:           5
                 maxFileSize:                5000000
                 minFileSize:                10
-                acceptFileTypes:            /(\.|\/)(gif|jpe?g|png|doc|docx|pdf|xls|ppt|pptx)$/i
+                acceptFileTypes:            /(\.|\/)(gif|jpe?g|png|txt|doc|docx|pdf|xls|ppt|pptx)$/i
 #                previewSourceFileTypes:     /^image\/(gif|jpeg|png)$/
 #                previewSourceMaxFileSize:   250000
 #                previewMaxWidth:            100
@@ -78,7 +78,19 @@ builders:
                      formType: datepicker
                 dueDate:
                      formType: datepicker
-            display: [title, priority, status, done, project, assignedTo, startDate, dueDate, description, files]
+                title:
+                    credentials: 'hasPermission(object, "OPERATOR")'
+                priority:
+                    credentials: 'hasPermission(object, "OPERATOR")'
+                project:
+                    credentials: 'hasPermission(object, "OPERATOR")'
+                assignedTo:
+                    credentials: 'hasPermission(object, "OPERATOR")'
+                startDate:
+                    credentials: 'hasPermission(object, "OPERATOR")'
+                dueDate:
+                    credentials: 'hasPermission(object, "OPERATOR")'
+            display: [title, priority, status, project, assignedTo, startDate, dueDate, description, done, files]
             actions:
                 save: ~
                 save-and-add: ~

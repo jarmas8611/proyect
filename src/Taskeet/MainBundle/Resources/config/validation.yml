@@ -1,0 +1,6 @@
+Taskeet\MainBundle\Entity\User:
+    properties:
+        email:
+            - Email:
+                message: El correo "{{ value }}" no es una dirección válida.
+                # checkMX: true
