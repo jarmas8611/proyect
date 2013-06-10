@@ -70,7 +70,7 @@ class Media implements FileInterface
     /**
      * Get id
      *
-     * @return integer 
+     * @return integer
      */
     public function getId()
     {
@@ -93,7 +93,7 @@ class Media implements FileInterface
     /**
      * Get name
      *
-     * @return string 
+     * @return string
      */
     public function getName()
     {
@@ -116,7 +116,7 @@ class Media implements FileInterface
     /**
      * Get description
      *
-     * @return string 
+     * @return string
      */
     public function getDescription()
     {
@@ -140,7 +140,7 @@ class Media implements FileInterface
     /**
      * Get path
      *
-     * @return string 
+     * @return string
      */
     public function getPath()
     {
@@ -163,7 +163,7 @@ class Media implements FileInterface
     /**
      * Get position
      *
-     * @return integer 
+     * @return integer
      */
     public function getPosition()
     {
@@ -214,7 +214,8 @@ class Media implements FileInterface
      */
     public function getPreview()
     {
-        return (preg_match('/image\/.*/i', $this->getMimeType()));
+        // return (preg_match('/image\/.*/i', $this->getMimeType()));
+        return false;
     }
 
     /**
@@ -233,7 +234,7 @@ class Media implements FileInterface
     /**
      * Get ticket
      *
-     * @return \Taskeet\MainBundle\Entity\Ticket 
+     * @return \Taskeet\MainBundle\Entity\Ticket
      */
     public function getTicket()
     {
