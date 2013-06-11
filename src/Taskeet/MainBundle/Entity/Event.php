@@ -33,9 +33,7 @@ class Event
     private $title;
 
     /**
-     * @var string
-     *
-     * @ORM\Column(name="type", type="string", length=32)
+     * @ORM\ManyToOne(targetEntity="EventCategory")
      */
     private $type;
 
@@ -59,19 +57,6 @@ class Event
      * @ORM\Column(name="due_date", type="datetime")
      */
     private $dueDate;
-
-//    /**
-//     * @Assert\File(
-//     *     maxSize="1M",
-//     *     mimeTypes={"image/png", "image/jpeg", "image/pjpeg"}
-//     * )
-//     * @Vich\UploadableField(mapping="event_image", fileNameProperty="type")
-//     *
-//     * @var File $image
-//     */
-//    protected $image;
-
-
 
     /**
      * Get id
@@ -104,29 +89,6 @@ class Event
     public function getTitle()
     {
         return $this->title;
-    }
-
-    /**
-     * Set type
-     *
-     * @param string $type
-     * @return Event
-     */
-    public function setType($type)
-    {
-        $this->type = $type;
-    
-        return $this;
-    }
-
-    /**
-     * Get type
-     *
-     * @return string 
-     */
-    public function getType()
-    {
-        return $this->type;
     }
 
     /**
@@ -196,5 +158,28 @@ class Event
     public function getDueDate()
     {
         return $this->dueDate;
+    }
+
+    /**
+     * Set type
+     *
+     * @param \Taskeet\MainBundle\Entity\EventCategory $type
+     * @return Event
+     */
+    public function setType(\Taskeet\MainBundle\Entity\EventCategory $type = null)
+    {
+        $this->type = $type;
+
+        return $this;
+    }
+
+    /**
+     * Get type
+     *
+     * @return \Taskeet\MainBundle\Entity\EventCategory 
+     */
+    public function getType()
+    {
+        return $this->type;
     }
 }

@@ -1,0 +1,59 @@
+generator: admingenerator.generator.doctrine
+params:
+    model: Taskeet\MainBundle\Entity\EventCategory
+    namespace_prefix: Taskeet
+    bundle_name: MainBundle
+    i18n_catalog: TaskeetMainBundle
+    fields:
+        image:
+            label:            Imagen
+            formType:         single_upload
+            dbType:           string
+            addFormOptions:
+#                nameable:       imageName
+                data_class:     Symfony\Component\HttpFoundation\File\File
+                thumbnailFilter: mini_thumb
+
+builders:
+    list:
+        params:
+            title: Tipos de eventos
+            display: [image, name]
+            actions:
+                new: ~
+            object_actions:
+                edit: ~
+                delete: ~
+    filters:
+        params:
+            display: [name]
+    new:
+        params:
+            title: Nuevo tipo de evento
+            credentials: 'hasRole("ROLE_ADMIN")'
+            display: [name, image]
+            actions:
+                save: ~
+                save-and-add: ~
+                save-and-list: ~
+                list: ~
+    edit:
+        params:
+            title: "Editando \"%object%\"|{ %object%: EventCategory.name }|"
+            credentials: 'hasRole("ROLE_SUPER_ADMIN") or hasPermission(object, "OPERATOR")'
+            display: [name, image]
+            actions:
+                save: ~
+                save-and-add: ~
+                save-and-list: ~
+                list: ~
+#    show:
+#        params:
+#            title: "You're viewing the object \"%object%\"|{ %object%: YourModel.title }|"
+#            display: ~
+#            actions:
+#                list: ~
+#                new: ~
+    delete:
+        params:
+            credentials: 'hasRole("ROLE_SUPER_ADMIN") or hasPermission(object, "OWNER")'

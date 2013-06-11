@@ -1,3 +1,8 @@
+TaskeetMainBundle_admin_taskeet_main_bundle_EventCategory:
+    resource: "@TaskeetMainBundle/Controller/EventCategory/"
+    type:     admingenerator
+    prefix:   /event-type
+
 TaskeetMainBundle_admin_taskeet_main_bundle_Document:
     resource: "@TaskeetMainBundle/Controller/Media/"
     type:     admingenerator

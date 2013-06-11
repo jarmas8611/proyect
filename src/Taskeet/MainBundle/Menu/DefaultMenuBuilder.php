@@ -38,7 +38,7 @@ class DefaultMenuBuilder extends AdmingeneratorMenuBuilder
 
             if($this->container->get('security.context')->isGranted('ROLE_JEFE_DPTO'))
             {
-                $this->addNavLinkRoute($projects, 'Categorias', 'Taskeet_MainBundle_Category_list');
+                $this->addNavLinkRoute($projects, 'Categorías', 'Taskeet_MainBundle_Category_list');
                 $this->addNavLinkRoute($projects, 'Prioridades', 'Taskeet_MainBundle_Priority_list');
                 $this->addNavLinkRoute($projects, 'Estados', 'Taskeet_MainBundle_Status_list');
             }
@@ -46,7 +46,15 @@ class DefaultMenuBuilder extends AdmingeneratorMenuBuilder
             $this->addNavLinkRoute($projects, 'Proyectos', 'Taskeet_MainBundle_Project_list');
             $this->addNavLinkRoute($projects, 'Tareas', 'Taskeet_MainBundle_Ticket_list');
 
-            $menu->addChild('Agenda', array('route' => 'Taskeet_MainBundle_Event_list'));
+            $events = $this->addDropdownMenu($menu, 'Agenda');
+
+            $this->addNavLinkRoute($events, 'Calendario', 'taskeet_event_calendar');
+            $this->addNavLinkRoute($events, 'Eventos', 'Taskeet_MainBundle_Event_list');
+
+            if($this->container->get('security.context')->isGranted('ROLE_ADMIN'))
+            {
+                $this->addNavLinkRoute($events, 'Categorías', 'Taskeet_MainBundle_EventCategory_list');
+            }
 
         }
 

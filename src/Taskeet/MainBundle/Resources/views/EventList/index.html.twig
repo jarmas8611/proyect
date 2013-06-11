@@ -1,1 +1,12 @@
 {% extends_admingenerated "TaskeetMainBundle:EventList:index.html.twig" %}
+
+
+{% block list_td_column_type %}
+    {% if Event.type %}
+        {% if Event.type.imageName %}
+            <img src="/images/events/{{ Event.type.imageName }}" />
+        {% else %}
+            {{ Event.type.name }}
+        {% endif %}
+    {% endif %}
+{% endblock %}
