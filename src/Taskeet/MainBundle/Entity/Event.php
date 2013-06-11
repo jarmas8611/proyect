@@ -59,6 +59,12 @@ class Event
     private $dueDate;
 
     /**
+     * @ORM\ManyToOne(targetEntity="User")
+     * @ORM\JoinColumn(name="owner_id", referencedColumnName="id")
+     */
+    private $owner;
+
+    /**
      * Get id
      *
      * @return integer 
@@ -181,5 +187,28 @@ class Event
     public function getType()
     {
         return $this->type;
+    }
+
+    /**
+     * Set owner
+     *
+     * @param \Taskeet\MainBundle\Entity\User $owner
+     * @return Department
+     */
+    public function setOwner(\Taskeet\MainBundle\Entity\User $owner = null)
+    {
+        $this->owner = $owner;
+
+        return $this;
+    }
+
+    /**
+     * Get owner
+     *
+     * @return \Taskeet\MainBundle\Entity\User
+     */
+    public function getOwner()
+    {
+        return $this->owner;
     }
 }
