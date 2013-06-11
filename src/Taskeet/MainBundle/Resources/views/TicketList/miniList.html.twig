@@ -7,24 +7,25 @@
             <tr>
                 <td class="image-list">
                     <ul class="image-list">
-                        <li>
-                            {% if object.status %}
+                        {% if object.status %}
+                            <li>
                                 {% if object.status.imageName %}
                                     <img src="/images/status/{{ object.status.imageName }}" />
                                 {% else %}
                                     {{ object.status.name }}
                                 {% endif %}
-                            {% endif %}
-                        </li>
-                        <li>
-                            {% if object.priority %}
+                            </li>
+                        {% endif %}
+
+                        {% if object.priority %}
+                            <li>
                                 {% if object.priority.imageName %}
                                     <img src="/images/priorities/{{ object.priority.imageName }}" />
                                 {% else %}
                                     {{ object.priority }}
                                 {% endif %}
-                            {% endif %}
-                        </li>
+                            </li>
+                        {% endif %}
                     </ul>
                 </td>
                 <td>

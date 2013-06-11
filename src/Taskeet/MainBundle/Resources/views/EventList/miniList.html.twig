@@ -1,0 +1,39 @@
+<div class="show-name">
+    <h1>{{ 'Events'|trans({}, 'TaskeetMainBundle') }}</h1>
+</div>
+<div class="events">
+    <table>
+        {% for object in Events %}
+            <tr>
+                <td class="image-list">
+                    {% if object.type %}
+                        {#{% if object.status.imageName %}#}
+                        <img src="{{ asset('bundles/taskeetmain/img/attach.png') }}">
+                        {#{% else %}#}
+                            {#{{ object.status.name }}#}
+                        {#{% endif %}#}
+                    {% endif %}
+                </td>
+                <td>
+                    <a href="{{ path("Taskeet_MainBundle_Event_show", { 'pk': object.id }) }}"><h3>{{ object.title }}</h3></a>
+                    {% if object.startDate %}
+                        <div class="start-date">
+                            <h5 class="italic">{{ 'Startdate'|trans({}, 'TaskeetMainBundle') }}</h5>
+                            <h5 class="color">{{ object.startDate | localizeddate("medium", "medium") }}</h5>
+                        </div>
+                    {% endif %}
+                    {% if object.dueDate %}
+                        <div class="start-date">
+                            <h5 class="italic">{{ 'Duedate'|trans({}, 'TaskeetMainBundle') }}</h5>
+                            <h5 class="color">{{ object.dueDate | localizeddate("medium", "medium") }}</h5>
+                        </div>
+                    {% endif %}
+                </td>
+            </tr>
+        {% endfor %}
+    </table>
+
+</div>
+<a class="btn btn-primary" href="{{ path("Taskeet_MainBundle_Event_new") }}">
+    <i class="icon-white icon-plus"></i> Evento
+</a>

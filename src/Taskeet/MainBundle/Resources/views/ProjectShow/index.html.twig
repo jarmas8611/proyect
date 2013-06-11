@@ -46,14 +46,7 @@
     <div class="form-actions span12">
         {% block form_actions %}
 
-            <a class="btn " href="{{ path("Taskeet_MainBundle_Project_list") }}"
-                    ><i class="icon-list-alt"></i> {% trans from "Admingenerator" %}action.generic.list{% endtrans %}</a>
-
-            <a class="btn " href="{{ path("Taskeet_MainBundle_Project_edit", { pk: Project.id }) }}"
-                    ><i class="icon-edit"></i> {% trans from "Admingenerator" %}action.object.edit.label{% endtrans %}</a>
-
-            <a class="btn btn-primary" href="{{ path("Taskeet_MainBundle_Project_new") }}"
-                    ><i class="icon-white icon-plus"></i> {% trans from "Admingenerator" %}action.generic.new{% endtrans %}</a>
+            {{ parent() }}
 
         {% endblock %}
 

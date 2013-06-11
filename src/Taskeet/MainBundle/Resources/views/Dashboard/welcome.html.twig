@@ -3,17 +3,10 @@
 {% block body %}
     <div class="row-fluid">
         <div class="span4">
-            {#<div class="well sidebar-nav">#}
-                {#&#123;&#35;{{ knp_menu_render('dashboard') }}&#35;&#125;#}
-            {#</div><!--/.well -->#}
             {{ render(controller('TaskeetMainBundle:Ticket/List:miniList', {'Tickets':User.tasks}))}}
-            {#{% for Ticket in User.tasks %}#}
-                {#{{ Ticket.title }}#}
-            {#{% endfor %}#}
         </div><!--/span-->
         <div id="dashboard-content" class="span4">
-            {#{% block content %}#}
-            {#{% endblock %}#}
+            {{ render(controller('TaskeetMainBundle:Event/List:miniList'))}}
         </div><!--/span-->
         <div class="span4">
             {{ render(controller('TaskeetMainBundle:Project/List:miniList', {'Projects':User.projects}))}}

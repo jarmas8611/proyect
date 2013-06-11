@@ -43,7 +43,8 @@ builders:
                 list: ~
     edit:
         params:
-            title: "Editando el evento \"%object%\"|{ %object%: YourModel.title }|"
+            credentials: 'hasRole("ROLE_SUPER_ADMIN") or hasPermission(object, "OWNER")'
+            title: "Editando el evento \"%object%\"|{ %object%: Event.title }|"
             fields:
                 startDate:
                      formType: datepicker
@@ -55,14 +56,17 @@ builders:
                 save-and-add: ~
                 save-and-list: ~
                 list: ~
-                show: ~
+#                show: ~
     show:
         params:
-            title: "Evento \"%object%\"|{ %object%: YourModel.title }|"
+            credentials: 'hasRole("ROLE_SUPER_ADMIN") or hasPermission(object, "OWNER")'
+            title: "Evento \"%object%\"|{ %object%: Event.title }|"
             display: [title, type, startDate, dueDate, description]
             actions:
                 new: ~
                 list: ~
 #                edit: ~
 
-    delete: ~
+    delete:
+        params:
+            credentials: 'hasRole("ROLE_SUPER_ADMIN") or hasPermission(object, "OWNER")'
