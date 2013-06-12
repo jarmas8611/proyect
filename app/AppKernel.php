@@ -35,6 +35,7 @@ class AppKernel extends Kernel
             new Vich\UploaderBundle\VichUploaderBundle(),
             new Avalanche\Bundle\ImagineBundle\AvalancheImagineBundle(),
             new ADesigns\CalendarBundle\ADesignsCalendarBundle(),
+            new Ob\HighchartsBundle\ObHighchartsBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {

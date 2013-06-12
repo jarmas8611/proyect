@@ -30,4 +30,14 @@ class ListController extends BaseListController
         ));
 
     }
+
+    protected function buildQuery()
+    {
+        return $this->getDoctrine()
+            ->getManager()
+            ->getRepository('Taskeet\MainBundle\Entity\Event')
+            ->createQueryBuilder('q')
+            ->andWhere('q.owner = :user')
+            ->setParameter(':user', $this->getUser());
+    }
 }
