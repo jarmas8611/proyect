@@ -76,20 +76,18 @@ builders:
             fields:
                 startDate:
                     formType: datepicker
+                    credentials: 'hasPermission(object, "OPERATOR")'
                 dueDate:
                     formType: datepicker
-                # title:
-                #     credentials: 'hasPermission(object, "OPERATOR")'
+                    credentials: 'hasPermission(object, "OPERATOR")'
+                title:
+                    credentials: 'hasPermission(object, "OPERATOR")'
                 priority:
                      credentials: 'hasPermission(object, "OPERATOR")'
                 project:
                      credentials: 'hasPermission(object, "OPERATOR")'
                 assignedTo:
                      credentials: 'hasPermission(object, "OPERATOR")'
-                # startDate:
-                #     credentials: 'hasPermission(object, "OPERATOR")'
-                # dueDate:
-                #     credentials: 'hasPermission(object, "OPERATOR")'
             display: [title, priority, status, project, assignedTo, startDate, dueDate, description, done]
             actions:
                 save: ~
