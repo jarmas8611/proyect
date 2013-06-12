@@ -76,6 +76,11 @@ footer p{
     margin: 0;
 }
 
+.project-name{
+    color: #00A9E2;
+    margin: 0;
+}
+
 h1{
     margin: 0;
 }
@@ -155,4 +160,9 @@ header{
     border-top: 1px solid #E5E5E5;
     margin-top: 20px;
     padding-top: 10px;
+}
+
+/*Chart*/
+#linechart{
+    background: url("../img/bg3.png") repeat scroll 0 0 transparent;
 }
