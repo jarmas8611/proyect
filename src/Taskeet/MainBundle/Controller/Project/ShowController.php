@@ -30,9 +30,12 @@ class ShowController extends BaseShowController
         $data = array();
         foreach ($Project->getTickets() as $task)
         {
-            $data[] = array($task->getStatus()->getName(), +1);
+            if (array_key_exists($task->getStatus()->getName(), $data)) {
+                $data[$task->getStatus()->getName()] = +1;
+            }
+            $data[$task->getStatus()->getName()] = array($task->getStatus()->getName(), +1);
         }
-//        $g = array($data);
+        // $datag = array($data);
         $ob->series(array(array('type' => 'pie','name' => 'Estado de las tareas', 'data' => $data)));
 
         return $this->render('TaskeetMainBundle:ProjectShow:chart.html.twig', $this->getAdditionalRenderParameters($Project) + array(

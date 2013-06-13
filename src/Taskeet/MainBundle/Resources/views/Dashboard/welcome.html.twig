@@ -2,13 +2,13 @@
 
 {% block body %}
     <div class="row-fluid">
-        <div class="span4">
+        <div class="span3">
             {{ render(controller('TaskeetMainBundle:Ticket/List:miniList', {'Tickets':User.tasks}))}}
         </div><!--/span-->
-        <div id="dashboard-content" class="span4">
+        <div id="dashboard-content" class="span3">
             {{ render(controller('TaskeetMainBundle:Event/List:miniList'))}}
         </div><!--/span-->
-        <div class="span4">
+        <div class="span6">
             {{ render(controller('TaskeetMainBundle:Project/List:miniList', {'Projects':User.projects}))}}
             <div id="linechart" style="min-width: 400px; height: 400px; margin: 0 auto"></div>
 
