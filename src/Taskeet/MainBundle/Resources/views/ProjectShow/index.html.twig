@@ -6,7 +6,9 @@
     {#<div class="container">#}
     <div class="show">
         <div class="span4">
-            <div class="span4"><img src="{{ asset('bundles/taskeetmain/img/percent.png') }}"></div>
+            <div class="span4"><img src="{{ asset('bundles/taskeetmain/img/percent.png') }}">
+                {{ render(controller('TaskeetMainBundle:Project/Show:chart', {'pk': Project.id })) }}
+            </div>
             <div class="span8">
                 <div class="show-name project-general">
                     <h1 class="percent">60%</h1>
@@ -52,3 +54,13 @@
 
     </div>
 {% endblock %}
+
+{#{% block javascripts %}#}
+    {#{{ parent() }}#}
+    {#<script src="{{ asset('bundles/obhighcharts/js/highcharts/highcharts.js') }}"></script>#}
+    {#<script src="{{ asset('bundles/obhighcharts/js/highcharts/modules/exporting.js') }}"></script>#}
+    {#<script type="text/javascript">#}
+        {#{{ chart(chart) }}#}
+    {#</script>#}
+
+{#{% endblock javascripts %}#}

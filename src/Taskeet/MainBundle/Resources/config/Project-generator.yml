@@ -53,8 +53,6 @@ builders:
                     "NONE": [name, category, client, startDate, dueDate, description]
                 "Extras":
                     "Otros": [departments, members]
-                "Tareas":
-                    "Tareas": [tickets]
             actions:
                 save: ~
                 save-and-add: ~
@@ -74,8 +72,6 @@ builders:
                     "NONE": [name, category, client, startDate, dueDate, description]
                 "Extras":
                     "Otros": [departments, members]
-                "Tareas":
-                    "Tareas": [tickets]
             actions:
                 save: ~
                 save-and-add: ~
