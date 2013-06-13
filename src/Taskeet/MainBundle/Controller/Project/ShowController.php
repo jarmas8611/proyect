@@ -19,7 +19,7 @@ class ShowController extends BaseShowController
         }
 
         $ob = new Highchart();
-        $ob->chart->renderTo('linechart');
+        $ob->chart->renderTo($Project->getName());
         $ob->title->text($Project->getName());
         $ob->plotOptions->pie(array(
             'allowPointSelect'  => true,
