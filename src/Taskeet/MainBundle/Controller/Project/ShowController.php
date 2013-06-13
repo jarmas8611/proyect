@@ -28,15 +28,26 @@ class ShowController extends BaseShowController
             'showInLegend'  => true
         ));
         $data = array();
+        $datag = array();
         foreach ($Project->getTickets() as $task)
         {
-            if (array_key_exists($task->getStatus()->getName(), $data)) {
+            if(array_key_exists($task->getStatus()->getName(), $data))
+            {
+                $data[$task->getStatus()->getName()] = $data[$task->getStatus()->getName()] + 1;
+            }
+            else
+            {
                 $data[$task->getStatus()->getName()] = +1;
             }
-            $data[$task->getStatus()->getName()] = array($task->getStatus()->getName(), +1);
+
         }
-        // $datag = array($data);
-        $ob->series(array(array('type' => 'pie','name' => 'Estado de las tareas', 'data' => $data)));
+
+        foreach ($data as $key => $value)
+        {
+            $datag[] = array($key, $value);
+        }
+
+        $ob->series(array(array('type' => 'pie','name' => 'Estado de las tareas', 'data' => $datag)));
 
         return $this->render('TaskeetMainBundle:ProjectShow:chart.html.twig', $this->getAdditionalRenderParameters($Project) + array(
             "Project" => $Project, 'chart' => $ob
