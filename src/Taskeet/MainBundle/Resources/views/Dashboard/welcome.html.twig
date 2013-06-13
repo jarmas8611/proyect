@@ -10,18 +10,18 @@
         </div><!--/span-->
         <div class="span6">
             {{ render(controller('TaskeetMainBundle:Project/List:miniList', {'Projects':User.projects}))}}
-            <div id="linechart" style="min-width: 400px; height: 400px; margin: 0 auto"></div>
+            {#<div id="linechart" style="min-width: 400px; height: 400px; margin: 0 auto"></div>#}
 
         </div><!--/span-->
     </div><!--/row-->
 {% endblock %}
 
-{% block javascripts %}
-    {{ parent() }}
-    <script src="{{ asset('bundles/obhighcharts/js/highcharts/highcharts.js') }}"></script>
-    <script src="{{ asset('bundles/obhighcharts/js/highcharts/modules/exporting.js') }}"></script>
-    <script type="text/javascript">
-        {{ chart(chart) }}
-    </script>
+{#{% block javascripts %}#}
+    {#{{ parent() }}#}
+    {#<script src="{{ asset('bundles/obhighcharts/js/highcharts/highcharts.js') }}"></script>#}
+    {#<script src="{{ asset('bundles/obhighcharts/js/highcharts/modules/exporting.js') }}"></script>#}
+    {#<script type="text/javascript">#}
+        {#{{ chart(chart) }}#}
+    {#</script>#}
 
-{% endblock javascripts %}
+{#{% endblock javascripts %}#}
