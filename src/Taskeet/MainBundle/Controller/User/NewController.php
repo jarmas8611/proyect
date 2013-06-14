@@ -18,11 +18,14 @@ class NewController extends BaseNewController
      */
     public function preSave(\Symfony\Component\Form\Form $form, \Taskeet\MainBundle\Entity\User $User)
     {
-        $factory = $this->get('security.encoder_factory');
+        if ($form->get('password')->getData()) {
+            $factory = $this->get('security.encoder_factory');
 
-        $encoder = $factory->getEncoder($User);
-        $password = $encoder->encodePassword($form->get('password')->getData(), $User->getSalt());
-        $User->setPassword($password);
+            $encoder = $factory->getEncoder($User);
+            $password = $encoder->encodePassword($form->get('password')->getData(), $User->getSalt());
+            $User->setPassword($password);
+        }
+
 
         if($this->get('security.context')->isGranted(array(new Expression('not hasRole("ROLE_ADMIN")'))))
         {
