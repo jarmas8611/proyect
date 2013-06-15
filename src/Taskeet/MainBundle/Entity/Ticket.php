@@ -5,6 +5,7 @@ namespace Taskeet\MainBundle\Entity;
 use Gedmo\Mapping\Annotation as Gedmo;
 use Doctrine\ORM\Mapping as ORM;
 use Vich\UploaderBundle\Mapping\Annotation as Vich;
+use FOS\CommentBundle\Entity\Thread as BaseThread;
 
 /**
  * Ticket
@@ -12,7 +13,7 @@ use Vich\UploaderBundle\Mapping\Annotation as Vich;
  * @ORM\Table(name="ticket")
  * @ORM\Entity(repositoryClass="Taskeet\MainBundle\Entity\TicketRepository")
  */
-class Ticket
+class Ticket extends BaseThread
 {
     /**
      * @var integer
@@ -21,7 +22,7 @@ class Ticket
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
      */
-    private $id;
+    protected $id;
 
     /**
      * @var string

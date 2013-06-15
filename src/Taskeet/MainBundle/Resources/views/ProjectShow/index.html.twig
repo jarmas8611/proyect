@@ -24,6 +24,7 @@
             </div>
             <div class="span12">
                 <h4>{{ Project.description }}</h4>
+                {% include 'FOSCommentBundle:Thread:async.html.twig' with {'id': Project.id} %}
             </div>
         </div>
         <div class="span3">

@@ -30,7 +30,7 @@ twig:
 assetic:
     debug:          %kernel.debug%
     use_controller: false
-    bundles:        [ TaskeetMainBundle, AdmingeneratorGeneratorBundle ]
+    bundles:        [ TaskeetMainBundle, AdmingeneratorGeneratorBundle, FOSCommentBundle ]
     #java: /usr/bin/java
     filters:
         cssrewrite: ~
@@ -172,3 +172,18 @@ services:
         class: Twig_Extensions_Extension_Debug
         tags:
             - { name: twig.extension }
+
+a_designs_calendar:   []
+
+fos_comment:
+    db_driver: orm
+    acl: true
+    service:
+        manager:
+            thread:  fos_comment.manager.thread.acl
+            comment: fos_comment.manager.comment.acl
+            vote:    fos_comment.manager.vote.acl
+    class:
+        model:
+            comment: Taskeet\MainBundle\Entity\Comment
+            thread:  Taskeet\MainBundle\Entity\Ticket

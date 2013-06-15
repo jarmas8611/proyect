@@ -39,6 +39,7 @@
         "avalanche123/imagine-bundle": "dev-develop",
         "zendframework/zend-json": "2.1.*@dev",
         "ob/highcharts-bundle": "dev-master",
+        "exercise/htmlpurifier-bundle": "dev-master",
         "friendsofsymfony/comment-bundle": "2.0.*@dev"
     },
     "scripts": {
