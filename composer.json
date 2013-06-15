@@ -38,7 +38,8 @@
         "knplabs/knp-gaufrette-bundle": "dev-master",
         "avalanche123/imagine-bundle": "dev-develop",
         "zendframework/zend-json": "2.1.*@dev",
-        "ob/highcharts-bundle": "dev-master"
+        "ob/highcharts-bundle": "dev-master",
+        "friendsofsymfony/comment-bundle": "2.0.*@dev"
     },
     "scripts": {
         "post-install-cmd": [
