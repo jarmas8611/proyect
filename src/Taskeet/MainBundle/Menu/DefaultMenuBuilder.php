@@ -48,7 +48,7 @@ class DefaultMenuBuilder extends AdmingeneratorMenuBuilder
 
             $events = $this->addDropdownMenu($menu, 'Agenda');
 
-            $this->addNavLinkRoute($events, 'Calendario', 'taskeet_event_calendar');
+//            $this->addNavLinkRoute($events, 'Calendario', 'taskeet_event_calendar');
             $this->addNavLinkRoute($events, 'Eventos', 'Taskeet_MainBundle_Event_list');
 
             if($this->container->get('security.context')->isGranted('ROLE_ADMIN'))
