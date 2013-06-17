@@ -7,6 +7,22 @@ use Ob\HighchartsBundle\Highcharts\Highchart;
 
 class ShowController extends BaseShowController
 {
+    public function indexAction($pk)
+    {
+        $Project = $this->getObject($pk);
+
+        $this->checkCredentials($Project);
+
+
+        if (!$Project) {
+            throw new NotFoundHttpException("The Taskeet\MainBundle\Entity\Project with id $pk can't be found");
+        }
+
+        return $this->render('TaskeetMainBundle:ProjectShow:index.html.twig', $this->getAdditionalRenderParameters($Project) + array(
+            "Project" => $Project
+        ));
+    }
+
     public function chartAction($pk)
     {
         $Project = $this->getObject($pk);

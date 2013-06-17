@@ -28,10 +28,13 @@ class DefaultController extends Controller
         );
         $ob->series(array(array('type' => 'pie','name' => 'Browser share', 'data' => $data)));
 
+        $Events = $this->getDoctrine()->getRepository('TaskeetMainBundle:Event')->findByOwner($this->getUser());
+
         return $this->render('TaskeetMainBundle:Dashboard:welcome.html.twig',
                                 array(
                                     'User' => $this->getUser(),
-                                    'chart' => $ob
+                                    'chart' => $ob,
+                                    'events' => $Events
                                 ));
     }
 }

@@ -3,7 +3,7 @@
         "This file locks the dependencies of your project to a known state",
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file"
     ],
-    "hash": "e9a3f1e0d5bfccd34cdf0d358fe7a725",
+    "hash": "96b9406ab0fe57f88af8ec9e2c8ef02e",
     "packages": [
         {
             "name": "adesigns/calendar-bundle",
@@ -648,12 +648,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/doctrine/dbal.git",
-                "reference": "b18ab96824a38b03227b11ba27c3b48e33f47b86"
+                "reference": "958efa3e2db6fcec72a04aafbf10c1bc603c09fe"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/doctrine/dbal/zipball/b18ab96824a38b03227b11ba27c3b48e33f47b86",
-                "reference": "b18ab96824a38b03227b11ba27c3b48e33f47b86",
+                "url": "https://api.github.com/repos/doctrine/dbal/zipball/958efa3e2db6fcec72a04aafbf10c1bc603c09fe",
+                "reference": "958efa3e2db6fcec72a04aafbf10c1bc603c09fe",
                 "shasum": ""
             },
             "require": {
@@ -710,7 +710,7 @@
                 "persistence",
                 "queryobject"
             ],
-            "time": "2013-06-14 20:41:40"
+            "time": "2013-06-15 21:10:38"
         },
         {
             "name": "doctrine/doctrine-bundle",
@@ -1146,6 +1146,92 @@
                 "orm"
             ],
             "time": "2013-06-14 16:19:43"
+        },
+        {
+            "name": "exercise/htmlpurifier-bundle",
+            "version": "dev-master",
+            "target-dir": "Exercise/HTMLPurifierBundle",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/Exercise/HTMLPurifierBundle.git",
+                "reference": "a7f859215a3946a1d79c049a591bb2503e678196"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/Exercise/HTMLPurifierBundle/zipball/a7f859215a3946a1d79c049a591bb2503e678196",
+                "reference": "a7f859215a3946a1d79c049a591bb2503e678196",
+                "shasum": ""
+            },
+            "require": {
+                "ezyang/htmlpurifier": ">=4.0,<5.0",
+                "php": ">=5.3.2"
+            },
+            "type": "symfony-bundle",
+            "autoload": {
+                "psr-0": {
+                    "Exercise\\HTMLPurifierBundle": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "contributors",
+                    "homepage": "https://github.com/Exercise/HTMLPurifierBundle/contributors"
+                }
+            ],
+            "description": "HTMLPurifier integration for your Symfony2 project",
+            "homepage": "https://github.com/Exercise/HTMLPurifierBundle",
+            "keywords": [
+                "htmlpurifier"
+            ],
+            "time": "2013-03-12 03:06:22"
+        },
+        {
+            "name": "ezyang/htmlpurifier",
+            "version": "v4.5.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/ezyang/htmlpurifier.git",
+                "reference": "v4.5.0"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/ezyang/htmlpurifier/zipball/v4.5.0",
+                "reference": "v4.5.0",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.2"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-0": {
+                    "HTMLPurifier": "library/"
+                },
+                "files": [
+                    "library/HTMLPurifier.composer.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "LGPL"
+            ],
+            "authors": [
+                {
+                    "name": "Edward Z. Yang",
+                    "email": "admin@htmlpurifier.org",
+                    "homepage": "http://ezyang.com"
+                }
+            ],
+            "description": "Standards compliant HTML filter written in PHP",
+            "homepage": "http://htmlpurifier.org/",
+            "keywords": [
+                "html"
+            ],
+            "time": "2013-02-18 00:04:08"
         },
         {
             "name": "friendsofsymfony/comment-bundle",
@@ -4174,6 +4260,7 @@
         "avalanche123/imagine-bundle": 20,
         "zendframework/zend-json": 20,
         "ob/highcharts-bundle": 20,
+        "exercise/htmlpurifier-bundle": 20,
         "friendsofsymfony/comment-bundle": 20
     },
     "platform": {

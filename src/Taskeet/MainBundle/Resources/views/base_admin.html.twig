@@ -47,6 +47,11 @@
         %}
             <link rel="stylesheet" href="{{ asset_url }}" type="text/css" media="all" />
         {% endstylesheets %}
+
+        {% stylesheets '@FOSCommentBundle/Resources/assets/css/comments.css' %}
+            <link rel="stylesheet" href="{{ asset_url }}" type="text/css" />
+        {% endstylesheets %}
+
         {% stylesheets filter='cssrewrite,?yui_css' output='assetic/css/compiled/admingenerator/taskeet.min.css'
             'bundles/taskeetmain/css/bootstrap.css'
             'bundles/taskeetmain/css/taskeet.css'

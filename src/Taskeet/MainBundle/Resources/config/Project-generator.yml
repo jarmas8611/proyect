@@ -84,7 +84,6 @@ builders:
             title: "%object%|{ %object%: Project.name }|"
             display: [name, category, client, startDate, dueDate, description, departments, members, tickets]
             actions:
-                new: ~
                 list: ~
 #                edit: ~
     delete:

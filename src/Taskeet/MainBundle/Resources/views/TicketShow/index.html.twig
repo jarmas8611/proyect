@@ -74,6 +74,7 @@
         <div>
             <h5>Ultima actualizacion realizada por {{ Ticket.updatedBy }} {% if Ticket.updated %} el {{ Ticket.updated|localizeddate("medium", "medium") }}{% endif %}</h5>
         </div>
+        {% include 'FOSCommentBundle:Thread:async.html.twig' with {'id': Ticket.id} %}
     </div>
 {% endblock %}
 

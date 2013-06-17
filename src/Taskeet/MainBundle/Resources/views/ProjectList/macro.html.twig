@@ -7,13 +7,11 @@
         {% for object in Projects %}
             <tr>
                 <td class="image-list">
-                    {#<img src="{{ asset('bundles/taskeetmain/img/percent.png') }}">#}
                     {{ render(controller('TaskeetMainBundle:Project/Show:chart', {'pk': object.id })) }}
-                    <div id="linechart" style="min-width: 400px; height: 400px; margin: 0 auto"></div>
+                    {#<div id="linechart" style="min-width: 200px; height: 200px; margin: 0 auto"></div>#}
                 </td>
                 <td>
                     <div class="show-name project-general">
-                        {#<h1 class="percent">60%</h1>#}
                     <a href="{{ path("Taskeet_MainBundle_Project_show", { 'pk': object.id }) }}"><h1 class="project-name">{{ object.name }}</h1></a>
                     </div>
                     <h4>{{ object.description | truncate(100, true) }}</h4>

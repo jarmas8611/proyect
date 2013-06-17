@@ -456,6 +456,7 @@ class Ticket extends BaseThread
      */
     public function __construct()
     {
+        $this->setPermalink("");
         $this->files = new \Doctrine\Common\Collections\ArrayCollection();
     }
 

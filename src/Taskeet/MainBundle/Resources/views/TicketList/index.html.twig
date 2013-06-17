@@ -3,7 +3,7 @@
 {% block list_td_column_status %}
     {% if Ticket.status %}
         {% if Ticket.status.imageName %}
-            <img src="/images/status/{{ Ticket.status.imageName }}" />
+            <img src="/images/status/{{ Ticket.status.imageName }}" alt="{{ Ticket.status.name }}" data-toggle="tooltip" data-original-title="{{ Ticket.status.name }}" />
         {% else %}
             {{ Ticket.status.name }}
         {% endif %}

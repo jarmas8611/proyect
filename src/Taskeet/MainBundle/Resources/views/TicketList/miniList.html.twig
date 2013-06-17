@@ -10,7 +10,7 @@
                         {% if object.status %}
                             <li>
                                 {% if object.status.imageName %}
-                                    <img src="/images/status/{{ object.status.imageName }}" />
+                                    <img src="/images/status/{{ object.status.imageName }}" alt="{{ object.status.name }}" class="t-status" />
                                 {% else %}
                                     {{ object.status.name }}
                                 {% endif %}

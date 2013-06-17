@@ -28,12 +28,12 @@ class Comment extends BaseComment implements SignedCommentInterface
     protected $id;
 
     /**
-     * Ticket of this comment
+     * Thread of this comment
      *
-     * @var Ticket
+     * @var Thread
      * @ORM\ManyToOne(targetEntity="Taskeet\MainBundle\Entity\Ticket")
      */
-    protected $ticket;
+    protected $thread;
 
     /**
      * Author of the comment
@@ -60,5 +60,15 @@ class Comment extends BaseComment implements SignedCommentInterface
         }
 
         return $this->getAuthor()->getUsername();
+    }
+
+    /**
+     * Get id
+     *
+     * @return integer 
+     */
+    public function getId()
+    {
+        return $this->id;
     }
 }

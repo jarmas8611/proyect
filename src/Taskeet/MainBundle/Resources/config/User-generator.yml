@@ -27,6 +27,13 @@ builders:
         params:
             title: Usuarios
             display: [enabled, username, fullName, departments, created]
+#            scopes:
+#                group_1:
+#                    "Todas": ~
+#                    "En mi Departamento":
+#                        default: true
+#                        filters:
+#                            departments: user.departments
             actions:
                 new: ~
             object_actions:

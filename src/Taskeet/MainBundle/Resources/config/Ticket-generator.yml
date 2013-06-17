@@ -35,7 +35,7 @@ builders:
         params:
             title: Tareas
             sort: [created, DESC]
-            display: [status, priority, title, assignedTo, startDate, dueDate, project]
+            display: [status, priority, title, project, assignedTo, startDate, dueDate]
             scopes:
                 group_1:
                     "Todas": ~
@@ -43,6 +43,9 @@ builders:
                         default: true
                         filters:
                             assignedTo: user
+#                    "Tareas del departamento":
+#                            filters:
+#                                owner.department: user.department
                     "Finalizadas":
                         filters:
                             done: true
@@ -54,7 +57,7 @@ builders:
                 delete: ~
     filters:
         params:
-            display: [title, project, status, priority, assignedTo, startDate, dueDate]
+            display: [title, project, assignedTo, status, priority,  startDate, dueDate]
     new:
         params:
             title: Nueva tarea
@@ -101,9 +104,7 @@ builders:
             credentials: 'hasRole("ROLE_SUPER_ADMIN") or hasPermission(object, "VIEW")'
             display: [title, priority, status, project, assignedTo, startDate, dueDate, description, files]
             actions:
-                new: ~
                 list: ~
-#                edit: ~
 
     delete:
         params:
