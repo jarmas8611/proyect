@@ -1,1 +1,24 @@
 {% extends_admingenerated "TaskeetMainBundle:TicketNew:index.html.twig" %}
+
+
+{% block javascripts %}
+    {{ parent() }}
+    <script>
+        $(function(){
+            $("#new_ticket_project").change(function(){
+                var data = {
+                    project_id: $(this).val()
+                };
+
+                $.ajax({
+                    type: 'post',
+                    url: '{{ path("Taskeet_MainBundle_User_list") }}',
+                    data: data,
+                    success: function(data) {
+                        $('#new_ticket_assignedTo').html(data);
+                    }
+                });
+            });
+        });
+    </script>
+{% endblock %}

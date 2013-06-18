@@ -1,0 +1,10 @@
+shtumi_useful:
+    dependent_filtered_entities:
+        user_by_project:
+            class: TaskeetMainBundle:User
+            parent_property: project
+            property: name
+            role: IS_AUTHENTICATED_ANONYMOUSLY
+            no_result_msg: 'No hay usuarios asignados a este proyecto'
+            order_property: id
+            order_direction: ASC
