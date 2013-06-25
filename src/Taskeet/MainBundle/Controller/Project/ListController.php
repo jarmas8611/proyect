@@ -43,4 +43,14 @@ class ListController extends BaseListController
         ));
 
     }
+
+//    public function getQuery()
+//    {
+//        $departments = $this->getUser()->getDepartments();
+//        foreach ($departments as $value)
+//        {
+//            $filters['departments'] = $this->getDoctrine()->getRepository('TaskeetMainBundle:Project')->findByDepartments($value->getId());
+//        }
+//
+//    }
 }

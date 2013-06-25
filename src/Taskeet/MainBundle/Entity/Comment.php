@@ -13,12 +13,13 @@ use Doctrine\ORM\Mapping as ORM;
 use FOS\CommentBundle\Entity\Comment as BaseComment;
 use FOS\CommentBundle\Model\SignedCommentInterface;
 use Symfony\Component\Security\Core\User\UserInterface;
+use FOS\CommentBundle\Model\RawCommentInterface;
 
 /**
  * @ORM\Entity
  * @ORM\ChangeTrackingPolicy("DEFERRED_EXPLICIT")
  */
-class Comment extends BaseComment implements SignedCommentInterface
+class Comment extends BaseComment implements SignedCommentInterface, RawCommentInterface
 {
     /**
      * @ORM\Id
@@ -43,6 +44,12 @@ class Comment extends BaseComment implements SignedCommentInterface
      */
     protected $author;
 
+    /**
+     * @ORM\Column(name="rawBody", type="text", nullable=true)
+     * @var string
+     */
+    protected $rawBody;
+
     public function setAuthor(UserInterface $author)
     {
         $this->author = $author;
@@ -65,10 +72,30 @@ class Comment extends BaseComment implements SignedCommentInterface
     /**
      * Get id
      *
-     * @return integer 
+     * @return integer
      */
     public function getId()
     {
         return $this->id;
+    }
+
+    /**
+     * Gets the raw processed html.
+     *
+     * @return string
+     */
+    public function getRawBody()
+    {
+        return $this->rawBody;
+    }
+
+    /**
+     * Sets the processed body with raw html.
+     *
+     * @param string $rawBody
+     */
+    public function setRawBody($rawBody)
+    {
+        $this->rawBody = $rawBody;
     }
 }

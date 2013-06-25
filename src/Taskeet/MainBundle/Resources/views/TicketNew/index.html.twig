@@ -12,7 +12,7 @@
 
                 $.ajax({
                     type: 'post',
-                    url: '{{ path("Taskeet_MainBundle_User_list") }}',
+                    url: '{{ path("select_users") }}',
                     data: data,
                     success: function(data) {
                         $('#new_ticket_assignedTo').html(data);

@@ -173,12 +173,17 @@ services:
         tags:
             - { name: twig.extension }
 
+    markup.exercise_html_purifier:
+        class: FOS\CommentBundle\Markup\HtmlPurifier
+        arguments: [ @exercise_html_purifier.default ]
+
 a_designs_calendar:   []
 
 fos_comment:
     db_driver: orm
     acl: true
     service:
+        markup: markup.exercise_html_purifier
         manager:
             thread:  fos_comment.manager.thread.acl
             comment: fos_comment.manager.comment.acl

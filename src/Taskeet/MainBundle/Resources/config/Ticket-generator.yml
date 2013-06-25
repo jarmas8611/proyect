@@ -75,22 +75,22 @@ builders:
     edit:
         params:
             title: "Editando la tarea \"%object%\"|{ %object%: Ticket.title }|"
-            credentials: 'hasRole("ROLE_SUPER_ADMIN") or hasPermission(object, "EDIT")'
+            credentials: 'hasRole("ROLE_SUPER_ADMIN") or hasPermission(object, "OPERATOR")'
             fields:
                 startDate:
                     formType: datepicker
-                    credentials: 'hasPermission(object, "OPERATOR")'
+                    # credentials: 'hasPermission(object, "OPERATOR")'
                 dueDate:
                     formType: datepicker
-                    credentials: 'hasPermission(object, "OPERATOR")'
-                title:
-                    credentials: 'hasPermission(object, "OPERATOR")'
-                priority:
-                     credentials: 'hasPermission(object, "OPERATOR")'
-                project:
-                     credentials: 'hasPermission(object, "OPERATOR")'
-                assignedTo:
-                     credentials: 'hasPermission(object, "OPERATOR")'
+                    # credentials: 'hasPermission(object, "OPERATOR")'
+                # title:
+                #     credentials: 'hasPermission(object, "OPERATOR")'
+                # priority:
+                #      credentials: 'hasPermission(object, "OPERATOR")'
+                # project:
+                #      credentials: 'hasPermission(object, "OPERATOR")'
+                # assignedTo:
+                #      credentials: 'hasPermission(object, "OPERATOR")'
             display: [title, priority, status, project, assignedTo, startDate, dueDate, description, done]
             actions:
                 save: ~

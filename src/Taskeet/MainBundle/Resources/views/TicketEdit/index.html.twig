@@ -1,1 +1,38 @@
 {% extends_admingenerated "TaskeetMainBundle:TicketEdit:index.html.twig" %}
+
+{% block javascripts %}
+    {{ parent() }}
+    <script>
+        $(function(){
+            $("#edit_ticket_project").change(function(){
+                var data = {
+                    project_id: $(this).val()
+                };
+
+                $.ajax({
+                    type: 'post',
+                    url: '{{ path("select_users") }}',
+                    data: data,
+                    success: function(data) {
+                        $('#edit_ticket_assignedTo').html(data);
+                    }
+                });
+            });
+
+            {#$("#location_province").change(function(){#}
+                {#var data = {#}
+                    {#province_id: $(this).val()#}
+                {#};#}
+
+                {#$.ajax({#}
+                    {#type: 'post',#}
+                    {#url: '{{ path("select_cities") }}',#}
+                    {#data: data,#}
+                    {#success: function(data) {#}
+                        {#$('#location_city').html(data);#}
+                    {#}#}
+                {#});#}
+            {#});#}
+        });
+    </script>
+{% endblock %}

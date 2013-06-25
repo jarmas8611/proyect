@@ -56,7 +56,7 @@ class AddProjectFieldSubscriber implements EventSubscriberInterface
             return;
         }
 
-        $project = ($data->getAssignedTo()) ? $data->getAssignedTo()->getProject() : null ;
+        $project = ($data->getProject()) ? $data->getProject() : null ;
         $this->addProjectForm($form, $project);
     }
 

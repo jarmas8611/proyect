@@ -67,7 +67,7 @@ class AddUserFieldSubscriber implements EventSubscriberInterface
             return;
         }
 
-        $project = ($data->getAssignedTo()) ? $data->getAssignedTo()->getProject() : null ;
+        $project = ($data->getProject()) ? $data->getProject() : null ;
         $this->addUserForm($form, $project);
     }
 
