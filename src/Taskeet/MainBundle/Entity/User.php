@@ -28,15 +28,6 @@ class User extends BaseUser
     protected $id;
 
     /**
-     * @ORM\ManyToMany(targetEntity="Department")
-     * @ORM\JoinTable(name="users_departments",
-     *      joinColumns={@ORM\JoinColumn(name="user_id", referencedColumnName="id")},
-     *      inverseJoinColumns={@ORM\JoinColumn(name="department_id", referencedColumnName="id")}
-     * )
-     */
-    protected $departments;
-
-    /**
      * @var datetime $created
      *
      * @Gedmo\Timestampable(on="create")
@@ -81,6 +72,17 @@ class User extends BaseUser
       */
      protected $lastName;
 
+    /**
+     * @ORM\OneToOne(targetEntity="Department", mappedBy="owner")
+     */
+    protected $jefeDpto;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="Department", inversedBy="users")
+     * @ORM\JoinColumn(name="department_id", referencedColumnName="id")
+     */
+    protected $department;
+
     public function __construct()
     {
         parent::__construct();
@@ -89,7 +91,7 @@ class User extends BaseUser
         $this->groups = new \Doctrine\Common\Collections\ArrayCollection();
         $this->projects = new \Doctrine\Common\Collections\ArrayCollection();
         $this->tasks = new \Doctrine\Common\Collections\ArrayCollection();
-        $this->departments = new \Doctrine\Common\Collections\ArrayCollection();
+
     }
 
     /**
@@ -100,39 +102,6 @@ class User extends BaseUser
     public function getId()
     {
         return $this->id;
-    }
-
-    /**
-     * Add departments
-     *
-     * @param \Taskeet\MainBundle\Entity\Department $departments
-     * @return User
-     */
-    public function addDepartment(\Taskeet\MainBundle\Entity\Department $departments)
-    {
-        $this->departments[] = $departments;
-
-        return $this;
-    }
-
-    /**
-     * Remove departments
-     *
-     * @param \Taskeet\MainBundle\Entity\Department $departments
-     */
-    public function removeDepartment(\Taskeet\MainBundle\Entity\Department $departments)
-    {
-        $this->departments->removeElement($departments);
-    }
-
-    /**
-     * Get departments
-     *
-     * @return \Doctrine\Common\Collections\Collection
-     */
-    public function getDepartments()
-    {
-        return $this->departments;
     }
 
     /**
@@ -322,4 +291,49 @@ class User extends BaseUser
             return $this->getFullName();
     }
 
+    /**
+     * Set jefeDpto
+     *
+     * @param \Taskeet\MainBundle\Entity\Department $jefeDpto
+     * @return User
+     */
+    public function setJefeDpto(\Taskeet\MainBundle\Entity\Department $jefeDpto = null)
+    {
+        $this->jefeDpto = $jefeDpto;
+
+        return $this;
+    }
+
+    /**
+     * Get jefeDpto
+     *
+     * @return \Taskeet\MainBundle\Entity\Department 
+     */
+    public function getJefeDpto()
+    {
+        return $this->jefeDpto;
+    }
+
+    /**
+     * Set department
+     *
+     * @param \Taskeet\MainBundle\Entity\Department $department
+     * @return User
+     */
+    public function setDepartment(\Taskeet\MainBundle\Entity\Department $department = null)
+    {
+        $this->department = $department;
+
+        return $this;
+    }
+
+    /**
+     * Get department
+     *
+     * @return \Taskeet\MainBundle\Entity\Department 
+     */
+    public function getDepartment()
+    {
+        return $this->department;
+    }
 }

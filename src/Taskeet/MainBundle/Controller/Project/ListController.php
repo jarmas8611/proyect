@@ -22,6 +22,10 @@ class ListController extends BaseListController
         if (isset($scopes['group_1']) && $scopes['group_1'] == 'Mis proyectos') {
             $queryFilter->addCollectionFilter("members", $this->getUser());
         }
+
+        if (isset($scopes['group_1']) && $scopes['group_1'] == 'Proyectos del departamento') {
+            $queryFilter->addCollectionFilter("departments", $this->getUser()->getDepartment());
+        }
     }
 
     public function miniListAction()

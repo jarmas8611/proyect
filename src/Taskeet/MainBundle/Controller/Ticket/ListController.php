@@ -22,6 +22,15 @@ class ListController extends BaseListController
         if (isset($scopes['group_1']) && $scopes['group_1'] == 'Mis tareas') {
             $queryFilter->addDefaultFilter("assignedTo", $this->getUser());
         }
+
+        if (isset($scopes['group_1']) && $scopes['group_1'] == 'Tareas del departamento') {
+            $query->innerJoin('q.assignedTo', 'u', 'WITH', 'u.department = :dep')
+                ->setParameter('dep', $this->getUser()->getDepartment());
+        }
+
+        if (isset($scopes['group_1']) && $scopes['group_1'] == 'Finalizadas') {
+            $queryFilter->addDefaultFilter("done", true);
+        }
     }
 
     public function miniListAction()

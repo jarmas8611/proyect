@@ -12,11 +12,14 @@ namespace Taskeet\MainBundle\Entity;
 use Gedmo\Mapping\Annotation as Gedmo;
 use Doctrine\ORM\Mapping as ORM;
 use Taskeet\MainBundle\Entity\User;
+use Symfony\Component\Validator\Constraints as Assert;
+//use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 
 /**
  *
  * @ORM\Entity(repositoryClass="Taskeet\MainBundle\Entity\DepartmentRepository")
  * @ORM\Table(name="department")
+ *
  *
  */
 class Department
@@ -34,7 +37,7 @@ class Department
     private $name;
 
     /**
-     * @ORM\ManyToMany(targetEntity="User", cascade={"persist", "remove", "merge"}, orphanRemoval=true)
+     * @ORM\OneToMany(targetEntity="User", mappedBy="department", cascade={"persist", "remove", "merge"}, orphanRemoval=true)
      */
     private $users;
 
@@ -61,7 +64,7 @@ class Department
     private $slug;
 
     /**
-     * @ORM\ManyToOne(targetEntity="User")
+     * @ORM\OneToOne(targetEntity="User", inversedBy="jefeDpto")
      * @ORM\JoinColumn(name="owner_id", referencedColumnName="id")
      */
     private $owner;
@@ -227,29 +230,6 @@ class Department
     }
 
     /**
-     * Set owner
-     *
-     * @param \Taskeet\MainBundle\Entity\User $owner
-     * @return Department
-     */
-    public function setOwner(\Taskeet\MainBundle\Entity\User $owner = null)
-    {
-        $this->owner = $owner;
-    
-        return $this;
-    }
-
-    /**
-     * Get owner
-     *
-     * @return \Taskeet\MainBundle\Entity\User 
-     */
-    public function getOwner()
-    {
-        return $this->owner;
-    }
-
-    /**
      * Add projects
      *
      * @param \Taskeet\MainBundle\Entity\Project $projects
@@ -285,5 +265,46 @@ class Department
     public function __toString()
     {
         return $this->name;
+    }
+
+    /**
+     * Set owner
+     *
+     * @param \Taskeet\MainBundle\Entity\User $owner
+     * @return Department
+     */
+    public function setOwner(\Taskeet\MainBundle\Entity\User $owner = null)
+    {
+        $this->owner = $owner;
+
+        return $this;
+    }
+
+    /**
+     * Get owner
+     *
+     * @return \Taskeet\MainBundle\Entity\User 
+     */
+    public function getOwner()
+    {
+        return $this->owner;
+    }
+
+    /**
+     * Get Tasks
+     *
+     * @return array|\Doctrine\Common\Collections\ArrayCollection
+     */
+    public function getTasks()
+    {
+        $tasks = new \Doctrine\Common\Collections\ArrayCollection();
+        $users = $this->getUsers();
+
+        foreach ($users as $u) {
+            $tasks[] = $u->getTasks();
+        }
+
+        return $tasks;
+
     }
 }

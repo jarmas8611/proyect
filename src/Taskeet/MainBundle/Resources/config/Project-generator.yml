@@ -30,6 +30,9 @@ builders:
                         default: true
                         filters:
                             members: user
+                    "Proyectos del departamento":
+                        filters:
+                            departments: user
             actions:
                 new: ~
             object_actions:

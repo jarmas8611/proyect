@@ -4,9 +4,9 @@ params:
     namespace_prefix: Taskeet
     bundle_name: MainBundle
     i18n_catalog: TaskeetMainBundle
-    fields:
-        users:
-            formType: double_list
+    fields: ~
+#        users:
+#            formType: double_list
 #        users:
 #            label:            Usuarios
 #            dbType:           collection
@@ -42,12 +42,12 @@ builders:
                 delete: ~
     filters:
         params:
-            display: [name, owner]
+            display: [name, owner, users]
     new:
         params:
             credentials: 'hasRole("ROLE_ADMIN")'
             title: Nuevo departamento
-            display: [name, owner, users]
+            display: [name, owner]
             actions:
                 save: ~
                 save-and-add: ~
@@ -57,7 +57,7 @@ builders:
         params:
             credentials: 'hasRole("ROLE_SUPER_ADMIN") or hasPermission(object, "OPERATOR")'
             title: "Editando el departamento \"%object%\"|{ %object%: Department.name }|"
-            display: [name, slug, owner, users]
+            display: [name, slug, owner]
             actions:
                 save: ~
                 save-and-add: ~

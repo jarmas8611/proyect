@@ -126,6 +126,11 @@ class Ticket extends BaseThread
     private $done;
 
     /**
+     * @var $department
+     */
+    private $department;
+
+    /**
      * Get id
      *
      * @return integer
@@ -491,5 +496,15 @@ class Ticket extends BaseThread
     public function getFiles()
     {
         return $this->files;
+    }
+
+    /**
+     * Get Department
+     *
+     * @return \Taskeet\MainBundle\Entity\Department
+     */
+    public function getDepartment()
+    {
+        return $this->getAssignedTo()->getDepartment();
     }
 }

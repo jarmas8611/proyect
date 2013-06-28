@@ -5,6 +5,9 @@ params:
     bundle_name: MainBundle
     i18n_catalog: TaskeetMainBundle
     fields:
+        department:
+            label: Departamento
+            getter: department
         files:
             label:            Archivos
             formType:         upload
@@ -43,9 +46,9 @@ builders:
                         default: true
                         filters:
                             assignedTo: user
-#                    "Tareas del departamento":
-#                            filters:
-#                                owner.department: user.department
+                    "Tareas del departamento":
+                            filters:
+                                department: user.department
                     "Finalizadas":
                         filters:
                             done: true

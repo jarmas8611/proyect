@@ -26,7 +26,7 @@ builders:
     list:
         params:
             title: Usuarios
-            display: [enabled, username, fullName, departments, created]
+            display: [enabled, username, fullName, department, created]
 #            scopes:
 #                group_1:
 #                    "Todas": ~
@@ -42,17 +42,17 @@ builders:
                 delete: ~
     filters:
         params:
-            display: [enabled, username, departments, groups, created]
+            display: [enabled, username, department, groups, created]
     new:
         params:
             credentials: 'hasRole("ROLE_JEFE_DPTO")'
             title: Nuevo usuario
             fields:
-                departments:
+                jefeDpto:
                     credentials: 'hasRole("ROLE_ADMIN")'
             tabs:
                 "General":
-                    "Datos personales": [firstName, lastName, username, password, email, departments, enabled]
+                    "Datos personales": [firstName, lastName, username, password, email, jefeDpto, department, enabled]
                 "Permisos":
                     "Roles": [groups]
                 "Proyectos":
@@ -69,11 +69,11 @@ builders:
             fields:
                 expiresAt:
                     formType: datepicker
-                departments:
+                jefeDpto:
                     credentials: 'hasRole("ROLE_ADMIN")'
             tabs:
                 "General":
-                    "Datos personales": [firstName, lastName, username, password, email, departments, enabled]
+                    "Datos personales": [firstName, lastName, username, password, email, jefeDpto, department, enabled]
                 "Permisos":
                     "Roles": [groups]
                 "Proyectos":
@@ -88,7 +88,7 @@ builders:
         params:
             credentials: 'hasRole("ROLE_ADMIN") or hasRole("ROLE_JEFE_DPTO")'
             title: "%object%|{ %object%: User.username }|"
-            display: [firstName, lastName, username, email, departments, enabled, groups, projects, tasks]
+            display: [firstName, lastName, username, email, jefeDpto, department, enabled, groups, projects, tasks]
             actions:
                  new: ~
 #                 edit: ~
