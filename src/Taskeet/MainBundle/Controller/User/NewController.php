@@ -18,14 +18,11 @@ class NewController extends BaseNewController
      */
     public function preSave(\Symfony\Component\Form\Form $form, \Taskeet\MainBundle\Entity\User $User)
     {
-        $factory = $this->get('security.encoder_factory');
-        $encoder = $factory->getEncoder($User);
+        if ($form->get('password')->getData()) {
+            $factory = $this->get('security.encoder_factory');
+
+            $encoder = $factory->getEncoder($User);
             $password = $encoder->encodePassword($form->get('password')->getData(), $User->getSalt());
-
-        if ($password != $User->getPassword()) {
-            
-
-            
             $User->setPassword($password);
         }
 
