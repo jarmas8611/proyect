@@ -37,7 +37,7 @@ class AddProjectFieldSubscriber implements EventSubscriberInterface
         $form->add($this->factory->createNamed('project', 'entity', $project, array(
             'class'         => 'TaskeetMainBundle:Project',
             'label'         => 'Proyecto',
-            'mapped'        => false,
+            'mapped'        => true,
             'empty_value'   => 'Seleccione un proyecto',
             'query_builder' => function (EntityRepository $repository) {
                 $qb = $repository->createQueryBuilder('project');

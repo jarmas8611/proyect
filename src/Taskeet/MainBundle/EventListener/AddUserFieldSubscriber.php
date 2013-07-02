@@ -43,7 +43,7 @@ class AddUserFieldSubscriber implements EventSubscriberInterface
                 $qb = $repository->createQueryBuilder('user')
                     ->innerJoin('user.projects', 'project');
                 if ($project instanceof Project) {
-                    $qb->where('user.projects = :project')
+                    $qb->where('project = :project')
                         ->setParameter('project', $project);
                 } elseif (is_numeric($project)) {
                     $qb->where('project.id = :project')
