@@ -169,6 +169,20 @@
 
         <script src="{{ asset('bundles/fosjsrouting/js/router.js') }}"></script>
         <script src="{{ path('fos_js_routing_js', {"callback": "fos.Router.setData"}) }}"></script>
+
+        <script type="text/javascript">
+            $('.tooltip-demo').tooltip({
+              selector: "a[data-toggle=tooltip]"
+            })
+
+            $('.td_status').tooltip({
+                selector: "a[data-toggle=tooltip]"
+            })
+
+            $('.td_priority').tooltip({
+                selector: "a[data-toggle=tooltip]"
+            })
+        </script>
     {% endblock %}
 
   </body>

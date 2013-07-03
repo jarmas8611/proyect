@@ -3,7 +3,9 @@
 {% block list_td_column_status %}
     {% if Ticket.status %}
         {% if Ticket.status.imageName %}
-            <img src="/images/status/{{ Ticket.status.imageName }}" alt="{{ Ticket.status.name }}" data-toggle="tooltip" data-original-title="{{ Ticket.status.name }}" />
+            <a href="#" data-toggle="tooltip" title data-original-title="{{ Ticket.status.name }}">
+                <img src="/images/status/{{ Ticket.status.imageName }}" alt="{{ Ticket.status.name }}" data-toggle="tooltip" data-original-title="{{ Ticket.status.name }}" />
+            </a>
         {% else %}
             {{ Ticket.status.name }}
         {% endif %}
@@ -12,7 +14,9 @@
 {% block list_td_column_priority %}
     {% if Ticket.priority %}
         {% if Ticket.priority.imageName %}
-            <img src="/images/priorities/{{ Ticket.priority.imageName }}" />
+            <a href="#" data-toggle="tooltip" title data-original-title="{{ Ticket.priority.name }}">
+                <img src="/images/priorities/{{ Ticket.priority.imageName }}" />
+            </a>
         {% else %}
             {{ Ticket.priority }}
         {% endif %}

@@ -7,11 +7,13 @@
         {% for object in Tickets if not  object.done  %}
             <tr>
                 <td class="image-list">
-                    <ul class="image-list">
+                    <ul class="image-list tooltip-demo">
                         {% if object.status %}
                             <li>
                                 {% if object.status.imageName %}
-                                    <img src="/images/status/{{ object.status.imageName }}" />
+                                    <a href="#" data-toggle="tooltip" title data-original-title="{{ object.status.name }}">
+                                        <img src="/images/status/{{ object.status.imageName }}" />
+                                    </a>
                                 {% else %}
                                     {{ object.status.name }}
                                 {% endif %}
@@ -21,7 +23,9 @@
                         {% if object.priority %}
                             <li>
                                 {% if object.priority.imageName %}
-                                    <img src="/images/priorities/{{ object.priority.imageName }}" />
+                                    <a href="#" data-toggle="tooltip" title data-original-title="{{ object.priority.name }}">
+                                        <img src="/images/priorities/{{ object.priority.imageName }}" />
+                                    </a>
                                 {% else %}
                                     {{ object.priority }}
                                 {% endif %}

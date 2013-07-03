@@ -1,5 +1,5 @@
 {% extends('TaskeetMainBundle::base_admin.html.twig') %}
-{#{% from 'TaskeetMainBundle:TicketList:macro.html.twig' import tlist %}#}
+{% from 'TaskeetMainBundle:TicketList:macro.html.twig' import list as tlist %}
 {% from 'TaskeetMainBundle:ProjectList:macro.html.twig' import list as plist %}
 {% from 'TaskeetMainBundle:EventList:macro.html.twig' import list as elist %}
 
@@ -7,55 +7,7 @@
     <div class="row-fluid">
 
         <div class="span4">
-            <div class="show-name">
-                <h1>{{ 'Tickets'|trans({}, 'TaskeetMainBundle') }}</h1>
-            </div>
-            <div class="tickets">
-                <table>
-                    {% for object in User.tasks if not  object.done  %}
-                        <tr>
-                            <td class="image-list">
-                                <ul class="image-list">
-                                    {% if object.status %}
-                                        <li>
-                                            {% if object.status.imageName %}
-                                                <img src="/images/status/{{ object.status.imageName }}" alt="{{ object.status.name }}" class="t-status" />
-                                            {% else %}
-                                                {{ object.status.name }}
-                                            {% endif %}
-                                        </li>
-                                    {% endif %}
-
-                                    {% if object.priority %}
-                                        <li>
-                                            {% if object.priority.imageName %}
-                                                <img src="/images/priorities/{{ object.priority.imageName }}" />
-                                            {% else %}
-                                                {{ object.priority }}
-                                            {% endif %}
-                                        </li>
-                                    {% endif %}
-                                </ul>
-                            </td>
-                            <td>
-                                <a href="{{ path("Taskeet_MainBundle_Ticket_show", { 'pk': object.id }) }}"><h3>{{ object.title }}</h3></a>
-                                <h4>{{ object.description | truncate(100, true) }}</h4>
-                                <div class="assigned-to">
-                                    <h5 class="italic">{{ 'Assignedto'|trans({}, 'TaskeetMainBundle') }}</h5>
-                                    <h5 class="italic color">{{ object.assignedTo }}</h5>
-                                </div>
-                                <div class="start-date">
-                                    <h5 class="italic">{{ 'Startdate'|trans({}, 'TaskeetMainBundle') }}</h5>
-                                    <h5 class="color">{{ object.startDate | localizeddate("medium", "medium") }}</h5>
-                                </div>
-                            </td>
-                        </tr>
-                    {% else %}
-                        <p>No tiene tareas asignadas</p>
-                    {% endfor %}
-                </table>
-
-            </div>
+            {{ tlist(User.tasks) }}
             <a class="btn btn-primary" href="{{ path("Taskeet_MainBundle_Ticket_new") }}">
                 <i class="icon-white icon-plus"></i> Tarea
             </a>
