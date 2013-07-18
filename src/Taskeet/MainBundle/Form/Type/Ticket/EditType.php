@@ -53,5 +53,8 @@ class EditType extends BaseEditType
         $builder->add('done', 'checkbox', array(  'required' => false,  'label' => 'Done',  'help' => NULL,  'translation_domain' => 'TaskeetMainBundle',));
 
 
+        $builder->add('followers', 'double_list', array(  'em' => 'default',  'class' => 'Taskeet\\MainBundle\\Entity\\User',  'label' => 'Followers',  'help' => NULL,  'translation_domain' => 'TaskeetMainBundle',));
+
+
     }
 }

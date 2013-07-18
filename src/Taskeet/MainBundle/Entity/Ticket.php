@@ -126,6 +126,15 @@ class Ticket extends BaseThread
     private $done;
 
     /**
+     * @ORM\ManyToMany(targetEntity="User")
+     * @ORM\JoinTable(name="followers",
+     *      joinColumns={@ORM\JoinColumn(name="ticket_id", referencedColumnName="id")},
+     *      inverseJoinColumns={@ORM\JoinColumn(name="user_id", referencedColumnName="id")}
+     *      )
+     **/
+    private $followers;
+
+    /**
      * @var $department
      */
     private $department;
@@ -464,6 +473,7 @@ class Ticket extends BaseThread
         $this->setPermalink("");
         $this->startDate = new \DateTime("now");
         $this->files = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->followers = new \Doctrine\Common\Collections\ArrayCollection();
     }
 
     /**
@@ -507,5 +517,38 @@ class Ticket extends BaseThread
     public function getDepartment()
     {
         return $this->getAssignedTo()->getDepartment();
+    }
+
+    /**
+     * Add followers
+     *
+     * @param \Taskeet\MainBundle\Entity\User $followers
+     * @return Ticket
+     */
+    public function addFollower(\Taskeet\MainBundle\Entity\User $followers)
+    {
+        $this->followers[] = $followers;
+
+        return $this;
+    }
+
+    /**
+     * Remove followers
+     *
+     * @param \Taskeet\MainBundle\Entity\User $followers
+     */
+    public function removeFollower(\Taskeet\MainBundle\Entity\User $followers)
+    {
+        $this->followers->removeElement($followers);
+    }
+
+    /**
+     * Get followers
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getFollowers()
+    {
+        return $this->followers;
     }
 }

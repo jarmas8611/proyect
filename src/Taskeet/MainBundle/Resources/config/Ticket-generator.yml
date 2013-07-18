@@ -94,7 +94,7 @@ builders:
                 #      credentials: 'hasPermission(object, "OPERATOR")'
                 # assignedTo:
                 #      credentials: 'hasPermission(object, "OPERATOR")'
-            display: [title, priority, status, project, assignedTo, startDate, dueDate, description, done]
+            display: [title, priority, status, project, assignedTo, startDate, dueDate, description, done, followers]
             actions:
                 save: ~
                 save-and-add: ~
