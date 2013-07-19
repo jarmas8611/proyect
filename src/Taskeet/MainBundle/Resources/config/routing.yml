@@ -9,3 +9,7 @@ taskeet_event_calendar:
 select_users:
     pattern: /users
     defaults: { _controller: TaskeetMainBundle:Default:users }
+
+ticket_clone:
+    pattern: /ticket/clone/{pk}
+    defaults: { _controller: TaskeetMainBundle:Ticket/New:clone }

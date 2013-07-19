@@ -48,4 +48,57 @@ class NewController extends BaseNewController
         //actualizando todos los permisos asignados
         $this->get('security.acl.provider')->updateAcl($acl);
     }
+
+    public function cloneAction($pk)
+    {
+        $Ticket = $this->getObject($pk);
+
+        $clone = $this->getNewObject();
+
+        // $clone = $Ticket;
+
+        $title = $Ticket->getTitle().' '.'clon';
+
+        $clone->setTitle($title);
+
+        $clone->setDescription($Ticket->getDescription());
+
+        // $clone->setFiles($Ticket->getFiles());
+
+        $clone->setStartDate($Ticket->getStartDate());
+
+        $clone->setDueDate($Ticket->getDueDate());
+
+        $clone->setPriority($Ticket->getPriority());
+
+        $clone->setAssignedTo($Ticket->getAssignedTo());
+
+        $clone->setProject($Ticket->getProject());
+
+        $clone->setDone($Ticket->getDone());
+
+        $clone->setStatus($Ticket->getStatus());
+
+        // $this->checkCredentials($Ticket);
+
+
+        if (!$Ticket) {
+            throw new NotFoundHttpException("The Taskeet\MainBundle\Entity\Ticket with id $pk can't be found");
+        }
+
+        $form = $this->createForm($this->getNewType(), $clone);
+
+        return $this->render('TaskeetMainBundle:TicketNew:index.html.twig', $this->getAdditionalRenderParameters($Ticket) + array(
+            "Ticket" => $clone,
+            "form" => $form->createView(),
+        ));
+    }
+
+    protected function getObject($pk)
+    {
+        return $this->getDoctrine()
+                    ->getManager()
+                    ->getRepository('Taskeet\MainBundle\Entity\Ticket')
+                    ->find($pk);
+    }
 }
