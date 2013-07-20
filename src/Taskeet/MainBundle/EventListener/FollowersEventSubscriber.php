@@ -17,11 +17,11 @@ use Taskeet\MainBundle\Entity\Ticket;
 
 class FollowersEventSubscriber implements EventSubscriber
 {
-    private $mailer;
+    private $container;
 
-    public function __construct($mailer)
+    public function __construct($container)
     {
-        $this->mailer = $mailer;
+        $this->container = $container;
     }
 
     public function getSubscribedEvents()
@@ -35,20 +35,28 @@ class FollowersEventSubscriber implements EventSubscriber
     {
         $entity = $args->getEntity();
 
+        $followers = array();
+        foreach ($entity->getFollowers() as $key => $value) {
+            $followers = $value->getEmail();
+        }
+         
+
+        $body = $container('templating')->render(
+                        'TaskeetMainBundle:Default:email.txt.twig',
+                        array(
+                            'entity' => $entity,
+                            'args'   => $args
+                        )
+                    );
 
         if ($entity instanceof Ticket) {
             $message = \Swift_Message::newInstance()
-                ->setSubject('Hello Email')
-                ->setFrom('send@example.com')
-                ->setTo('recipient@example.com')
-                ->setBody(
-                    $this->renderView(
-                        'HelloBundle:Hello:email.txt.twig',
-                        array('name' => $name)
-                    )
-                )
+                ->setSubject("Tarea modificada: $entity->getTitle()")
+                ->setFrom('no-reply@personaltask.com')
+                ->setTo($followers)
+                ->setBody($body)
             ;
-            $mailer->send($message);
+            $container->get('mailer')->send($message);
         }
     }
 

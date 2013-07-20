@@ -179,7 +179,7 @@ services:
 
     followers.notify.subscriber:
         class: Taskeet\MainBundle\EventListener\FollowersEventSubscriber
-        arguments: [ @mailer ]
+        arguments: [ @service_container ]
         tags:
             - { name: doctrine.event_subscriber, connection: default }
 
