@@ -135,6 +135,13 @@ class Ticket extends BaseThread
     private $followers;
 
     /**
+     * @var datetime $reminder
+     *
+     * @ORM\Column(type="datetime")
+     */
+    private $reminder;
+
+    /**
      * @var $department
      */
     private $department;
@@ -550,5 +557,28 @@ class Ticket extends BaseThread
     public function getFollowers()
     {
         return $this->followers;
+    }
+
+    /**
+     * Set reminder
+     *
+     * @param \DateTime $reminder
+     * @return Ticket
+     */
+    public function setReminder($reminder)
+    {
+        $this->reminder = $reminder;
+
+        return $this;
+    }
+
+    /**
+     * Get reminder
+     *
+     * @return \DateTime 
+     */
+    public function getReminder()
+    {
+        return $this->reminder;
     }
 }
