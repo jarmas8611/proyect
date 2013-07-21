@@ -1,0 +1,9 @@
+Recordatorio de la tarea: {{ Ticket.title }}
+
+Fecha de inicio: {{ Ticket.startDate|date() }}
+Fecha de cierre: {{ Ticket.dueDate|date() }}
+
+Proyecto: {{ Ticket.project }}
+
+Descripción:
+{{ Ticket.description }}
