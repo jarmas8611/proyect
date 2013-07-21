@@ -35,22 +35,21 @@ class FollowersEventSubscriber implements EventSubscriber
     {
         $entity = $args->getEntity();
 
-        $followers = array();
-        foreach ($entity->getFollowers() as $key => $value) {
-            $followers[] = $value->getEmail();
-        }
-
-        $changelog = $args->getEntityChangeSet();
-
-        $body = $this->container->get('templating')->render(
-                        'TaskeetMainBundle:Default:email.txt.twig',
-                        array(
-                            'entity' => $entity,
-                            'changelog'   => $changelog
-                        )
-                    );
-
         if ($entity instanceof Ticket) {
+            $followers = array();
+            foreach ($entity->getFollowers() as $key => $value) {
+                $followers[] = $value->getEmail();
+            }
+
+            $changelog = $args->getEntityChangeSet();
+
+            $body = $this->container->get('templating')->render(
+                'TaskeetMainBundle:Default:email.txt.twig',
+                array(
+                    'entity' => $entity,
+                    'changelog'   => $changelog
+                )
+            );
             $message = \Swift_Message::newInstance()
                 ->setSubject("Tarea modificada")
                 ->setFrom('no-reply@personaltask.com')
