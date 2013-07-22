@@ -137,7 +137,7 @@ class Ticket extends BaseThread
     /**
      * @var datetime $reminder
      *
-     * @ORM\Column(type="datetime")
+     * @ORM\Column(type="datetime", nullable=true)
      */
     private $reminder;
 

@@ -64,6 +64,13 @@ class Event
      */
     private $owner;
 
+     /**
+     * @var datetime $reminder
+     *
+     * @ORM\Column(type="datetime", nullable=true)
+     */
+    private $reminder;
+
     /**
      * Get id
      *
@@ -210,5 +217,28 @@ class Event
     public function getOwner()
     {
         return $this->owner;
+    }
+    
+    /**
+     * Set reminder
+     *
+     * @param \DateTime $reminder
+     * @return Event
+     */
+    public function setReminder($reminder)
+    {
+        $this->reminder = $reminder;
+
+        return $this;
+    }
+
+    /**
+     * Get reminder
+     *
+     * @return \DateTime 
+     */
+    public function getReminder()
+    {
+        return $this->reminder;
     }
 }

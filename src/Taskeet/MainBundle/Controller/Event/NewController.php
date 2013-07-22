@@ -6,6 +6,8 @@ use Admingenerated\TaskeetMainBundle\BaseEventController\NewController as BaseNe
 use Symfony\Component\Security\Acl\Domain\ObjectIdentity;
 use Symfony\Component\Security\Acl\Domain\UserSecurityIdentity;
 use Symfony\Component\Security\Acl\Permission\MaskBuilder;
+use DateTime;
+use DateInterval;
 
 class NewController extends BaseNewController
 {
@@ -35,6 +37,14 @@ class NewController extends BaseNewController
     public function preSave(\Symfony\Component\Form\Form $form, \Taskeet\MainBundle\Entity\Event $Event)
     {
         $Event->setOwner($this->getUser());
+
+        if($form->get('remind')->getData())
+        {
+            $date = clone $form->get('startDate')->getData();
+            $date->sub(new DateInterval($form->get('remind')->getData()));
+
+            $Event->setReminder($date);
+        }  
     }
 
     private function setPermissions($proveedor, $object, $user, $mask)
