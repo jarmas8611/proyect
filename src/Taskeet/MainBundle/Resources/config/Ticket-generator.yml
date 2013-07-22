@@ -55,8 +55,8 @@ builders:
             actions:
                 new: ~
             object_actions:
-                edit: ~
                 show: ~
+                edit: ~
                 delete: ~
     filters:
         params:
