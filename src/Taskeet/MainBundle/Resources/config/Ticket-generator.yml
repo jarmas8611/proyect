@@ -65,11 +65,17 @@ builders:
         params:
             title: Nueva tarea
             fields:
+                repeat:
+                    formType: choice
+                    dbType: collection
+                frequency:
+                    formType: text
+                    dbType: text
                 startDate:
-                     formType: datepicker
+                    formType: datepicker
                 dueDate:
-                     formType: datepicker
-            display: [title, priority, status, project, assignedTo, startDate, dueDate, description, files]
+                    formType: datepicker
+            display: [title, priority, status, project, assignedTo, startDate, dueDate, description, files, repeat]
             actions:
                 save: ~
                 save-and-add: ~

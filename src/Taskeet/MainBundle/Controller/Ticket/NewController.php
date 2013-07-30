@@ -50,6 +50,23 @@ class NewController extends BaseNewController
             $this->setPermissions($proveedor, $idObjeto, $assignedTo, MaskBuilder::MASK_EDIT);
         }
 
+        if($data = $form->get('repeat')->getData())
+        {
+            $start = clone $form->get('startDate')->getData();
+            $end = clone $form->get('startDate')->getData();
+            $interval = $form->get('repeat')->getData();
+
+            $periodo = new DatePeriod($start, $interval, $end,
+                \DatePeriod::EXCLUDE_START_DATE);
+
+            foreach ($periodo as $fecha) {
+                $ticket = clone $Ticket;
+                $ticket->setStartDate(new \DateTime($fecha));
+                $this->saveObject($ticket);
+            }
+
+        }
+
 
     }
 
