@@ -8,6 +8,7 @@ use Symfony\Component\Security\Acl\Domain\UserSecurityIdentity;
 use Symfony\Component\Security\Acl\Permission\MaskBuilder;
 use DateTime;
 use DateInterval;
+use DatePeriod;
 
 class NewController extends BaseNewController
 {
@@ -25,6 +26,29 @@ class NewController extends BaseNewController
 
         //poniendo al usuario logueado como owner
         $this->setPermissions($proveedor, $idObjeto, $this->getUser(), MaskBuilder::MASK_OWNER);
+
+        if($data = $form->get('repeat')->getData())
+        {
+            $start = clone $form->get('startDate')->getData();
+            $end = clone $form->get('dueDate')->getData();
+            $ocurrences = $form->get('ocurrences')->getData();
+            $interval = new DateInterval($form->get('repeat')->getData());
+
+            $periodo = new \DatePeriod($start, $interval, $ocurrences,
+                \DatePeriod::EXCLUDE_START_DATE);
+
+            foreach ($periodo as $key => $fecha) {
+                $event = clone $Event;
+                $event->setStartDate($fecha);
+                $event->setTitle(sprintf('%s-%s', $Event->getTitle(), $key));
+                // $event->setSlug(sprintf('%s-%s', $Event->getSlug(), $key));
+                $this->preSave($form, $event);
+                $this->saveObject($event);
+                $idObjeto = ObjectIdentity::fromDomainObject($event);
+                $this->setPermissions($proveedor, $idObjeto, $this->getUser(), MaskBuilder::MASK_OWNER);                
+            }
+
+        }
 
     }
 

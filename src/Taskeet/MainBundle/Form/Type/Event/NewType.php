@@ -56,6 +56,29 @@ class NewType extends BaseNewType
             'required' => false,
         ));
 
+        $builder->add('repeat', 'choice', array(
+            'choices' => array(
+                null => 'Solo este día',
+                'P1D' => 'Repetir diariamente',
+                'P1W'    => 'Repetir semanalmente',
+                'P1M'   => 'Repetir mensualmente',
+                'P1A'  =>  'Repetir anualmente',
+            ),
+            'required' => false,
+            'label' => 'Repeat',
+            'help' => NULL,
+            'translation_domain' => 'TaskeetMainBundle',
+            'mapped'    => false,
+        ));
+
+        $builder->add('ocurrences', 'text', array(
+            'required' => false,
+            'label' => 'Ocurrences',
+            'help' => NULL,
+            'translation_domain' => 'TaskeetMainBundle',
+            'mapped'    => false,
+        ));
+
         
     }
 

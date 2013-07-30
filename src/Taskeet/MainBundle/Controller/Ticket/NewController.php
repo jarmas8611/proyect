@@ -8,6 +8,7 @@ use Symfony\Component\Security\Acl\Domain\UserSecurityIdentity;
 use Symfony\Component\Security\Acl\Permission\MaskBuilder;
 use DateTime;
 use DateInterval;
+use DatePeriod;
 
 class NewController extends BaseNewController
 {
@@ -53,16 +54,25 @@ class NewController extends BaseNewController
         if($data = $form->get('repeat')->getData())
         {
             $start = clone $form->get('startDate')->getData();
-            $end = clone $form->get('startDate')->getData();
-            $interval = $form->get('repeat')->getData();
+            $end = clone $form->get('dueDate')->getData();
+            $interval = new DateInterval($form->get('repeat')->getData());
 
-            $periodo = new DatePeriod($start, $interval, $end,
+            $periodo = new \DatePeriod($start, $interval, $end,
                 \DatePeriod::EXCLUDE_START_DATE);
 
-            foreach ($periodo as $fecha) {
+            $em = $this->getDoctrine()->getManager();
+        
+
+            foreach ($periodo as $key => $fecha) {
                 $ticket = clone $Ticket;
-                $ticket->setStartDate(new \DateTime($fecha));
+                $ticket->setStartDate($fecha);
+                $ticket->setTitle(sprintf('%s-%s', $Ticket->getTitle(), $key));
+                $ticket->setSlug(sprintf('%s-%s', $Ticket->getSlug(), $key));
                 $this->saveObject($ticket);
+                $idObjeto = ObjectIdentity::fromDomainObject($ticket);
+                $this->setPermissions($proveedor, $idObjeto, $this->getUser(), MaskBuilder::MASK_OWNER);
+                $this->setPermissions($proveedor, $idObjeto, $ticket->getAssignedTo(), MaskBuilder::MASK_EDIT);
+                
             }
 
         }
