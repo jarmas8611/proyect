@@ -397,6 +397,7 @@ class Event
 
     }
 
+    /**
      * Get reminder
      *
      * @return \DateTime 
