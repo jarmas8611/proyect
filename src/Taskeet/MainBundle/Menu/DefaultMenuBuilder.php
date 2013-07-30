@@ -24,6 +24,11 @@ class DefaultMenuBuilder extends AdmingeneratorMenuBuilder
 
         if($this->container->get('security.context')->isGranted('IS_AUTHENTICATED_FULLY'))
         {
+            $tasks = $this->addDropdownMenu($menu, 'Tareas');
+
+            $this->addNavLinkRoute($tasks, 'Tareas', 'Taskeet_MainBundle_Ticket_list');
+            $this->addNavLinkRoute($tasks, 'Proyectos', 'Taskeet_MainBundle_Project_list');
+
             if($this->container->get('security.context')->isGranted('ROLE_JEFE_DPTO'))
             {
                 $users = $this->addDropdownMenu($menu, 'Usuarios');
@@ -34,26 +39,22 @@ class DefaultMenuBuilder extends AdmingeneratorMenuBuilder
                 $menu->addChild('Departamentos', array('route' => 'Taskeet_MainBundle_Department_list'));
             }
 
-            $projects = $this->addDropdownMenu($menu, 'Proyectos');
-
-            if($this->container->get('security.context')->isGranted('ROLE_JEFE_DPTO'))
-            {
-                $this->addNavLinkRoute($projects, 'Categorías', 'Taskeet_MainBundle_Category_list');
-                $this->addNavLinkRoute($projects, 'Prioridades', 'Taskeet_MainBundle_Priority_list');
-                $this->addNavLinkRoute($projects, 'Estados', 'Taskeet_MainBundle_Status_list');
-            }
-
-            $this->addNavLinkRoute($projects, 'Proyectos', 'Taskeet_MainBundle_Project_list');
-            $this->addNavLinkRoute($projects, 'Tareas', 'Taskeet_MainBundle_Ticket_list');
-
             $events = $this->addDropdownMenu($menu, 'Agenda');
+            $config = $this->addDropdownMenu($menu, 'Configuración');
 
 //            $this->addNavLinkRoute($events, 'Calendario', 'taskeet_event_calendar');
             $this->addNavLinkRoute($events, 'Eventos', 'Taskeet_MainBundle_Event_list');
 
             if($this->container->get('security.context')->isGranted('ROLE_ADMIN'))
             {
-                $this->addNavLinkRoute($events, 'Categorías', 'Taskeet_MainBundle_EventCategory_list');
+                $this->addNavLinkRoute($config, 'Categorías de eventos', 'Taskeet_MainBundle_EventCategory_list');
+            }
+
+            if($this->container->get('security.context')->isGranted('ROLE_JEFE_DPTO'))
+            {
+                $this->addNavLinkRoute($config, 'Categorías de proyectos', 'Taskeet_MainBundle_Category_list');
+                $this->addNavLinkRoute($config, 'Prioridades', 'Taskeet_MainBundle_Priority_list');
+                $this->addNavLinkRoute($config, 'Estados', 'Taskeet_MainBundle_Status_list');
             }
 
         }

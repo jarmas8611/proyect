@@ -22,3 +22,32 @@
         {% endif %}
     {% endif %}
 {% endblock %}
+
+{% block list_object_actions %}
+    <td class="actions">
+        <div class="btn-group">
+            {% if is_expr_granted('hasRole("ROLE_SUPER_ADMIN") or hasPermission(object, "OPERATOR")', Ticket) %}
+                <button class="btn btn-mini" data-action="{{ path("Taskeet_MainBundle_Ticket_edit", { 'pk': Ticket.id }) }}"rel="tooltip" data-original-title="{% trans from "Admingenerator" %}action.object.edit.label{% endtrans %}">
+                    <i class="icon-edit"></i>
+                </button>
+            {% endif %}
+
+            {% if is_expr_granted('hasRole("ROLE_SUPER_ADMIN") or hasPermission(object, "VIEW")', Ticket) %}
+                <button class="btn btn-mini" data-action="{{ path("Taskeet_MainBundle_Ticket_show", { 'pk': Ticket.id }) }}"rel="tooltip" data-original-title="{% trans from "Admingenerator" %}action.object.show.label{% endtrans %}">
+                    <i class="icon-eye-open"></i>
+                </button>
+            {% endif %}
+                                            
+            <button class="btn btn-mini" data-action="{{ path("ticket_clone", { 'pk': Ticket.id }) }}"rel="tooltip" data-original-title="{% trans from "Admingenerator" %}Clonar{% endtrans %}">
+                <i class="icon-share"></i>
+            </button>
+
+            {% if is_expr_granted('hasRole("ROLE_SUPER_ADMIN") or hasPermission(object, "OPERATOR")', Ticket) %}
+                
+                <button class="btn btn-mini" data-action="{{ path("Taskeet_MainBundle_Ticket_delete", { 'pk': Ticket.id }) }}" data-confirm="{% trans from "Admingenerator" %}action.object.delete.confirm{% endtrans %}"  data-csrf-token="{{ path("Taskeet_MainBundle_Ticket_delete", { 'pk': Ticket.id })|csrf_token }}" rel="tooltip" data-original-title="{% trans from "Admingenerator" %}action.object.delete.label{% endtrans %}">
+                        <i class="icon-remove"></i>
+                </button>
+            {% endif %}
+        </div>
+    </td>
+{% endblock %}

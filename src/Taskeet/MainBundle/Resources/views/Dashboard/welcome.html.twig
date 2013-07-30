@@ -9,20 +9,14 @@
 
         <div class="span4">
             {{ tlist(User.tasks) }}
-            <a class="btn btn-primary" href="{{ path("Taskeet_MainBundle_Ticket_new") }}">
-                <i class="icon-white icon-plus"></i> Tarea
-            </a>
         </div><!--/span-->
-        <div id="dashboard-content" class="span3">
-            {#{{ render(controller('TaskeetMainBundle:Event/List:miniList'))}}#}
+
+        <div id="dashboard-content" class="span4">
             {{ elist(events) }}
         </div><!--/span-->
 
         <div class="span4">
-            {#{{ render(controller('TaskeetMainBundle:Project/List:miniList', {'Projects':User.projects}))}}#}
             {{ plist(User.projects) }}
-            {#<div id="linechart" style="min-width: 400px; height: 400px; margin: 0 auto"></div>#}
-
         </div><!--/span-->
     </div><!--/row-->
 {% endblock %}

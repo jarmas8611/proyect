@@ -64,6 +64,13 @@ class Event
      */
     private $owner;
 
+     /**
+     * @var datetime $reminder
+     *
+     * @ORM\Column(type="datetime", nullable=true)
+     */
+    private $reminder;
+
     /**
      * @ORM\Column(name="all_day", type="boolean")
      */
@@ -365,6 +372,19 @@ class Event
 
         return $this;
     }
+    
+    /**
+     * Set reminder
+     *
+     * @param \DateTime $reminder
+     * @return Event
+     */
+    public function setReminder($reminder)
+    {
+        $this->reminder = $reminder;
+
+        return $this;
+    }
 
     /**
      * Get url
@@ -374,5 +394,15 @@ class Event
     public function getUrl()
     {
         return $this->url;
+
+    }
+
+     * Get reminder
+     *
+     * @return \DateTime 
+     */
+    public function getReminder()
+    {
+        return $this->reminder;
     }
 }

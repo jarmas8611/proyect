@@ -6,9 +6,29 @@ use Admingenerated\TaskeetMainBundle\BaseTicketController\NewController as BaseN
 use Symfony\Component\Security\Acl\Domain\ObjectIdentity;
 use Symfony\Component\Security\Acl\Domain\UserSecurityIdentity;
 use Symfony\Component\Security\Acl\Permission\MaskBuilder;
+use DateTime;
+use DateInterval;
 
 class NewController extends BaseNewController
 {
+    /**
+     * This method is here to make your life better, so overwrite  it
+     *
+     * @param \Symfony\Component\Form\Form $form the valid form
+     * @param \Taskeet\MainBundle\Entity\Ticket $Ticket your \Taskeet\MainBundle\Entity\Ticket object
+     */
+    public function preSave(\Symfony\Component\Form\Form $form, \Taskeet\MainBundle\Entity\Ticket $Ticket)
+    {
+        if($form->get('remind')->getData())
+        {
+            $date = clone $form->get('startDate')->getData();
+            $date->sub(new DateInterval($form->get('remind')->getData()));
+
+            $Ticket->setReminder($date);
+        }     
+
+    }
+
     /**
      * This method is here to make your life better, so overwrite  it
      *
@@ -47,5 +67,58 @@ class NewController extends BaseNewController
 
         //actualizando todos los permisos asignados
         $this->get('security.acl.provider')->updateAcl($acl);
+    }
+
+    public function cloneAction($pk)
+    {
+        $Ticket = $this->getObject($pk);
+
+        $clone = $this->getNewObject();
+
+        // $clone = $Ticket;
+
+        $title = $Ticket->getTitle().' '.'clon';
+
+        $clone->setTitle($title);
+
+        $clone->setDescription($Ticket->getDescription());
+
+        // $clone->setFiles($Ticket->getFiles());
+
+        $clone->setStartDate($Ticket->getStartDate());
+
+        $clone->setDueDate($Ticket->getDueDate());
+
+        $clone->setPriority($Ticket->getPriority());
+
+        $clone->setAssignedTo($Ticket->getAssignedTo());
+
+        $clone->setProject($Ticket->getProject());
+
+        $clone->setDone($Ticket->getDone());
+
+        $clone->setStatus($Ticket->getStatus());
+
+        // $this->checkCredentials($Ticket);
+
+
+        if (!$Ticket) {
+            throw new NotFoundHttpException("The Taskeet\MainBundle\Entity\Ticket with id $pk can't be found");
+        }
+
+        $form = $this->createForm($this->getNewType(), $clone);
+
+        return $this->render('TaskeetMainBundle:TicketNew:index.html.twig', $this->getAdditionalRenderParameters($Ticket) + array(
+            "Ticket" => $clone,
+            "form" => $form->createView(),
+        ));
+    }
+
+    protected function getObject($pk)
+    {
+        return $this->getDoctrine()
+                    ->getManager()
+                    ->getRepository('Taskeet\MainBundle\Entity\Ticket')
+                    ->find($pk);
     }
 }
