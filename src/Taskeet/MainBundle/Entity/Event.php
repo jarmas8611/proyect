@@ -65,6 +65,12 @@ class Event
     private $owner;
 
     /**
+     * @ORM\Column(name="all_day", type="boolean")
+     */
+    protected $allDay = false;
+
+
+    /**
      * Get id
      *
      * @return integer 
@@ -210,5 +216,163 @@ class Event
     public function getOwner()
     {
         return $this->owner;
+    }
+
+    /**
+     * Set bgColor
+     *
+     * @param string $bgColor
+     * @return Event
+     */
+    public function setBgColor($bgColor)
+    {
+        $this->bgColor = $bgColor;
+
+        return $this;
+    }
+
+    /**
+     * Get bgColor
+     *
+     * @return string 
+     */
+    public function getBgColor()
+    {
+        return $this->bgColor;
+    }
+
+    /**
+     * Set fgColor
+     *
+     * @param string $fgColor
+     * @return Event
+     */
+    public function setFgColor($fgColor)
+    {
+        $this->fgColor = $fgColor;
+
+        return $this;
+    }
+
+    /**
+     * Get fgColor
+     *
+     * @return string 
+     */
+    public function getFgColor()
+    {
+        return $this->fgColor;
+    }
+
+    /**
+     * Set cssClass
+     *
+     * @param string $cssClass
+     * @return Event
+     */
+    public function setCssClass($cssClass)
+    {
+        $this->cssClass = $cssClass;
+
+        return $this;
+    }
+
+    /**
+     * Get cssClass
+     *
+     * @return string 
+     */
+    public function getCssClass()
+    {
+        return $this->cssClass;
+    }
+
+    /**
+     * Set allDay
+     *
+     * @param boolean $allDay
+     * @return Event
+     */
+    public function setAllDay($allDay)
+    {
+        $this->allDay = $allDay;
+
+        return $this;
+    }
+
+    /**
+     * Get allDay
+     *
+     * @return boolean 
+     */
+    public function getAllDay()
+    {
+        return $this->allDay;
+    }
+
+    /**
+     * Convert calendar event details to an array
+     *
+     * @return array $event
+     */
+    public function toArray()
+    {
+        $event = array();
+
+        if ($this->id !== null) {
+            $event['id'] = $this->id;
+        }
+
+        $event['title'] = $this->title;
+        $event['start'] = $this->startDatetime->format("Y-m-d\TH:i:sP");
+
+        if ($this->url !== null) {
+            $event['url'] = $this->url;
+        }
+
+        if ($this->bgColor !== null) {
+            $event['backgroundColor'] = $this->bgColor;
+            $event['borderColor'] = $this->bgColor;
+        }
+
+        if ($this->fgColor !== null) {
+            $event['textColor'] = $this->fgColor;
+        }
+
+        if ($this->cssClass !== null) {
+            $event['className'] = $this->cssClass;
+        }
+
+        if ($this->endDatetime !== null) {
+            $event['end'] = $this->endDatetime->format("Y-m-d\TH:i:sP");
+        }
+
+        $event['allDay'] = $this->allDay;
+
+        return $event;
+    }
+
+
+    /**
+     * Set url
+     *
+     * @param string $url
+     * @return Event
+     */
+    public function setUrl($url)
+    {
+        $this->url = $url;
+
+        return $this;
+    }
+
+    /**
+     * Get url
+     *
+     * @return string 
+     */
+    public function getUrl()
+    {
+        return $this->url;
     }
 }

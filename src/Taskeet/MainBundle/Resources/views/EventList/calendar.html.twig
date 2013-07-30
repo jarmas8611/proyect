@@ -1,43 +1,54 @@
 {% extends "TaskeetMainBundle::base_admin.html.twig" %}
 
 {% block stylesheets %}    {{ parent() }}
-    {% endblock %}
+{% endblock %}
 
 {% block javascripts %}    {{ parent() }}
     <script src="{{ asset("bundles/admingeneratorgenerator/js/admingenerator/general.js") }}"></script>
+    <script>
+        $(document).ready(function () {
+
+    //        $(".fc-day-content").click(function() {
+      //         alert($(".fc-day-number").text());
+            });
+        });
+    </script>
+
 {% endblock %}    {% block title %}
-        {{ parent() }} - {% trans from "TaskeetMainBundle" %}Calendario de eventos{% endtrans %}
-    {% endblock %}
-{% block body %}    {% block page_title %}
-        <header>
-            <h1>{% trans from "TaskeetMainBundle" %}Calendario de eventos{% endtrans %}</h1>
-        </header>
-    {% endblock %}
-<div class="row-fluid">
-        <div class=" span9 ">
-        {% include 'ADesignsCalendarBundle::calendar.html.twig' %}
-
-        <div class="form-actions">
-                <div class="btn-toolbar pull-left">    {% block list_batch_actions %}
-        {% endblock %}
-
-                  {% block list_actions %}
-
-                  <button class="btn btn-primary" data-action="{{ path("Taskeet_MainBundle_Event_new") }}"><i class="icon-white icon-plus"></i> {% trans from "Admingenerator" %}action.generic.new{% endtrans %}
-                  </button>
-
-                            {% endblock %}
-</div>
-</div>    {% block endform_batch_actions %}
-        {% endblock %}
-
-        </div>
-        </div>
-        {% block filters %}
-                        <div class="span3">{% block list_filters %}
-
+    {{ parent() }} - {% trans from "TaskeetMainBundle" %}Calendario de eventos{% endtrans %}
 {% endblock %}
-</div>
+{% block body %}    {% block page_title %}
+    <header>
+        <h1>{% trans from "TaskeetMainBundle" %}Calendario de eventos{% endtrans %}</h1>
+    </header>
+{% endblock %}
+    <div class="row-fluid">
+        <div class=" span9 ">
+            {% include 'ADesignsCalendarBundle::calendar.html.twig' %}
+
+            <div class="form-actions">
+                <div class="btn-toolbar pull-left">    {% block list_batch_actions %}
+                {% endblock %}
+
+                    {% block list_actions %}
+
+                        <button class="btn btn-primary" data-action="{{ path("Taskeet_MainBundle_Event_new") }}"><i
+                                class="icon-white icon-plus"></i> {% trans from "Admingenerator" %}
+                            action.generic.new{% endtrans %}
+                        </button>
+
                     {% endblock %}
+                </div>
+            </div>    {% block endform_batch_actions %}
+        {% endblock %}
+
+        </div>
+    </div>
+    {% block filters %}
+        <div class="span3">{% block list_filters %}
+
+        {% endblock %}
+        </div>
+    {% endblock %}
     </div>
 {% endblock %}
