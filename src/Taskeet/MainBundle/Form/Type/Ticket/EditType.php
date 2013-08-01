@@ -8,6 +8,7 @@ use JMS\SecurityExtraBundle\Security\Authorization\Expression\Expression;
 use Taskeet\MainBundle\EventListener\AddProjectFieldSubscriber;
 use Taskeet\MainBundle\EventListener\AddUserFieldSubscriber;
 use Taskeet\MainBundle\EventListener\AddReminderFieldSubscriber;
+use Taskeet\MainBundle\EventListener\AddFollowersFieldSubscriber;
 
 class EditType extends BaseEditType
 {
@@ -82,8 +83,10 @@ class EditType extends BaseEditType
         $builder->add('done', 'checkbox', array(  'required' => false,  'label' => 'Done',  'help' => NULL,  'translation_domain' => 'TaskeetMainBundle',));
 
 
-        $builder->add('followers', 'double_list', array(  'em' => 'default',  'class' => 'Taskeet\\MainBundle\\Entity\\User',  'label' => 'Followers',  'help' => NULL,  'translation_domain' => 'TaskeetMainBundle',));
+        // $builder->add('followers', 'double_list', array(  'em' => 'default',  'class' => 'Taskeet\\MainBundle\\Entity\\User',  'label' => 'Followers',  'help' => NULL,  'translation_domain' => 'TaskeetMainBundle',));
 
+        $followersSubscriber = new AddFollowersFieldSubscriber($factory);
+        $builder->addEventSubscriber($followersSubscriber);
 
     }
 }

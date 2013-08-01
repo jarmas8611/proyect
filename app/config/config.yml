@@ -183,6 +183,12 @@ services:
         tags:
             - { name: doctrine.event_subscriber, connection: default }
 
+    kernel.subscriber.followers.field:
+        class: Taskeet\MainBundle\EventListener\AddFollowersFieldSubscriber
+        arguments: [ @security.context ]
+        tags:
+            - { name: kernel.event_subscriber }
+
 
 a_designs_calendar:   []
 
