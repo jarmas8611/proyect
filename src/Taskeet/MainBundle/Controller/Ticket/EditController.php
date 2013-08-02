@@ -67,4 +67,5 @@ class EditController extends BaseEditController
         //actualizando todos los permisos asignados
         $this->get('security.acl.provider')->updateAcl($acl);
     }
+
 }

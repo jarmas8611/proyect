@@ -12,6 +12,7 @@ use Taskeet\MainBundle\EventListener\AddFollowersFieldSubscriber;
 
 class EditType extends BaseEditType
 {
+
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $factory = $builder->getFormFactory();
@@ -85,7 +86,7 @@ class EditType extends BaseEditType
 
         // $builder->add('followers', 'double_list', array(  'em' => 'default',  'class' => 'Taskeet\\MainBundle\\Entity\\User',  'label' => 'Followers',  'help' => NULL,  'translation_domain' => 'TaskeetMainBundle',));
 
-        $followersSubscriber = new AddFollowersFieldSubscriber($factory);
+        $followersSubscriber = new AddFollowersFieldSubscriber($factory, $this->securityContext);
         $builder->addEventSubscriber($followersSubscriber);
 
     }

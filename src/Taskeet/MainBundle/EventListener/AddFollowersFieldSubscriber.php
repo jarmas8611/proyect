@@ -14,15 +14,20 @@ use Symfony\Component\Form\FormEvents;
 use Symfony\Component\Form\FormFactoryInterface;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 use Doctrine\ORM\EntityRepository;
+use Symfony\Component\Security\Core\SecurityContext;
+use JMS\SecurityExtraBundle\Security\Authorization\Expression\Expression;
+use Taskeet\MainBundle\Entity\Department;
+use Taskeet\MainBundle\Entity\Project;
 
 class AddFollowersFieldSubscriber implements EventSubscriberInterface
 {
-	private $factory, $container;
+	private $factory, $sc;
 
-    public function __construct(FormFactoryInterface $factory, $container)
+    public function __construct(FormFactoryInterface $factory, SecurityContext $sc )
     {
         $this->factory = $factory;
-        $this->container = $container;
+        $this->sc = $sc;
+
     }
 
     public static function getSubscribedEvents()
@@ -33,21 +38,48 @@ class AddFollowersFieldSubscriber implements EventSubscriberInterface
         );
     }
 
-    private function addFollowersForm($form, $followers)
+    private function addFollowersForm($form, $project)
     {
+        $sc = $this->sc;
+
         $form->add($this->factory->createNamed('followers', 'double_list', null, array(
             'class'         => 'TaskeetMainBundle:User',
             'label'         => 'Seguidores',
             'mapped'        => true,
             'translation_domain' => 'TaskeetMainBundle',
-            'query_builder' => function (EntityRepository $repository) use ($followers) {
-                $usuario = $this->container->get('security.context')->getToken()->getUser();
-                if ($usuario->getUsername() == 'rafix') {
+            'query_builder' => function (EntityRepository $repository) use ($sc, $project) {
+
+                if ($sc->isGranted(array(new Expression('hasRole("ROLE_ADMIN")')))) {
                 	$qb = $repository->createQueryBuilder('user');
                 }
-                else
-                	$qb = null;
-
+                elseif($sc->isGranted(array(new Expression('hasRole("ROLE_JEFE_DPTO")')))) {
+                    $qb = $repository->createQueryBuilder('user')
+                        ->innerJoin('user.department', 'department')
+                        ->innerJoin('user.projects', 'project');
+                    if ($project instanceof Project) {
+                        $qb->where('department = :department')
+                           ->orWhere('project = :project')
+                            ->setParameters(array(
+                                'department' => $sc->getToken()->getUser()->getJefeDpto(),
+                                'project' => $project,
+                            ));
+                    } elseif (is_numeric($project)) {
+                        $qb->where('department = :department')
+                            ->orWhere('project.id = :project')
+                            ->setParameters(array(
+                                'department' => $sc->getToken()->getUser()->getJefeDpto(),
+                                'project' => $project,
+                            ));
+                    } else {
+                        $qb->where('project.name = :project')
+                            ->setParameter('project', null);
+                    }
+                }
+                else {
+                    $qb = $repository->createQueryBuilder('user')
+                        ->andWhere('user.id = ?1')
+                        ->setParameter(1, $sc->getToken()->getUser()->getId());
+                }
                 return $qb;
             }
         )));
@@ -62,8 +94,8 @@ class AddFollowersFieldSubscriber implements EventSubscriberInterface
             return;
         }
 
-        $followers = ($data->getFollowers()) ? $data->getFollowers() : null ;
-        $this->addFollowersForm($form, $followers);
+        $project = ($data->getProject()) ? $data->getProject() : null ;
+        $this->addFollowersForm($form, $project);
     }
 
     public function preBind(FormEvent $event)
@@ -75,7 +107,7 @@ class AddFollowersFieldSubscriber implements EventSubscriberInterface
             return;
         }
 
-        $followers = array_key_exists('followers', $data) ? $data['followers'] : null;
-        $this->addFollowersForm($form, $followers);
+        $project = array_key_exists('project', $data) ? $data['project'] : null;
+        $this->addFollowersForm($form, $project);
     }
 }
