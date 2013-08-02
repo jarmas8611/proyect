@@ -74,8 +74,10 @@ class AddUserFieldSubscriber implements EventSubscriberInterface
                 }
                 else {
                     $qb = $repository->createQueryBuilder('user')
+                        ->innerJoin('user.department', 'department')
+                        ->innerJoin('user.jefeDpto', 'jefe')
                         ->where('user.id = ?1')
-                        ->orWhere('department.owner = user.jefeDpto')
+                        ->orWhere('department.owner = jefe')
                         ->setParameter(1, $sc->getToken()->getUser()->getId());
                 }
                 return $qb;
