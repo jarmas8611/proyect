@@ -51,3 +51,16 @@
         </div>
     </td>
 {% endblock %}
+
+{% block list_scopes %}
+    <div class="list_scopes btn-toolbar">
+        <div class="list_scope_group btn-group">
+            {% if is_expr_granted('hasRole("ROLE_SUPER_ADMIN")') %}
+                <a class="btn  {{ scopes['group_1'] == 'Todas' ? 'active': 'inactive' }}" href="{{ path("Taskeet_MainBundle_Ticket_scopes", { 'group': 'group_1', 'scope': 'Todas' }) }}">Todas</a>
+            {% endif %}
+            <a class="btn  {{ scopes['group_1'] == 'Mis tareas' ? 'active': 'inactive' }}" href="{{ path("Taskeet_MainBundle_Ticket_scopes", { 'group': 'group_1', 'scope': 'Mis tareas' }) }}">Mis tareas</a>
+            <a class="btn  {{ scopes['group_1'] == 'Tareas del departamento' ? 'active': 'inactive' }}" href="{{ path("Taskeet_MainBundle_Ticket_scopes", { 'group': 'group_1', 'scope': 'Tareas del departamento' }) }}">Tareas del departamento</a>
+            <a class="btn  {{ scopes['group_1'] == 'Finalizadas' ? 'active': 'inactive' }}" href="{{ path("Taskeet_MainBundle_Ticket_scopes", { 'group': 'group_1', 'scope': 'Finalizadas' }) }}">Finalizadas</a>
+        </div>
+    </div>
+{% endblock %}
