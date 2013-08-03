@@ -15,14 +15,17 @@ use Symfony\Component\Form\FormFactoryInterface;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 use Doctrine\ORM\EntityRepository;
 use Taskeet\MainBundle\Entity\Project;
+use Symfony\Component\Security\Core\SecurityContext;
+use JMS\SecurityExtraBundle\Security\Authorization\Expression\Expression;
 
 class AddUserFieldSubscriber implements EventSubscriberInterface
 {
-    private $factory;
+    private $factory, $sc;
 
-    public function __construct(FormFactoryInterface $factory)
+    public function __construct(FormFactoryInterface $factory, SecurityContext $sc)
     {
         $this->factory = $factory;
+        $this->sc = $sc;
     }
 
     public static function getSubscribedEvents()
@@ -35,24 +38,48 @@ class AddUserFieldSubscriber implements EventSubscriberInterface
 
     private function addUserForm($form, $project)
     {
+        $sc = $this->sc;
+
         $form->add($this->factory->createNamed('assignedTo','entity', null, array(
             'class'         => 'TaskeetMainBundle:User',
             'label'         => 'Asignado a',
             'empty_value'   => 'Seleccione un usuario',
-            'query_builder' => function (EntityRepository $repository) use ($project) {
-                $qb = $repository->createQueryBuilder('user')
-                    ->innerJoin('user.projects', 'project');
-                if ($project instanceof Project) {
-                    $qb->where('project = :project')
-                        ->setParameter('project', $project);
-                } elseif (is_numeric($project)) {
-                    $qb->where('project.id = :project')
-                        ->setParameter('project', $project);
-                } else {
-                    $qb->where('project.name = :project')
-                        ->setParameter('project', null);
-                }
+            'query_builder' => function (EntityRepository $repository) use ($sc, $project) {
 
+                if ($sc->isGranted(array(new Expression('hasRole("ROLE_ADMIN")')))) {
+                    $qb = $repository->createQueryBuilder('user');
+                }
+                elseif($sc->isGranted(array(new Expression('hasRole("ROLE_JEFE_DPTO")')))) {
+                    $qb = $repository->createQueryBuilder('user')
+                        ->innerJoin('user.department', 'department')
+                        ->innerJoin('user.projects', 'project');
+                    if ($project instanceof Project) {
+                        $qb->where('department = :department')
+                           ->orWhere('project = :project')
+                            ->setParameters(array(
+                                'department' => $sc->getToken()->getUser()->getJefeDpto(),
+                                'project' => $project,
+                            ));
+                    } elseif (is_numeric($project)) {
+                        $qb->where('department = :department')
+                            ->orWhere('project.id = :project')
+                            ->setParameters(array(
+                                'department' => $sc->getToken()->getUser()->getJefeDpto(),
+                                'project' => $project,
+                            ));
+                    } else {
+                        $qb->where('project.name = :project')
+                            ->setParameter('project', null);
+                    }
+                }
+                else {
+                    $qb = $repository->createQueryBuilder('user')
+                        ->innerJoin('user.department', 'department')
+                        ->innerJoin('user.jefeDpto', 'jefe')
+                        ->where('user.id = ?1')
+                        ->orWhere('department.owner = jefe')
+                        ->setParameter(1, $sc->getToken()->getUser()->getId());
+                }
                 return $qb;
             }
         )));

@@ -73,7 +73,7 @@ class EditType extends BaseEditType
         $projectSubscriber = new AddProjectFieldSubscriber($factory);
         $builder->addEventSubscriber($projectSubscriber);
 
-        $userSubscriber = new AddUserFieldSubscriber($factory);
+        $userSubscriber = new AddUserFieldSubscriber($factory, $this->securityContext);
         $builder->addEventSubscriber($userSubscriber);
 
 
