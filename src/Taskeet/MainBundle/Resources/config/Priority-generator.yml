@@ -5,14 +5,14 @@ params:
     bundle_name: MainBundle
     i18n_catalog: TaskeetMainBundle
     fields:
-            image:
-                label:            Imagen
-                formType:         single_upload
-                dbType:           string
-                addFormOptions:
-    #                nameable:       imageName
-                    data_class:     Symfony\Component\HttpFoundation\File\File
-                    thumbnailFilter: mini_thumb
+        image:
+            label:            Imagen
+            formType:         single_upload
+            dbType:           string
+            addFormOptions:
+#                nameable:       imageName
+                data_class:     Symfony\Component\HttpFoundation\File\File
+                thumbnailFilter: mini_thumb
 
 builders:
     list:

@@ -28,7 +28,7 @@ class EditType extends BaseEditType
 
         
                                                                                       
-           $builder->add('description', 'textarea', array(  'required' => true,  'label' => 'Description',  'help' => NULL,  'translation_domain' => 'TaskeetMainBundle',));
+           $builder->add('description', 'textarea', array(  'required' => true,  'label' => 'Description',  'attr' => array('class' => 'span6', 'rows' => 10), 'help' => NULL,  'translation_domain' => 'TaskeetMainBundle',));
 
            $builder->addEventSubscriber(new AddReminderFieldSubscriber());
 

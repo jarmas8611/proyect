@@ -7,11 +7,11 @@
             <tr>
                 <td class="image-list">
                     {% if object.type %}
-                        {#{% if object.status.imageName %}#}
-                        <img src="{{ asset('bundles/taskeetmain/img/attach.png') }}">
-                        {#{% else %}#}
-                            {#{{ object.status.name }}#}
-                        {#{% endif %}#}
+                        {% if object.type.imageName %}
+                            <img src="/images/events/{{ object.type.imageName }}" />
+                        {% else %}
+                            {{ object.type.name }}
+                        {% endif %}
                     {% endif %}
                 </td>
                 <td>
