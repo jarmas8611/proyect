@@ -25,7 +25,7 @@ class EditType extends BaseEditType
 
 
 
-        $builder->add('status', 'entity', array(  'em' => 'default',  'class' => 'Taskeet\\MainBundle\\Entity\\Status',  'multiple' => false,  'required' => false,  'label' => 'Status',  'help' => NULL,  'translation_domain' => 'TaskeetMainBundle',));
+        $builder->add('status', 'entity', array(  'em' => 'default',  'class' => 'Taskeet\\MainBundle\\Entity\\Status',  'multiple' => false,  'required' => true,  'label' => 'Status',  'help' => NULL,  'translation_domain' => 'TaskeetMainBundle',));
 
 
 //        $builder->add('project', 'entity', array(  'em' => 'default',  'class' => 'Taskeet\\MainBundle\\Entity\\Project',  'multiple' => false,  'required' => false,  'label' => 'Project',  'help' => NULL,  'translation_domain' => 'TaskeetMainBundle',));

@@ -22,7 +22,7 @@ class NewType extends BaseNewType
 
 
 
-        $builder->add('status', 'entity', array(  'em' => 'default',  'class' => 'Taskeet\\MainBundle\\Entity\\Status',  'multiple' => false,  'required' => false,  'label' => 'Status',  'help' => NULL,  'translation_domain' => 'TaskeetMainBundle',));
+        $builder->add('status', 'entity', array(  'em' => 'default',  'class' => 'Taskeet\\MainBundle\\Entity\\Status',  'multiple' => false,  'required' => true,  'label' => 'Status',  'help' => NULL,  'translation_domain' => 'TaskeetMainBundle',));
 
 
 
