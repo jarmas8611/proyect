@@ -21,7 +21,6 @@ builders:
             actions:
                 new: ~
             object_actions:
-                show: ~
                 edit: ~
                 delete: ~
     filters:
@@ -46,16 +45,7 @@ builders:
                 save: ~
                 save-and-add: ~
                 save-and-list: ~
-                list: ~
-                show: ~
-    show:
-        params:
-            title: "Categoría \"%object%\"|{ %object%: Category.name }|"
-            credentials: 'hasRole("ROLE_ADMIN") or hasRole("ROLE_JEFE_DPTO")'
-            display: [name]
-            actions:
-                list: ~
-                edit: ~
+                list: ~                
                 new: ~
     delete:
         params:

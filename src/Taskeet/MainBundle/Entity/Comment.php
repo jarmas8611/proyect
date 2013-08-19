@@ -18,6 +18,7 @@ use FOS\CommentBundle\Model\RawCommentInterface;
 /**
  * @ORM\Entity
  * @ORM\ChangeTrackingPolicy("DEFERRED_EXPLICIT")
+ * @ORM\Table(name="comment")
  */
 class Comment extends BaseComment implements SignedCommentInterface, RawCommentInterface
 {

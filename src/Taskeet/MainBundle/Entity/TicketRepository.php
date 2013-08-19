@@ -3,6 +3,7 @@
 namespace Taskeet\MainBundle\Entity;
 
 use Doctrine\ORM\EntityRepository;
+use Taskeet\MainBundle\Entity\Department;
 
 /**
  * TicketRepository

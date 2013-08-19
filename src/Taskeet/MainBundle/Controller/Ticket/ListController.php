@@ -24,7 +24,11 @@ class ListController extends BaseListController
         }
 
         if (isset($scopes['group_1']) && $scopes['group_1'] == 'Tareas del departamento') {
-            $query->innerJoin('q.assignedTo', 'u', 'WITH', 'u.department = :dep')
+            $query
+                ->leftJoin('q.assignedTo', 'u')
+                ->leftJoin('u.department', 'd')
+                ->where('u.department = :dep')
+                ->orWhere('d.parent = :dep')
                 ->setParameter('dep', $this->getUser()->getDepartment());
         }
 
