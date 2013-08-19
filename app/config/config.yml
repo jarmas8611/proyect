@@ -138,7 +138,7 @@ vich_uploader:
             delete_on_update: true
             inject_on_load: true
         priority_image:
-            uri_prefix: /images/priority
+            uri_prefix: /images/priorities
             upload_destination: %kernel.root_dir%/../web/images/priorities
             delete_on_remove: true
             delete_on_update: true

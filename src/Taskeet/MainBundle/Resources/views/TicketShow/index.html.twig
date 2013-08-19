@@ -60,8 +60,8 @@
         <p>{{ Ticket.description }}</p>
 
         <div class="attach">
-            <img src="{{ asset('bundles/taskeetmain/img/attach.png') }}">
-            {% if Ticket.files %}
+            {% if Ticket.files|length > 0 %}
+                <img src="{{ asset('bundles/taskeetmain/img/attach.png') }}">
                 <ul>
                     {% for Media in Ticket.files %}
                        <li><a href="/files/tickets/{{ Media.path}}">{{ Media.name }}</a></li>

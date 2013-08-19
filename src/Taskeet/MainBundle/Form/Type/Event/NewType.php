@@ -27,7 +27,7 @@ class NewType extends BaseNewType
 
         
                                                                                       
-           $builder->add('description', 'textarea', array(  'required' => true,  'label' => 'Description',  'help' => NULL,  'translation_domain' => 'TaskeetMainBundle',));
+           $builder->add('description', 'textarea', array(  'required' => true,  'label' => 'Description',  'attr' => array('class' => 'span6', 'rows' => 10), 'help' => NULL,  'translation_domain' => 'TaskeetMainBundle',));
 
            $builder->add('remind', 'choice', array(
             'choices'   => array(

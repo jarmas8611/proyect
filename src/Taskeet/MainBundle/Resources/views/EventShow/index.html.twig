@@ -5,9 +5,9 @@
             <ul class="image-list">
                 <li>
                     {% if Event.type %}
-                        {#{% if Ticket.status.imageName %}#}
-                        <img src="{{ asset('bundles/taskeetmain/img/attach.png') }}">
-                        {#{% endif %}#}
+                        {% if Event.type.imageName %}
+                            <img src="/images/events/{{ Event.type.imageName }}">
+                        {% endif %}
                     {% endif %}
                 </li>
             </ul>
