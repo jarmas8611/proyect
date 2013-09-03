@@ -11,26 +11,8 @@ class NewType extends BaseNewType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-
+        parent::buildForm($builder, $options);
         $factory = $builder->getFormFactory();
-
-        $builder->add('title', 'text', array(  'required' => true,  'label' => 'Title',  'help' => NULL,  'translation_domain' => 'TaskeetMainBundle',));
-
-
-
-        $builder->add('priority', 'entity', array(  'em' => 'default',  'class' => 'Taskeet\\MainBundle\\Entity\\Priority',  'multiple' => false,  'required' => false,  'label' => 'Priority',  'help' => NULL,  'translation_domain' => 'TaskeetMainBundle',));
-
-
-
-        $builder->add('status', 'entity', array(  'em' => 'default',  'class' => 'Taskeet\\MainBundle\\Entity\\Status',  'multiple' => false,  'required' => true,  'label' => 'Status',  'help' => NULL,  'translation_domain' => 'TaskeetMainBundle',));
-
-
-
-        $builder->add('startDate', 'datepicker', array(  'required' => true,  'label' => 'Startdate',  'help' => NULL,  'translation_domain' => 'TaskeetMainBundle',));
-
-
-
-        $builder->add('dueDate', 'datepicker', array(  'required' => true,  'label' => 'Duedate',  'help' => NULL,  'translation_domain' => 'TaskeetMainBundle',));
 
         $builder->add('remind', 'choice', array(
             'choices'   => array(
@@ -60,8 +42,8 @@ class NewType extends BaseNewType
         ));
 
 
-        $projectSubscriber = new AddProjectFieldSubscriber($factory);
-        $builder->addEventSubscriber($projectSubscriber);
+//        $projectSubscriber = new AddProjectFieldSubscriber($factory);
+//        $builder->addEventSubscriber($projectSubscriber);
 
         $userSubscriber = new AddUserFieldSubscriber($factory, $this->securityContext);
         $builder->addEventSubscriber($userSubscriber);
@@ -101,11 +83,6 @@ class NewType extends BaseNewType
 //            'translation_domain' => 'TaskeetMainBundle',
 //            'mapped'    => false,
 //        ));
-
-
-
-
-//        parent::buildForm($builder, $options);
 
 
 

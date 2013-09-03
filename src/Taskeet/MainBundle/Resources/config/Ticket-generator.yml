@@ -75,7 +75,7 @@ builders:
                     formType: datepicker
                 dueDate:
                     formType: datepicker
-            display: [title, priority, status, project, assignedTo, startDate, dueDate, description, files, repeat]
+            display: [ title, priority, status, project, assignedTo, startDate, dueDate, description, files, repeat ]
             actions:
                 save: ~
                 save-and-add: ~
