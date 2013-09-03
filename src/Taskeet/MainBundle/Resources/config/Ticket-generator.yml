@@ -10,6 +10,7 @@ params:
             getter: department
         files:
             label:            Archivos
+            help:             "Tamaño máximo permitido: 16 MB"
             formType:         upload
             dbType:           collection
             addFormOptions:
@@ -18,7 +19,7 @@ params:
                 editable:         [ name, description ]
                 type:             \Taskeet\MainBundle\Form\Type\Media\EditType
                 maxNumberOfFiles:           10
-                maxFileSize:                5000000
+                maxFileSize:                16384
                 minFileSize:                10
                 acceptFileTypes:            /(\.|\/)(gif|jpe?g|png|txt|doc|docx|pdf|xls|xlsx|ppt|pptx)$/i
 #                previewSourceFileTypes:     /^image\/(gif|jpeg|png)$/

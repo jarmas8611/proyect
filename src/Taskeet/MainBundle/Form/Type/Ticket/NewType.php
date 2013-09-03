@@ -57,7 +57,7 @@ class NewType extends BaseNewType
 
 
 
-        $builder->add('files', 'upload', array(  'required' => false,  'nameable' => 'name',  'editable' =>   array(    0 => 'name',    1 => 'description',  ),  'type' =>  new \Taskeet\MainBundle\Form\Type\Media\EditType(),  'maxNumberOfFiles' => 5,  'maxFileSize' => 5000000,  'minFileSize' => 10,  'acceptFileTypes' => '/(\\.|\\/)(gif|jpe?g|png|txt|doc|docx|pdf|xls|ppt|pptx)$/i',  'prependFiles' => false,  'allow_add' => true,  'allow_delete' => true,  'error_bubbling' => false,  'options' =>   array(    'data_class' => 'Taskeet\\MainBundle\\Entity\\Media',  ),  'label' => 'Archivos',  'help' => NULL,  'translation_domain' => 'TaskeetMainBundle',));
+        $builder->add('files', 'upload', array(  'required' => false,  'nameable' => 'name',  'editable' =>   array(    0 => 'name',    1 => 'description',  ),  'type' =>  new \Taskeet\MainBundle\Form\Type\Media\EditType(),  'maxNumberOfFiles' => 5,  'maxFileSize' => 16384,  'minFileSize' => 10,  'acceptFileTypes' => '/(\\.|\\/)(gif|jpe?g|png|txt|doc|docx|pdf|xls|ppt|pptx)$/i',  'prependFiles' => false,  'allow_add' => true,  'allow_delete' => true,  'error_bubbling' => false, 'options' =>   array(    'data_class' => 'Taskeet\\MainBundle\\Entity\\Media',  ),  'label' => 'Archivos',  'help' => 'Tamaño máximo permitido: 16 MB',  'translation_domain' => 'TaskeetMainBundle',));
 
 
 
