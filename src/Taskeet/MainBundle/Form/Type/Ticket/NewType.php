@@ -4,7 +4,7 @@ namespace Taskeet\MainBundle\Form\Type\Ticket;
 
 use Admingenerated\TaskeetMainBundle\Form\BaseTicketType\NewType as BaseNewType;
 use Symfony\Component\Form\FormBuilderInterface;
-use Taskeet\MainBundle\EventListener\AddProjectFieldSubscriber;
+use Taskeet\MainBundle\EventListener\AddDepartmentFieldSubscriber;
 use Taskeet\MainBundle\EventListener\AddUserFieldSubscriber;
 
 class NewType extends BaseNewType
@@ -13,6 +13,9 @@ class NewType extends BaseNewType
     {
         parent::buildForm($builder, $options);
         $factory = $builder->getFormFactory();
+
+        $departmentSubscriber = new AddDepartmentFieldSubscriber($factory);
+        $builder->addEventSubscriber($departmentSubscriber);
 
         $builder->add('remind', 'choice', array(
             'choices'   => array(
@@ -41,9 +44,9 @@ class NewType extends BaseNewType
             'required' => false,
         ));
 
-
-//        $projectSubscriber = new AddProjectFieldSubscriber($factory);
-//        $builder->addEventSubscriber($projectSubscriber);
+        
+        // $projectSubscriber = new AddProjectFieldSubscriber($factory);
+        // $builder->addEventSubscriber($projectSubscriber);
 
         $userSubscriber = new AddUserFieldSubscriber($factory, $this->securityContext);
         $builder->addEventSubscriber($userSubscriber);

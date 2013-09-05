@@ -5,9 +5,9 @@
     {{ parent() }}
     <script>
         $(function(){
-            $("#new_ticket_project").change(function(){
+            $("#new_ticket_department").change(function(){
                 var data = {
-                    project_id: $(this).val()
+                    department_id: $(this).val()
                 };
 
                 $.ajax({

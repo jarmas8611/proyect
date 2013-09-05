@@ -4,9 +4,9 @@
     {{ parent() }}
     <script>
         $(function(){
-            $("#edit_ticket_project").change(function(){
+            $("#edit_ticket_department").change(function(){
                 var data = {
-                    project_id: $(this).val()
+                    department_id: $(this).val()
                 };
 
                 $.ajax({
@@ -19,20 +19,6 @@
                 });
             });
 
-            {#$("#location_province").change(function(){#}
-                {#var data = {#}
-                    {#province_id: $(this).val()#}
-                {#};#}
-
-                {#$.ajax({#}
-                    {#type: 'post',#}
-                    {#url: '{{ path("select_cities") }}',#}
-                    {#data: data,#}
-                    {#success: function(data) {#}
-                        {#$('#location_city').html(data);#}
-                    {#}#}
-                {#});#}
-            {#});#}
         });
     </script>
 {% endblock %}

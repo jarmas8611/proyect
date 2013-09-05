@@ -142,11 +142,6 @@ class Ticket extends BaseThread
     private $reminder;
 
     /**
-     * @var $department
-     */
-    private $department;
-
-    /**
      * Get id
      *
      * @return integer
@@ -517,11 +512,11 @@ class Ticket extends BaseThread
     }
 
     /**
-     * Get Department
+     * Get User Department
      *
      * @return \Taskeet\MainBundle\Entity\Department
      */
-    public function getDepartment()
+    public function getUserDepartment()
     {
         return $this->getAssignedTo()->getDepartment();
     }

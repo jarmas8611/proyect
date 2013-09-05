@@ -1,7 +1,5 @@
 {% macro list(Tickets) %}
-<div class="show-name">
-    <h1>{{ 'Tickets'|trans({}, 'TaskeetMainBundle') }}</h1>
-</div>
+
 <div class="tickets">
     <table>
         {% for object in Tickets if not  object.done  %}
@@ -52,7 +50,5 @@
     </table>
 
 </div>
-<a class="btn btn-primary" href="{{ path("Taskeet_MainBundle_Ticket_new") }}">
-    <i class="icon-white icon-plus"></i> Tarea
-</a>
+
 {% endmacro %}

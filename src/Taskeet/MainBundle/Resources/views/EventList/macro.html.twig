@@ -1,7 +1,5 @@
 {% macro list(Events) %}
-<div class="show-name">
-    <h1>{{ 'Events'|trans({}, 'TaskeetMainBundle') }}</h1>
-</div>
+
 <div class="events">
     <table>
         {% for object in Events %}
@@ -37,7 +35,5 @@
     </table>
 
 </div>
-<a class="btn btn-primary" href="{{ path("Taskeet_MainBundle_Event_new") }}">
-    <i class="icon-white icon-plus"></i> Evento
-</a>
+
 {% endmacro %}
