@@ -6,6 +6,7 @@ use Admingenerated\TaskeetMainBundle\Form\BaseTicketType\NewType as BaseNewType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Taskeet\MainBundle\EventListener\AddProjectFieldSubscriber;
 use Taskeet\MainBundle\EventListener\AddUserFieldSubscriber;
+use Taskeet\MainBundle\EventListener\AddFollowersFieldSubscriber;
 
 class NewType extends BaseNewType
 {
@@ -14,7 +15,11 @@ class NewType extends BaseNewType
 
         $factory = $builder->getFormFactory();
 
-        $builder->add('title', 'text', array(  'required' => true,  'label' => 'Title',  'help' => NULL,  'translation_domain' => 'TaskeetMainBundle',));
+         $builder->add('title', 'text', array(  'required' => true,  
+                                               'label' => 'Title',
+                                               'attr' => array('class' => 'span6'),   
+                                               'help' => NULL,  
+                                               'translation_domain' => 'TaskeetMainBundle',));
 
 
 
@@ -102,7 +107,8 @@ class NewType extends BaseNewType
 //            'mapped'    => false,
 //        ));
 
-
+        $followersSubscriber = new AddFollowersFieldSubscriber($factory, $this->securityContext);
+        $builder->addEventSubscriber($followersSubscriber);
 
 
 //        parent::buildForm($builder, $options);

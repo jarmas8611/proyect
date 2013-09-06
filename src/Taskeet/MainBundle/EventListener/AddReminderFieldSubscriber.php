@@ -90,7 +90,7 @@ class AddReminderFieldSubscriber implements EventSubscriberInterface
             //     'empty_data'  => null,
             //     'required' => false,
             // )); 
-            $form->add('reminder', 'datepicker', array(  'required' => false,  'label' => 'Reminder',  'help' => NULL,  'translation_domain' => 'TaskeetMainBundle',));       
+            $form->add('reminder', 'datepicker', array(  'required' => false,  'label' => 'Recordar',  'help' => NULL,  'translation_domain' => 'TaskeetMainBundle',));       
         }
 
     }

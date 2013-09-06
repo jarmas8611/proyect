@@ -75,7 +75,7 @@ builders:
                     formType: datepicker
                 dueDate:
                     formType: datepicker
-            display: [title, priority, status, project, assignedTo, startDate, dueDate, description, files, repeat]
+            display: [title, priority, status, project, assignedTo, startDate, dueDate, description, followers, files, repeat]
             actions:
                 save: ~
                 save-and-add: ~
@@ -100,7 +100,7 @@ builders:
                 #      credentials: 'hasPermission(object, "OPERATOR")'
                 # assignedTo:
                 #      credentials: 'hasPermission(object, "OPERATOR")'
-            display: [title, priority, status, project, assignedTo, startDate, dueDate, description, done, followers]
+            display: [title, priority, status, project, assignedTo, startDate, dueDate, description, followers, done]
             actions:
                 save: ~
                 save-and-add: ~

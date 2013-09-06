@@ -17,7 +17,11 @@ class EditType extends BaseEditType
     {
         $factory = $builder->getFormFactory();
 
-        $builder->add('title', 'text', array(  'required' => true,  'label' => 'Title',  'help' => NULL,  'translation_domain' => 'TaskeetMainBundle',));
+        $builder->add('title', 'text', array(  'required' => true,  
+                                               'label' => 'Title',
+                                               'attr' => array('class' => 'span6'),   
+                                               'help' => NULL,  
+                                               'translation_domain' => 'TaskeetMainBundle',));
 
 
 
@@ -68,8 +72,7 @@ class EditType extends BaseEditType
         //     'required' => false,
         // ));
 
-        $builder->addEventSubscriber(new AddReminderFieldSubscriber());
-        
+              
         $projectSubscriber = new AddProjectFieldSubscriber($factory);
         $builder->addEventSubscriber($projectSubscriber);
 
@@ -77,15 +80,20 @@ class EditType extends BaseEditType
         $builder->addEventSubscriber($userSubscriber);
 
 
-        $builder->add('description', 'textarea', array(  'required' => true,  'label' => 'Description',  'help' => NULL,  'translation_domain' => 'TaskeetMainBundle',));
+        $builder->add('description', 'textarea', array(  'required' => true,  
+                                                        'label' => 'Description',
+                                                        'attr' => array('class' => 'span6', 'rows' => 10),  
+                                                        'help' => NULL,  
+                                                        'translation_domain' => 'TaskeetMainBundle',));
 
-
+        $builder->addEventSubscriber(new AddReminderFieldSubscriber());
 
         $builder->add('done', 'checkbox', array(  'required' => false,  'label' => 'Done',  'help' => NULL,  'translation_domain' => 'TaskeetMainBundle',));
 
 
         // $builder->add('followers', 'double_list', array(  'em' => 'default',  'class' => 'Taskeet\\MainBundle\\Entity\\User',  'label' => 'Followers',  'help' => NULL,  'translation_domain' => 'TaskeetMainBundle',));
 
+        
         $followersSubscriber = new AddFollowersFieldSubscriber($factory, $this->securityContext);
         $builder->addEventSubscriber($followersSubscriber);
 
