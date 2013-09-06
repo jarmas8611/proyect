@@ -36,12 +36,16 @@
         </div>
         
         <div class="row-fluid">
+            <div class="control-group form_field field_entity field_department">
+                {% block form_department %}
+                    {{ form_row(form['department']) }}
+                {% endblock %}
+            </div>
             <div class="control-group form_field field_entity field_project">
                 {% block form_project %}
                     {{ form_row(form['project']) }}
                 {% endblock %}
             </div>
-            {#AQUI VA LO DE DPTO#}
         </div>
         <div class="row-fluid">
             <div class="control-group form_field field_entity field_assignedTo">
@@ -58,6 +62,24 @@
                 {% endblock %}
             </div>
         </div>
+        
+        <div class="row-fluid">
+            <div class="control-group form_field field_choice field_repeat">
+                {% block form_repeat %}
+                    {{ form_row(form['repeat']) }}
+                {% endblock %}
+            </div>
+            <div class="control-group form_field field_choice field_remind">
+                {% block form_remind %}
+                    {{ form_row(form['remind']) }}
+                {% endblock %}
+            </div>
+        </div>
+   </fieldset>
+{% endblock %}
+
+{% block form_fieldset_NotificarA %}
+    <fieldset class="form_block form_fieldset_NotificarA fieldset_tabbable">
         <div class="row-fluid">
             <div class="control-group form_field field_double_list field_followers">
                 {% block form_followers %}
@@ -65,6 +87,11 @@
                 {% endblock %}
             </div>
         </div>
+    </fieldset>
+{% endblock %}
+
+{% block form_fieldset_Adjuntos %}
+    <fieldset class="form_block form_fieldset_Adjuntos fieldset_tabbable">
         <div class="row-fluid">
             <div class="control-group form_field field_upload field_files">
                 {% block form_files %}
@@ -72,23 +99,16 @@
                 {% endblock %}
             </div>
         </div>
-        <div class="row-fluid">
-            <div class="control-group form_field field_choice field_repeat">
-                {% block form_repeat %}
-                    {{ form_row(form['repeat']) }}
-                {% endblock %}
-            </div>
-
-        </div>
     </fieldset>
 {% endblock %}
+
 {% block javascripts %}
     {{ parent() }}
     <script>
         $(function(){
-            $("#new_ticket_project").change(function(){
+            $("#new_ticket_department").change(function(){
                 var data = {
-                    project_id: $(this).val()
+                    department_id: $(this).val()
                 };
 
                 $.ajax({

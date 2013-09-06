@@ -5,11 +5,14 @@ params:
     bundle_name: MainBundle
     i18n_catalog: TaskeetMainBundle
     fields:
+        followers:
+            label: Notificar a
         department:
             label: Departamento
             getter: department
         files:
-            label:            Archivos
+            label:            Adjuntos
+            help:             "Tamaño máximo permitido: 16 MB"
             formType:         upload
             dbType:           collection
             addFormOptions:
@@ -18,7 +21,7 @@ params:
                 editable:         [ name, description ]
                 type:             \Taskeet\MainBundle\Form\Type\Media\EditType
                 maxNumberOfFiles:           10
-                maxFileSize:                5000000
+                maxFileSize:                16384
                 minFileSize:                10
                 acceptFileTypes:            /(\.|\/)(gif|jpe?g|png|txt|doc|docx|pdf|xls|xlsx|ppt|pptx)$/i
 #                previewSourceFileTypes:     /^image\/(gif|jpeg|png)$/
@@ -75,7 +78,13 @@ builders:
                     formType: datepicker
                 dueDate:
                     formType: datepicker
-            display: [title, priority, status, project, assignedTo, startDate, dueDate, description, followers, files, repeat]
+            tabs: 
+                "General": 
+                    "NONE": [ title, priority, status, project, assignedTo, startDate, dueDate, description, repeat ]
+                "Seguidores": 
+                    "Notificar a": [followers]
+                "Archivos": 
+                    "Adjuntos": [files]
             actions:
                 save: ~
                 save-and-add: ~
@@ -100,7 +109,13 @@ builders:
                 #      credentials: 'hasPermission(object, "OPERATOR")'
                 # assignedTo:
                 #      credentials: 'hasPermission(object, "OPERATOR")'
-            display: [title, priority, status, project, assignedTo, startDate, dueDate, description, followers, done]
+            tabs:
+                "General": 
+                    "NONE": [title, priority, status, project, assignedTo, startDate, dueDate, description, done]
+                "Seguidores": 
+                    "Notificar a": [followers]
+                "Archivos": 
+                    "Adjuntos": [files]
             actions:
                 save: ~
                 save-and-add: ~

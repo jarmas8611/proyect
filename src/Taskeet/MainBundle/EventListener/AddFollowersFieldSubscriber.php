@@ -44,7 +44,7 @@ class AddFollowersFieldSubscriber implements EventSubscriberInterface
 
         $form->add($this->factory->createNamed('followers', 'double_list', null, array(
             'class'         => 'TaskeetMainBundle:User',
-            'label'         => 'Seguidores',
+            'label'         => 'Notificar a',
             'mapped'        => true,
             'translation_domain' => 'TaskeetMainBundle',
             'query_builder' => function (EntityRepository $repository) use ($sc, $project) {

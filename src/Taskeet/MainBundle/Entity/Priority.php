@@ -44,6 +44,13 @@ class Priority
     private $image;
 
     /**
+     * @var integer
+     *
+     * @ORM\Column(name="weight", type="smallint")
+     */
+    private $weight;
+
+    /**
      * @param \Symfony\Component\HttpFoundation\File\File $image
      */
     public function setImage($image)
@@ -126,5 +133,28 @@ class Priority
     public function __toString()
     {
         return $this->name;
+    }
+
+    /**
+     * Set weight
+     *
+     * @param integer $weight
+     * @return Priority
+     */
+    public function setWeight($weight)
+    {
+        $this->weight = $weight;
+
+        return $this;
+    }
+
+    /**
+     * Get weight
+     *
+     * @return integer 
+     */
+    public function getWeight()
+    {
+        return $this->weight;
     }
 }

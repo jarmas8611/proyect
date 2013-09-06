@@ -142,7 +142,8 @@ class Ticket extends BaseThread
     private $reminder;
 
     /**
-     * @var $department
+     * @ORM\ManyToOne(targetEntity="Department", inversedBy="tickets")
+     * @ORM\JoinColumn(name="department_id", referencedColumnName="id")
      */
     private $department;
 
@@ -517,11 +518,11 @@ class Ticket extends BaseThread
     }
 
     /**
-     * Get Department
+     * Get User Department
      *
      * @return \Taskeet\MainBundle\Entity\Department
      */
-    public function getDepartment()
+    public function getUserDepartment()
     {
         return $this->getAssignedTo()->getDepartment();
     }
@@ -580,5 +581,28 @@ class Ticket extends BaseThread
     public function getReminder()
     {
         return $this->reminder;
+    }
+
+    /**
+     * Set department
+     *
+     * @param \Taskeet\MainBundle\Entity\Department $department
+     * @return Ticket
+     */
+    public function setDepartment(\Taskeet\MainBundle\Entity\Department $department = null)
+    {
+        $this->department = $department;
+
+        return $this;
+    }
+
+    /**
+     * Get department
+     *
+     * @return \Taskeet\MainBundle\Entity\Department 
+     */
+    public function getDepartment()
+    {
+        return $this->department;
     }
 }

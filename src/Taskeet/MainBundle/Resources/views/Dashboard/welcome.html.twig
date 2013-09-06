@@ -8,15 +8,33 @@
     <div class="row-fluid">
 
         <div class="span4">
-            {{ tlist(User.tasks) }}
+        <div class="show-name">
+            <h1>{{ 'Tickets'|trans({}, 'TaskeetMainBundle') }} <a class="btn btn-primary pull-right" href="{{ path("Taskeet_MainBundle_Ticket_new") }}">
+                <i class="icon-white icon-plus"></i> Tarea
+            </a></h1>
+        </div>
+            <h2>Para hoy</h2>
+            {{ tlist(today) }}
+            
+            <h2>Próxima Semana</h2>
+            {{ tlist(nextWeek) }}
+
+            <h2>Atrasadas</h2>
+            {{ tlist(undone) }}
         </div><!--/span-->
 
         <div id="dashboard-content" class="span4">
-            {{ elist(events) }}
+            <div class="show-name">
+                <h1>Tareas por prioridad </h1>
+            </div>  
+            {{ tlist(priority) }}
         </div><!--/span-->
 
         <div class="span4">
-            {{ plist(User.projects) }}
+            <div class="show-name">
+                <h1>Estado de mis tareas</h1>
+            </div> 
+            {{ render(controller('TaskeetMainBundle:User/Show:chart')) }}
         </div><!--/span-->
     </div><!--/row-->
 {% endblock %}

@@ -24,7 +24,12 @@ class ListController extends BaseListController
         }
 
         if (isset($scopes['group_1']) && $scopes['group_1'] == 'Proyectos del departamento') {
-            $queryFilter->addCollectionFilter("departments", $this->getUser()->getDepartment());
+//            $queryFilter->addCollectionFilter("departments", $this->getUser()->getDepartment());
+            $query
+                ->leftJoin('q.departments', 'd')
+                ->where('d = :dep')
+                ->orWhere('d.parent = :dep')
+                ->setParameter('dep', $this->getUser()->getDepartment());
         }
     }
 

@@ -3,6 +3,7 @@
 namespace Taskeet\MainBundle\Entity;
 
 use Doctrine\ORM\EntityRepository;
+use Taskeet\MainBundle\Entity\Department;
 
 /**
  * TicketRepository
@@ -12,4 +13,14 @@ use Doctrine\ORM\EntityRepository;
  */
 class TicketRepository extends EntityRepository
 {
+	public function findTodayTasksByUser($user)
+	{
+		return $this->getEntityManager()
+            ->createQueryBuilder('t')
+            ->where('t.startDate = ?1')
+            ->andWhere('t.assignedTo = ?2')
+            ->setParameters(array(1 => new \DateTime('today'), 2 => $user))
+            ->getQuery()
+            ->getResult();
+	}
 }
