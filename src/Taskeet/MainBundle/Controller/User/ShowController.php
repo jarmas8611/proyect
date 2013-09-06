@@ -11,15 +11,8 @@ class ShowController extends BaseShowController
     {
         $User = $this->getUser();
 
-        $this->checkCredentials($User);
-
-
-        if (!$User) {
-            throw new NotFoundHttpException("The Taskeet\MainBundle\Entity\User with id $pk can't be found");
-        }
-
         $ob = new Highchart();
-        $ob->chart->renderTo($User->getId());
+        $ob->chart->renderTo($User->getUsername());
         $ob->title->text($User->getUsername());
         $ob->plotOptions->pie(array(
             'allowPointSelect'  => true,
@@ -49,7 +42,7 @@ class ShowController extends BaseShowController
 
         $ob->series(array(array('type' => 'pie','name' => 'Estado de las tareas', 'data' => $datag)));
 
-        return $this->render('TaskeetMainBundle:UserShow:chart.html.twig', $this->getAdditionalRenderParameters($User) + array(
+        return $this->render('TaskeetMainBundle:UserShow:chart.html.twig', array(
             "User" => $User, 'chart' => $ob
         ));
     }

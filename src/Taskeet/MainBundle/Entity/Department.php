@@ -110,6 +110,11 @@ class Department
     private $projects;
 
     /**
+     * @ORM\OneToMany(targetEntity="Ticket", mappedBy="department", cascade = "persist")
+     */
+    private $tickets;
+
+    /**
      * Constructor
      */
     public function __construct()
@@ -481,5 +486,38 @@ class Department
     public function getChildren()
     {
         return $this->children;
+    }
+
+    /**
+     * Add tickets
+     *
+     * @param \Taskeet\MainBundle\Entity\Ticket $tickets
+     * @return Department
+     */
+    public function addTicket(\Taskeet\MainBundle\Entity\Ticket $tickets)
+    {
+        $this->tickets[] = $tickets;
+
+        return $this;
+    }
+
+    /**
+     * Remove tickets
+     *
+     * @param \Taskeet\MainBundle\Entity\Ticket $tickets
+     */
+    public function removeTicket(\Taskeet\MainBundle\Entity\Ticket $tickets)
+    {
+        $this->tickets->removeElement($tickets);
+    }
+
+    /**
+     * Get tickets
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getTickets()
+    {
+        return $this->tickets;
     }
 }

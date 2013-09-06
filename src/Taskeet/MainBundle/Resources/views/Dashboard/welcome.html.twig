@@ -19,8 +19,8 @@
             <h2>Próxima Semana</h2>
             {{ tlist(nextWeek) }}
 
-            {#<h2>Atrasadas</h2>
-            {{ tlist(undone) }}#}
+            <h2>Atrasadas</h2>
+            {{ tlist(undone) }}
         </div><!--/span-->
 
         <div id="dashboard-content" class="span4">
@@ -32,10 +32,9 @@
 
         <div class="span4">
             <div class="show-name">
-                <h1>Tareas Pendientes </h1>
+                <h1>Estado de mis tareas</h1>
             </div> 
-            {{ tlist(undone) }}
-           {# {{ plist(User.projects) }} #}
+            {{ render(controller('TaskeetMainBundle:User/Show:chart')) }}
         </div><!--/span-->
     </div><!--/row-->
 {% endblock %}

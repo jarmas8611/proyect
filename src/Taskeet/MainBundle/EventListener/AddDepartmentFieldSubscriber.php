@@ -37,7 +37,7 @@ class AddDepartmentFieldSubscriber implements EventSubscriberInterface
         $form->add($this->factory->createNamed('department', 'entity', $department, array(
             'class'         => 'TaskeetMainBundle:Department',
             'label'         => 'Department',
-            'mapped'        => false,
+            'mapped'        => true,
             'empty_value'   => 'Seleccione un departamento',
             'query_builder' => function (EntityRepository $repository) {
                 $qb = $repository->createQueryBuilder('department');
@@ -56,8 +56,8 @@ class AddDepartmentFieldSubscriber implements EventSubscriberInterface
             return;
         }
 
-        $project = ($data->getProject()) ? $data->getProject() : null ;
-        $this->addProjectForm($form, $project);
+        $department = ($data->getDepartment()) ? $data->getDepartment() : null ;
+        $this->addProjectForm($form, $department);
     }
 
     public function preBind(FormEvent $event)
@@ -69,7 +69,7 @@ class AddDepartmentFieldSubscriber implements EventSubscriberInterface
             return;
         }
 
-        $project = array_key_exists('project', $data) ? $data['project'] : null;
-        $this->addProjectForm($form, $project);
+        $department = array_key_exists('department', $data) ? $data['department'] : null;
+        $this->addProjectForm($form, $department);
     }
 }
