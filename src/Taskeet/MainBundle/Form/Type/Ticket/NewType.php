@@ -97,6 +97,9 @@ class NewType extends BaseNewType
         $followersSubscriber = new AddFollowersFieldSubscriber($factory, $this->securityContext);
         $builder->addEventSubscriber($followersSubscriber);
 
+        $builder->add('startDate', 'datetime', array(  'required' => true,  'label' => 'Startdate',  'help' => NULL,  'translation_domain' => 'TaskeetMainBundle',));
+
+$builder->add('dueDate', 'datetime', array(  'required' => true,  'label' => 'Duedate',  'help' => NULL,  'translation_domain' => 'TaskeetMainBundle',)); 
     }
 
 }
