@@ -30,6 +30,13 @@ class Category
      * @ORM\Column(name="name", type="string", length=255)
      */
     private $name;
+    
+    /**
+     * @var boolean
+     *
+     * @ORM\Column(name="primary", type="boolean", nullable="true")
+     */
+    private $primary;
 
 //    /**
 //     * @Assert\File(
