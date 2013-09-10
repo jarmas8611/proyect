@@ -37,6 +37,7 @@ class AddDepartmentFieldSubscriber implements EventSubscriberInterface
         $form->add($this->factory->createNamed('department', 'entity', $department, array(
             'class'         => 'TaskeetMainBundle:Department',
             'label'         => 'Department',
+            'translation_domain' => 'TaskeetMainBundle',
             'mapped'        => true,
             'empty_value'   => 'Seleccione un departamento',
             'query_builder' => function (EntityRepository $repository) {
