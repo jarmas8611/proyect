@@ -55,8 +55,8 @@ builders:
                     "Datos personales": [firstName, lastName, username, password, email, jefeDpto, department, enabled]
                 "Permisos":
                     "Roles": [groups]
-                "Proyectos":
-                    "Proyectos": [projects, tasks]
+                #"Proyectos":
+                #    "Proyectos": [projects, tasks]
             actions:
                 save: ~
                 save-and-add: ~
