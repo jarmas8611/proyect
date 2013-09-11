@@ -41,7 +41,7 @@ builders:
         params:
             title: Tareas
             sort: [created, DESC]
-            display: [status, priority, title, project, assignedTo, startDate, dueDate]
+            display: [status, priority, title, createdBy, startDate, dueDate, assignedTo, department]
             scopes:
                 group_1:
                     "Todas": ~

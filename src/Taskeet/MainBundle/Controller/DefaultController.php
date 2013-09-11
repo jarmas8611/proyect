@@ -2,8 +2,9 @@
 
 namespace Taskeet\MainBundle\Controller;
 
-use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+// use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Ob\HighchartsBundle\Highcharts\Highchart;
+use Taskeet\MainBundle\Controller\Ticket\ListController as Controller;
 
 class DefaultController extends Controller
 {
@@ -69,6 +70,31 @@ class DefaultController extends Controller
 
         return $this->render('TaskeetMainBundle:UserList:users.html.twig', array(
             'assignedTo' => $users
+        ));
+    }
+
+    public function indexAction()
+    {
+
+
+        if ($this->get('request')->query->get('page'))
+        {
+            $this->setPage($this->get('request')->query->get('page'));
+        }
+
+        if ($this->get('request')->query->get('sort'))
+        {
+            $this->setSort($this->get('request')->query->get('sort'), $this->get('request')->query->get('order_by','ASC'));
+        }
+
+        $form = $this->getFilterForm();
+
+        return $this->render('TaskeetMainBundle:Dashboard:ticketList.html.twig', $this->getAdditionalRenderParameters() + array(
+            'Tickets' => $this->getPager(),
+            'form'                      => $form->createView(),
+            'sortColumn'                => $this->getSortColumn(),
+            'sortOrder'                 => $this->getSortOrder(),
+            'scopes'                    => $this->getScopes(),
         ));
     }
 }
