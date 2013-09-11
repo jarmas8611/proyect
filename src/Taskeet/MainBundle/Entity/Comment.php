@@ -16,7 +16,7 @@ use Symfony\Component\Security\Core\User\UserInterface;
 use FOS\CommentBundle\Model\RawCommentInterface;
 
 /**
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="Taskeet\MainBundle\Entity\CommentRepository")
  * @ORM\ChangeTrackingPolicy("DEFERRED_EXPLICIT")
  * @ORM\Table(name="comment")
  */

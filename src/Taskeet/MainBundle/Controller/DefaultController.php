@@ -75,7 +75,17 @@ class DefaultController extends Controller
 
     public function indexAction()
     {
-
+        $comments = $this->getDoctrine()->getRepository('TaskeetMainBundle:Comment')->createQueryBuilder('c')
+            ->leftJoin('c.thread', 't')
+//            ->leftJoin('t.assignedTo', 'u1')
+            ->where('t.createdBy = ?1')
+            ->orWhere('t.assignedTo = ?2')
+            ->orderBy('c.createdAt', 'DESC')
+            ->setParameters(array(1 => $this->getUser()->getUsername(), 2 => $this->getUser()))
+            ->setMaxResults( 3 )
+            ->getQuery()
+            ->getResult();
+//        $comments =  $em->getRepository('TaskeetMainBundle:Comment')->findByUser($this->getUser());
 
         if ($this->get('request')->query->get('page'))
         {
@@ -95,6 +105,46 @@ class DefaultController extends Controller
             'sortColumn'                => $this->getSortColumn(),
             'sortOrder'                 => $this->getSortOrder(),
             'scopes'                    => $this->getScopes(),
+            'comments'                  => $comments,
         ));
+    }
+
+    protected function processScopes($query)
+    {
+        $scopes = $this->getScopes();
+
+        $queryFilter = $this->get('admingenerator.queryfilter.doctrine');
+        $queryFilter->setQuery($query);
+
+
+
+        if (isset($scopes['group_1']) && $scopes['group_1'] == 'Todas') {
+
+        }
+
+        if (isset($scopes['group_1']) && $scopes['group_1'] == 'Mis tareas') {
+            $queryFilter->addDefaultFilter("assignedTo", $this->getUser());
+        }
+
+        if (isset($scopes['group_1']) && $scopes['group_1'] == 'Tareas del departamento') {
+            $query
+                ->leftJoin('q.assignedTo', 'u')
+                ->leftJoin('u.department', 'd')
+                ->where('u.department = :dep')
+                ->orWhere('d.parent = :dep')
+                ->setParameter('dep', $this->getUser()->getDepartment());
+        }
+
+        if (isset($scopes['group_1']) && $scopes['group_1'] == 'Para hoy') {
+            $query
+                ->where('startDate >= ?1')
+                ->orWhere('dueDate = ?1')
+                ->andWhere('assignedTo = ?2')
+                ->setParameters(array(1 => new \DateTime('today'), 2 => $this->getUser()));
+        }
+
+        if (isset($scopes['group_1']) && $scopes['group_1'] == 'Finalizadas') {
+            $queryFilter->addDefaultFilter("done", true);
+        }
     }
 }

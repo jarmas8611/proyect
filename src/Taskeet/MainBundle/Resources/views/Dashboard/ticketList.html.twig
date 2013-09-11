@@ -223,7 +223,7 @@
                                         {% block list_td_column_startDate %}
                                             {% if Ticket.startDate %}
                                                 {% set localized_date_format = "medium" %}
-                                                {% set localized_time_format = "medium" %}
+                                                {% set localized_time_format = "none" %}
                                                 {{ Ticket.startDate|localizeddate(localized_date_format, localized_time_format) }}
                                             {% endif %}
                                         {% endblock %}
@@ -232,7 +232,7 @@
                                         {% block list_td_column_dueDate %}{% if Ticket.dueDate %}
                                             {% set localized_date_format = "medium" %}
 
-                                            {% set localized_time_format = "medium" %}
+                                            {% set localized_time_format = "none" %}
                                             {{ Ticket.dueDate|localizeddate(localized_date_format, localized_time_format) }}{% endif %}{% endblock %}
                                     </td>
                                     <td class="td_entity td_assignedTo">
@@ -279,6 +279,10 @@
                     <h2>Estado de mis tareas</h2>
                 </div>
                 {{ render(controller('TaskeetMainBundle:User/Show:chart')) }}
+
+                {% for c in comments %}
+                    <li>{{ c.body }}</li>
+                {% endfor %}
             </div>
         </div>
         {#{% block filters %}#}
