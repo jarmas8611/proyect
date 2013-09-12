@@ -183,6 +183,10 @@ h2{
     font-size: 14px;
 }
 
+.dashboard .comments{
+   margin-top: 20px;
+}
+
 .dashboard .comment{
    background-color: white;
     border: 1px solid #DDD;
@@ -191,4 +195,9 @@ h2{
     margin-top: 15px;
     padding: 5px;
     width: 110%;
+}
+
+.dashboard .highcharts-container{
+    border: 1px solid #DDD;
+    border-radius: 8px;
 }
