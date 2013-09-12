@@ -106,7 +106,8 @@ class DefaultController extends Controller
         return $this->render('TaskeetMainBundle:DepartmentList:departments.html.twig', array(
             'assignedTo' => $departments,
         ));
-
+    }
+        
     public function indexAction()
     {
         $comments = $this->getDoctrine()->getRepository('TaskeetMainBundle:Comment')->createQueryBuilder('c')
@@ -182,7 +183,8 @@ class DefaultController extends Controller
         }
     }
 
-    public function priorityStatusDefaultAction(){
+    public function priorityStatusDefaultAction()
+    {
         $em = $this->getDoctrine()->getManager();
 
         $priority = $em->getRepository('TaskeetMainBundle:Priority')->findByPrimary(true);
