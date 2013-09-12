@@ -26,14 +26,14 @@
             {% block list_scopes %}
                 <div class="list_scopes btn-toolbar">
                     <div class="list_scope_group btn-group">
-                       <a class="btn {{ scopes['group_1'] == 'Todas' ? 'active': 'inactive' }}" href="{{ path("Taskeet_MainBundle_Ticket_scopes", { 'group': 'group_1', 'scope': 'Todas' }) }}">Todas</a>
-                       <a class="btn {{ scopes['group_1'] == 'Tareas para hoy' ? 'active': 'inactive' }}" href="{{ path("Taskeet_MainBundle_Ticket_scopes", { 'group': 'group_1', 'scope': 'Tareas para hoy' }) }}">Para hoy</a>
-                       <a class="btn {{ scopes['group_1'] == 'Mis tareas' ? 'active': 'inactive' }}" href="{{ path("Taskeet_MainBundle_Ticket_scopes", { 'group': 'group_1', 'scope': 'Mis tareas' }) }}">Mis tareas</a>
-                       <a class="btn {{ scopes['group_1'] == 'Tareas por prioridad' ? 'active': 'inactive' }}" href="{{ path("Taskeet_MainBundle_Ticket_scopes", { 'group': 'group_1', 'scope': 'Tareas por prioridad' }) }}">Por prioridad</a>
-                       <a class="btn {{ scopes['group_1'] == 'Finalizadas' ? 'active': 'inactive' }}" href="{{ path("Taskeet_MainBundle_Ticket_scopes", { 'group': 'group_1', 'scope': 'Finalizadas' }) }}">Finalizadas</a>
-                       <a class="btn {{ scopes['group_1'] == 'Tareas sin resolver' ? 'active': 'inactive' }}" href="{{ path("Taskeet_MainBundle_Ticket_scopes", { 'group': 'group_1', 'scope': 'Tareas sin resolver' }) }}">Sin resolver</a>
-                       <a class="btn {{ scopes['group_1'] == 'Tareas recien actualizadas' ? 'active': 'inactive' }}" href="{{ path("Taskeet_MainBundle_Ticket_scopes", { 'group': 'group_1', 'scope': 'Tareas recien actualizadas' }) }}">Recien actualizadas</a>
-                       <a class="btn {{ scopes['group_1'] == 'Tareas del departamento' ? 'active': 'inactive' }}" href="{{ path("Taskeet_MainBundle_Ticket_scopes", { 'group': 'group_1', 'scope': 'Tareas del departamento' }) }}">Departamento</a>
+                       <a class="btn {{ scopes['group_1'] == 'Todas' ? 'active': 'inactive' }}" href="{{ path("Taskeet_MainBundle_Dashboard_scopes", { 'group': 'group_1', 'scope': 'Todas' }) }}">Todas</a>
+                       <a class="btn {{ scopes['group_1'] == 'Tareas para hoy' ? 'active': 'inactive' }}" href="{{ path("Taskeet_MainBundle_Dashboard_scopes", { 'group': 'group_1', 'scope': 'Para hoy' }) }}">Para hoy</a>
+                       <a class="btn {{ scopes['group_1'] == 'Mis tareas' ? 'active': 'inactive' }}" href="{{ path("Taskeet_MainBundle_Dashboard_scopes", { 'group': 'group_1', 'scope': 'Mis tareas' }) }}">Mis tareas</a>
+                       <a class="btn {{ scopes['group_1'] == 'Tareas por prioridad' ? 'active': 'inactive' }}" href="{{ path("Taskeet_MainBundle_Dashboard_scopes", { 'group': 'group_1', 'scope': 'Por prioridad' }) }}">Por prioridad</a>
+                       <a class="btn {{ scopes['group_1'] == 'Finalizadas' ? 'active': 'inactive' }}" href="{{ path("Taskeet_MainBundle_Dashboard_scopes", { 'group': 'group_1', 'scope': 'Finalizadas' }) }}">Finalizadas</a>
+                       <a class="btn {{ scopes['group_1'] == 'Tareas sin resolver' ? 'active': 'inactive' }}" href="{{ path("Taskeet_MainBundle_Dashboard_scopes", { 'group': 'group_1', 'scope': 'Sin resolver' }) }}">Sin resolver</a>
+                       <a class="btn {{ scopes['group_1'] == 'Tareas recien actualizadas' ? 'active': 'inactive' }}" href="{{ path("Taskeet_MainBundle_Dashboard_scopes", { 'group': 'group_1', 'scope': 'Recien actualizadas' }) }}">Recien actualizadas</a>
+                       <a class="btn {{ scopes['group_1'] == 'Tareas del departamento' ? 'active': 'inactive' }}" href="{{ path("Taskeet_MainBundle_Dashboard_scopes", { 'group': 'group_1', 'scope': 'Departamento' }) }}">Departamento</a>
                     </div>
                 </div>
             {% endblock %}
