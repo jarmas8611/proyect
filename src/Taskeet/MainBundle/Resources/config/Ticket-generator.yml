@@ -21,7 +21,7 @@ params:
                 editable:         [ name, description ]
                 type:             \Taskeet\MainBundle\Form\Type\Media\EditType
                 maxNumberOfFiles:           10
-                maxFileSize:                16384
+                maxFileSize:                16777216
                 minFileSize:                10
                 acceptFileTypes:            /(\.|\/)(gif|jpe?g|png|txt|doc|docx|pdf|xls|xlsx|ppt|pptx)$/i
 #                previewSourceFileTypes:     /^image\/(gif|jpeg|png)$/

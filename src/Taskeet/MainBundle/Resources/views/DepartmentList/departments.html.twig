@@ -1,0 +1,4 @@
+<option value="" disabled="disabled">Seleccione el departamento</option>
+{% for u in assignedTo %}
+    <option value="{{ u.id }}">{{ u.name }}</option>
+{% endfor %}

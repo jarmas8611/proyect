@@ -12,18 +12,24 @@ namespace Taskeet\MainBundle\EventListener;
 use ADesigns\CalendarBundle\Event\CalendarEvent;
 use ADesigns\CalendarBundle\Entity\EventEntity;
 use Doctrine\ORM\EntityManager;
+use Symfony\Component\Security\Core\SecurityContext;
 
 class CalendarEventListener
 {
     private $entityManager;
+    private $sc;
 
-    public function __construct(EntityManager $entityManager)
+    public function __construct(EntityManager $entityManager,SecurityContext $sc)
     {
         $this->entityManager = $entityManager;
+        $this->sc = $sc;
+
     }
 
     public function loadEvents(CalendarEvent $calendarEvent)
     {
+        $sc = $this->sc;
+
         $startDate = $calendarEvent->getStartDatetime();
         $endDate = $calendarEvent->getEndDatetime();
 
@@ -33,8 +39,10 @@ class CalendarEventListener
         $companyEvents = $this->entityManager->getRepository('TaskeetMainBundle:Event')
             ->createQueryBuilder('company_events')
             ->where('company_events.startDate BETWEEN :startDate and :endDate')
+            ->andWhere('company_events.owner = :owner ')
             ->setParameter(':startDate', $startDate->format('Y-m-d H:i:s'))
             ->setParameter(':endDate', $endDate->format('Y-m-d H:i:s'))
+            ->setParameter(':owner',$sc->getToken()->getUser()->getId())
             ->getQuery()->getResult();
 
 

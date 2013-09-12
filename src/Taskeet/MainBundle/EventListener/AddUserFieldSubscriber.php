@@ -32,7 +32,7 @@ class AddUserFieldSubscriber implements EventSubscriberInterface
     {
         return array(
             FormEvents::PRE_SET_DATA => 'preSetData',
-            FormEvents::PRE_BIND     => 'preBind'
+            FormEvents::PRE_BIND => 'preBind'
         );
     }
 
@@ -40,13 +40,16 @@ class AddUserFieldSubscriber implements EventSubscriberInterface
     {
         $sc = $this->sc;
 
-        $form->add($this->factory->createNamed('assignedTo','entity', $department, array(
-            'class'         => 'TaskeetMainBundle:User',
-            'label'         => 'Asignado a',
-            'empty_value'   => 'Seleccione un usuario',
+        $form->add($this->factory->createNamed('assignedTo', 'entity', $department, array(
+            'class' => 'TaskeetMainBundle:User',
+            'label' => 'Asignado a',
+            'required' => true,
+            'empty_value' => 'Seleccione un usuario',
             'query_builder' => function (EntityRepository $repository) use ($sc, $department) {
+                $qb = $repository->createQueryBuilder('user');
 
-                if ($sc->isGranted(array(new Expression('hasRole("ROLE_ADMIN")')))) {
+                return $qb;
+                /*if ($sc->isGranted(array(new Expression('hasRole("ROLE_ADMIN")')))) {
                     $qb = $repository->createQueryBuilder('user');
                 }
                 elseif($sc->isGranted(array(new Expression('hasRole("ROLE_JEFE_DPTO")')))) {
@@ -80,7 +83,7 @@ class AddUserFieldSubscriber implements EventSubscriberInterface
                         ->orWhere('department.owner = jefe')
                         ->setParameter(1, $sc->getToken()->getUser()->getId());
                 }
-                return $qb;
+                return $qb;*/
             }
         )));
     }
@@ -94,7 +97,7 @@ class AddUserFieldSubscriber implements EventSubscriberInterface
             return;
         }
 
-        $department = ($data->getDepartment()) ? $data->getDepartment() : null ;
+        $department = ($data->getDepartment()) ? $data->getDepartment() : null;
         $this->addUserForm($form, $department);
     }
 
