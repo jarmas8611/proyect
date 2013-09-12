@@ -1,0 +1,357 @@
+{% extends "TaskeetMainBundle::base_admin.html.twig" %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" href="{{ asset('bundles/taskeetmain/css/bootstrap.css') }}" type="text/css" media="all" />
+    <link rel="stylesheet" href="{{ asset('bundles/taskeetmain/css/taskeet.css') }}" type="text/css" media="all" />
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    <script src="{{ asset("bundles/admingeneratorgenerator/js/admingenerator/general.js") }}"></script>
+{% endblock %}
+
+{% block title %}
+    {{ parent() }} - {% trans from "TaskeetMainBundle" %}Tareas{% endtrans %}
+{% endblock %}
+
+{% block body %}
+    {% block page_title %}
+        <header>
+            <h1>{% trans from "TaskeetMainBundle" %}Tareas{% endtrans %}</h1>
+        </header>
+    {% endblock %}
+    <div class="row-fluid dashboard">
+        <div class="span12">
+            {% block list_scopes %}
+                <div class="list_scopes btn-toolbar">
+                    <div class="list_scope_group btn-group">
+                       <a class="btn {{ scopes['group_1'] == 'Todas' ? 'active': 'inactive' }}" href="{{ path("Taskeet_MainBundle_Ticket_scopes", { 'group': 'group_1', 'scope': 'Todas' }) }}">Todas</a>
+                       <a class="btn {{ scopes['group_1'] == 'Tareas para hoy' ? 'active': 'inactive' }}" href="{{ path("Taskeet_MainBundle_Ticket_scopes", { 'group': 'group_1', 'scope': 'Tareas para hoy' }) }}">Para hoy</a>
+                       <a class="btn {{ scopes['group_1'] == 'Mis tareas' ? 'active': 'inactive' }}" href="{{ path("Taskeet_MainBundle_Ticket_scopes", { 'group': 'group_1', 'scope': 'Mis tareas' }) }}">Mis tareas</a>
+                       <a class="btn {{ scopes['group_1'] == 'Tareas por prioridad' ? 'active': 'inactive' }}" href="{{ path("Taskeet_MainBundle_Ticket_scopes", { 'group': 'group_1', 'scope': 'Tareas por prioridad' }) }}">Por prioridad</a>
+                       <a class="btn {{ scopes['group_1'] == 'Finalizadas' ? 'active': 'inactive' }}" href="{{ path("Taskeet_MainBundle_Ticket_scopes", { 'group': 'group_1', 'scope': 'Finalizadas' }) }}">Finalizadas</a>
+                       <a class="btn {{ scopes['group_1'] == 'Tareas sin resolver' ? 'active': 'inactive' }}" href="{{ path("Taskeet_MainBundle_Ticket_scopes", { 'group': 'group_1', 'scope': 'Tareas sin resolver' }) }}">Sin resolver</a>
+                       <a class="btn {{ scopes['group_1'] == 'Tareas recien actualizadas' ? 'active': 'inactive' }}" href="{{ path("Taskeet_MainBundle_Ticket_scopes", { 'group': 'group_1', 'scope': 'Tareas recien actualizadas' }) }}">Recien actualizadas</a>
+                       <a class="btn {{ scopes['group_1'] == 'Tareas del departamento' ? 'active': 'inactive' }}" href="{{ path("Taskeet_MainBundle_Ticket_scopes", { 'group': 'group_1', 'scope': 'Tareas del departamento' }) }}">Departamento</a>
+                    </div>
+                </div>
+            {% endblock %}
+        </div>
+        <div class="span12">
+            <div class=" span10">
+
+                {% block list_nbresults %}
+                    <div class="list_nbresults">
+                    {% set count = Tickets.nbResults %}
+                    {% set start = ( Tickets.currentPage - 1 ) * Tickets.maxPerPage + 1 %}
+                    {% set end = start + Tickets.maxPerPage - 1 %}
+                    {% set end = end > count ? count : end %}
+
+                    {% if Tickets.haveToPaginate %}
+                    {% trans with {'%start%': start,'%end%': end,'%count%': count,} from "Admingenerator" %}list.display.range{% endtrans %}
+                    {% elseif  count > 0  %}
+                        {% trans with {'%count%': count,} from "Admingenerator" %}list.display.all{% endtrans %}
+                    {% endif %}
+                </div>
+                {% endblock %}
+                {% block form_batch_actions %}
+                {% endblock %}
+
+                <table class="table table-striped table-hover table-condensed">
+                {% block list_thead %}
+                <thead>
+                <tr class="list_thead">
+                    <th class="list_thead_column{% if 1 %} sortable{% if sortColumn == 'status' and sortOrder == 'ASC' %} sort_asc{% elseif sortColumn == 'status' and sortOrder == 'DESC' %} sort_desc{% endif %}{% endif %}">
+                        {% if sortColumn == 'status' and sortOrder == 'ASC' %}
+                        <a href="?sort=status&order_by=desc">
+                            {% else %}
+                            <a href="?sort=status&order_by=asc">
+                                {% endif %}{{ 'Status'|trans({}, 'TaskeetMainBundle') }}</a>
+                            {% if sortColumn == 'status' %}
+                                {% if sortColumn == 'status' and sortOrder == 'ASC' %}
+                                    <span class="sorted-asc"></span>
+                                {% else %}
+                                    <span class="sorted-desc"></span>
+                                {% endif %}
+                            {% endif %}
+                    </th>
+                    <th class="list_thead_column{% if 1 %} sortable{% if sortColumn == 'priority' and sortOrder == 'ASC' %} sort_asc{% elseif sortColumn == 'priority' and sortOrder == 'DESC' %} sort_desc{% endif %}{% endif %}">
+                        {% if sortColumn == 'priority' and sortOrder == 'ASC' %}
+                        <a href="?sort=priority&order_by=desc">
+                            {% else %}
+                            <a href="?sort=priority&order_by=asc">
+                                {% endif %}{{ 'Priority'|trans({}, 'TaskeetMainBundle') }}</a>
+                            {% if sortColumn == 'priority' %}
+                                {% if sortColumn == 'priority' and sortOrder == 'ASC' %}
+                                    <span class="sorted-asc"></span>
+                                {% else %}
+                                    <span class="sorted-desc"></span>
+                                {% endif %}
+                            {% endif %}
+                    </th>
+                    <th class="list_thead_column{% if 1 %} sortable{% if sortColumn == 'title' and sortOrder == 'ASC' %} sort_asc{% elseif sortColumn == 'title' and sortOrder == 'DESC' %} sort_desc{% endif %}{% endif %}">
+                        {% if sortColumn == 'title' and sortOrder == 'ASC' %}
+                        <a href="?sort=title&order_by=desc">
+                            {% else %}
+                            <a href="?sort=title&order_by=asc">
+                                {% endif %}{{ 'Title'|trans({}, 'TaskeetMainBundle') }}</a>
+                            {% if sortColumn == 'title' %}
+                                {% if sortColumn == 'title' and sortOrder == 'ASC' %}
+                                    <span class="sorted-asc"></span>
+                                {% else %}
+                                    <span class="sorted-desc"></span>
+                                {% endif %}
+                            {% endif %}
+                    </th>
+                    <th class="list_thead_column{% if 1 %} sortable{% if sortColumn == 'createdBy' and sortOrder == 'ASC' %} sort_asc{% elseif sortColumn == 'createdBy' and sortOrder == 'DESC' %} sort_desc{% endif %}{% endif %}">
+                        {% if sortColumn == 'createdBy' and sortOrder == 'ASC' %}
+                        <a href="?sort=createdBy&order_by=desc">
+                            {% else %}
+                            <a href="?sort=createdBy&order_by=asc">
+                                {% endif %}{{ 'Createdby'|trans({}, 'TaskeetMainBundle') }}</a>
+                            {% if sortColumn == 'createdBy' %}
+                                {% if sortColumn == 'createdBy' and sortOrder == 'ASC' %}
+                                    <span class="sorted-asc"></span>
+                                {% else %}
+                                    <span class="sorted-desc"></span>
+                                {% endif %}
+                            {% endif %}
+                    </th>
+                    <th class="list_thead_column{% if 1 %} sortable{% if sortColumn == 'startDate' and sortOrder == 'ASC' %} sort_asc{% elseif sortColumn == 'startDate' and sortOrder == 'DESC' %} sort_desc{% endif %}{% endif %}">
+                        {% if sortColumn == 'startDate' and sortOrder == 'ASC' %}
+                        <a href="?sort=startDate&order_by=desc">
+                            {% else %}
+                            <a href="?sort=startDate&order_by=asc">
+                                {% endif %}{{ 'Startdate'|trans({}, 'TaskeetMainBundle') }}</a>
+                            {% if sortColumn == 'startDate' %}
+                                {% if sortColumn == 'startDate' and sortOrder == 'ASC' %}
+                                    <span class="sorted-asc"></span>
+                                {% else %}
+                                    <span class="sorted-desc"></span>
+                                {% endif %}
+                            {% endif %}
+                    </th>
+                    <th class="list_thead_column{% if 1 %} sortable{% if sortColumn == 'dueDate' and sortOrder == 'ASC' %} sort_asc{% elseif sortColumn == 'dueDate' and sortOrder == 'DESC' %} sort_desc{% endif %}{% endif %}">
+                        {% if sortColumn == 'dueDate' and sortOrder == 'ASC' %}
+                        <a href="?sort=dueDate&order_by=desc">
+                            {% else %}
+                            <a href="?sort=dueDate&order_by=asc">
+                                {% endif %}{{ 'Duedate'|trans({}, 'TaskeetMainBundle') }}</a>
+                            {% if sortColumn == 'dueDate' %}
+                                {% if sortColumn == 'dueDate' and sortOrder == 'ASC' %}
+                                    <span class="sorted-asc"></span>
+                                {% else %}
+                                    <span class="sorted-desc"></span>
+                                {% endif %}
+                            {% endif %}
+                    </th>
+                    <th class="list_thead_column{% if 1 %} sortable{% if sortColumn == 'assignedTo' and sortOrder == 'ASC' %} sort_asc{% elseif sortColumn == 'assignedTo' and sortOrder == 'DESC' %} sort_desc{% endif %}{% endif %}">
+                        {% if sortColumn == 'assignedTo' and sortOrder == 'ASC' %}
+                        <a href="?sort=assignedTo&order_by=desc">
+                            {% else %}
+                            <a href="?sort=assignedTo&order_by=asc">
+                                {% endif %}{{ 'Assignedto'|trans({}, 'TaskeetMainBundle') }}</a>
+                            {% if sortColumn == 'assignedTo' %}
+                                {% if sortColumn == 'assignedTo' and sortOrder == 'ASC' %}
+                                    <span class="sorted-asc"></span>
+                                {% else %}
+                                    <span class="sorted-desc"></span>
+                                {% endif %}
+                            {% endif %}
+                    </th>
+                    <th class="list_thead_column{% if 1 %} sortable{% if sortColumn == 'department' and sortOrder == 'ASC' %} sort_asc{% elseif sortColumn == 'department' and sortOrder == 'DESC' %} sort_desc{% endif %}{% endif %}">
+                        {% if sortColumn == 'department' and sortOrder == 'ASC' %}
+                        <a href="?sort=department&order_by=desc">
+                            {% else %}
+                            <a href="?sort=department&order_by=asc">
+                                {% endif %}{{ 'Departamento'|trans({}, 'TaskeetMainBundle') }}</a>
+                            {% if sortColumn == 'department' %}
+                                {% if sortColumn == 'department' and sortOrder == 'ASC' %}
+                                    <span class="sorted-asc"></span>
+                                {% else %}
+                                    <span class="sorted-desc"></span>
+                                {% endif %}
+                            {% endif %}
+                    </th>
+
+                </tr>
+                </thead>
+                {% endblock %}
+                {% block list_tbody %}
+                    <tbody>
+                    {% if Tickets|length > 0 %}
+
+                        {% for Ticket in Tickets %}
+                            <tr class="list_trow">
+                                {% block list_row %}
+                                    <td class="td_entity td_status">
+                                        {% block list_td_column_status %}
+                                            {% if Ticket.status %}
+                                                {% if Ticket.status.imageName %}
+                                                    <a href="#" data-toggle="tooltip" title data-original-title="{{ Ticket.status.name }}">
+                                                        <img src="/images/status/{{ Ticket.status.imageName }}" alt="{{ Ticket.status.name }}" data-toggle="tooltip" data-original-title="{{ Ticket.status.name }}" />
+                                                    </a>
+                                                {% else %}
+                                                    {{ Ticket.status.name }}
+                                                {% endif %}
+                                            {% endif %}
+                                        {% endblock %}
+                                    </td>
+                                    <td class="td_entity td_priority">
+                                        {% block list_td_column_priority %}
+                                            {% if Ticket.priority %}
+                                                {% if Ticket.priority.imageName %}
+                                                    <a href="#" data-toggle="tooltip" title data-original-title="{{ Ticket.priority.name }}">
+                                                        <img src="/images/priorities/{{ Ticket.priority.imageName }}" />
+                                                    </a>
+                                                {% else %}
+                                                    {{ Ticket.priority }}
+                                                {% endif %}
+                                            {% endif %}
+                                        {% endblock %}
+                                    </td>
+                                    <td class="td_string td_title">
+                                        {% block list_td_column_title %}
+                                            <a href="{{ path("Taskeet_MainBundle_Ticket_show", { 'pk': Ticket.id }) }}">{{ Ticket.title }}</a>
+                                        {% endblock %}
+                                    </td>
+                                    <td class="td_string td_createdBy">
+                                        {% block list_td_column_createdBy %}{{ Ticket.createdBy }}{% endblock %}
+                                    </td>
+                                    <td class="td_datetime td_startDate">
+                                        {% block list_td_column_startDate %}
+                                            {% if Ticket.startDate %}
+                                                {% set localized_date_format = "medium" %}
+                                                {% set localized_time_format = "none" %}
+                                                {{ Ticket.startDate|localizeddate(localized_date_format, localized_time_format) }}
+                                            {% endif %}
+                                        {% endblock %}
+                                    </td>
+                                    <td class="td_datetime td_dueDate">
+                                        {% block list_td_column_dueDate %}{% if Ticket.dueDate %}
+                                            {% set localized_date_format = "medium" %}
+
+                                            {% set localized_time_format = "none" %}
+                                            {{ Ticket.dueDate|localizeddate(localized_date_format, localized_time_format) }}{% endif %}{% endblock %}
+                                    </td>
+                                    <td class="td_entity td_assignedTo">
+                                        {% block list_td_column_assignedTo %}{{ Ticket.assignedTo }}{% endblock %}
+                                    </td>
+                                    <td class="td_entity td_department">
+                                        {% block list_td_column_department %}{{ Ticket.department }}{% endblock %}
+                                    </td>
+                                {% endblock %}
+                            </tr>
+                        {% endfor %}
+
+                    {% else %}
+                        <tr class="list_trow no_results_row">
+                            <td colspan="9">{% trans from "Admingenerator" %}list.no.results{% endtrans %}</td>
+                        </tr>
+                    {% endif %}
+                    </tbody>
+                {% endblock %}
+
+                </table>
+
+                <div class="form-actions">
+                    <div class="btn-toolbar pull-left">    {% block list_batch_actions %}
+                    {% endblock %}
+
+                        {% block list_actions %}
+
+                            <button class="btn btn-primary" data-action="{{ path("Taskeet_MainBundle_Ticket_new") }}"><i class="icon-white icon-plus"></i> {% trans from "Admingenerator" %}action.generic.new{% endtrans %}
+                            </button>
+
+                        {% endblock %}
+                    </div>{% block list_paginator %}
+                    <div class="pagination pagination-right">
+                        {{ pagerfanta(Tickets, 'admingenerator') }}
+                    </div>
+                {% endblock %}
+                </div>    {% block endform_batch_actions %}
+                {% endblock %}
+
+            </div>
+            <div class="span2">
+                <div class="show-name">
+                    <h2>Estado de mis tareas</h2>
+                </div>
+                {{ render(controller('TaskeetMainBundle:User/Show:chart')) }}
+
+                {% for c in comments %}
+                    <li>{{ c.body }}</li>
+                {% endfor %}
+            </div>
+        </div>
+        {#{% block filters %}#}
+            {#<div class="span2">#}
+                {#{% block list_filters %}#}
+            {#<div class="row-fluid">#}
+                {#<form action="{{ path("Taskeet_MainBundle_Ticket_filters") }}" method="post" {{ form_enctype(form) }}>#}
+                    {#<legend>{% trans from "Admingenerator" %}list.filters{% endtrans %}</legend>#}
+                    {#<fieldset class="form_block form_fieldset_NONE">#}
+                        {#{{ form_errors(form) }}#}
+                        {#<div class="control-group">#}
+                            {#{{ form_label(form['title'], 'Title'|trans({}, 'TaskeetMainBundle')) }}#}
+                            {#<div class="controls">#}
+                                {#{{ form_widget(form['title']) }}#}
+                            {#</div>#}
+                            {#{{ form_errors(form['title']) }}#}
+                        {#</div>#}
+                        {#<div class="control-group">#}
+                            {#{{ form_label(form['project'], 'Project'|trans({}, 'TaskeetMainBundle')) }}#}
+                            {#<div class="controls">#}
+                                {#{{ form_widget(form['project']) }}#}
+                            {#</div>#}
+                            {#{{ form_errors(form['project']) }}#}
+                        {#</div>#}
+                        {#<div class="control-group">#}
+                            {#{{ form_label(form['assignedTo'], 'Assignedto'|trans({}, 'TaskeetMainBundle')) }}#}
+                            {#<div class="controls">#}
+                                {#{{ form_widget(form['assignedTo']) }}#}
+                            {#</div>#}
+                            {#{{ form_errors(form['assignedTo']) }}#}
+                        {#</div>#}
+                        {#<div class="control-group">#}
+                            {#{{ form_label(form['status'], 'Status'|trans({}, 'TaskeetMainBundle')) }}#}
+                            {#<div class="controls">#}
+                                {#{{ form_widget(form['status']) }}#}
+                            {#</div>#}
+                            {#{{ form_errors(form['status']) }}#}
+                        {#</div>#}
+                        {#<div class="control-group">#}
+                            {#{{ form_label(form['priority'], 'Priority'|trans({}, 'TaskeetMainBundle')) }}#}
+                            {#<div class="controls">#}
+                                {#{{ form_widget(form['priority']) }}#}
+                            {#</div>#}
+                            {#{{ form_errors(form['priority']) }}#}
+                        {#</div>#}
+                        {#<div class="control-group">#}
+                            {#{{ form_label(form['startDate'], 'Startdate'|trans({}, 'TaskeetMainBundle')) }}#}
+                            {#<div class="controls">#}
+                                {#{{ form_widget(form['startDate']) }}#}
+                            {#</div>#}
+                            {#{{ form_errors(form['startDate']) }}#}
+                        {#</div>#}
+                        {#<div class="control-group">#}
+                            {#{{ form_label(form['dueDate'], 'Duedate'|trans({}, 'TaskeetMainBundle')) }}#}
+                            {#<div class="controls">#}
+                                {#{{ form_widget(form['dueDate']) }}#}
+                            {#</div>#}
+                            {#{{ form_errors(form['dueDate']) }}#}
+                        {#</div>#}
+                        {#{{ form_rest(form) }}#}
+                    {#</fieldset>#}
+                    {#<div class="form-actions">#}
+                        {#<button type="submit" class="btn btm-small btn-primary"><i class="icon-search icon-white"></i> {% trans from "Admingenerator" %}list.button.filter{% endtrans %}</button>#}
+                        {#<button type="submit" class="btn btm-small" name="reset" value="true"><i class="icon-refresh"></i> {% trans from "Admingenerator" %}list.button.reset{% endtrans %}</button>#}
+                    {#</div>#}
+                {#</form>#}
+            {#</div>#}
+        {#{% endblock %}#}
+        {#</div>#}
+        {#{% endblock %}#}
+    </div>
+{% endblock %}

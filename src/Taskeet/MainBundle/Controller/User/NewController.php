@@ -31,7 +31,7 @@ class NewController extends BaseNewController
         {
             $dpto = $this->getEntityManager()->getRepository('TaskeetMainBundle:Department')
                 ->findOneByOwner($this->getUser());
-            $User->addDepartment($dpto);
+            $User->setDepartment($dpto);
         }
     }
 
