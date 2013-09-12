@@ -10,6 +10,14 @@ select_users:
     pattern: /users
     defaults: { _controller: TaskeetMainBundle:Default:users }
 
+users_by_departament:
+    pattern: /departament/users
+    defaults: { _controller: TaskeetMainBundle:Default:usersByDepartament }
+
+departaments:
+    pattern: /departaments
+    defaults: { _controller: TaskeetMainBundle:Default:departments }
+
 ticket_clone:
     pattern: /ticket/clone/{pk}
     defaults: { _controller: TaskeetMainBundle:Ticket/New:clone }

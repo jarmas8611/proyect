@@ -21,7 +21,7 @@ use Taskeet\MainBundle\Entity\Project;
 
 class AddFollowersFieldSubscriber implements EventSubscriberInterface
 {
-	private $factory, $sc;
+    private $factory, $sc;
 
     public function __construct(FormFactoryInterface $factory, SecurityContext $sc )
     {
@@ -38,48 +38,18 @@ class AddFollowersFieldSubscriber implements EventSubscriberInterface
         );
     }
 
-    private function addFollowersForm($form, $project)
+    private function addFollowersForm($form)
     {
         $sc = $this->sc;
 
-        $form->add($this->factory->createNamed('followers', 'double_list', null, array(
+        $form->add($this->factory->createNamed('followers', 'double_list',null, array(
             'class'         => 'TaskeetMainBundle:User',
-            'label'         => 'Notificar a',
-            'mapped'        => true,
-            'translation_domain' => 'TaskeetMainBundle',
-            'query_builder' => function (EntityRepository $repository) use ($sc, $project) {
+            'label'         => 'Asignado a',
+            'empty_value'   => 'Seleccione un usuario',
+            'query_builder' => function (EntityRepository $repository) use ($sc) {
 
-                if ($sc->isGranted(array(new Expression('hasRole("ROLE_ADMIN")')))) {
-                	$qb = $repository->createQueryBuilder('user');
-                }
-                elseif($sc->isGranted(array(new Expression('hasRole("ROLE_JEFE_DPTO")')))) {
-                    $qb = $repository->createQueryBuilder('user')
-                        ->innerJoin('user.department', 'department')
-                        ->innerJoin('user.projects', 'project');
-                    if ($project instanceof Project) {
-                        $qb->where('department = :department')
-                           ->orWhere('project = :project')
-                            ->setParameters(array(
-                                'department' => $sc->getToken()->getUser()->getJefeDpto(),
-                                'project' => $project,
-                            ));
-                    } elseif (is_numeric($project)) {
-                        $qb->where('department = :department')
-                            ->orWhere('project.id = :project')
-                            ->setParameters(array(
-                                'department' => $sc->getToken()->getUser()->getJefeDpto(),
-                                'project' => $project,
-                            ));
-                    } else {
-                        $qb->where('project.name = :project')
-                            ->setParameter('project', null);
-                    }
-                }
-                else {
-                    $qb = $repository->createQueryBuilder('user')
-                        ->andWhere('user.id = ?1')
-                        ->setParameter(1, $sc->getToken()->getUser()->getId());
-                }
+                $qb = $repository->createQueryBuilder('user');
+
                 return $qb;
             }
         )));
@@ -94,8 +64,8 @@ class AddFollowersFieldSubscriber implements EventSubscriberInterface
             return;
         }
 
-        $project = ($data->getProject()) ? $data->getProject() : null ;
-        $this->addFollowersForm($form, $project);
+        $departament = ($data->getDepartment()) ? $data->getDepartment() : null ;
+        $this->addFollowersForm($form);
     }
 
     public function preBind(FormEvent $event)
@@ -107,7 +77,7 @@ class AddFollowersFieldSubscriber implements EventSubscriberInterface
             return;
         }
 
-        $project = array_key_exists('project', $data) ? $data['project'] : null;
-        $this->addFollowersForm($form, $project);
+        $departament = array_key_exists('department', $data) ? $data['department'] : null;
+        $this->addFollowersForm($form);
     }
 }

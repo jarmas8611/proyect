@@ -20,7 +20,7 @@ class NewType extends BaseNewType
                                                'attr' => array('class' => 'span6'),   
                                                'help' => NULL,  
                                                'translation_domain' => 'TaskeetMainBundle',));
-        
+
         $departmentSubscriber = new AddDepartmentFieldSubscriber($factory);
         $builder->addEventSubscriber($departmentSubscriber);
 

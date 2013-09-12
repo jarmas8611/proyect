@@ -1,5 +1,5 @@
 {% extends_admingenerated "TaskeetMainBundle:TicketEdit:index.html.twig" %}
-
+{% set message =  app.user.department.id %}
 {% block form_fieldset_NONE %}
     <fieldset class="form_block form_fieldset_NONE fieldset_tabbable">
         <div class="row-fluid">
@@ -83,6 +83,14 @@
 
 {% block form_fieldset_NotificarA %}
     <fieldset class="form_block form_fieldset_NotificarA fieldset_tabbable">
+        <div class="control-group form_field field_entity field_department">
+            <label class="control-label" for="departamento">Departamento</label>
+            <select id="departamento"></select>
+        </div>
+        <div id="errores" class="alert alert-error" hidden="hidden">
+            <button class="hide" data-dismiss="alert" type="button">×</button>
+            <div id="mensaje"></div>
+        </div>
         <div class="row-fluid">
             <div class="control-group form_field field_double_list field_followers">
                 {% block form_followers %}
@@ -108,22 +116,65 @@
 {% block javascripts %}
     {{ parent() }}
     <script>
-        $(function(){
-            $("#edit_ticket_department").change(function(){
-                var data = {
-                    department_id: $(this).val()
-                };
+        $(document).ready(function () {
+            $('#edit_ticket_followers_unselected').html("");
+            var departamentoActual = "{{ message }}";
+            $.ajax({
+                type:'post',
+                url:'{{ path("departaments") }}',
+                success:function (data) {
+                    $('#departamento').html(data);
+                    $('#departamento').val(departamentoActual*1);
+                }
+            });
+            var data = {
+                department_id: departamentoActual
+            };
+            cargarUsuarios(data);
 
-                $.ajax({
-                    type: 'post',
-                    url: '{{ path("select_users") }}',
-                    data: data,
-                    success: function(data) {
-                        $('#edit_ticket_assignedTo').html(data);
-                    }
-                });
+            $("#departamento").change(function () {
+                var data = {
+                    department_id:$(this).val()
+                };
+                cargarUsuarios(data)
+
             });
 
         });
+
+        function cargarUsuarios(datos) {
+            $.ajax({
+                type:'post',
+                url:'{{ path("users_by_departament") }}',
+                data:datos,
+                dataType:'json',
+                success:function (data) {
+                    $('#mensaje').html("");
+                    $('#errores').attr('hidden', 'hidden');
+                    if (data.length == 0) {
+                        $('#mensaje').append('<span>No existen usuarios en este departamento</span>');
+                        $('#errores').removeAttr('hidden');
+                    }
+                    var selectedArray = $('#edit_ticket_followers_selected').children();
+                    var unselectedCount = $('#edit_ticket_followers_unselected').children().length;
+                    var arrayResultante = Array();
+                    for (var i = 0; i < data.length; i++) {
+                        var bool = false;
+                        for (var j = 0; j < selectedArray.length; j++) {
+                            if (data[i].value == selectedArray[j].value) {
+                                bool = true;
+                            }
+                        }
+                        if (!bool)
+                            arrayResultante.push('<option value="' + data[i].value + '">' + data[i].nombre + '</option>')
+                    }
+                    if (arrayResultante.length == 0 && data.length != 0) {
+                        $('#mensaje').append('<span>Los usuarios de este departamento ya estan seleccionados</span>');
+                        $('#errores').removeAttr('hidden');
+                    }
+                    $('#edit_ticket_followers_unselected').html(arrayResultante);
+                }
+            });
+        }
     </script>
 {% endblock %}
