@@ -30,7 +30,7 @@ class Category
      * @ORM\Column(name="name", type="string", length=255)
      */
     private $name;
-
+    
 //    /**
 //     * @Assert\File(
 //     *     maxSize="1M",

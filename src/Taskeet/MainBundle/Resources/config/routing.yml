@@ -13,3 +13,7 @@ select_users:
 ticket_clone:
     pattern: /ticket/clone/{pk}
     defaults: { _controller: TaskeetMainBundle:Ticket/New:clone }
+
+default_priority_ticket:
+    pattern: /defaultPriorityStatusTicket
+    defaults: { _controller: TaskeetMainBundle:Default:priorityStatusDefault }

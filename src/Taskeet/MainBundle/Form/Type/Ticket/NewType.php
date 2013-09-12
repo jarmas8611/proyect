@@ -13,7 +13,7 @@ class NewType extends BaseNewType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         parent::buildForm($builder, $options);
-        $factory = $builder->getFormFactory();
+        $factory = $builder->getFormFactory();                   
 
         $builder->add('title', 'text', array(  'required' => true,  
                                                'label' => 'Title',
@@ -98,9 +98,14 @@ class NewType extends BaseNewType
         $followersSubscriber = new AddFollowersFieldSubscriber($factory, $this->securityContext);
         $builder->addEventSubscriber($followersSubscriber);
 
-        $builder->add('startDate', 'datetime', array(  'required' => true,  'label' => 'Startdate',  'help' => NULL,  'translation_domain' => 'TaskeetMainBundle',));
+        $builder->add('startDate', 'datepicker', array( 'required' => true,  'label' => 'Startdate',  'help' => NULL,  'translation_domain' => 'TaskeetMainBundle',));
 
-$builder->add('dueDate', 'datetime', array(  'required' => true,  'label' => 'Duedate',  'help' => NULL,  'translation_domain' => 'TaskeetMainBundle',)); 
+        $builder->add('dueDate', 'datepicker', array(  'required' => true,  'label' => 'Duedate',  'help' => NULL,  'translation_domain' => 'TaskeetMainBundle',)); 
+    
+        $builder->add('priority', 'entity', array(  'required' => true, 'em' => 'default',  'class' => 'Taskeet\\MainBundle\\Entity\\Priority',  'multiple' => false,  'label' => 'Priority',  'help' => NULL,  'translation_domain' => 'TaskeetMainBundle',));
+                                                                              
+        $builder->add('status', 'entity', array(  'required' => true, 'em' => 'default',  'class' => 'Taskeet\\MainBundle\\Entity\\Status',  'multiple' => false,   'label' => 'Status',  'help' => NULL,  'translation_domain' => 'TaskeetMainBundle',));
+
     }
 
 }

@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 Name: Nombre
 Users: Usuarios
 User: Usuario
@@ -45,3 +46,51 @@ Parent: Tarea padre
 Weight: Peso
 Department: Departamento
 Remind: Aviso
+=======
+Name: Nombre
+Users: Usuarios
+User: Usuario
+Type: Tipo
+Startdate: Inicio
+Duedate: Fin
+Category: Categoría
+Client: Cliente
+Departments: Departamentos
+Department: Departamento
+Ticket: Tarea
+Tickets: Tareas
+Tasks: Tareas
+Members: Miembros
+Priority: Prioridad
+Assignedto: "Asignado a"
+Project: Proyecto
+Projects: Proyectos
+Files: Archivos
+Enabled: Habilitado
+Email: Correo
+Username: "Nombre de usuario"
+Password: Contraseña
+Expired: Expirado
+ExpiresAt: "Expira el"
+Title: Título
+Owner: Encargado
+"repeated.label.plainPassword.first": Contraseña
+"repeated.label.plainPassword.second": Repita la contraseña
+Firstname: Nombre
+Lastname: Apellidos
+Fullname: Nombre Completo
+Created: Creado
+Done: Finalizada
+Status: Estado
+Description: Descripción
+object.delete.confirm: ¿Está seguro que desea eliminar este elemento?
+Group: Grupo
+Groups: Grupos
+Events: Eventos
+Followers: Seguidores
+Repeat: Repetir
+Ocurrences: Ocurrencias
+Parent: Tarea padre
+Weight: Peso
+Primary: Por Defecto
+>>>>>>> luis
