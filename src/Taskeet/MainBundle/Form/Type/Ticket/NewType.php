@@ -87,6 +87,14 @@ class NewType extends BaseNewType
             'mapped'    => false,
         ));
 
+        $builder->add('ocurrences', 'text', array(
+            'required' => false,
+            'label' => 'Ocurrences',
+            'help' => NULL,
+            'translation_domain' => 'TaskeetMainBundle',
+            'mapped'    => false,
+        ));
+
 //        $builder->add('frequency', 'text', array(
 //            'required' => false,
 //            'label' => 'Frequency',

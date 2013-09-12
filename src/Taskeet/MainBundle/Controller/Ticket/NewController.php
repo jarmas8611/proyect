@@ -55,9 +55,10 @@ class NewController extends BaseNewController
         {
             $start = clone $form->get('startDate')->getData();
             $end = clone $form->get('dueDate')->getData();
+            $ocurrences = $form->get('ocurrences')->getData();
             $interval = new DateInterval($form->get('repeat')->getData());
 
-            $periodo = new \DatePeriod($start, $interval, $end,
+            $periodo = new \DatePeriod($start, $interval, $ocurrences,
                 \DatePeriod::EXCLUDE_START_DATE);
 
             $em = $this->getDoctrine()->getManager();

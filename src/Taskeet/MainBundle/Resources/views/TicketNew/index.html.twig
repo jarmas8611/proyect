@@ -63,14 +63,21 @@
         </div>
 
         <div class="row-fluid">
+            <div class="control-group form_field field_choice field_remind">
+                {% block form_remind %}
+                    {{ form_row(form['remind']) }}
+                {% endblock %}
+            </div>
+        </div>
+        <div class="row-fluid">
             <div class="control-group form_field field_choice field_repeat">
                 {% block form_repeat %}
                     {{ form_row(form['repeat']) }}
                 {% endblock %}
             </div>
-            <div class="control-group form_field field_choice field_remind">
-                {% block form_remind %}
-                    {{ form_row(form['remind']) }}
+            <div class="control-group form_field field_choice field_ocurrences">
+                {% block form_ocurrences %}
+                    {{ form_row(form['ocurrences']) }}
                 {% endblock %}
             </div>
         </div>
