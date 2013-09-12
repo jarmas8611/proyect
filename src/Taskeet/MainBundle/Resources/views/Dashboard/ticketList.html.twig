@@ -280,8 +280,18 @@
                 </div>
                 {{ render(controller('TaskeetMainBundle:User/Show:chart')) }}
 
+                <h2>Comentarios a sus tareas</h2>
                 {% for c in comments %}
-                    <li>{{ c.body }}</li>
+                    <div class="comment">
+                        <div class="author">{{c.author}}</div> escribió sobre <a href="{{path("Taskeet_MainBundle_Ticket_show", { 'pk': c.thread.id })}}">{{c.thread}}</a>:
+                        <div class="comment-body">{{ c.body | truncate(50) }}</div>
+                        <div class="comment-date italic">
+                            {% set localized_date_format = "medium" %}
+                            {% set localized_time_format = "medium" %}
+                            Fecha {{ c.createdAt |localizeddate(localized_date_format, localized_time_format) }}
+                        </div>
+                    </div>
+                    
                 {% endfor %}
             </div>
         </div>

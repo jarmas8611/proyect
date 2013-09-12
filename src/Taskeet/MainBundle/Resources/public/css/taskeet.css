@@ -182,3 +182,13 @@ h2{
 .dashboard .table tbody{
     font-size: 14px;
 }
+
+.dashboard .comment{
+   background-color: white;
+    border: 1px solid #DDD;
+    border-radius: 8px;
+    font-size: 14px;
+    margin-top: 15px;
+    padding: 5px;
+    width: 110%;
+}
