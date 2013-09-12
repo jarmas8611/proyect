@@ -33,6 +33,13 @@ class Status
     private $name;
 
     /**
+     * @var boolean
+     *
+     * @ORM\Column(name="defecto", type="boolean", nullable=true)
+     */
+    private $primary;
+
+    /**
      * @Assert\File(
      *     maxSize="1M",
      *     mimeTypes={"image/png", "image/jpeg", "image/pjpeg"}
@@ -125,5 +132,28 @@ class Status
     public function __toString()
     {
         return $this->getName();
+    }
+
+    /**
+     * Set primary
+     *
+     * @param boolean $primary
+     * @return Status
+     */
+    public function setPrimary($primary)
+    {
+        $this->primary = (Boolean) $primary;
+
+        return $this;
+    }
+
+    /**
+     * Get primary
+     *
+     * @return boolean 
+     */
+    public function isPrimary()
+    {
+        return $this->primary;
     }
 }

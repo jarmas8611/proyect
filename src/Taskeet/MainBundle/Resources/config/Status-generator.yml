@@ -18,7 +18,7 @@ builders:
     list:
         params:
             title: Lista de estados
-            display: [image, name]
+            display: [image, name, primary]
             actions:
                 new: ~
             object_actions:
@@ -31,7 +31,7 @@ builders:
         params:
             title: Nuevo estado
             credentials: 'hasRole("ROLE_ADMIN") or hasRole("ROLE_JEFE_DPTO")'
-            display: [name, image]
+            display: [name, primary, image]
             actions:
                 save: ~
                 save-and-add: ~
@@ -41,7 +41,7 @@ builders:
         params:
             title: "Editando el estado \"%object%\"|{ %object%: Status.name }|"
             credentials: 'hasRole("ROLE_SUPER_ADMIN") or hasPermission(object, "OPERATOR")'
-            display: [name, image]
+            display: [name, primary, image]
             actions:
                 save: ~
                 list: ~

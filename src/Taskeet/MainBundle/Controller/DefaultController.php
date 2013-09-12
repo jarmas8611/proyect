@@ -4,6 +4,7 @@ namespace Taskeet\MainBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Ob\HighchartsBundle\Highcharts\Highchart;
+use Symfony\Component\HttpFoundation\Response;
 
 class DefaultController extends Controller
 {
@@ -70,5 +71,17 @@ class DefaultController extends Controller
         return $this->render('TaskeetMainBundle:UserList:users.html.twig', array(
             'assignedTo' => $users
         ));
+    }
+
+    public function priorityStatusDefaultAction(){
+        $em = $this->getDoctrine()->getManager();
+
+        $priority = $em->getRepository('TaskeetMainBundle:Priority')->findByPrimary(true);
+        $status = $em->getRepository('TaskeetMainBundle:Status')->findByPrimary(true);
+        
+        //var_dump($priority);
+        $datos['prioridad'] = $priority[0]->getId();   
+        $datos['estado'] = $status[0]->getId();
+        return new Response(json_encode($datos));    
     }
 }

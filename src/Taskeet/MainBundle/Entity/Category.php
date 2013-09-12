@@ -31,13 +31,6 @@ class Category
      */
     private $name;
     
-    /**
-     * @var boolean
-     *
-     * @ORM\Column(name="primary", type="boolean", nullable="true")
-     */
-    private $primary;
-
 //    /**
 //     * @Assert\File(
 //     *     maxSize="1M",

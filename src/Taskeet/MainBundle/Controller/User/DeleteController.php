@@ -6,4 +6,5 @@ use Admingenerated\TaskeetMainBundle\BaseUserController\DeleteController as Base
 
 class DeleteController extends BaseDeleteController
 {
+	
 }
