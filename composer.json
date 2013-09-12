@@ -25,7 +25,7 @@
         "friendsofsymfony/user-bundle":         "2.0.*@dev",
         "friendsofsymfony/jsrouting-bundle": "1.1.*@dev",
         "adesigns/calendar-bundle": "dev-master",
-	    "cedriclombardot/admingenerator-generator-bundle": "2.2.*@dev",
+	    "cedriclombardot/admingenerator-generator-bundle": "2.3.*@dev",
 	    "cedriclombardot/admingenerator-user-bundle": "dev-master",
         "stof/doctrine-extensions-bundle":      "1.1.*",
         "raulfraile/ladybug-bundle": "dev-master",
@@ -34,7 +34,6 @@
         "jms/translation-bundle": "1.1.*@dev",
 	    "doctrine/doctrine-fixtures-bundle": "dev-master",
         "shtumi/useful-bundle": "dev-master",
-        "nelmio/api-doc-bundle": "2.0.*@dev",
         "vich/uploader-bundle": "dev-master",
         "knplabs/gaufrette": "dev-master",
         "knplabs/knp-gaufrette-bundle": "dev-master",
@@ -42,16 +41,19 @@
         "zendframework/zend-json": "2.1.*@dev",
         "ob/highcharts-bundle": "dev-master",
         "exercise/htmlpurifier-bundle": "dev-master",
-        "friendsofsymfony/comment-bundle": "2.0.*@dev"
+        "friendsofsymfony/comment-bundle": "2.0.*@dev",
+	"incenteev/composer-parameter-handler": "~2.0"
     },
     "scripts": {
         "post-install-cmd": [
+	    "Incenteev\\ParameterHandler\\ScriptHandler::buildParameters",		
             "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::buildBootstrap",
             "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::clearCache",
             "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::installAssets",
             "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::installRequirementsFile"
         ],
         "post-update-cmd": [
+	    "Incenteev\\ParameterHandler\\ScriptHandler::buildParameters",
             "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::buildBootstrap",
             "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::clearCache",
             "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::installAssets",
@@ -64,6 +66,12 @@
     "minimum-stability": "dev",
     "extra": {
         "symfony-app-dir": "app",
-        "symfony-web-dir": "web"
+        "symfony-web-dir": "web",
+	"incenteev-parameters": {
+            "file": "app/config/parameters.yml"
+        },
+	"branch-alias": {
+            "dev-master": "2.3-dev"
+        }
     }
 }
