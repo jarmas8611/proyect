@@ -184,9 +184,9 @@ class DefaultController extends Controller
 
         if (isset($scopes['group_1']) && $scopes['group_1'] == 'Por prioridad') {
             $query
-                ->leftJoin('t.priority', 'p')
-                ->where('t.done = ?1')
-                ->andWhere('t.assignedTo = ?2')
+                ->leftJoin('q.priority', 'p')
+                ->where('q.done = ?1')
+                ->andWhere('q.assignedTo = ?2')
                 ->orderBy('p.weight', 'DESC')
                 ->setParameters(array(1 => false, 2 => $this->getUser()));
         }
