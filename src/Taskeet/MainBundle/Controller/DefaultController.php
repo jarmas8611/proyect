@@ -163,12 +163,7 @@ class DefaultController extends Controller
         }
 
         if (isset($scopes['group_1']) && $scopes['group_1'] == 'Departamento') {
-            $query
-                ->leftJoin('q.assignedTo', 'u')
-                ->leftJoin('u.department', 'd')
-                ->where('u.department = :dep')
-                ->orWhere('d.parent = :dep')
-                ->setParameter('dep', $this->getUser()->getDepartment());
+            $queryFilter->addDefaultFilter("department", $this->getUser()->getDepartment());
         }
 
         if (isset($scopes['group_1']) && $scopes['group_1'] == 'Para hoy') {
