@@ -49,6 +49,13 @@ class Priority
      * @ORM\Column(name="weight", type="smallint")
      */
     private $weight;
+    
+    /**
+     * @var boolean
+     *
+     * @ORM\Column(name="defecto", type="boolean", nullable=true)
+     */
+    private $primary;
 
     /**
      * @param \Symfony\Component\HttpFoundation\File\File $image
@@ -132,7 +139,7 @@ class Priority
 
     public function __toString()
     {
-        return $this->name;
+        return $this->getName();
     }
 
     /**
@@ -157,4 +164,28 @@ class Priority
     {
         return $this->weight;
     }
+    
+    /**
+     * Set primary
+     *
+     * @param boolean $primary
+     * @return Priority
+     */
+    public function setPrimary($primary)
+    {
+        $this->primary = (Boolean) $primary;
+
+        return $this;
+    }
+
+    /**
+     * Get primary
+     *
+     * @return boolean 
+     */
+    public function isPrimary()
+    {
+        return $this->primary;
+    }
+
 }

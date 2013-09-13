@@ -12,7 +12,7 @@ params:
             getter: department
         files:
             label:            Adjuntos
-            help:             "Tamaño máximo permitido: 16 MB"
+            help:             "Tamaño máximo permitido: 1 MB"
             formType:         upload
             dbType:           collection
             addFormOptions:
@@ -23,7 +23,7 @@ params:
                 maxNumberOfFiles:           10
                 maxFileSize:                16777216
                 minFileSize:                10
-                acceptFileTypes:            /(\.|\/)(gif|jpe?g|png|txt|doc|docx|pdf|xls|xlsx|ppt|pptx)$/i
+                acceptFileTypes:            /(\.|\/)(gif|jpe?g|png|txt|doc|docx|pdf|xls|xlsx|ppt|pptx|zip|rar)$/i
 #                previewSourceFileTypes:     /^image\/(gif|jpeg|png)$/
 #                previewSourceMaxFileSize:   250000
 #                previewMaxWidth:            100
@@ -41,7 +41,7 @@ builders:
         params:
             title: Tareas
             sort: [created, DESC]
-            display: [status, priority, title, project, assignedTo, startDate, dueDate]
+            display: [status, priority, title, createdBy, startDate, dueDate, assignedTo, department]
             scopes:
                 group_1:
                     "Todas": ~

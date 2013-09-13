@@ -173,3 +173,31 @@ header{
 #linechart{
     background: url("../img/bg3.png") repeat scroll 0 0 transparent;
 }
+
+h2{
+    font-size: 18px;
+    line-height: 20px;
+}
+
+.dashboard .table tbody{
+    font-size: 14px;
+}
+
+.dashboard .comments{
+   margin-top: 20px;
+}
+
+.dashboard .comment{
+   background-color: white;
+    border: 1px solid #DDD;
+    border-radius: 8px;
+    font-size: 14px;
+    margin-top: 15px;
+    padding: 5px;
+    width: 110%;
+}
+
+.dashboard .highcharts-container{
+    border: 1px solid #DDD;
+    border-radius: 8px;
+}

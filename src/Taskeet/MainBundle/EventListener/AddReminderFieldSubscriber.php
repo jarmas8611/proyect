@@ -53,10 +53,11 @@ class AddReminderFieldSubscriber implements EventSubscriberInterface
                     'P2W'       => 'Dos semanas',
                 ),
                 'mapped' => false,
-                'label' => 'Recordar',
-                'empty_value' => 'No recordar',
+                'label' => 'Remind',
+                'empty_value' => 'No avisar',
                 'empty_data'  => null,
                 'required' => false,
+                'translation_domain' => 'TaskeetMainBundle',
             ));        
         }
         else {

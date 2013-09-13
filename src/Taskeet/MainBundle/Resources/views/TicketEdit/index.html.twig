@@ -1,5 +1,7 @@
 {% extends_admingenerated "TaskeetMainBundle:TicketEdit:index.html.twig" %}
+
 {% set departmentId =  app.user.department.id %}
+
 {% block form_fieldset_NONE %}
     <fieldset class="form_block form_fieldset_NONE fieldset_tabbable">
         <div class="row-fluid">
@@ -129,10 +131,6 @@
 
             cargarUsuariosAsignados(data);
             cargarUsuarios(data);
-            //Cargo los usuarios que pertenecen a el departamento del usuario logueado
-            //cargarUsuarios(data);
-            //cargarUsuariosAsignados(data);
-
 
             $("#edit_ticket_department").change(function () {
                 var data = {

@@ -1,6 +1,6 @@
 dashboard_welcome:
     pattern:  /
-    defaults: { _controller: TaskeetMainBundle:Default:welcome }
+    defaults: { _controller: TaskeetMainBundle:Default:index }
 
 taskeet_event_calendar:
     pattern:    /event/calendar
@@ -21,3 +21,7 @@ departaments:
 ticket_clone:
     pattern: /ticket/clone/{pk}
     defaults: { _controller: TaskeetMainBundle:Ticket/New:clone }
+
+default_priority_ticket:
+    pattern: /defaultPriorityStatusTicket
+    defaults: { _controller: TaskeetMainBundle:Default:priorityStatusDefault }
