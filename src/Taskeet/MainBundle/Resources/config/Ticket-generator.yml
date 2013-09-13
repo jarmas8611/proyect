@@ -41,7 +41,7 @@ builders:
         params:
             title: Tareas
             sort: [created, DESC]
-            display: [status, priority, title, createdBy, startDate, dueDate, assignedTo, department]
+            display: [status, priority, title, startDate, dueDate, assignedTo, department]
             scopes:
                 group_1:
                     "Todas": ~
@@ -63,7 +63,7 @@ builders:
                 delete: ~
     filters:
         params:
-            display: [title, project, assignedTo, status, priority,  startDate, dueDate]
+            display: [title, project, department, assignedTo, status, priority,  startDate, dueDate]
     new:
         params:
             title: Nueva tarea

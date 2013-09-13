@@ -67,6 +67,7 @@ class NewController extends BaseNewController
             foreach ($periodo as $key => $fecha) {
                 $ticket = clone $Ticket;
                 $ticket->setStartDate($fecha);
+                $ticket->setDueDate($end->add($interval));
                 $ticket->setTitle(sprintf('%s-%s', $Ticket->getTitle(), $key));
                 $ticket->setSlug(sprintf('%s-%s', $Ticket->getSlug(), $key));
                 $this->saveObject($ticket);

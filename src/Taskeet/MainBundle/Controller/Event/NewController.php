@@ -33,13 +33,14 @@ class NewController extends BaseNewController
             $end = clone $form->get('dueDate')->getData();
             $ocurrences = $form->get('ocurrences')->getData();
             $interval = new DateInterval($form->get('repeat')->getData());
-
+            
             $periodo = new \DatePeriod($start, $interval, $ocurrences,
                 \DatePeriod::EXCLUDE_START_DATE);
 
             foreach ($periodo as $key => $fecha) {
                 $event = clone $Event;
                 $event->setStartDate($fecha);
+                $event->setDueDate($end->add($interval));
                 $event->setTitle(sprintf('%s-%s', $Event->getTitle(), $key));
                 // $event->setSlug(sprintf('%s-%s', $Event->getSlug(), $key));
                 $this->preSave($form, $event);
