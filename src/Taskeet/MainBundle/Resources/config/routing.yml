@@ -25,3 +25,7 @@ ticket_clone:
 default_priority_ticket:
     pattern: /defaultPriorityStatusTicket
     defaults: { _controller: TaskeetMainBundle:Default:priorityStatusDefault }
+
+Taskeet_MainBundle_Dashboard_scopes:
+    pattern: /scope/{group}/{scope}
+    defaults: { _controller: TaskeetMainBundle:Default:scopes }

@@ -7,6 +7,7 @@ use Ob\HighchartsBundle\Highcharts\Highchart;
 use Symfony\Component\Serializer\Encoder\JsonEncoder;
 use Taskeet\MainBundle\Controller\Ticket\ListController as Controller;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpFoundation\RedirectResponse;
 
 class DefaultController extends Controller
 {
@@ -161,27 +162,105 @@ class DefaultController extends Controller
             $queryFilter->addDefaultFilter("assignedTo", $this->getUser());
         }
 
-        if (isset($scopes['group_1']) && $scopes['group_1'] == 'Tareas del departamento') {
-            $query
-                ->leftJoin('q.assignedTo', 'u')
-                ->leftJoin('u.department', 'd')
-                ->where('u.department = :dep')
-                ->orWhere('d.parent = :dep')
-                ->setParameter('dep', $this->getUser()->getDepartment());
+        if (isset($scopes['group_1']) && $scopes['group_1'] == 'Departamento') {
+            $queryFilter->addDefaultFilter("department", $this->getUser()->getDepartment());
         }
 
         if (isset($scopes['group_1']) && $scopes['group_1'] == 'Para hoy') {
             $query
-                ->where('startDate >= ?1')
-                ->orWhere('dueDate = ?1')
-                ->andWhere('assignedTo = ?2')
+                ->where('q.startDate >= ?1')
+                ->orWhere('q.dueDate = ?1')
+                ->andWhere('q.assignedTo = ?2')
                 ->setParameters(array(1 => new \DateTime('today'), 2 => $this->getUser()));
         }
 
         if (isset($scopes['group_1']) && $scopes['group_1'] == 'Finalizadas') {
             $queryFilter->addDefaultFilter("done", true);
         }
+
+        if (isset($scopes['group_1']) && $scopes['group_1'] == 'Sin resolver') {
+            $queryFilter->addDefaultFilter("done", false);
+        }
+
+        if (isset($scopes['group_1']) && $scopes['group_1'] == 'Por prioridad') {
+            $query
+                ->leftJoin('t.priority', 'p')
+                ->where('t.done = ?1')
+                ->andWhere('t.assignedTo = ?2')
+                ->orderBy('p.weight', 'DESC')
+                ->setParameters(array(1 => false, 2 => $this->getUser()));
+        }
+
+        if (isset($scopes['group_1']) && $scopes['group_1'] == 'Recien actualizadas') {
+            $query
+                ->where('q.updated = ?1')
+                ->andWhere('q.assignedTo = ?2')
+                ->setParameters(array(1 => new \DateTime('today'), 2 => $this->getUser()));
+        }
     }
+
+    public function scopesAction()
+    {
+        if ($this->get('request')->get('reset')) {
+            $this->setScopes(array());
+
+            return new RedirectResponse($this->generateUrl("Taskeet_MainBundle_Dashboard_list"));
+        }
+
+        $this->setScope($this->get('request')->get('group'), $this->get('request')->get('scope'));
+
+        return new RedirectResponse($this->generateUrl("dashboard_welcome"));
+    }
+
+    /**
+     * Store in the session service the current scopes
+     *
+     * @param array the scopes
+     */
+    protected function setScopes($scopes)
+    {
+        $this->get('session')->set('Taskeet\MainBundle\Dashboard\Scopes', $scopes);
+    }
+
+    /**
+    * Change the value of one Scope
+    *
+    * @param string the group name
+    * @param string the scope name
+    */
+    protected function setScope($groupName, $scopeName)
+    {
+        $scopes = $this->getScopes();
+        $scopes[$groupName] = $scopeName;
+        $this->setScopes($scopes);
+    }
+
+    protected function getScopes()
+    {
+        return $this->get('session')->get('Taskeet\MainBundle\Dashboard\Scopes', $this->getDefaultScopes());
+    }
+
+    protected function getDefaultScopes()
+    {
+        $scopes = array();
+
+                $scopes['group_1'] = '';
+
+                    $scopes['group_1'] = 'Mis tareas';
+            
+        return $scopes;
+    }
+
+    /*
+    * @return string|null the scope setted for the current group
+    */
+    protected function getScope($groupName)
+    {
+        $scopes = $this->getScopes();
+
+        return isset($scopes[$groupName]) ? $scopes[$groupName] : null ;
+    }
+
 
     public function priorityStatusDefaultAction()
     {
