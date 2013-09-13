@@ -20,13 +20,22 @@ class EditType extends BaseEditType
 
         
                                                                                       
-           $builder->add('startDate', 'datetime', array(  'required' => true,  'label' => 'Startdate',  'help' => NULL,  'translation_domain' => 'TaskeetMainBundle',));
+           $builder->add('startDate', 'datetime', array(  
+	            'required' => true,  
+	            'label' => 'Startdate', 
+	            'help' => NULL,  
+	            'translation_domain' => 'TaskeetMainBundle', 
+	            'widget' => 'single_text',
+	            'attr' => array('class' => 'datetimepicker'),
+        	));
 
-        
-                                                                                      
-           $builder->add('dueDate', 'datetime', array(  'required' => true,  'label' => 'Duedate',  'help' => NULL,  'translation_domain' => 'TaskeetMainBundle',));
-
-        
+        	$builder->add('dueDate', 'datetime', array(  
+	            'required' => true,  
+	            'label' => 'Duedate',  
+	            'help' => NULL,  'translation_domain' => 'TaskeetMainBundle',
+	            'widget' => 'single_text',
+	            'attr' => array('class' => 'datetimepicker'),
+        	)); 
                                                                                       
            $builder->add('description', 'textarea', array(  'required' => true,  'label' => 'Description',  'attr' => array('class' => 'span6', 'rows' => 10), 'help' => NULL,  'translation_domain' => 'TaskeetMainBundle',));
 

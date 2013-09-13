@@ -51,12 +51,16 @@ class EditType extends BaseEditType
             'label' => 'Startdate', 
             'help' => NULL,  
             'translation_domain' => 'TaskeetMainBundle', 
+            'widget' => 'single_text',
+            'attr' => array('class' => 'datetimepicker'),
         ));
 
         $builder->add('dueDate', 'datetime', array(  
             'required' => true,  
             'label' => 'Duedate',  
             'help' => NULL,  'translation_domain' => 'TaskeetMainBundle',
+            'widget' => 'single_text',
+            'attr' => array('class' => 'datetimepicker'),
         )); 
 
     }

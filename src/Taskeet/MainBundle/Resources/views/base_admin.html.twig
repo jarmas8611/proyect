@@ -54,6 +54,7 @@
 
         {% stylesheets filter='cssrewrite,?yui_css' output='assetic/css/compiled/admingenerator/taskeet.min.css'
             'bundles/taskeetmain/css/bootstrap.css'
+            'bundles/admingeneratorgenerator/css/jquery-ui/smoothness/jquery-ui-1.9.2.custom.min.css'
             'bundles/taskeetmain/css/taskeet.css'
         %}
             <link rel="stylesheet" href="{{ asset_url }}" type="text/css" media="all" />
@@ -136,6 +137,9 @@
             'bundles/admingeneratorgenerator/js/jquery-ui/jquery.ui.sortable.js'
             'bundles/admingeneratorgenerator/js/jquery-ui/jquery.ui.effect.js'
             'bundles/admingeneratorgenerator/js/jquery-ui/jquery.ui.effect-slide.js'
+            'bundles/admingeneratorgenerator/js/jquery-ui/jquery.ui.datepicker.js'
+            'bundles/admingeneratorgenerator/js/jquery-ui/jquery.ui.slider.js'
+            'bundles/taskeetmain/js/jquery-ui-timepicker-addon.js'
 
         %}
             <script type="text/javascript" src="{{ asset_url }}"></script>
@@ -182,6 +186,14 @@
             $('.td_priority').tooltip({
                 selector: "a[data-toggle=tooltip]"
             })
+
+            $(function() { 
+                $('.dtpicker').datetimepicker({ 
+                    dateFormat: 'dd-mm-yy', 
+                    timeFormat: 'hh:mm',
+                    showButtonPanel: true
+                });
+            });
 
         </script>
     {% endblock %}
