@@ -32,6 +32,10 @@ class EditController extends BaseEditController
 
             $proveedor->updateAcl($acl);
         }
+
+        if ($form->get('parent')->getData() == $form->get('name')->getData()) {
+            $Department->setParent(NULL);
+        }
     }
 
     /**
